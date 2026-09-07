@@ -108,9 +108,96 @@ ol.plan .mode{display:block;width:auto;max-width:100%;box-sizing:border-box;marg
   ol.plan .reprange,.bridge-schedule .reprange{grid-column:1;grid-row:2;justify-self:start;margin-top:4px}
 }
 
+
+.audit{margin:0 0 16px;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 8px 22px rgba(30,48,76,.07)}
+.audit-head{padding:15px 20px 12px;background:linear-gradient(120deg,#fff6e5,#fffdf8);border-bottom:1px solid #f1dfb7}
+.audit-head .kicker{margin:0 0 4px;color:#99600a;font-size:11px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+.audit-head h2{margin:0;font-size:22px;line-height:1.2;color:#6a4308}
+.audit-head p{margin:6px 0 0;color:#6a5420;font-size:13px;line-height:1.4}
+.audit-body{padding:4px 0 8px}
+.audit-sec{padding:12px 20px;border-bottom:1px solid var(--line)}
+.audit-sec:last-child{border-bottom:0}
+.audit-sec h3{margin:0 0 8px;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--navy)}
+.audit-sec ol,.audit-sec ul{margin:0;padding-left:18px;color:#2a3548;font-size:13.5px;line-height:1.45}
+.audit-sec li{margin:5px 0}
+.audit-sec b{color:var(--ink)}
+.tonnage{width:100%;border-collapse:collapse;font-size:12.5px}
+.tonnage th,.tonnage td{padding:5px 8px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+.tonnage th:first-child,.tonnage td:first-child,.tonnage th:last-child,.tonnage td:last-child{text-align:left}
+.tonnage th{color:var(--muted);font-weight:800;font-size:11px;text-transform:uppercase;letter-spacing:.03em}
+.tonnage .fact td{background:#eaf8f2}
+.tonnage .mix td{background:#fff6e5}
+.tonnage .plan td{background:#f7f5ff}
+.tonnage .test td{background:#fff0f0}
+.unknowns{background:#fff7f7}
+.unknowns h3{color:var(--red)}
+@media(max-width:700px){.tonnage{font-size:11px}.tonnage th,.tonnage td{padding:4px 5px}}
+
 </style></head>
 <body>
 <div class="page">
+
+<section class="audit" id="audit" aria-label="Срез программы на 7 сентября">
+  <div class="audit-head">
+    <p class="kicker">Срез · над программой, не вместо неё</p>
+    <h2>Что не так на этом этапе, тоннаж и дыры в данных</h2>
+    <p>7 сентября 2026. Понедельник недели 3 закрыт. Среда 9 сентября ещё не факт. Цифры ниже — рабочие подходы без разминки, кг·повт.</p>
+  </div>
+  <div class="audit-body">
+    <div class="audit-sec">
+      <h3>Зачем пятница 82,5 · 4×4 → 87,5 · 5×3</h3>
+      <ul>
+        <li><b>Два разных дня.</b> Понедельник — объём (больше повторов, чуть легче). Пятница — сила (тяжелее, меньше повторов). Цель пятницы — подвести к 100 кг на 4–6, не повторять понедельник.</li>
+        <li><b>Тоннаж пятницы почти тот же:</b> 82,5 × 16 = <b>1 320</b>, 87,5 × 15 = <b>1 313</b>. Не «навалили работы», а тот же объём дня на +5 кг.</li>
+        <li><b>Почему +5, не +2,5.</b> На 82,5 · 4×4 была хорошая скорость. +2,5 кг оставил бы почти тот же стимул. Тройки вместо четвёрок компенсируют прыжок. 5 подходов вместо 4 — чтобы новый вес был серией, а не одним тяжёлым заходом.</li>
+        <li><b>Н4 не откатывает вес:</b> 87,5 · 4×4 (тот же вес, четвёрки). Н5: 90 · 4×3. Если 87,5 · 5×3 на неделе 3 пойдут в отказ — это режется, а не «план священен».</li>
+      </ul>
+    </div>
+    <div class="audit-sec">
+      <h3>Что не так / недописано сейчас</h3>
+      <ol>
+        <li><b>После пика нет разгрузки.</b> Покой 1–6 сентября сидел <em>до</em> 87,5, не после. Дальше четыре недели рост пятничного веса: 87,5 × 5×3 → 87,5 × 4×4 → 90 × 4×3 → 92,5 × 4×3 → 97,5 × 3×2. Это работает, только если тройки недели 3 остаются с запасом.</li>
+        <li><b>Жим написан под старую разгрузку недели 4.</b> 62,5 · 4×5 уже с 4-м подходом к пределу, а в сетке сразу 65 · 4×5 и 67,5 · 4×5. Запасной 4×4 на неделе 4 есть; 67,5 не закреплять, пока 65 не пройдёт чисто.</li>
+        <li><b>Объём жима не вернулся.</b> Неделя 1 — 3 100 факт. Дальше 2 280…2 720 при растущем весе. Для цели «80 кг × 4–6» за этот цикл это натяжка. Тест недели 8 (72,5–80 × 3) — проверка, не обещание 80 × 5.</li>
+        <li><b>Понедельник приседа визуально топчется:</b> 80 × 4×6 → 82,5 × 4×5 → снова 80 × 4×6. Это не ошибка: объёмный день держит массу, растёт пятница. Выглядит как застой, если не читать оба дня.</li>
+        <li><b>Недели 5–8 не синхронизированы с фактом.</b> Трицепс там «3×10–15» без веса. Тяга недели 5 снова 80 кг, хотя на неделе 3 уже назначено 85 · 3×12. Это заглушки, не актуальный план.</li>
+        <li><b>Подтягивания:</b> неделя 2 +15 · 4/4/3, 2-й и 3-й к пределу → неделя 3 сразу +22,5 · 3×2. Скачок. Только через контроль +20 × 1.</li>
+      </ol>
+    </div>
+    <div class="audit-sec">
+      <h3>Тоннаж цикла · кг·повт</h3>
+      <div class="table-wrap">
+        <table class="tonnage">
+          <thead><tr><th>Н</th><th>Жим</th><th>max</th><th>Присед</th><th>max</th><th>Статус</th></tr></thead>
+          <tbody>
+            <tr class="fact"><td>1</td><td>3 100</td><td>62,5</td><td>2 600</td><td>77,5</td><td>факт</td></tr>
+            <tr class="fact"><td>2</td><td>2 280</td><td>60</td><td>3 120</td><td>82,5</td><td>факт</td></tr>
+            <tr class="mix"><td>3</td><td>2 353–2 720</td><td>62,5</td><td>3 233</td><td>87,5</td><td>пн факт · ср/пт план (пауза 3×7 или 4×7)</td></tr>
+            <tr class="plan"><td>4</td><td>2 290</td><td>65</td><td>3 050</td><td>87,5</td><td>план · пт 87,5 · 4×4, не 85</td></tr>
+            <tr class="plan"><td>5</td><td>2 890</td><td>67,5</td><td>3 000</td><td>90</td><td>план, 67,5 под вопросом</td></tr>
+            <tr class="plan"><td>6</td><td>2 500</td><td>70</td><td>2 760</td><td>92,5</td><td>дальний план</td></tr>
+            <tr class="plan"><td>7</td><td>1 733</td><td>72,5</td><td>1 545</td><td>97,5</td><td>съём объёма перед тестом</td></tr>
+            <tr class="test"><td>8</td><td>218–240</td><td>72,5–80</td><td>645–668</td><td>95–102,5</td><td>одна тройка, не все веса</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin:8px 0 0;color:#657084;font-size:12px;">Присед пик по тоннажу — неделя 3 (3 233). Дальше объём чуть падает, вес пятницы растёт. Жим: пик объёма уже позади (неделя 1), сейчас ставка на вес.</p>
+    </div>
+    <div class="audit-sec unknowns">
+      <h3>Чего я не знаю и потому не выдумываю</h3>
+      <ul>
+        <li><b>Шаг плиток блока.</b> Без этого «следующий вес» — не число. Если плитки по 5 кг → <b>40 кг · 3×10–12</b>. Если есть 2,5 → 37,5. Нет чистых 10 — назад на 35 · 3×12–15.</li>
+        <li><b>4-й подход жима 62,5:</b> пять повторов закрыты или остановился на 4? «4–5-й ближе к пределу» читается двояко.</li>
+        <li><b>Глубина 80 · 4×6</b> — все повторы ниже параллели или часть высокая?</li>
+        <li><b>RIR по подходам на 82,5 · 4×4.</b> Есть только «хорошая скорость», нет запаса 1-го и 4-го.</li>
+        <li><b>Грудь после 7 сентября</b> — тихо или есть остаток. В журнал боль не писалась, но старый симптом не закрыт отдельно.</li>
+        <li><b>Вес тела</b> после 80,55 и сон/остаток после зуба. На восстановление к 87,5 это влияет сильнее, чем сетка.</li>
+        <li>Среда недели 3 (пауза 52,5, тяга 85 · 3×12) ещё не факт — тягу недели 4 из этого не назначаю.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 <header class="hero">
   <h1>8 недель: нагрузка, интенсивность и план</h1>
   <p>Неделя 3: понедельник 7 сентября выполнен, следующая тренировка — среда 9 сентября</p>
@@ -124,9 +211,9 @@ ol.plan .mode{display:block;width:auto;max-width:100%;box-sizing:border-box;marg
 <nav class="week-nav" aria-label="Недели программы">
   <a href="#week-1" class="done">Н1 · готово</a>
   <a href="#week-2" class="done">Н2 · готово</a>
-  <a href="#week-bridge" class="current">Мост · сейчас</a>
-  <a href="#week-3" class="next">Н3 · 7 сен</a>
-  <a href="#week-4">Н4</a>
+  <a href="#week-bridge" class="done">Мост · покой</a>
+  <a href="#week-3" class="current">Н3 · сейчас</a>
+  <a href="#week-4" class="next">Н4</a>
   <a href="#week-5">Н5</a>
   <a href="#week-6">Н6</a>
   <a href="#week-7">Н7</a>
@@ -197,7 +284,7 @@ ol.plan .mode{display:block;width:auto;max-width:100%;box-sizing:border-box;marg
     <article class="day"><div class="day-title"><h3>Понедельник</h3><span>Жим + объём</span></div>
       <details class="session-check"><summary>Подсказка перед приседом</summary><ul><li>Одновременно направить оба колена по линии носков — не раскрывать одну сторону раньше другой.</li></ul></details>
       <div class="block-title">Основные</div><ol class="plan"><li><b>Жим в касание</b><span class="loadline"><span class="ex-assign">65 кг · 4×5</span><span class="ex-alt">если 4-й подход к пределу — оставить 4×4</span></span><span class="mode mode-hard">Шаг +2,5 после 62,5 · не 67,5</span></li><li><b>Присед (привычное среднее положение грифа)</b><span class="loadline"><span class="ex-assign">82,5 кг · 4×5</span></span><span class="mode mode-moderate">Между 80×6 и пятничными тройками</span></li></ol>
-      <div class="block-title assist">Подсобка</div><ol class="plan" start="3"><li><b>Трицепс на блоке</b><span class="loadline"><span class="ex-assign">следующий вес блока · 3×10–12</span><span class="reprange" title="Минимум 10, максимум 15. Если нет чистых 10 — вернуться на 35 кг">диапазон 10–15</span><span class="ex-alt">запасной: 35 кг · 3×12–15</span></span><span class="mode mode-moderate">3×15 на 35 кг закрыты с запасом · жжение ≠ отказ</span></li><li><b>Подъёмы гантелей через стороны</b><span class="loadline"><span class="ex-assign">по 4 кг · 3×15–18</span><span class="reprange" title="Минимум 12, максимум 20. Стоп, если амплитуда падает или плечи поднимаются">диапазон 12–20</span></span><span class="mode mode-moderate">Одинаково до груди · стоп, если лезут трапеции</span></li></ol>
+      <div class="block-title assist">Подсобка</div><ol class="plan" start="3"><li><b>Трицепс на блоке</b><span class="loadline"><span class="ex-assign">40 кг · 3×10–12</span><span class="reprange" title="Минимум 10, максимум 12 на новом весе. Нет чистых 10 — 35 кг">диапазон 10–12</span><span class="ex-alt">если плитка 2,5 кг — 37,5; нет 10 — 35 кг · 3×12–15</span></span><span class="mode mode-moderate">3×15 на 35 кг закрыты с запасом · жжение ≠ отказ</span></li><li><b>Подъёмы гантелей через стороны</b><span class="loadline"><span class="ex-assign">по 4 кг · 3×15–18</span><span class="reprange" title="Минимум 12, максимум 20. Стоп, если амплитуда падает или плечи поднимаются">диапазон 12–20</span></span><span class="mode mode-moderate">Одинаково до груди · стоп, если лезут трапеции</span></li></ol>
     </article>
     <article class="day"><div class="day-title"><h3>Среда</h3><span>Объём верха</span></div>
       <div class="block-title">Основные</div><ol class="plan"><li><b>Жим с паузой 1 сек</b><span class="loadline"><span class="ex-assign">55 кг · 3×6</span><span class="ex-alt">4-й ×6 только если первые три чистые с запасом</span></span><span class="mode mode-hard">Пауза 1 сек · не 4×7 сразу</span></li><li><b>Подтягивания</b><span class="loadline"><span class="ex-assign">+22,5 кг · 3×2</span><span class="ex-alt">если легко — 3×3; если тяжело — +20 · 3×2</span></span><span class="mode mode-moderate">Контроль +20×1</span></li></ol>
@@ -374,7 +461,7 @@ ol.plan .mode{display:block;width:auto;max-width:100%;box-sizing:border-box;marg
     <p class="dash-kicker">Первый экран · аналитика цикла</p>
     <h2>Как меняется работа за 8 недель</h2>
     <p>Столбик показывает тоннаж рабочих подходов, подпись справа — максимальный рабочий вес недели как абсолютный показатель интенсивности. Факт, условные назначения и дальний план разделены цветом.</p>
-    <span class="asof">Данные обновлены 1 сентября 2026 · недели 1–2 и тренировка 31 августа выполнены</span>
+    <span class="asof">Данные обновлены 7 сентября 2026 · Н1–Н2 факт, Н3 пн факт, ср/пт ещё план</span>
   </div>
   <div class="dash-body">
     <div class="legend" aria-label="Легенда">
@@ -393,7 +480,7 @@ ol.plan .mode{display:block;width:auto;max-width:100%;box-sizing:border-box;marg
         <p class="chart-sub">Тоннаж, кг·повт. Справа: максимум недели, кг. Жим в касание и паузный жим суммированы по тоннажу, но техника в программе остаётся разной.</p>
         <div class="cycle-row"><span class="cycle-wk">Н1</span><div class="cycle-track"><div class="cycle-fill" style="width:100%"></div></div><span class="cycle-val"><b>3 100</b> · max 62,5</span></div>
         <div class="cycle-row"><span class="cycle-wk">Н2</span><div class="cycle-track"><div class="cycle-fill" style="width:73.5%"></div></div><span class="cycle-val"><b>2 280</b> · max 60</span></div>
-        <div class="cycle-row"><span class="cycle-wk">Н3</span><div class="cycle-track"><div class="cycle-fill conditional" style="width:87.7%"></div></div><span class="cycle-val"><b>2 353–2 720</b> · max 62,5</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н3</span><div class="cycle-track"><div class="cycle-fill mixed" style="width:87.7%"></div></div><span class="cycle-val"><b>2 353–2 720</b> · max 62,5</span></div>
         <div class="cycle-row"><span class="cycle-wk">Н4</span><div class="cycle-track"><div class="cycle-fill future" style="width:73.9%"></div></div><span class="cycle-val"><b>2 290</b> · max 65</span></div>
         <div class="cycle-row"><span class="cycle-wk">Н5</span><div class="cycle-track"><div class="cycle-fill future" style="width:93.2%"></div></div><span class="cycle-val"><b>2 890</b> · max 67,5</span></div>
         <div class="cycle-row"><span class="cycle-wk">Н6</span><div class="cycle-track"><div class="cycle-fill future" style="width:80.6%"></div></div><span class="cycle-val"><b>2 500</b> · max 70</span></div>
@@ -406,8 +493,8 @@ ol.plan .mode{display:block;width:auto;max-width:100%;box-sizing:border-box;marg
         <p class="chart-sub">Тоннаж, кг·повт. Справа: максимум недели, кг. Засчитывается только выбранное привычное среднее положение грифа и одинаковая полная глубина.</p>
         <div class="cycle-row"><span class="cycle-wk">Н1</span><div class="cycle-track"><div class="cycle-fill" style="width:78.3%"></div></div><span class="cycle-val"><b>2 600</b> · max 77,5</span></div>
         <div class="cycle-row"><span class="cycle-wk">Н2</span><div class="cycle-track"><div class="cycle-fill" style="width:94%"></div></div><span class="cycle-val"><b>3 120</b> · max 82,5</span></div>
-        <div class="cycle-row"><span class="cycle-wk">Н3</span><div class="cycle-track"><div class="cycle-fill conditional" style="width:97.4%"></div></div><span class="cycle-val"><b>3 233</b> · max 87,5</span></div>
-        <div class="cycle-row"><span class="cycle-wk">Н4</span><div class="cycle-track"><div class="cycle-fill future" style="width:90.7%"></div></div><span class="cycle-val"><b>3 010</b> · max 85</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н3</span><div class="cycle-track"><div class="cycle-fill mixed" style="width:97.4%"></div></div><span class="cycle-val"><b>3 233</b> · max 87,5</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н4</span><div class="cycle-track"><div class="cycle-fill future" style="width:91.9%"></div></div><span class="cycle-val"><b>3 050</b> · max 87,5</span></div>
         <div class="cycle-row"><span class="cycle-wk">Н5</span><div class="cycle-track"><div class="cycle-fill future" style="width:90.4%"></div></div><span class="cycle-val"><b>3 000</b> · max 90</span></div>
         <div class="cycle-row"><span class="cycle-wk">Н6</span><div class="cycle-track"><div class="cycle-fill future" style="width:83.1%"></div></div><span class="cycle-val"><b>2 760</b> · max 92,5</span></div>
         <div class="cycle-row"><span class="cycle-wk">Н7</span><div class="cycle-track"><div class="cycle-fill future" style="width:46.5%"></div></div><span class="cycle-val"><b>1 545</b> · max 97,5</span></div>
@@ -426,7 +513,7 @@ ol.plan .mode{display:block;width:auto;max-width:100%;box-sizing:border-box;marg
 
     <div class="section-label"><h3>Подсобка: диапазон повторов</h3><p>Минимум — нижняя граница рабочего коридора; максимум — порог перед повышением веса. Сначала повторы, потом вес</p></div>
     <div class="accessory-grid">
-      <article class="accessory"><b>Трицепс на блоке</b><span class="move">верх тела · понедельник</span><span class="fromto">мин. 10 · макс. 15</span><small>Вес повышать только после чистых подходов на 15 с запасом</small></article>
+      <article class="accessory"><b>Трицепс на блоке</b><span class="move">верх тела · понедельник</span><span class="fromto">мин. 10 · макс. 15</span><small>3×15 на 35 кг закрыты с запасом. Дальше плитка вверх · 3×10–12, не ждать пока жжение уйдёт</small></article>
       <article class="accessory"><b>Боковые подъёмы</b><span class="move">гантели 4 кг · понедельник</span><span class="fromto">мин. 12 · макс. 20</span><small>Стоп, если амплитуда падает или начинается пожимание плечами</small></article>
       <article class="accessory"><b>Жим гантелей</b><span class="move">среда · после жима с паузой</span><span class="fromto">мин. 8 · макс. 12</span><small>Тяжёлые подходы на 6 повторов не использовать; при боли — убрать</small></article>
       <article class="accessory"><b>Тяга нижнего блока</b><span class="move">к животу · нейтральная рукоять</span><span class="fromto">мин. 8 · макс. 12</span><small>85 кг: 10 → 11 → 12, затем вес. Штангу в наклоне не использовать</small></article>
