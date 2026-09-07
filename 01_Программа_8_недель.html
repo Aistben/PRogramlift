@@ -18,37 +18,10 @@ h1{margin:0;font-size:32px;letter-spacing:-.03em;line-height:1.05;font-weight:80
 .hero-aims{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 0;padding:0;list-style:none}
 .hero-aims li{padding:8px 12px;border-radius:12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);font-size:14px;line-height:1.3;color:#e8f1fb}
 .hero-aims b{display:block;margin-bottom:2px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#b7c9dd;font-weight:800}
-.hero-fold{margin-top:16px;border:1px solid rgba(255,255,255,.16);border-radius:14px;background:rgba(7,16,32,.28);backdrop-filter:blur(8px)}
-.hero-fold>summary{cursor:pointer;display:flex;align-items:center;gap:10px;padding:11px 14px;font-size:14px;font-weight:800;list-style:none;user-select:none}
-.hero-fold>summary::-webkit-details-marker{display:none}
-.fold-ico{width:22px;height:22px;border-radius:7px;background:rgba(255,255,255,.14);position:relative;flex:0 0 auto}
-.fold-ico::before{content:"";position:absolute;left:7px;top:6px;width:7px;height:7px;border-right:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(45deg);transition:transform .18s ease,top .18s ease}
-.hero-fold[open] .fold-ico::before{top:9px;transform:rotate(225deg)}
-.fold-hint{margin-left:auto;font-size:11px;font-weight:650;color:#b7c9dd;letter-spacing:.02em}
-.hero-fold[open]>summary{border-bottom:1px solid rgba(255,255,255,.1)}
-.hero-fold-body{padding:14px 14px 15px}
-.ton-legend{display:flex;flex-wrap:wrap;gap:8px 14px;margin:0 0 12px;font-size:11px;color:#c5d4e6}
-.ton-legend i{display:inline-block;width:8px;height:8px;border-radius:99px;margin-right:6px;vertical-align:middle}
-.ton-legend .l-fact{background:#3dbe9a}
-.ton-legend .l-mix{background:#e0a23a}
-.ton-legend .l-plan{background:#9b8adf}
-.ton-legend .l-test{background:#e07a7a}
-.ton-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.ton-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:12px 12px 10px}
-.ton-card h3{margin:0 0 10px;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#cfe0f2}
-.ton-row{display:grid;grid-template-columns:28px 1fr 78px;align-items:center;gap:8px;margin:5px 0}
-.ton-wk{font-size:11px;font-weight:800;color:#9eb3cc}
-.ton-track{height:7px;border-radius:99px;background:rgba(255,255,255,.1);overflow:hidden}
-.ton-fill{height:100%;border-radius:99px;background:#7eb6ff}
-.ton-row.fact .ton-fill{background:linear-gradient(90deg,#2ea883,#5ee0bc)}
-.ton-row.mix .ton-fill{background:linear-gradient(90deg,#c98920,#f0c36a)}
-.ton-row.plan .ton-fill{background:linear-gradient(90deg,#6d5cbc,#b7a8f0)}
-.ton-row.test .ton-fill{background:linear-gradient(90deg,#b55252,#ef9a9a)}
-.ton-val{text-align:right;font-size:11px;color:#d5e2f0;white-space:nowrap}
-.ton-val b{color:#fff;font-weight:800}
-.ton-val i{display:block;font-style:normal;color:#9eb3cc;font-size:10px}
-.tonnage-note{margin:12px 0 0;color:#b7c9dd;font-size:12px;line-height:1.4}
-@media(max-width:720px){.ton-grid{grid-template-columns:1fr}.fold-hint{display:none}}
+.hero .dash-wrap{margin:16px 0 0;border:1px solid rgba(255,255,255,.2);border-radius:14px;background:rgba(7,16,32,.22)}
+.hero .dash-wrap > summary{background:rgba(255,255,255,.1);color:#fff}
+.hero .dash-wrap[open] > summary{border-bottom:1px solid rgba(255,255,255,.12);color:#fff}
+.hero .dash-wrap .dashboard{background:#fff;color:#172033}
 .quick{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin:17px 0}.quick>div{background:#fff;border:1px solid var(--line);border-radius:13px;padding:13px 14px}.quick b{display:block;color:var(--navy);margin-bottom:2px}.quick span{color:var(--muted);font-size:13px}
 .program-rules{margin:15px auto 22px;max-width:1180px;border:1px solid var(--line);border-radius:14px;background:#fff;overflow:hidden}.program-rules>summary{cursor:pointer;padding:12px 16px;font-weight:900;color:var(--navy);background:#f7faff}.program-rules[open]>summary{border-bottom:1px solid var(--line)}.program-rules .rules{padding:14px}
 .session-check{margin:0 0 11px;border:1px solid #d3dfed;border-radius:11px;background:#f7faff;overflow:hidden}.session-check summary{cursor:pointer;padding:9px 11px;color:var(--navy);font-size:12px;font-weight:900;list-style-position:inside}.session-check[open] summary{border-bottom:1px solid #dbe5f0;background:#edf5ff}.session-check ul{margin:0;padding:10px 15px 11px 30px;color:var(--muted);font-size:11px}.session-check li{margin:4px 0}
@@ -178,37 +151,88 @@ ol.plan .mode{display:block;width:auto;max-width:100%;box-sizing:border-box;marg
     <li><b>Жим в касание</b> 72,5–80 кг · 1×3</li>
     <li><b>Присед полной глубины</b> 95–102,5 кг · 1×3</li>
   </ul>
-  <details class="hero-fold">
-    <summary><span class="fold-ico" aria-hidden="true"></span>Тоннаж цикла <span class="fold-hint">кг·повт · без разминки</span></summary>
-    <div class="hero-fold-body">
-      <div class="ton-legend"><span><i class="l-fact"></i>факт</span><span><i class="l-mix"></i>часть факта</span><span><i class="l-plan"></i>план</span><span><i class="l-test"></i>тест</span></div>
-      <div class="ton-grid">
-        <article class="ton-card">
-          <h3>Жим</h3>
-            <div class="ton-row fact"><span class="ton-wk">Н1</span><div class="ton-track"><div class="ton-fill" style="width:100%"></div></div><span class="ton-val"><b>3 100</b><i>max 62,5</i></span></div>
-            <div class="ton-row fact"><span class="ton-wk">Н2</span><div class="ton-track"><div class="ton-fill" style="width:73.5%"></div></div><span class="ton-val"><b>2 280</b><i>max 60</i></span></div>
-            <div class="ton-row mix"><span class="ton-wk">Н3</span><div class="ton-track"><div class="ton-fill" style="width:87.7%"></div></div><span class="ton-val"><b>2 353–2 720</b><i>max 62,5</i></span></div>
-            <div class="ton-row plan"><span class="ton-wk">Н4</span><div class="ton-track"><div class="ton-fill" style="width:73.9%"></div></div><span class="ton-val"><b>2 290</b><i>max 65</i></span></div>
-            <div class="ton-row plan"><span class="ton-wk">Н5</span><div class="ton-track"><div class="ton-fill" style="width:93.2%"></div></div><span class="ton-val"><b>2 890</b><i>max 67,5</i></span></div>
-            <div class="ton-row plan"><span class="ton-wk">Н6</span><div class="ton-track"><div class="ton-fill" style="width:80.6%"></div></div><span class="ton-val"><b>2 500</b><i>max 70</i></span></div>
-            <div class="ton-row plan"><span class="ton-wk">Н7</span><div class="ton-track"><div class="ton-fill" style="width:55.9%"></div></div><span class="ton-val"><b>1 733</b><i>max 72,5</i></span></div>
-            <div class="ton-row test"><span class="ton-wk">Н8</span><div class="ton-track"><div class="ton-fill" style="width:7.7%"></div></div><span class="ton-val"><b>218–240</b><i>max 72,5–80</i></span></div>
-        </article>
-        <article class="ton-card">
-          <h3>Присед</h3>
-            <div class="ton-row fact"><span class="ton-wk">Н1</span><div class="ton-track"><div class="ton-fill" style="width:80.4%"></div></div><span class="ton-val"><b>2 600</b><i>max 77,5</i></span></div>
-            <div class="ton-row fact"><span class="ton-wk">Н2</span><div class="ton-track"><div class="ton-fill" style="width:96.5%"></div></div><span class="ton-val"><b>3 120</b><i>max 82,5</i></span></div>
-            <div class="ton-row mix"><span class="ton-wk">Н3</span><div class="ton-track"><div class="ton-fill" style="width:100%"></div></div><span class="ton-val"><b>3 233</b><i>max 87,5</i></span></div>
-            <div class="ton-row plan"><span class="ton-wk">Н4</span><div class="ton-track"><div class="ton-fill" style="width:94.3%"></div></div><span class="ton-val"><b>3 050</b><i>max 87,5</i></span></div>
-            <div class="ton-row plan"><span class="ton-wk">Н5</span><div class="ton-track"><div class="ton-fill" style="width:92.8%"></div></div><span class="ton-val"><b>3 000</b><i>max 90</i></span></div>
-            <div class="ton-row plan"><span class="ton-wk">Н6</span><div class="ton-track"><div class="ton-fill" style="width:85.4%"></div></div><span class="ton-val"><b>2 760</b><i>max 92,5</i></span></div>
-            <div class="ton-row plan"><span class="ton-wk">Н7</span><div class="ton-track"><div class="ton-fill" style="width:47.8%"></div></div><span class="ton-val"><b>1 545</b><i>max 97,5</i></span></div>
-            <div class="ton-row test"><span class="ton-wk">Н8</span><div class="ton-track"><div class="ton-fill" style="width:20.7%"></div></div><span class="ton-val"><b>645–668</b><i>max 95–102,5</i></span></div>
-        </article>
-      </div>
-      <p class="tonnage-note">Н1–Н2 и понедельник Н3 — из журнала. Присед: пик объёма на неделе 3. Жим: пик объёма на неделе 1, дальше растёт вес.</p>
+  <details class="dash-wrap" id="analytics">
+<summary>Аналитика цикла · тоннаж, подтягивания и диапазоны подсобки</summary>
+<section class="dashboard" id="dashboard">
+  <div class="dash-hero">
+    <p class="dash-kicker">Тоннаж цикла</p>
+    <h2>Как меняется работа за 8 недель</h2>
+    <p>Столбик показывает тоннаж рабочих подходов, подпись справа — максимальный рабочий вес недели как абсолютный показатель интенсивности. Факт, условные назначения и дальний план разделены цветом.</p>
+    <span class="asof">Данные обновлены 7 сентября 2026 · Н1–Н2 факт, Н3 пн факт, ср/пт ещё план</span>
+  </div>
+  <div class="dash-body">
+    <div class="legend" aria-label="Легенда">
+      <span class="legend-item"><i class="legend-swatch"></i>выполнено</span>
+      <span class="legend-item"><i class="legend-swatch mixed"></i>часть выполнена, часть запланирована</span>
+      <span class="legend-item"><i class="legend-swatch conditional"></i>условно после проверки самочувствия</span>
+      <span class="legend-item"><i class="legend-swatch deload"></i>разгрузка</span>
+      <span class="legend-item"><i class="legend-swatch future"></i>дальний план, ещё не выполнен</span>
+      <span class="legend-item"><i class="legend-swatch test"></i>тест</span>
     </div>
-  </details>
+
+    <div class="section-label"><h3>Полная карта 8 недель</h3><p>Н1 и Н2 — факт; остальное — текущий план. Тоннаж = вес × все рабочие повторы; разминка не входит</p></div>
+    <div class="cycle-grid">
+      <article class="chart-card">
+        <h4>Жим штанги · обе тренировки недели</h4>
+        <p class="chart-sub">Тоннаж, кг·повт. Справа: максимум недели, кг. Жим в касание и паузный жим суммированы по тоннажу, но техника в программе остаётся разной.</p>
+        <div class="cycle-row"><span class="cycle-wk">Н1</span><div class="cycle-track"><div class="cycle-fill" style="width:100%"></div></div><span class="cycle-val"><b>3 100</b> · max 62,5</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н2</span><div class="cycle-track"><div class="cycle-fill" style="width:73.5%"></div></div><span class="cycle-val"><b>2 280</b> · max 60</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н3</span><div class="cycle-track"><div class="cycle-fill mixed" style="width:87.7%"></div></div><span class="cycle-val"><b>2 353–2 720</b> · max 62,5</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н4</span><div class="cycle-track"><div class="cycle-fill future" style="width:73.9%"></div></div><span class="cycle-val"><b>2 290</b> · max 65</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н5</span><div class="cycle-track"><div class="cycle-fill future" style="width:93.2%"></div></div><span class="cycle-val"><b>2 890</b> · max 67,5</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н6</span><div class="cycle-track"><div class="cycle-fill future" style="width:80.6%"></div></div><span class="cycle-val"><b>2 500</b> · max 70</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н7</span><div class="cycle-track"><div class="cycle-fill future" style="width:55.9%"></div></div><span class="cycle-val"><b>1 733</b> · max 72,5</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н8</span><div class="cycle-track"><div class="cycle-fill test" style="width:7.7%"></div></div><span class="cycle-val"><b>218–240</b> · max 72,5–80</span></div>
+      </article>
+
+      <article class="chart-card">
+        <h4>Присед · понедельник + пятница</h4>
+        <p class="chart-sub">Тоннаж, кг·повт. Справа: максимум недели, кг. Засчитывается только выбранное привычное среднее положение грифа и одинаковая полная глубина.</p>
+        <div class="cycle-row"><span class="cycle-wk">Н1</span><div class="cycle-track"><div class="cycle-fill" style="width:78.3%"></div></div><span class="cycle-val"><b>2 600</b> · max 77,5</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н2</span><div class="cycle-track"><div class="cycle-fill" style="width:94%"></div></div><span class="cycle-val"><b>3 120</b> · max 82,5</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н3</span><div class="cycle-track"><div class="cycle-fill mixed" style="width:97.4%"></div></div><span class="cycle-val"><b>3 233</b> · max 87,5</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н4</span><div class="cycle-track"><div class="cycle-fill future" style="width:91.9%"></div></div><span class="cycle-val"><b>3 050</b> · max 87,5</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н5</span><div class="cycle-track"><div class="cycle-fill future" style="width:90.4%"></div></div><span class="cycle-val"><b>3 000</b> · max 90</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н6</span><div class="cycle-track"><div class="cycle-fill future" style="width:83.1%"></div></div><span class="cycle-val"><b>2 760</b> · max 92,5</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н7</span><div class="cycle-track"><div class="cycle-fill future" style="width:46.5%"></div></div><span class="cycle-val"><b>1 545</b> · max 97,5</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н8</span><div class="cycle-track"><div class="cycle-fill test" style="width:20.1%"></div></div><span class="cycle-val"><b>645–668</b> · max 95–102,5</span></div>
+      </article>
+    </div>
+
+    <div class="section-label"><h3>Подтягивания: объём и тяжёлая поддержка</h3><p>Считается только добавленный вес — без массы тела</p></div>
+    <div class="pull-grid">
+      <article class="pull-step actual"><span class="wk-tag">Неделя 1 · факт</span><strong>+20: 2×3 → +15: 2×3</strong><div class="metric"><b>210 кг·повт</b><br>средняя добавка +17,5 кг</div></article>
+      <article class="pull-step actual"><span class="wk-tag">Неделя 2 · факт</span><strong>+15 кг · 4 / 4 / 3</strong><div class="metric"><b>165 кг·повт</b><br>−21% к факту недели 1</div></article>
+      <article class="pull-step conditional"><span class="wk-tag">Неделя 3 · тяжёлая поддержка</span><strong>+22,5 кг · 3×2</strong><div class="metric"><b>120–135 кг·повт</b><br>интенсивность +20–22,5 кг</div></article>
+      <article class="pull-step conditional"><span class="wk-tag">Неделя 4 · нагрузка</span><strong>+22,5 кг · 3×2</strong><div class="metric"><b>135 кг·повт</b><br>если легко — 3×3</div></article>
+    </div>
+
+
+    <div class="section-label"><h3>Подсобка: диапазон повторов</h3><p>Минимум — нижняя граница рабочего коридора; максимум — порог перед повышением веса. Сначала повторы, потом вес</p></div>
+    <div class="accessory-grid">
+      <article class="accessory"><b>Трицепс на блоке</b><span class="move">верх тела · понедельник</span><span class="fromto">мин. 10 · макс. 15</span><small>3×15 на 35 кг закрыты с запасом. Дальше плитка вверх · 3×10–12, не ждать пока жжение уйдёт</small></article>
+      <article class="accessory"><b>Боковые подъёмы</b><span class="move">гантели 4 кг · понедельник</span><span class="fromto">мин. 12 · макс. 20</span><small>Стоп, если амплитуда падает или начинается пожимание плечами</small></article>
+      <article class="accessory"><b>Жим гантелей</b><span class="move">среда · после жима с паузой</span><span class="fromto">мин. 8 · макс. 12</span><small>Тяжёлые подходы на 6 повторов не использовать; при боли — убрать</small></article>
+      <article class="accessory"><b>Тяга нижнего блока</b><span class="move">к животу · нейтральная рукоять</span><span class="fromto">мин. 8 · макс. 12</span><small>85 кг: 10 → 11 → 12, затем вес. Штангу в наклоне не использовать</small></article>
+      <article class="accessory"><b>Молотки</b><span class="move">гантели 12 кг · без кача</span><span class="fromto">мин. 10 · макс. 15</span><small>После чистых 3×15 — 14 кг около 3×8; если 3×8 нет — остаться на 12 кг</small></article>
+      <article class="accessory"><b>Разгибание ног</b><span class="move">текущий тренажёр · 15 кг</span><span class="fromto">мин. 8 · макс. 15</span><small>После 3×15 с запасом — 25 кг на 8–10, а не 20 повторов на 15 кг</small></article>
+      <article class="accessory"><b>Ролик для пресса</b><span class="move">с колен · устойчивый корпус</span><span class="fromto">мин. 6 · макс. 12</span><small>Закончить до провисания поясницы и потери положения корпуса</small></article>
+    </div>
+
+    <details class="method">
+      <summary>Методика расчёта и ограничения графика</summary>
+      <ul>
+        <li><b>Тоннаж штанги:</b> рабочий вес × все рабочие повторения. Разминочные подходы исключены.</li>
+        <li><b>Интенсивность:</b> показан максимальный рабочий вес недели и, в аналитике недель 2–3, средний вес рабочего повторения. Проценты от 1ПМ намеренно не используются: надёжного текущего 1ПМ жима нет, а 97,5 кг в приседе выполнялись с небольшой потерей глубины.</li>
+        <li><b>Условные недели:</b> столбики показывают сценарий после прохождения допуска. Если симптомы груди сохраняются или возвращаются, тоннаж жима в этот день равен нулю.</li>
+        <li><b>Подтягивания:</b> считается только добавленный вес. Полный тоннаж с массой тела здесь не смешивается со штангой.</li>
+        <li><b>Гантели:</b> в расчёте учтены обе гантели. Цифры тренажёров и гантелей сравниваются только с тем же упражнением, не со штангой и не между разными тренажёрами.</li>
+        <li><b>Неделя 8:</b> тоннаж мал специально: учитывается одна выбранная тестовая тройка, а не все варианты из диапазона.</li>
+      </ul>
+    </details>
+  </div>
+</section>
+</details>
 </header>
 
 <nav class="week-nav" aria-label="Недели программы">
@@ -451,88 +475,7 @@ ol.plan .mode{display:block;width:auto;max-width:100%;box-sizing:border-box;marg
 </details>
 </section>
 
-<details class="dash-wrap" id="analytics">
-<summary>Аналитика цикла · тоннаж, подтягивания и диапазоны подсобки</summary>
-<section class="dashboard" id="dashboard">
-  <div class="dash-hero">
-    <p class="dash-kicker">Первый экран · аналитика цикла</p>
-    <h2>Как меняется работа за 8 недель</h2>
-    <p>Столбик показывает тоннаж рабочих подходов, подпись справа — максимальный рабочий вес недели как абсолютный показатель интенсивности. Факт, условные назначения и дальний план разделены цветом.</p>
-    <span class="asof">Данные обновлены 7 сентября 2026 · Н1–Н2 факт, Н3 пн факт, ср/пт ещё план</span>
-  </div>
-  <div class="dash-body">
-    <div class="legend" aria-label="Легенда">
-      <span class="legend-item"><i class="legend-swatch"></i>выполнено</span>
-      <span class="legend-item"><i class="legend-swatch mixed"></i>часть выполнена, часть запланирована</span>
-      <span class="legend-item"><i class="legend-swatch conditional"></i>условно после проверки самочувствия</span>
-      <span class="legend-item"><i class="legend-swatch deload"></i>разгрузка</span>
-      <span class="legend-item"><i class="legend-swatch future"></i>дальний план, ещё не выполнен</span>
-      <span class="legend-item"><i class="legend-swatch test"></i>тест</span>
-    </div>
 
-    <div class="section-label"><h3>Полная карта 8 недель</h3><p>Н1 и Н2 — факт; остальное — текущий план. Тоннаж = вес × все рабочие повторы; разминка не входит</p></div>
-    <div class="cycle-grid">
-      <article class="chart-card">
-        <h4>Жим штанги · обе тренировки недели</h4>
-        <p class="chart-sub">Тоннаж, кг·повт. Справа: максимум недели, кг. Жим в касание и паузный жим суммированы по тоннажу, но техника в программе остаётся разной.</p>
-        <div class="cycle-row"><span class="cycle-wk">Н1</span><div class="cycle-track"><div class="cycle-fill" style="width:100%"></div></div><span class="cycle-val"><b>3 100</b> · max 62,5</span></div>
-        <div class="cycle-row"><span class="cycle-wk">Н2</span><div class="cycle-track"><div class="cycle-fill" style="width:73.5%"></div></div><span class="cycle-val"><b>2 280</b> · max 60</span></div>
-        <div class="cycle-row"><span class="cycle-wk">Н3</span><div class="cycle-track"><div class="cycle-fill mixed" style="width:87.7%"></div></div><span class="cycle-val"><b>2 353–2 720</b> · max 62,5</span></div>
-        <div class="cycle-row"><span class="cycle-wk">Н4</span><div class="cycle-track"><div class="cycle-fill future" style="width:73.9%"></div></div><span class="cycle-val"><b>2 290</b> · max 65</span></div>
-        <div class="cycle-row"><span class="cycle-wk">Н5</span><div class="cycle-track"><div class="cycle-fill future" style="width:93.2%"></div></div><span class="cycle-val"><b>2 890</b> · max 67,5</span></div>
-        <div class="cycle-row"><span class="cycle-wk">Н6</span><div class="cycle-track"><div class="cycle-fill future" style="width:80.6%"></div></div><span class="cycle-val"><b>2 500</b> · max 70</span></div>
-        <div class="cycle-row"><span class="cycle-wk">Н7</span><div class="cycle-track"><div class="cycle-fill future" style="width:55.9%"></div></div><span class="cycle-val"><b>1 733</b> · max 72,5</span></div>
-        <div class="cycle-row"><span class="cycle-wk">Н8</span><div class="cycle-track"><div class="cycle-fill test" style="width:7.7%"></div></div><span class="cycle-val"><b>218–240</b> · max 72,5–80</span></div>
-      </article>
-
-      <article class="chart-card">
-        <h4>Присед · понедельник + пятница</h4>
-        <p class="chart-sub">Тоннаж, кг·повт. Справа: максимум недели, кг. Засчитывается только выбранное привычное среднее положение грифа и одинаковая полная глубина.</p>
-        <div class="cycle-row"><span class="cycle-wk">Н1</span><div class="cycle-track"><div class="cycle-fill" style="width:78.3%"></div></div><span class="cycle-val"><b>2 600</b> · max 77,5</span></div>
-        <div class="cycle-row"><span class="cycle-wk">Н2</span><div class="cycle-track"><div class="cycle-fill" style="width:94%"></div></div><span class="cycle-val"><b>3 120</b> · max 82,5</span></div>
-        <div class="cycle-row"><span class="cycle-wk">Н3</span><div class="cycle-track"><div class="cycle-fill mixed" style="width:97.4%"></div></div><span class="cycle-val"><b>3 233</b> · max 87,5</span></div>
-        <div class="cycle-row"><span class="cycle-wk">Н4</span><div class="cycle-track"><div class="cycle-fill future" style="width:91.9%"></div></div><span class="cycle-val"><b>3 050</b> · max 87,5</span></div>
-        <div class="cycle-row"><span class="cycle-wk">Н5</span><div class="cycle-track"><div class="cycle-fill future" style="width:90.4%"></div></div><span class="cycle-val"><b>3 000</b> · max 90</span></div>
-        <div class="cycle-row"><span class="cycle-wk">Н6</span><div class="cycle-track"><div class="cycle-fill future" style="width:83.1%"></div></div><span class="cycle-val"><b>2 760</b> · max 92,5</span></div>
-        <div class="cycle-row"><span class="cycle-wk">Н7</span><div class="cycle-track"><div class="cycle-fill future" style="width:46.5%"></div></div><span class="cycle-val"><b>1 545</b> · max 97,5</span></div>
-        <div class="cycle-row"><span class="cycle-wk">Н8</span><div class="cycle-track"><div class="cycle-fill test" style="width:20.1%"></div></div><span class="cycle-val"><b>645–668</b> · max 95–102,5</span></div>
-      </article>
-    </div>
-
-    <div class="section-label"><h3>Подтягивания: объём и тяжёлая поддержка</h3><p>Считается только добавленный вес — без массы тела</p></div>
-    <div class="pull-grid">
-      <article class="pull-step actual"><span class="wk-tag">Неделя 1 · факт</span><strong>+20: 2×3 → +15: 2×3</strong><div class="metric"><b>210 кг·повт</b><br>средняя добавка +17,5 кг</div></article>
-      <article class="pull-step actual"><span class="wk-tag">Неделя 2 · факт</span><strong>+15 кг · 4 / 4 / 3</strong><div class="metric"><b>165 кг·повт</b><br>−21% к факту недели 1</div></article>
-      <article class="pull-step conditional"><span class="wk-tag">Неделя 3 · тяжёлая поддержка</span><strong>+22,5 кг · 3×2</strong><div class="metric"><b>120–135 кг·повт</b><br>интенсивность +20–22,5 кг</div></article>
-      <article class="pull-step conditional"><span class="wk-tag">Неделя 4 · нагрузка</span><strong>+22,5 кг · 3×2</strong><div class="metric"><b>135 кг·повт</b><br>если легко — 3×3</div></article>
-    </div>
-
-
-    <div class="section-label"><h3>Подсобка: диапазон повторов</h3><p>Минимум — нижняя граница рабочего коридора; максимум — порог перед повышением веса. Сначала повторы, потом вес</p></div>
-    <div class="accessory-grid">
-      <article class="accessory"><b>Трицепс на блоке</b><span class="move">верх тела · понедельник</span><span class="fromto">мин. 10 · макс. 15</span><small>3×15 на 35 кг закрыты с запасом. Дальше плитка вверх · 3×10–12, не ждать пока жжение уйдёт</small></article>
-      <article class="accessory"><b>Боковые подъёмы</b><span class="move">гантели 4 кг · понедельник</span><span class="fromto">мин. 12 · макс. 20</span><small>Стоп, если амплитуда падает или начинается пожимание плечами</small></article>
-      <article class="accessory"><b>Жим гантелей</b><span class="move">среда · после жима с паузой</span><span class="fromto">мин. 8 · макс. 12</span><small>Тяжёлые подходы на 6 повторов не использовать; при боли — убрать</small></article>
-      <article class="accessory"><b>Тяга нижнего блока</b><span class="move">к животу · нейтральная рукоять</span><span class="fromto">мин. 8 · макс. 12</span><small>85 кг: 10 → 11 → 12, затем вес. Штангу в наклоне не использовать</small></article>
-      <article class="accessory"><b>Молотки</b><span class="move">гантели 12 кг · без кача</span><span class="fromto">мин. 10 · макс. 15</span><small>После чистых 3×15 — 14 кг около 3×8; если 3×8 нет — остаться на 12 кг</small></article>
-      <article class="accessory"><b>Разгибание ног</b><span class="move">текущий тренажёр · 15 кг</span><span class="fromto">мин. 8 · макс. 15</span><small>После 3×15 с запасом — 25 кг на 8–10, а не 20 повторов на 15 кг</small></article>
-      <article class="accessory"><b>Ролик для пресса</b><span class="move">с колен · устойчивый корпус</span><span class="fromto">мин. 6 · макс. 12</span><small>Закончить до провисания поясницы и потери положения корпуса</small></article>
-    </div>
-
-    <details class="method">
-      <summary>Методика расчёта и ограничения графика</summary>
-      <ul>
-        <li><b>Тоннаж штанги:</b> рабочий вес × все рабочие повторения. Разминочные подходы исключены.</li>
-        <li><b>Интенсивность:</b> показан максимальный рабочий вес недели и, в аналитике недель 2–3, средний вес рабочего повторения. Проценты от 1ПМ намеренно не используются: надёжного текущего 1ПМ жима нет, а 97,5 кг в приседе выполнялись с небольшой потерей глубины.</li>
-        <li><b>Условные недели:</b> столбики показывают сценарий после прохождения допуска. Если симптомы груди сохраняются или возвращаются, тоннаж жима в этот день равен нулю.</li>
-        <li><b>Подтягивания:</b> считается только добавленный вес. Полный тоннаж с массой тела здесь не смешивается со штангой.</li>
-        <li><b>Гантели:</b> в расчёте учтены обе гантели. Цифры тренажёров и гантелей сравниваются только с тем же упражнением, не со штангой и не между разными тренажёрами.</li>
-        <li><b>Неделя 8:</b> тоннаж мал специально: учитывается одна выбранная тестовая тройка, а не все варианты из диапазона.</li>
-      </ul>
-    </details>
-  </div>
-</section>
-</details>
 
 
 
