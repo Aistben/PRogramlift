@@ -12,31 +12,40 @@
 }
 *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.48 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
 .page{max-width:1180px;margin:auto;padding:26px 18px 60px}
-.hero{background:linear-gradient(135deg,#152a49,#2c5c91);color:#fff;border-radius:18px;padding:16px 20px 14px;box-shadow:0 12px 28px rgba(26,48,79,.16)}
-h1{margin:0 0 4px;font-size:24px;line-height:1.15}
-.hero p{margin:0;color:#dce9f8;font-size:13.5px}
-.hero-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
-.hero-now{flex:0 0 auto;margin-top:1px;padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.2);font-size:12px;font-weight:800;white-space:nowrap}
-.hero-meta{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 0}
-.hero-meta span{padding:3px 8px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.16);font-size:12px;font-weight:750}
-.hero-fold{margin-top:11px;border:1px solid rgba(255,255,255,.2);border-radius:11px;background:rgba(8,20,40,.25)}
-.hero-fold>summary{cursor:pointer;padding:8px 12px;font-size:13px;font-weight:800;list-style:none}
+.hero{background:linear-gradient(145deg,#12243f 0%,#1b3d68 55%,#245a7a 100%);color:#fff;border-radius:20px;padding:22px 24px 18px;box-shadow:0 16px 36px rgba(18,36,63,.22)}
+h1{margin:0;font-size:32px;letter-spacing:-.03em;line-height:1.05;font-weight:800}
+.hero-goal{margin:8px 0 0;max-width:46em;color:#d5e4f5;font-size:15px;line-height:1.45;font-weight:500}
+.hero-fold{margin-top:16px;border:1px solid rgba(255,255,255,.16);border-radius:14px;background:rgba(7,16,32,.28);backdrop-filter:blur(8px)}
+.hero-fold>summary{cursor:pointer;display:flex;align-items:center;gap:10px;padding:11px 14px;font-size:14px;font-weight:800;list-style:none;user-select:none}
 .hero-fold>summary::-webkit-details-marker{display:none}
-.hero-fold>summary::after{content:"открыть";float:right;font-size:11px;font-weight:700;opacity:.7}
-.hero-fold[open]>summary::after{content:"закрыть"}
-.hero-fold[open]>summary{border-bottom:1px solid rgba(255,255,255,.12)}
-.hero-fold-body{padding:8px 10px 11px;overflow-x:auto}
-.hero-fold .tonnage{width:100%;border-collapse:collapse;font-size:12px;color:#e8eef6}
-.hero-fold .tonnage th,.hero-fold .tonnage td{padding:5px 7px;border-bottom:1px solid rgba(255,255,255,.12);text-align:right;white-space:nowrap}
-.hero-fold .tonnage th:first-child,.hero-fold .tonnage td:first-child,.hero-fold .tonnage th:last-child,.hero-fold .tonnage td:last-child{text-align:left}
-.hero-fold .tonnage th{color:#b9c9dc;font-size:10px;text-transform:uppercase;letter-spacing:.04em}
-.hero-fold .tonnage .fact td{background:rgba(24,113,91,.28)}
-.hero-fold .tonnage .mix td{background:rgba(216,140,22,.22)}
-.hero-fold .tonnage .plan td{background:rgba(100,79,163,.22)}
-.hero-fold .tonnage .test td{background:rgba(164,61,61,.22)}
-.tonnage-note{margin:8px 0 0;color:#c5d4e6;font-size:12px;line-height:1.4}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}.tag{padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.2);font-size:13px;font-weight:750}
-@media(max-width:640px){.hero-top{flex-direction:column}.hero-now{align-self:flex-start}}
+.fold-ico{width:22px;height:22px;border-radius:7px;background:rgba(255,255,255,.14);position:relative;flex:0 0 auto}
+.fold-ico::before{content:"";position:absolute;left:7px;top:6px;width:7px;height:7px;border-right:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(45deg);transition:transform .18s ease,top .18s ease}
+.hero-fold[open] .fold-ico::before{top:9px;transform:rotate(225deg)}
+.fold-hint{margin-left:auto;font-size:11px;font-weight:650;color:#b7c9dd;letter-spacing:.02em}
+.hero-fold[open]>summary{border-bottom:1px solid rgba(255,255,255,.1)}
+.hero-fold-body{padding:14px 14px 15px}
+.ton-legend{display:flex;flex-wrap:wrap;gap:8px 14px;margin:0 0 12px;font-size:11px;color:#c5d4e6}
+.ton-legend i{display:inline-block;width:8px;height:8px;border-radius:99px;margin-right:6px;vertical-align:middle}
+.ton-legend .l-fact{background:#3dbe9a}
+.ton-legend .l-mix{background:#e0a23a}
+.ton-legend .l-plan{background:#9b8adf}
+.ton-legend .l-test{background:#e07a7a}
+.ton-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.ton-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:12px 12px 10px}
+.ton-card h3{margin:0 0 10px;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#cfe0f2}
+.ton-row{display:grid;grid-template-columns:28px 1fr 78px;align-items:center;gap:8px;margin:5px 0}
+.ton-wk{font-size:11px;font-weight:800;color:#9eb3cc}
+.ton-track{height:7px;border-radius:99px;background:rgba(255,255,255,.1);overflow:hidden}
+.ton-fill{height:100%;border-radius:99px;background:#7eb6ff}
+.ton-row.fact .ton-fill{background:linear-gradient(90deg,#2ea883,#5ee0bc)}
+.ton-row.mix .ton-fill{background:linear-gradient(90deg,#c98920,#f0c36a)}
+.ton-row.plan .ton-fill{background:linear-gradient(90deg,#6d5cbc,#b7a8f0)}
+.ton-row.test .ton-fill{background:linear-gradient(90deg,#b55252,#ef9a9a)}
+.ton-val{text-align:right;font-size:11px;color:#d5e2f0;white-space:nowrap}
+.ton-val b{color:#fff;font-weight:800}
+.ton-val i{display:block;font-style:normal;color:#9eb3cc;font-size:10px}
+.tonnage-note{margin:12px 0 0;color:#b7c9dd;font-size:12px;line-height:1.4}
+@media(max-width:720px){.ton-grid{grid-template-columns:1fr}.fold-hint{display:none}}
 .quick{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin:17px 0}.quick>div{background:#fff;border:1px solid var(--line);border-radius:13px;padding:13px 14px}.quick b{display:block;color:var(--navy);margin-bottom:2px}.quick span{color:var(--muted);font-size:13px}
 .program-rules{margin:15px auto 22px;max-width:1180px;border:1px solid var(--line);border-radius:14px;background:#fff;overflow:hidden}.program-rules>summary{cursor:pointer;padding:12px 16px;font-weight:900;color:var(--navy);background:#f7faff}.program-rules[open]>summary{border-bottom:1px solid var(--line)}.program-rules .rules{padding:14px}
 .session-check{margin:0 0 11px;border:1px solid #d3dfed;border-radius:11px;background:#f7faff;overflow:hidden}.session-check summary{cursor:pointer;padding:9px 11px;color:var(--navy);font-size:12px;font-weight:900;list-style-position:inside}.session-check[open] summary{border-bottom:1px solid #dbe5f0;background:#edf5ff}.session-check ul{margin:0;padding:10px 15px 11px 30px;color:var(--muted);font-size:11px}.session-check li{margin:4px 0}
@@ -160,36 +169,37 @@ ol.plan .mode{display:block;width:auto;max-width:100%;box-sizing:border-box;marg
 <div class="page">
 
 <header class="hero">
-  <div class="hero-top">
-    <div>
-      <h1>8 недель: нагрузка, интенсивность и план</h1>
-      <p>Неделя 3 · понедельник 7 сен закрыт · среда 9 сен — пауза 52,5 кг · 3×7</p>
-    </div>
-    <span class="hero-now">Сейчас · Н3</span>
-  </div>
-  <div class="hero-meta">
-    <span>Жим 2 раза</span>
-    <span>Присед 2 раза</span>
-    <span>62,5 · 4×5 закрыт</span>
-    <span>80 · 4×6 ниже параллели</span>
-  </div>
+  <h1>8 недель</h1>
+  <p class="hero-goal">Цель программы: жим 80 кг на 4–6 чистых повторов и присед 100 кг на 4–6 полной глубины.</p>
   <details class="hero-fold">
-    <summary>Тоннаж цикла · кг·повт</summary>
+    <summary><span class="fold-ico" aria-hidden="true"></span>Тоннаж цикла <span class="fold-hint">кг·повт · без разминки</span></summary>
     <div class="hero-fold-body">
-      <table class="tonnage">
-        <thead><tr><th>Н</th><th>Жим</th><th>max</th><th>Присед</th><th>max</th><th>Статус</th></tr></thead>
-        <tbody>
-          <tr class="fact"><td>1</td><td>3 100</td><td>62,5</td><td>2 600</td><td>77,5</td><td>факт из журнала</td></tr>
-          <tr class="fact"><td>2</td><td>2 280</td><td>60</td><td>3 120</td><td>82,5</td><td>факт из журнала</td></tr>
-          <tr class="mix"><td>3</td><td>2 353–2 720</td><td>62,5</td><td>3 233</td><td>87,5</td><td>пн факт · ср/пт план</td></tr>
-          <tr class="plan"><td>4</td><td>2 290</td><td>65</td><td>3 050</td><td>87,5</td><td>план · пт 87,5 · 4×4</td></tr>
-          <tr class="plan"><td>5</td><td>2 890</td><td>67,5</td><td>3 000</td><td>90</td><td>план</td></tr>
-          <tr class="plan"><td>6</td><td>2 500</td><td>70</td><td>2 760</td><td>92,5</td><td>дальний план</td></tr>
-          <tr class="plan"><td>7</td><td>1 733</td><td>72,5</td><td>1 545</td><td>97,5</td><td>съём объёма</td></tr>
-          <tr class="test"><td>8</td><td>218–240</td><td>72,5–80</td><td>645–668</td><td>95–102,5</td><td>одна тройка</td></tr>
-        </tbody>
-      </table>
-      <p class="tonnage-note">Рабочие подходы без разминки. Н1–Н2 и пн Н3 — из журнала. Присед: пик объёма Н3 (3 233). Жим: пик объёма Н1 (3 100), дальше растёт вес.</p>
+      <div class="ton-legend"><span><i class="l-fact"></i>факт</span><span><i class="l-mix"></i>часть факта</span><span><i class="l-plan"></i>план</span><span><i class="l-test"></i>тест</span></div>
+      <div class="ton-grid">
+        <article class="ton-card">
+          <h3>Жим</h3>
+            <div class="ton-row fact"><span class="ton-wk">Н1</span><div class="ton-track"><div class="ton-fill" style="width:100%"></div></div><span class="ton-val"><b>3 100</b><i>max 62,5</i></span></div>
+            <div class="ton-row fact"><span class="ton-wk">Н2</span><div class="ton-track"><div class="ton-fill" style="width:73.5%"></div></div><span class="ton-val"><b>2 280</b><i>max 60</i></span></div>
+            <div class="ton-row mix"><span class="ton-wk">Н3</span><div class="ton-track"><div class="ton-fill" style="width:87.7%"></div></div><span class="ton-val"><b>2 353–2 720</b><i>max 62,5</i></span></div>
+            <div class="ton-row plan"><span class="ton-wk">Н4</span><div class="ton-track"><div class="ton-fill" style="width:73.9%"></div></div><span class="ton-val"><b>2 290</b><i>max 65</i></span></div>
+            <div class="ton-row plan"><span class="ton-wk">Н5</span><div class="ton-track"><div class="ton-fill" style="width:93.2%"></div></div><span class="ton-val"><b>2 890</b><i>max 67,5</i></span></div>
+            <div class="ton-row plan"><span class="ton-wk">Н6</span><div class="ton-track"><div class="ton-fill" style="width:80.6%"></div></div><span class="ton-val"><b>2 500</b><i>max 70</i></span></div>
+            <div class="ton-row plan"><span class="ton-wk">Н7</span><div class="ton-track"><div class="ton-fill" style="width:55.9%"></div></div><span class="ton-val"><b>1 733</b><i>max 72,5</i></span></div>
+            <div class="ton-row test"><span class="ton-wk">Н8</span><div class="ton-track"><div class="ton-fill" style="width:7.7%"></div></div><span class="ton-val"><b>218–240</b><i>max 72,5–80</i></span></div>
+        </article>
+        <article class="ton-card">
+          <h3>Присед</h3>
+            <div class="ton-row fact"><span class="ton-wk">Н1</span><div class="ton-track"><div class="ton-fill" style="width:80.4%"></div></div><span class="ton-val"><b>2 600</b><i>max 77,5</i></span></div>
+            <div class="ton-row fact"><span class="ton-wk">Н2</span><div class="ton-track"><div class="ton-fill" style="width:96.5%"></div></div><span class="ton-val"><b>3 120</b><i>max 82,5</i></span></div>
+            <div class="ton-row mix"><span class="ton-wk">Н3</span><div class="ton-track"><div class="ton-fill" style="width:100%"></div></div><span class="ton-val"><b>3 233</b><i>max 87,5</i></span></div>
+            <div class="ton-row plan"><span class="ton-wk">Н4</span><div class="ton-track"><div class="ton-fill" style="width:94.3%"></div></div><span class="ton-val"><b>3 050</b><i>max 87,5</i></span></div>
+            <div class="ton-row plan"><span class="ton-wk">Н5</span><div class="ton-track"><div class="ton-fill" style="width:92.8%"></div></div><span class="ton-val"><b>3 000</b><i>max 90</i></span></div>
+            <div class="ton-row plan"><span class="ton-wk">Н6</span><div class="ton-track"><div class="ton-fill" style="width:85.4%"></div></div><span class="ton-val"><b>2 760</b><i>max 92,5</i></span></div>
+            <div class="ton-row plan"><span class="ton-wk">Н7</span><div class="ton-track"><div class="ton-fill" style="width:47.8%"></div></div><span class="ton-val"><b>1 545</b><i>max 97,5</i></span></div>
+            <div class="ton-row test"><span class="ton-wk">Н8</span><div class="ton-track"><div class="ton-fill" style="width:20.7%"></div></div><span class="ton-val"><b>645–668</b><i>max 95–102,5</i></span></div>
+        </article>
+      </div>
+      <p class="tonnage-note">Н1–Н2 и понедельник Н3 — из журнала. Присед: пик объёма на неделе 3. Жим: пик объёма на неделе 1, дальше растёт вес.</p>
     </div>
   </details>
 </header>
