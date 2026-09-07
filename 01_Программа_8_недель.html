@@ -12,9 +12,31 @@
 }
 *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.48 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
 .page{max-width:1180px;margin:auto;padding:26px 18px 60px}
-.hero{background:linear-gradient(135deg,#152a49,#2c5c91);color:#fff;border-radius:22px;padding:29px 31px;box-shadow:0 15px 35px rgba(26,48,79,.18)}
-h1{margin:0 0 7px;font-size:34px;line-height:1.1}.hero p{margin:0;color:#dce9f8;font-size:16px}
+.hero{background:linear-gradient(135deg,#152a49,#2c5c91);color:#fff;border-radius:18px;padding:16px 20px 14px;box-shadow:0 12px 28px rgba(26,48,79,.16)}
+h1{margin:0 0 4px;font-size:24px;line-height:1.15}
+.hero p{margin:0;color:#dce9f8;font-size:13.5px}
+.hero-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.hero-now{flex:0 0 auto;margin-top:1px;padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.2);font-size:12px;font-weight:800;white-space:nowrap}
+.hero-meta{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 0}
+.hero-meta span{padding:3px 8px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.16);font-size:12px;font-weight:750}
+.hero-fold{margin-top:11px;border:1px solid rgba(255,255,255,.2);border-radius:11px;background:rgba(8,20,40,.25)}
+.hero-fold>summary{cursor:pointer;padding:8px 12px;font-size:13px;font-weight:800;list-style:none}
+.hero-fold>summary::-webkit-details-marker{display:none}
+.hero-fold>summary::after{content:"открыть";float:right;font-size:11px;font-weight:700;opacity:.7}
+.hero-fold[open]>summary::after{content:"закрыть"}
+.hero-fold[open]>summary{border-bottom:1px solid rgba(255,255,255,.12)}
+.hero-fold-body{padding:8px 10px 11px;overflow-x:auto}
+.hero-fold .tonnage{width:100%;border-collapse:collapse;font-size:12px;color:#e8eef6}
+.hero-fold .tonnage th,.hero-fold .tonnage td{padding:5px 7px;border-bottom:1px solid rgba(255,255,255,.12);text-align:right;white-space:nowrap}
+.hero-fold .tonnage th:first-child,.hero-fold .tonnage td:first-child,.hero-fold .tonnage th:last-child,.hero-fold .tonnage td:last-child{text-align:left}
+.hero-fold .tonnage th{color:#b9c9dc;font-size:10px;text-transform:uppercase;letter-spacing:.04em}
+.hero-fold .tonnage .fact td{background:rgba(24,113,91,.28)}
+.hero-fold .tonnage .mix td{background:rgba(216,140,22,.22)}
+.hero-fold .tonnage .plan td{background:rgba(100,79,163,.22)}
+.hero-fold .tonnage .test td{background:rgba(164,61,61,.22)}
+.tonnage-note{margin:8px 0 0;color:#c5d4e6;font-size:12px;line-height:1.4}
 .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}.tag{padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.2);font-size:13px;font-weight:750}
+@media(max-width:640px){.hero-top{flex-direction:column}.hero-now{align-self:flex-start}}
 .quick{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin:17px 0}.quick>div{background:#fff;border:1px solid var(--line);border-radius:13px;padding:13px 14px}.quick b{display:block;color:var(--navy);margin-bottom:2px}.quick span{color:var(--muted);font-size:13px}
 .program-rules{margin:15px auto 22px;max-width:1180px;border:1px solid var(--line);border-radius:14px;background:#fff;overflow:hidden}.program-rules>summary{cursor:pointer;padding:12px 16px;font-weight:900;color:var(--navy);background:#f7faff}.program-rules[open]>summary{border-bottom:1px solid var(--line)}.program-rules .rules{padding:14px}
 .session-check{margin:0 0 11px;border:1px solid #d3dfed;border-radius:11px;background:#f7faff;overflow:hidden}.session-check summary{cursor:pointer;padding:9px 11px;color:var(--navy);font-size:12px;font-weight:900;list-style-position:inside}.session-check[open] summary{border-bottom:1px solid #dbe5f0;background:#edf5ff}.session-check ul{margin:0;padding:10px 15px 11px 30px;color:var(--muted);font-size:11px}.session-check li{margin:4px 0}
@@ -54,12 +76,12 @@ ol.plan{margin:0;padding-left:21px}.plan li{padding:5px 0}.plan b{color:#14243d}
 .now-banner b{display:block;color:#805006;font-size:17px;margin-bottom:4px}
 .now-banner p{margin:0;color:#6a5420;font-size:14px;line-height:1.45}
 .now-banner a{color:#2f66a7;font-weight:800}
-.week-nav{display:flex;flex-wrap:wrap;gap:7px;margin:8px 0 18px}
+.week-nav{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 12px}
 .week-nav a{padding:7px 12px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--navy);text-decoration:none;font-size:12px;font-weight:800}
 .week-nav a.done{color:#657084;background:#f4f6f9}
 .week-nav a.current{background:#2f66a7;color:#fff;border-color:#2f66a7}
 .week-nav a.next{background:#fff6e5;border-color:#e7c27a;color:#805006}
-.week,.bridge-schedule,#now,#analytics{scroll-margin-top:12px}
+.week,.bridge-schedule,#now,#analytics,.hero{scroll-margin-top:12px}.bridge-schedule>summary.bridge-sum{cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;background:linear-gradient(90deg,#152a49,#2f66a7);color:#fff;padding:12px 18px;font-size:14px;font-weight:800;list-style:none}.bridge-schedule>summary.bridge-sum::-webkit-details-marker{display:none}.bridge-schedule>summary.bridge-sum small{font-size:12px;font-weight:650;color:#dbe8f8}
 .loadline{display:flex;align-items:baseline;justify-content:space-between;gap:8px;flex-wrap:wrap;color:#1a2a44;font-size:14px;font-weight:650;margin-top:3px}
 .loadline .reprange{margin-left:auto;flex:0 0 auto;vertical-align:baseline}
 .plan li{padding:8px 0;border-bottom:1px solid #eef2f6}
@@ -137,75 +159,41 @@ ol.plan .mode{display:block;width:auto;max-width:100%;box-sizing:border-box;marg
 <body>
 <div class="page">
 
-<section class="audit" id="audit" aria-label="Срез программы на 7 сентября">
-  <div class="audit-head">
-    <p class="kicker">Срез · над программой, не вместо неё</p>
-    <h2>Что не так на этом этапе, тоннаж и дыры в данных</h2>
-    <p>7 сентября 2026. Понедельник недели 3 закрыт. Среда 9 сентября ещё не факт. Цифры ниже — рабочие подходы без разминки, кг·повт.</p>
-  </div>
-  <div class="audit-body">
-    <div class="audit-sec">
-      <h3>Зачем пятница 82,5 · 4×4 → 87,5 · 5×3</h3>
-      <ul>
-        <li><b>Два разных дня.</b> Понедельник — объём (больше повторов, чуть легче). Пятница — сила (тяжелее, меньше повторов). Цель пятницы — подвести к 100 кг на 4–6, не повторять понедельник.</li>
-        <li><b>Тоннаж пятницы почти тот же:</b> 82,5 × 16 = <b>1 320</b>, 87,5 × 15 = <b>1 313</b>. Не «навалили работы», а тот же объём дня на +5 кг.</li>
-        <li><b>Почему +5, не +2,5.</b> На 82,5 · 4×4 была хорошая скорость. +2,5 кг оставил бы почти тот же стимул. Тройки вместо четвёрок компенсируют прыжок. 5 подходов вместо 4 — чтобы новый вес был серией, а не одним тяжёлым заходом.</li>
-        <li><b>Н4 не откатывает вес:</b> 87,5 · 4×4 (тот же вес, четвёрки). Н5: 90 · 4×3. Если 87,5 · 5×3 на неделе 3 пойдут в отказ — это режется, а не «план священен».</li>
-      </ul>
-    </div>
-    <div class="audit-sec">
-      <h3>Что не так / недописано сейчас</h3>
-      <ol>
-        <li><b>После пика нет разгрузки.</b> Покой 1–6 сентября сидел <em>до</em> 87,5, не после. Дальше четыре недели рост пятничного веса: 87,5 × 5×3 → 87,5 × 4×4 → 90 × 4×3 → 92,5 × 4×3 → 97,5 × 3×2. Это работает, только если тройки недели 3 остаются с запасом.</li>
-        <li><b>Жим написан под старую разгрузку недели 4.</b> 62,5 · 4×5 уже с 4-м подходом к пределу, а в сетке сразу 65 · 4×5 и 67,5 · 4×5. Запасной 4×4 на неделе 4 есть; 67,5 не закреплять, пока 65 не пройдёт чисто.</li>
-        <li><b>Объём жима не вернулся.</b> Неделя 1 — 3 100 факт. Дальше 2 280…2 720 при растущем весе. Для цели «80 кг × 4–6» за этот цикл это натяжка. Тест недели 8 (72,5–80 × 3) — проверка, не обещание 80 × 5.</li>
-        <li><b>Понедельник приседа визуально топчется:</b> 80 × 4×6 → 82,5 × 4×5 → снова 80 × 4×6. Это не ошибка: объёмный день держит массу, растёт пятница. Выглядит как застой, если не читать оба дня.</li>
-        <li><b>Недели 5–8 не синхронизированы с фактом.</b> Трицепс там «3×10–15» без веса. Тяга недели 5 снова 80 кг, хотя на неделе 3 уже назначено 85 · 3×12. Это заглушки, не актуальный план.</li>
-        <li><b>Подтягивания:</b> неделя 2 +15 · 4/4/3, 2-й и 3-й к пределу → неделя 3 сразу +22,5 · 3×2. Скачок. Только через контроль +20 × 1.</li>
-      </ol>
-    </div>
-    <div class="audit-sec">
-      <h3>Тоннаж цикла · кг·повт</h3>
-      <div class="table-wrap">
-        <table class="tonnage">
-          <thead><tr><th>Н</th><th>Жим</th><th>max</th><th>Присед</th><th>max</th><th>Статус</th></tr></thead>
-          <tbody>
-            <tr class="fact"><td>1</td><td>3 100</td><td>62,5</td><td>2 600</td><td>77,5</td><td>факт</td></tr>
-            <tr class="fact"><td>2</td><td>2 280</td><td>60</td><td>3 120</td><td>82,5</td><td>факт</td></tr>
-            <tr class="mix"><td>3</td><td>2 353–2 720</td><td>62,5</td><td>3 233</td><td>87,5</td><td>пн факт · ср/пт план (пауза 3×7 или 4×7)</td></tr>
-            <tr class="plan"><td>4</td><td>2 290</td><td>65</td><td>3 050</td><td>87,5</td><td>план · пт 87,5 · 4×4, не 85</td></tr>
-            <tr class="plan"><td>5</td><td>2 890</td><td>67,5</td><td>3 000</td><td>90</td><td>план, 67,5 под вопросом</td></tr>
-            <tr class="plan"><td>6</td><td>2 500</td><td>70</td><td>2 760</td><td>92,5</td><td>дальний план</td></tr>
-            <tr class="plan"><td>7</td><td>1 733</td><td>72,5</td><td>1 545</td><td>97,5</td><td>съём объёма перед тестом</td></tr>
-            <tr class="test"><td>8</td><td>218–240</td><td>72,5–80</td><td>645–668</td><td>95–102,5</td><td>одна тройка, не все веса</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p style="margin:8px 0 0;color:#657084;font-size:12px;">Присед пик по тоннажу — неделя 3 (3 233). Дальше объём чуть падает, вес пятницы растёт. Жим: пик объёма уже позади (неделя 1), сейчас ставка на вес.</p>
-    </div>
-    <div class="audit-sec">
-      <h3>Что закрыто · 7 сентября вечером</h3>
-      <ul>
-        <li><b>Шаг блока 5 кг.</b> Трицепс понедельника недели 4: <b>40 кг · 3×10–12</b>. Нет чистых 10 — 35 · 3×12–15. Вариант 37,5 снят.</li>
-        <li><b>Жим 62,5 · 4×5 закрыт целиком.</b> Четыре подхода по 5 были. «4–5-й ближе к пределу» — про тяжесть последних повторов 4-го подхода, не про недобор. Я переспросил лишнее.</li>
-        <li><b>Присед 80 · 4×6 — все ниже параллели.</b></li>
-        <li>Ощущения 7 сентября уже в журнале: жим без отбива, 4-й тяжёлый; присед умеренно тяжело, 2-й с запасом, 4-й тяжеловато; трицепс легко–средне + жжение; махи 18/17/16 до груди. Не переспрашиваю.</li>
-        <li><b>Ещё нет:</b> вес тела (не взвешивался). Среда 9 сентября — ещё не тренировка, это не дыра в данных.</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
 <header class="hero">
-  <h1>8 недель: нагрузка, интенсивность и план</h1>
-  <p>Неделя 3: понедельник 7 сентября выполнен, следующая тренировка — среда 9 сентября</p>
-  <div class="tags"><span class="tag">Сейчас: неделя 3</span><span class="tag">8 недель</span><span class="tag">Жим 2 раза</span><span class="tag">Присед 2 раза</span><span class="tag">Проверка троек</span><span class="tag">Набор массы</span></div>
+  <div class="hero-top">
+    <div>
+      <h1>8 недель: нагрузка, интенсивность и план</h1>
+      <p>Неделя 3 · понедельник 7 сен закрыт · среда 9 сен — пауза 52,5 кг · 3×7</p>
+    </div>
+    <span class="hero-now">Сейчас · Н3</span>
+  </div>
+  <div class="hero-meta">
+    <span>Жим 2 раза</span>
+    <span>Присед 2 раза</span>
+    <span>62,5 · 4×5 закрыт</span>
+    <span>80 · 4×6 ниже параллели</span>
+  </div>
+  <details class="hero-fold">
+    <summary>Тоннаж цикла · кг·повт</summary>
+    <div class="hero-fold-body">
+      <table class="tonnage">
+        <thead><tr><th>Н</th><th>Жим</th><th>max</th><th>Присед</th><th>max</th><th>Статус</th></tr></thead>
+        <tbody>
+          <tr class="fact"><td>1</td><td>3 100</td><td>62,5</td><td>2 600</td><td>77,5</td><td>факт из журнала</td></tr>
+          <tr class="fact"><td>2</td><td>2 280</td><td>60</td><td>3 120</td><td>82,5</td><td>факт из журнала</td></tr>
+          <tr class="mix"><td>3</td><td>2 353–2 720</td><td>62,5</td><td>3 233</td><td>87,5</td><td>пн факт · ср/пт план</td></tr>
+          <tr class="plan"><td>4</td><td>2 290</td><td>65</td><td>3 050</td><td>87,5</td><td>план · пт 87,5 · 4×4</td></tr>
+          <tr class="plan"><td>5</td><td>2 890</td><td>67,5</td><td>3 000</td><td>90</td><td>план</td></tr>
+          <tr class="plan"><td>6</td><td>2 500</td><td>70</td><td>2 760</td><td>92,5</td><td>дальний план</td></tr>
+          <tr class="plan"><td>7</td><td>1 733</td><td>72,5</td><td>1 545</td><td>97,5</td><td>съём объёма</td></tr>
+          <tr class="test"><td>8</td><td>218–240</td><td>72,5–80</td><td>645–668</td><td>95–102,5</td><td>одна тройка</td></tr>
+        </tbody>
+      </table>
+      <p class="tonnage-note">Рабочие подходы без разминки. Н1–Н2 и пн Н3 — из журнала. Присед: пик объёма Н3 (3 233). Жим: пик объёма Н1 (3 100), дальше растёт вес.</p>
+    </div>
+  </details>
 </header>
 
-<div class="now-banner" id="now">
-  <b>Сейчас: неделя 3 · понедельник выполнен</b>
-  <p>Жим 62,5 · 4×5 закрыт целиком (в 4-м последние тяжелее). Присед 80 · 4×6 ниже параллели. Следующая тренировка: <a href="#week-3">среда 9 сентября</a> — пауза 52,5 кг · 3×7, четвёртый только с запасом.</p>
-</div>
 <nav class="week-nav" aria-label="Недели программы">
   <a href="#week-1" class="done">Н1 · готово</a>
   <a href="#week-2" class="done">Н2 · готово</a>
@@ -217,14 +205,8 @@ ol.plan .mode{display:block;width:auto;max-width:100%;box-sizing:border-box;marg
   <a href="#week-7">Н7</a>
   <a href="#week-8">Н8</a>
 </nav>
-<div class="bridge-schedule" id="week-bridge" style="margin:25px 0;background:#fff;border:2px solid #2f66a7;border-radius:19px;overflow:hidden;box-shadow:0 6px 20px rgba(47,102,167,.08);">
-  <div style="background:linear-gradient(90deg,#152a49,#2f66a7);color:#fff;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">
-    <div>
-      <h3 style="margin:0;font-size:22px;line-height:1.2;">Промежуточная неделя-мост (31 августа – 6 сентября)</h3>
-      <p style="margin:4px 0 0;color:#dbe8f8;font-size:13px;">Удаление зуба мудрости во вторник · выполнен понедельник, далее полный покой до 7 сентября</p>
-    </div>
-    <span style="padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.2);font-size:12px;font-weight:850;">Мост (1 тренировка + покой)</span>
-  </div>
+<details class="bridge-schedule" id="week-bridge" style="margin:8px 0 14px;background:#fff;border:1px solid #2f66a7;border-radius:16px;overflow:hidden;">
+  <summary class="bridge-sum">Мост 31 авг – 6 сен · 1 тренировка + покой · готово <small>открыть факт 31 авг</small></summary>
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0;border-bottom:1px solid #d9e0e9;">
     <div style="padding:18px;border-right:1px solid #d9e0e9;">
       <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #d9e0e9;padding-bottom:8px;margin-bottom:10px;">
@@ -253,9 +235,9 @@ ol.plan .mode{display:block;width:auto;max-width:100%;box-sizing:border-box;marg
     </div>
   </div>
   <div style="padding:12px 18px;background:#f4f7fb;font-size:12px;color:#49566d;">
-    <b>Следующий шаг:</b> При нормальном заживлении и отсутствии медицинских ограничений с понедельника (7 сентября) стартует полноценная 3-дневная <b>Неделя 3 (Пик волны)</b> с жимом 62,5 кг (4×5) и приседом 80 кг (4×6).
+    <b>Факт:</b> мост закрыт. Неделя 3 уже идёт: жим 62,5 · 4×5 и присед 80 · 4×6 в понедельник выполнены.
   </div>
-</div>
+</details>
 <section class="week peak next-week" id="week-3">
   <div class="week-head"><div><h2>Неделя 3</h2><p>Понедельник 7 сентября выполнен · среда 9 сентября</p></div><span class="phase">Сейчас · тяжёлая</span></div>
   <div class="days">
