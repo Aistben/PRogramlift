@@ -12,9 +12,16 @@
 }
 *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.48 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
 .page{max-width:1180px;margin:auto;padding:26px 18px 60px}
-.hero{background:linear-gradient(135deg,#152a49,#2c5c91);color:#fff;border-radius:22px;padding:29px 31px;box-shadow:0 15px 35px rgba(26,48,79,.18)}
-h1{margin:0 0 7px;font-size:34px;line-height:1.1}.hero p{margin:0;color:#dce9f8;font-size:16px}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}.tag{padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.2);font-size:13px;font-weight:750}
+.hero{background:linear-gradient(145deg,#12243f 0%,#1b3d68 55%,#245a7a 100%);color:#fff;border-radius:20px;padding:22px 24px 18px;box-shadow:0 16px 36px rgba(18,36,63,.22)}
+h1{margin:0;font-size:32px;letter-spacing:-.03em;line-height:1.05;font-weight:800}
+.hero-goal{margin:8px 0 0;max-width:46em;color:#d5e4f5;font-size:15px;line-height:1.45;font-weight:500}
+.hero-aims{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 0;padding:0;list-style:none}
+.hero-aims li{padding:8px 12px;border-radius:12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);font-size:14px;line-height:1.3;color:#e8f1fb}
+.hero-aims b{display:block;margin-bottom:2px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#b7c9dd;font-weight:800}
+.hero .dash-wrap{margin:16px 0 0;border:1px solid rgba(255,255,255,.2);border-radius:14px;background:rgba(7,16,32,.22)}
+.hero .dash-wrap > summary{background:rgba(255,255,255,.1);color:#fff}
+.hero .dash-wrap[open] > summary{border-bottom:1px solid rgba(255,255,255,.12);color:#fff}
+.hero .dash-wrap .dashboard{background:#fff;color:#172033}
 .quick{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin:17px 0}.quick>div{background:#fff;border:1px solid var(--line);border-radius:13px;padding:13px 14px}.quick b{display:block;color:var(--navy);margin-bottom:2px}.quick span{color:var(--muted);font-size:13px}
 .program-rules{margin:15px auto 22px;max-width:1180px;border:1px solid var(--line);border-radius:14px;background:#fff;overflow:hidden}.program-rules>summary{cursor:pointer;padding:12px 16px;font-weight:900;color:var(--navy);background:#f7faff}.program-rules[open]>summary{border-bottom:1px solid var(--line)}.program-rules .rules{padding:14px}
 .session-check{margin:0 0 11px;border:1px solid #d3dfed;border-radius:11px;background:#f7faff;overflow:hidden}.session-check summary{cursor:pointer;padding:9px 11px;color:var(--navy);font-size:12px;font-weight:900;list-style-position:inside}.session-check[open] summary{border-bottom:1px solid #dbe5f0;background:#edf5ff}.session-check ul{margin:0;padding:10px 15px 11px 30px;color:var(--muted);font-size:11px}.session-check li{margin:4px 0}
@@ -23,7 +30,8 @@ h1{margin:0 0 7px;font-size:34px;line-height:1.1}.hero p{margin:0;color:#dce9f8;
 .week.tech .week-head{background:linear-gradient(90deg,#235584,#3477b6)}.week.load .week-head{background:linear-gradient(90deg,#17604e,#22916e)}.week.peak .week-head{background:linear-gradient(90deg,#805006,#b97b17)}.week.deload .week-head{background:linear-gradient(90deg,#4f5a6c,#727d8d)}.week.taper .week-head{background:linear-gradient(90deg,#514087,#7560b9)}.week.test .week-head{background:linear-gradient(90deg,#863333,#bd4c4c)}
 .days{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0}.day{padding:18px;border-right:1px solid var(--line)}.day:last-child{border-right:0}.day-title{display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--line);padding-bottom:9px;margin-bottom:11px}.day-title h3{margin:0;color:var(--navy);font-size:20px}.day-title span{font-size:11px;font-weight:850;text-transform:uppercase;color:var(--muted);letter-spacing:.06em}
 .block-title{font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;color:var(--blue);margin:12px 0 4px}.block-title.assist{color:var(--green)}
-ol.plan{margin:0;padding-left:21px}.plan li{padding:5px 0}.plan b{color:#14243d}.loadline{display:block;color:var(--muted);font-size:13px;margin-top:1px}.rir{display:inline-block;margin-left:4px;padding:1px 6px;border-radius:999px;background:var(--green-soft);color:var(--green);font-size:10px;font-weight:850;vertical-align:1px}
+ol.plan{margin:0;padding-left:21px}.plan li{padding:5px 0}.plan b{color:#14243d}.loadline{display:flex;align-items:baseline;justify-content:space-between;gap:8px;flex-wrap:wrap;color:var(--muted);font-size:13px;margin-top:1px}.rir{display:inline-block;margin-left:4px;padding:1px 6px;border-radius:999px;background:var(--green-soft);color:var(--green);font-size:10px;font-weight:850;vertical-align:1px}
+.reprange{display:inline-block;margin-left:7px;padding:2px 8px;border-radius:999px;background:#e8f6ef;color:#14624f;border:1px solid #c9e6da;font-size:10px;font-weight:850;vertical-align:2px;white-space:nowrap;letter-spacing:.01em}.reprange b{color:inherit;font-weight:900}
 .mode{display:inline-block;margin-top:4px;padding:3px 7px;border-radius:999px;font-size:10px;font-weight:900;letter-spacing:.015em}.mode-easy{background:#edf1f5;color:#526070}.mode-moderate{background:var(--blue-soft);color:var(--blue)}.mode-hard{background:var(--amber-soft);color:var(--amber)}.mode-veryeasy{background:var(--green-soft);color:var(--green)}.purpose{display:block;margin-top:3px;color:var(--muted);font-size:11px}
 .week-note{margin:0 18px 18px;padding:12px 14px;border-radius:10px;background:var(--blue-soft);border-left:5px solid var(--blue)}.week-note.warn{background:var(--amber-soft);border-color:#d88c16}.week-note.danger{background:var(--red-soft);border-color:var(--red)}
 .rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px;margin:20px 0}.rule{background:#fff;border:1px solid var(--line);border-radius:14px;padding:15px}.rule h3{margin:0 0 7px;color:var(--navy);font-size:17px}.rule ul{margin:0;padding-left:18px;color:var(--muted)}
@@ -40,7 +48,7 @@ ol.plan{margin:0;padding-left:21px}.plan li{padding:5px 0}.plan b{color:#14243d}
 .chart-caption{margin:12px 0 0;padding-top:10px;border-top:1px dashed var(--line);color:var(--muted);font-size:11px}.chart-caption b{color:var(--ink)}
 .pull-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.pull-step{position:relative;border:1px solid var(--line);border-radius:13px;padding:12px;background:#fff;min-height:129px}.pull-step.actual{border-top:4px solid var(--blue)}.pull-step.conditional{border-top:4px solid var(--green)}.pull-step.deload{border-top:4px solid #7c8796}.pull-step .wk-tag{font-size:10px;font-weight:900;text-transform:uppercase;color:var(--muted);letter-spacing:.07em}.pull-step strong{display:block;margin:4px 0;color:var(--navy);font-size:16px}.pull-step small{display:block;color:var(--muted);line-height:1.35}.pull-step .metric{margin-top:8px;padding-top:7px;border-top:1px dashed var(--line);font-size:11px;color:#445168}.pull-step .metric b{color:var(--ink)}
 .insight-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.insight{border-radius:13px;padding:13px 14px;background:var(--blue-soft);border:1px solid #d5e7fb}.insight:nth-child(2){background:var(--green-soft);border-color:#d5eee5}.insight:nth-child(3){background:var(--violet-soft);border-color:#e2dcfa}.insight:nth-child(4){background:var(--amber-soft);border-color:#f1dfb7}.insight b{display:block;color:var(--navy);margin-bottom:4px}.insight span{color:#526074;font-size:12px}
-.accessory-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.accessory{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px}.accessory b{display:block;color:var(--navy);font-size:12px}.accessory .move{display:block;color:var(--muted);font-size:10px;margin:2px 0 7px}.accessory .fromto{font-size:12px;font-weight:850;color:#33445d}.accessory small{display:block;margin-top:4px;color:var(--muted);font-size:10px;line-height:1.3}
+.accessory-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px}.accessory{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px}.accessory b{display:block;color:var(--navy);font-size:12px}.accessory .move{display:block;color:var(--muted);font-size:10px;margin:2px 0 7px}.accessory .fromto{font-size:12px;font-weight:850;color:#33445d}.accessory small{display:block;margin-top:4px;color:var(--muted);font-size:10px;line-height:1.3}
 .gate{margin:18px 0 12px;padding:13px 15px;border-radius:12px;background:var(--red-soft);border-left:5px solid var(--red);color:#633333}.gate b{color:#8d3131}.forward-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}.forward-week{border:1px solid var(--line);background:#fff;border-radius:15px;overflow:hidden}.forward-head{padding:12px 14px;background:var(--navy);color:#fff}.forward-week:nth-child(2) .forward-head{background:var(--green)}.forward-week:nth-child(3) .forward-head{background:#616d7d}.forward-head b{display:block;font-size:17px}.forward-head span{font-size:11px;color:#dce7f5}.forward-content{padding:13px}.forward-content ul{margin:0;padding-left:18px}.forward-content li{margin:6px 0;color:#4d5a6e;font-size:12px}.forward-content li b{color:var(--ink)}.decision{margin-top:10px;padding:9px 10px;border-radius:9px;background:#f4f6f9;color:#4e5d72;font-size:11px}.decision b{color:var(--navy)}
 .method{margin-top:15px;border:1px solid var(--line);border-radius:12px;background:#f8fafc;padding:0 13px}.method summary{cursor:pointer;padding:11px 0;font-weight:850;color:var(--navy)}.method ul{margin:0 0 12px;padding-left:18px;color:var(--muted);font-size:11px}.method li{margin:5px 0}
 .dashboard .risk-note{margin:10px 0 0;color:var(--muted);font-size:11px}
@@ -48,24 +56,112 @@ ol.plan{margin:0;padding-left:21px}.plan li{padding:5px 0}.plan b{color:#14243d}
 @media(max-width:900px){.cycle-grid{grid-template-columns:1fr}.pull-grid{grid-template-columns:repeat(2,1fr)}.insight-grid{grid-template-columns:repeat(2,1fr)}.accessory-grid{grid-template-columns:repeat(2,1fr)}.forward-grid{grid-template-columns:1fr}.section-label{align-items:flex-start;flex-direction:column}.section-label p{text-align:left}.quick{grid-template-columns:repeat(2,1fr)}.days{grid-template-columns:1fr}.day{border-right:0;border-bottom:1px solid var(--line)}.day:last-child{border-bottom:0}.rules{grid-template-columns:1fr}}
 @media(max-width:540px){.dash-hero{padding:17px}.dash-hero h2{font-size:23px}.dash-body{padding:15px}.pull-grid,.insight-grid,.accessory-grid{grid-template-columns:1fr}.cycle-row{grid-template-columns:31px minmax(75px,1fr);gap:7px}.cycle-val{grid-column:2;white-space:normal;margin-top:-4px}.page{padding:13px 9px 38px}.hero{padding:23px 19px}.hero h1{font-size:27px}.quick{grid-template-columns:1fr}.week-head{align-items:flex-start}.week-head h2{font-size:21px}}
 @media print{body{background:#fff;font-size:10.5px}.page{max-width:none;padding:0}.hero{box-shadow:none;border-radius:0;padding:16px}.quick{margin:10px 0}.week{box-shadow:none;break-inside:avoid;page-break-inside:avoid;margin:12px 0}.week-head{padding:9px 12px}.day{padding:10px}.map{page-break-before:always}.table-wrap{box-shadow:none;overflow:visible}table{min-width:0}.footer{display:none}}
-</style>
-<script type="text/javascript" nonce="395d0aa8496541e5be14c8ba164" src="//local.adguard.org?ts=1788278686311&amp;type=content-script&amp;dmn=arena.ai&amp;url=https%3A%2F%2Farena.ai%2Fapi%2Fchat%2Fworkspace%2Fcas%2Fuser%2FG2IHXB7Z1fp4AMvkn7ijAUZXpopnmU9a1IpEE3D88cs&amp;app=chrome.exe&amp;css=3&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1"></script>
-<script type="text/javascript" nonce="395d0aa8496541e5be14c8ba164" src="//local.adguard.org?ts=1788278686311&amp;name=AdGuard%20Extra&amp;name=AdGuard%20Popup%20Blocker&amp;type=user-script"></script></head>
+
+.now-banner{margin:16px 0 12px;padding:16px 18px;border-radius:16px;background:linear-gradient(90deg,#fff6e5,#fffdf6);border:1px solid #f1dfb7;border-left:6px solid #d88c16}
+.now-banner b{display:block;color:#805006;font-size:17px;margin-bottom:4px}
+.now-banner p{margin:0;color:#6a5420;font-size:14px;line-height:1.45}
+.now-banner a{color:#2f66a7;font-weight:800}
+.week-nav{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 12px}
+.week-nav a{padding:7px 12px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--navy);text-decoration:none;font-size:12px;font-weight:800}
+.week-nav a.done{color:#657084;background:#f4f6f9}
+.week-nav a.current{background:#2f66a7;color:#fff;border-color:#2f66a7}
+.week-nav a.next{background:#fff6e5;border-color:#e7c27a;color:#805006}
+.week,.bridge-schedule,#now,#analytics,.hero{scroll-margin-top:12px}.bridge-schedule>summary.bridge-sum{cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;background:linear-gradient(90deg,#152a49,#2f66a7);color:#fff;padding:12px 18px;font-size:14px;font-weight:800;list-style:none}.bridge-schedule>summary.bridge-sum::-webkit-details-marker{display:none}.bridge-schedule>summary.bridge-sum small{font-size:12px;font-weight:650;color:#dbe8f8}
+.loadline{display:flex;align-items:baseline;justify-content:space-between;gap:8px;flex-wrap:wrap;color:#1a2a44;font-size:14px;font-weight:650;margin-top:3px}
+.loadline .reprange{margin-left:auto;flex:0 0 auto;vertical-align:baseline}
+.plan li{padding:8px 0;border-bottom:1px solid #eef2f6}
+.plan li:last-child{border-bottom:0}
+.reprange{margin-left:6px;background:#f3faf6;color:#1a6b58;border-color:#d5ebe2}
+.week > details{margin:0}
+.week > details > summary.week-head{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.week > details > summary.week-head::-webkit-details-marker{display:none}
+html{scroll-behavior:smooth}
+.week > details > summary.week-head:hover{filter:brightness(1.08)}
+.week > details > summary.week-head::after{content:"открыть";font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;opacity:.75;white-space:nowrap}
+.week > details[open] > summary.week-head::after{content:"свернуть"}
+.week.done .week-head{filter:saturate(.75)}
+.week.next-week{box-shadow:0 8px 24px rgba(128,80,6,.12);border-color:#e7c27a}
+.dash-wrap{margin:18px 0 24px;border:1px solid var(--line);border-radius:16px;background:#fff;overflow:hidden}
+.dash-wrap > summary{cursor:pointer;padding:13px 16px;font-weight:900;color:var(--navy);background:#f7faff}
+.dash-wrap[open] > summary{border-bottom:1px solid var(--line)}
+.dash-wrap .dashboard{margin:0;border:0;border-radius:0;box-shadow:none}
+@media(max-width:540px){.week-nav a{font-size:11px;padding:6px 9px}.now-banner{padding:13px 14px}}
+
+
+/* Карточки упражнений */
+.days{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding:14px;background:#eef3f8}
+.day{padding:14px 14px 16px;border:1px solid var(--line);border-radius:16px;background:#fff}
+.day:last-child{border-right:1px solid var(--line)}
+.block-title{margin:14px 0 8px}
+ol.plan{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;counter-reset:ex}
+ol.plan[start="2"]{counter-reset:ex 1}
+ol.plan[start="3"]{counter-reset:ex 2}
+ol.plan[start="4"]{counter-reset:ex 3}
+ol.plan li{position:relative;margin:0;padding:10px 12px 10px 38px;border:1px solid #e4ebf3;border-radius:12px;background:#fff;counter-increment:ex}
+ol.plan li:last-child{border:1px solid #e4ebf3}
+ol.plan li::before{content:counter(ex);position:absolute;left:10px;top:11px;width:20px;height:20px;border-radius:999px;background:#eef3f8;color:var(--navy);font-size:11px;font-weight:900;display:flex;align-items:center;justify-content:center}
+.block-title.assist + ol.plan li{background:#f6fbf8;border-color:#d5ebe3}
+.block-title.assist + ol.plan li::before{background:#e8f6ef;color:#14624f}
+ol.plan b{display:block;color:var(--navy);font-size:13.5px;line-height:1.3;font-weight:800}
+ol.plan .loadline,.bridge-schedule .loadline{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:start;gap:4px 10px;margin-top:6px;color:#14243d;font-size:14px;font-weight:750;line-height:1.35}
+.ex-assign{min-width:0;grid-column:1;grid-row:1}
+ol.plan .reprange,.bridge-schedule .reprange{grid-column:2;grid-row:1;margin:0;white-space:nowrap}
+.ex-alt{grid-column:1 / -1;color:#657084;font-size:12px;font-weight:600;line-height:1.4;padding-top:2px}
+ol.plan .mode{display:block;width:auto;max-width:100%;box-sizing:border-box;margin-top:7px;padding:5px 8px;border-radius:8px;white-space:normal;line-height:1.35;letter-spacing:0;font-size:11px}
+.cell-main{white-space:normal;line-height:1.35}
+@media(max-width:900px){.days{grid-template-columns:1fr;padding:12px}.day,.day:last-child{border-right:1px solid var(--line)}}
+@media(max-width:540px){
+  ol.plan .loadline,.bridge-schedule .loadline{grid-template-columns:1fr}
+  ol.plan .reprange,.bridge-schedule .reprange{grid-column:1;grid-row:2;justify-self:start;margin-top:4px}
+}
+
+
+.audit{margin:0 0 16px;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 8px 22px rgba(30,48,76,.07)}
+.audit-head{padding:15px 20px 12px;background:linear-gradient(120deg,#fff6e5,#fffdf8);border-bottom:1px solid #f1dfb7}
+.audit-head .kicker{margin:0 0 4px;color:#99600a;font-size:11px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+.audit-head h2{margin:0;font-size:22px;line-height:1.2;color:#6a4308}
+.audit-head p{margin:6px 0 0;color:#6a5420;font-size:13px;line-height:1.4}
+.audit-body{padding:4px 0 8px}
+.audit-sec{padding:12px 20px;border-bottom:1px solid var(--line)}
+.audit-sec:last-child{border-bottom:0}
+.audit-sec h3{margin:0 0 8px;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--navy)}
+.audit-sec ol,.audit-sec ul{margin:0;padding-left:18px;color:#2a3548;font-size:13.5px;line-height:1.45}
+.audit-sec li{margin:5px 0}
+.audit-sec b{color:var(--ink)}
+.tonnage{width:100%;border-collapse:collapse;font-size:12.5px}
+.tonnage th,.tonnage td{padding:5px 8px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+.tonnage th:first-child,.tonnage td:first-child,.tonnage th:last-child,.tonnage td:last-child{text-align:left}
+.tonnage th{color:var(--muted);font-weight:800;font-size:11px;text-transform:uppercase;letter-spacing:.03em}
+.tonnage .fact td{background:#eaf8f2}
+.tonnage .mix td{background:#fff6e5}
+.tonnage .plan td{background:#f7f5ff}
+.tonnage .test td{background:#fff0f0}
+.unknowns{background:#fff7f7}
+.unknowns h3{color:var(--red)}
+@media(max-width:700px){.tonnage{font-size:11px}.tonnage th,.tonnage td{padding:4px 5px}}
+
+
+.ex-prev{display:block;grid-column:1 / -1;margin:1px 0 0;font-size:11px;font-weight:650;color:#6a7788;line-height:1.3}
+.ex-prev b{color:#24344a;font-weight:800}
+</style></head>
 <body>
 <div class="page">
+
 <header class="hero">
-  <h1>8 недель: нагрузка, интенсивность и план</h1>
-  <p>Наглядная карта цикла, фактические результаты и текущий план всех следующих недель</p>
-  <div class="tags"><span class="tag">8 недель</span><span class="tag">Жим 2 раза</span><span class="tag">Присед 2 раза</span><span class="tag">Проверка троек</span><span class="tag">Набор массы</span></div>
-</header>
-
-
+  <h1>8 недель</h1>
+  <p class="hero-goal">Цель 8-й недели — одна чистая тройка в каждом основном движении, один выбранный вес:</p>
+  <ul class="hero-aims">
+    <li><b>Жим в касание</b> 72,5–80 кг · 1×3</li>
+    <li><b>Присед полной глубины</b> 95–102,5 кг · 1×3</li>
+  </ul>
+  <details class="dash-wrap" id="analytics">
+<summary>Аналитика цикла · тоннаж, подтягивания и диапазоны подсобки</summary>
 <section class="dashboard" id="dashboard">
   <div class="dash-hero">
-    <p class="dash-kicker">Первый экран · аналитика цикла</p>
+    <p class="dash-kicker">Тоннаж цикла</p>
     <h2>Как меняется работа за 8 недель</h2>
     <p>Столбик показывает тоннаж рабочих подходов, подпись справа — максимальный рабочий вес недели как абсолютный показатель интенсивности. Факт, условные назначения и дальний план разделены цветом.</p>
-    <span class="asof">Данные обновлены 1 сентября 2026 · недели 1–2 и тренировка 31 августа выполнены</span>
+    <span class="asof">Данные обновлены 11 сентября 2026 · Н3 закрыта</span>
   </div>
   <div class="dash-body">
     <div class="legend" aria-label="Легенда">
@@ -84,11 +180,11 @@ ol.plan{margin:0;padding-left:21px}.plan li{padding:5px 0}.plan b{color:#14243d}
         <p class="chart-sub">Тоннаж, кг·повт. Справа: максимум недели, кг. Жим в касание и паузный жим суммированы по тоннажу, но техника в программе остаётся разной.</p>
         <div class="cycle-row"><span class="cycle-wk">Н1</span><div class="cycle-track"><div class="cycle-fill" style="width:100%"></div></div><span class="cycle-val"><b>3 100</b> · max 62,5</span></div>
         <div class="cycle-row"><span class="cycle-wk">Н2</span><div class="cycle-track"><div class="cycle-fill" style="width:73.5%"></div></div><span class="cycle-val"><b>2 280</b> · max 60</span></div>
-        <div class="cycle-row"><span class="cycle-wk">Н3</span><div class="cycle-track"><div class="cycle-fill conditional" style="width:87.7%"></div></div><span class="cycle-val"><b>2 353–2 720</b> · max 62,5</span></div>
-        <div class="cycle-row"><span class="cycle-wk">Н4</span><div class="cycle-track"><div class="cycle-fill deload" style="width:52.7%"></div></div><span class="cycle-val"><b>1 635</b> · max 55</span></div>
-        <div class="cycle-row"><span class="cycle-wk">Н5</span><div class="cycle-track"><div class="cycle-fill future" style="width:93.2%"></div></div><span class="cycle-val"><b>2 890</b> · max 67,5</span></div>
-        <div class="cycle-row"><span class="cycle-wk">Н6</span><div class="cycle-track"><div class="cycle-fill future" style="width:80.6%"></div></div><span class="cycle-val"><b>2 500</b> · max 70</span></div>
-        <div class="cycle-row"><span class="cycle-wk">Н7</span><div class="cycle-track"><div class="cycle-fill future" style="width:55.9%"></div></div><span class="cycle-val"><b>1 733</b> · max 72,5</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н3</span><div class="cycle-track"><div class="cycle-fill mixed" style="width:87.7%"></div></div><span class="cycle-val"><b>2 720</b> · max 62,5</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н4</span><div class="cycle-track"><div class="cycle-fill future" style="width:73.9%"></div></div><span class="cycle-val"><b>2 290</b> · max 65</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н5</span><div class="cycle-track"><div class="cycle-fill future" style="width:77.4%"></div></div><span class="cycle-val"><b>2 400</b> · max 67,5</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н6</span><div class="cycle-track"><div class="cycle-fill future" style="width:69.5%"></div></div><span class="cycle-val"><b>2 155</b> · max 70</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н7</span><div class="cycle-track"><div class="cycle-fill future" style="width:47.7%"></div></div><span class="cycle-val"><b>1 478</b> · max 72,5</span></div>
         <div class="cycle-row"><span class="cycle-wk">Н8</span><div class="cycle-track"><div class="cycle-fill test" style="width:7.7%"></div></div><span class="cycle-val"><b>218–240</b> · max 72,5–80</span></div>
       </article>
 
@@ -97,10 +193,10 @@ ol.plan{margin:0;padding-left:21px}.plan li{padding:5px 0}.plan b{color:#14243d}
         <p class="chart-sub">Тоннаж, кг·повт. Справа: максимум недели, кг. Засчитывается только выбранное привычное среднее положение грифа и одинаковая полная глубина.</p>
         <div class="cycle-row"><span class="cycle-wk">Н1</span><div class="cycle-track"><div class="cycle-fill" style="width:78.3%"></div></div><span class="cycle-val"><b>2 600</b> · max 77,5</span></div>
         <div class="cycle-row"><span class="cycle-wk">Н2</span><div class="cycle-track"><div class="cycle-fill" style="width:94%"></div></div><span class="cycle-val"><b>3 120</b> · max 82,5</span></div>
-        <div class="cycle-row"><span class="cycle-wk">Н3</span><div class="cycle-track"><div class="cycle-fill conditional" style="width:97.4%"></div></div><span class="cycle-val"><b>3 233</b> · max 87,5</span></div>
-        <div class="cycle-row"><span class="cycle-wk">Н4</span><div class="cycle-track"><div class="cycle-fill deload" style="width:48.3%"></div></div><span class="cycle-val"><b>1 605</b> · max 70</span></div>
-        <div class="cycle-row"><span class="cycle-wk">Н5</span><div class="cycle-track"><div class="cycle-fill future" style="width:100%"></div></div><span class="cycle-val"><b>3 320</b> · max 87,5</span></div>
-        <div class="cycle-row"><span class="cycle-wk">Н6</span><div class="cycle-track"><div class="cycle-fill future" style="width:83.1%"></div></div><span class="cycle-val"><b>2 760</b> · max 92,5</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н3</span><div class="cycle-track"><div class="cycle-fill" style="width:97.4%"></div></div><span class="cycle-val"><b>3 233</b> · max 87,5</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н4</span><div class="cycle-track"><div class="cycle-fill future" style="width:91.9%"></div></div><span class="cycle-val"><b>3 050</b> · max 87,5</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н5</span><div class="cycle-track"><div class="cycle-fill future" style="width:92.2%"></div></div><span class="cycle-val"><b>3 060</b> · max 90</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н6</span><div class="cycle-track"><div class="cycle-fill future" style="width:84.7%"></div></div><span class="cycle-val"><b>2 810</b> · max 92,5</span></div>
         <div class="cycle-row"><span class="cycle-wk">Н7</span><div class="cycle-track"><div class="cycle-fill future" style="width:46.5%"></div></div><span class="cycle-val"><b>1 545</b> · max 97,5</span></div>
         <div class="cycle-row"><span class="cycle-wk">Н8</span><div class="cycle-track"><div class="cycle-fill test" style="width:20.1%"></div></div><span class="cycle-val"><b>645–668</b> · max 95–102,5</span></div>
       </article>
@@ -110,8 +206,20 @@ ol.plan{margin:0;padding-left:21px}.plan li{padding:5px 0}.plan b{color:#14243d}
     <div class="pull-grid">
       <article class="pull-step actual"><span class="wk-tag">Неделя 1 · факт</span><strong>+20: 2×3 → +15: 2×3</strong><div class="metric"><b>210 кг·повт</b><br>средняя добавка +17,5 кг</div></article>
       <article class="pull-step actual"><span class="wk-tag">Неделя 2 · факт</span><strong>+15 кг · 4 / 4 / 3</strong><div class="metric"><b>165 кг·повт</b><br>−21% к факту недели 1</div></article>
-      <article class="pull-step conditional"><span class="wk-tag">Неделя 3 · тяжёлая поддержка</span><strong>+22,5 кг · 3×2</strong><div class="metric"><b>120–135 кг·повт</b><br>интенсивность +20–22,5 кг</div></article>
-      <article class="pull-step deload"><span class="wk-tag">Неделя 4 · разгрузка</span><strong>Свой вес · 2×6</strong><div class="metric"><b>0 по добавке</b><br>общий тоннаж не сравнивается</div></article>
+      <article class="pull-step actual"><span class="wk-tag">Неделя 3 · факт</span><strong>+22,5 × 2 → +20 · 2×2</strong><div class="metric"><b>125 кг·повт</b><br>оба веса к пределу на 2</div></article>
+      <article class="pull-step conditional"><span class="wk-tag">Неделя 4 · нагрузка</span><strong>+20 кг · 3×2</strong><div class="metric"><b>135 кг·повт</b><br>если легко — 3×3</div></article>
+    </div>
+
+
+    <div class="section-label"><h3>Подсобка: диапазон повторов</h3><p>Минимум — нижняя граница рабочего коридора; максимум — порог перед повышением веса. Сначала повторы, потом вес</p></div>
+    <div class="accessory-grid">
+      <article class="accessory"><b>Трицепс на блоке</b><span class="move">верх тела · понедельник</span><span class="fromto">мин. 10 · макс. 15</span><small>3×15 на 35 кг закрыты с запасом. Дальше плитка вверх · 3×10–12, не ждать пока жжение уйдёт</small></article>
+      <article class="accessory"><b>Боковые подъёмы</b><span class="move">гантели 4 кг · понедельник</span><span class="fromto">мин. 12 · макс. 20</span><small>Стоп, если амплитуда падает или начинается пожимание плечами</small></article>
+      <article class="accessory"><b>Жим гантелей</b><span class="move">среда · после жима с паузой</span><span class="fromto">мин. 8 · макс. 12</span><small>Тяжёлые подходы на 6 повторов не использовать; при боли — убрать</small></article>
+      <article class="accessory"><b>Тяга нижнего блока</b><span class="move">к животу · нейтральная рукоять</span><span class="fromto">мин. 8 · макс. 12</span><small>85 кг: 10 → 11 → 12, затем вес. Штангу в наклоне не использовать</small></article>
+      <article class="accessory"><b>Молотки</b><span class="move">гантели 12 кг · без кача</span><span class="fromto">мин. 10 · макс. 15</span><small>После чистых 3×15 — 14 кг около 3×8; если 3×8 нет — остаться на 12 кг</small></article>
+      <article class="accessory"><b>Разгибание ног</b><span class="move">текущий тренажёр · 15 кг</span><span class="fromto">мин. 8 · макс. 15</span><small>После 3×15 с запасом — 25 кг на 8–10, а не 20 повторов на 15 кг</small></article>
+      <article class="accessory"><b>Ролик для пресса</b><span class="move">с колен · устойчивый корпус</span><span class="fromto">мин. 6 · макс. 12</span><small>Закончить до провисания поясницы и потери положения корпуса</small></article>
     </div>
 
     <details class="method">
@@ -127,105 +235,22 @@ ol.plan{margin:0;padding-left:21px}.plan li{padding:5px 0}.plan b{color:#14243d}
     </details>
   </div>
 </section>
-
-<div class="quick">
-  <div><b>Как читать</b><span>«62,5 кг · 4×6» = 4 подхода по 6 повторений</span></div>
-  <div><b>Отдых</b><span>Основные 3–5 мин; подсобка 1–2 мин</span></div>
-  <div><b>Основные движения</b><span>Без отказа до 8-й недели</span></div>
-  <div><b>Вес тела</b><span>Цель: 81–82 кг к концу цикла</span></div>
-</div>
-
-<details class="program-rules"><summary>Общие правила программы</summary>
-  <div class="rules">
-    <article class="rule"><h3>Два варианта жима</h3><ul><li><b>Понедельник:</b> жим в касание — опустить под контролем, коснуться груди и сразу жать вверх, без отбива.</li><li><b>Среда:</b> жим с неподвижной паузой 1 секунду на груди в каждом повторении.</li><li><b>Тест недели 8:</b> жим в касание, как по понедельникам.</li><li><b>Если среда просто тяжелее обычного, но техника чистая:</b> сделать 3 подхода жима с паузой и разрешается жим гантелей по 20 кг · 2×8 легко.</li><li><b>Если не выдерживаются повторы или пауза, пришлось снизить штангу либо появилась боль:</b> жим гантелей убрать. Тяжёлые подходы гантелей по 6 повторений как «страховку» не использовать.</li></ul></article>
-    <article class="rule"><h3>Положение грифа в приседе</h3><ul><li>Использовать привычное среднее положение: ниже верхушки трапеций, но без принудительного low-bar на задних дельтах.</li><li>До снятия штанги свести и напрячь верх спины, создать устойчивую мышечную полку.</li><li>Выбрать положение на разминке и сохранять его во всех рабочих подходах; не перекатывать гриф ниже.</li><li>Главные критерии: гриф не давит на кость, не съезжает, кисти не держат его вес, сохраняется полная глубина.</li></ul></article>
-    <article class="rule"><h3>Горизонтальная тяга</h3><ul><li>Тяга нижнего блока сидя к животу.</li><li>Фактический последний результат: 85 кг · 3×10 с уверенным запасом. Следующая цель: 85 кг · 3×11.</li><li>Та же нейтральная рукоять, корпус неподвижен; после чистых 3×11 выполнить 3×12, и только затем повышать вес.</li><li>Штангу в наклоне в этом цикле не используем, чтобы не перегружать поясницу.</li></ul></article>
-    <article class="rule"><h3>Подъёмы через стороны</h3><ul><li>Текущий вес: гантели по 4 кг.</li><li>Локти слегка согнуты; заранее выбрать одинаковую амплитуду немного ниже или до уровня плеч.</li><li>Закончить подход, когда амплитуда сокращается или начинается пожимание плечами.</li></ul></article>
-    <article class="rule"><h3>Упражнение на корпус</h3><ul><li>Ролик для пресса с колен.</li><li>Ягодицы и пресс напряжены, поясница не провисает.</li><li>Работа: 3×6–12 с ясным запасом; закончить до потери положения корпуса.</li></ul></article>
-    <article class="rule"><h3>Правило всей подсобки</h3><ul><li>Сначала добавлять чистые повторы внутри диапазона.</li><li>Вес повышать только после верхней границы во всех подходах, когда последний подход остаётся уверенным и не предельным.</li><li>Если новый вес ломает технику или опускает ниже диапазона — вернуться к прежнему.</li><li>Цифры на разных блочных тренажёрах напрямую не сравнивать: прогрессию вести отдельно для конкретного тренажёра.</li></ul></article>
-    <article class="rule"><h3>Режимы подсобки без подсчётов</h3><ul><li><b>Легко:</b> вес ощущается простым, утомление почти не накапливается.</li><li><b>Умеренно:</b> мышца работает, но все повторы уверенные и без натуживания.</li><li><b>Умеренно тяжело:</b> последние повторы заметно трудные, но техника и амплитуда не меняются.</li><li><b>Предела и отказа в подсобке нет:</b> останавливай подход до раскачки, сокращения амплитуды или вынужденного повторения.</li></ul></article>
-    <article class="rule"><h3>Молотки без гонки за весом</h3><ul><li><b>Строгая техника:</b> корпус неподвижен, подъём чисто силой рук, без кача и инерции.</li><li>12 кг: работать до чистых 3×15; последний подход не должен быть предельным.</li><li>Только затем попробовать 14 кг примерно на 3×8.</li><li>Если 3×8 чисто не получается — остаться на 12 кг. Переходные тяжёлые подходы не нужны.</li></ul></article>
-    <article class="rule"><h3>Почему программа волновая</h3><ul><li>Недели 1–3 — первая восходящая волна.</li><li>Неделя 4 — разгрузка.</li><li>Недели 5–7 — вторая, более тяжёлая волна.</li><li>Неделя 8 — снятие объёма и проверка одной чистой тройки.</li></ul></article>
-    <article class="rule"><h3>Ориентир, а не гарантия</h3><ul><li>Жим: наиболее реалистично 77,5 кг × 3; осторожный вариант 75 кг × 3; сильный результат 80 кг × 3.</li><li>Присед при устойчивом привычном положении грифа и полной глубине: ориентир 97,5–100 кг × 3; сильный результат 102,5 кг × 3.</li><li>Конкретный тестовый вес выбирается только по ощущениям, скорости и технике недели 7.</li></ul></article>
-  </div>
 </details>
+</header>
 
-<section class="week tech">
-  <div class="week-head"><div><h2>Неделя 1</h2><p>Закрепление привычного положения грифа и спокойный вход в нагрузку</p></div><span class="phase">Техническая</span></div>
-  <div class="days">
-    <article class="day">
-      <div class="day-title"><h3>Понедельник</h3><span>Присед первым</span></div>
-      <details class="session-check"><summary>Подсказка перед приседом</summary><ul><li>Одновременно направить оба колена по линии носков — не раскрывать одну сторону раньше другой.</li></ul></details>
-      <div class="block-title">Основные</div>
-      <ol class="plan">
-        <li><b>Присед (привычное среднее положение грифа)</b><span class="loadline">70 кг · 3×5</span><span class="mode mode-hard">Ближе к тяжёлому</span></li>
-        <li><b>Жим в касание</b><span class="loadline">62,5 кг · 4×6</span><span class="mode mode-hard">Тяжелее плана</span></li>
-      </ol>
-      <div class="block-title assist">Подсобка</div>
-      <ol class="plan" start="3">
-        <li><b>Трицепс на блоке</b><span class="loadline">35 кг · 3 подхода: 15 / 15 / 12 повторов</span><span class="mode mode-hard">Третий подход близко к пределу</span></li>
-        <li><b>Подъёмы гантелей через стороны</b><span class="loadline">по 4 кг · 3 подхода: примерно 18 / 18 / 15 повторов</span><span class="mode mode-hard">Следить за одинаковой амплитудой</span></li>
-      </ol>
-    </article>
-    <article class="day">
-      <div class="day-title"><h3>Среда</h3><span>Верх тела</span></div>
-      <div class="block-title">Основные</div>
-      <ol class="plan">
-        <li><b>Жим с паузой 1 сек</b><span class="loadline">50 кг · 4×8 · пауза 1 сек</span><span class="mode mode-hard">Тяжелее плана</span></li>
-        <li><b>Подтягивания</b><span class="loadline">+20 кг · 2×3 → +15 кг · 2×3</span><span class="mode mode-hard">+20 кг почти предельно</span></li>
-      </ol>
-      <div class="block-title assist">Подсобка</div>
-      <ol class="plan" start="3">
-        <li><b>Жим гантелей</b><span class="loadline">по 20 кг · 3×12</span><span class="mode mode-moderate">Умеренно · запас сохранялся</span></li>
-        <li><b>Тяга нижнего блока сидя к животу</b><span class="loadline">80 кг · 2×12 → 85 кг · 1×12</span><span class="mode mode-hard">85 кг ближе к тяжёлому</span></li>
-        <li><b>Молотки</b><span class="loadline">по 12 кг · 3×12</span><span class="mode mode-hard">2–3-й подходы трудные, сильное закисление</span></li>
-      </ol>
-    </article>
-    <article class="day">
-      <div class="day-title"><h3>Пятница</h3><span>Фактический результат</span></div>
-      <details class="session-check"><summary>Подсказки: присед и ролик</summary><ul><li>Одновременно направить оба колена по линии носков — не раскрывать одну сторону раньше другой.</li><li>Перед роликом — лёгкая разминка плеч и бицепса.</li></ul></details>
-      <div class="block-title">Основные</div>
-      <ol class="plan">
-        <li><b>Присед</b><span class="loadline">Разминка: 20 кг × 8 → 50 кг × 5 → 60 кг × 4 → 67,5 кг × 3. Рабочие: 77,5 кг · 4×5.</span><span class="mode mode-hard">Средне, ближе к тяжёлому</span></li>
-        <li><b>Румынская тяга</b><span class="loadline">65 кг · 3×8</span><span class="mode mode-hard">Умеренно тяжело, но не близко к пределу</span></li>
-      </ol>
-      <div class="block-title assist">Подсобка</div>
-      <ol class="plan" start="3">
-        <li><b>Разгибание ног</b><span class="loadline">15 кг · 3×9</span><span class="mode mode-hard">Текущий тренажёр · умеренно тяжело</span></li>
-        <li><b>Ролик для пресса с колен</b><span class="loadline">3×8</span><span class="mode mode-hard">Умеренно тяжело</span></li>
-      </ol>
-    </article>
-  </div>
-</section>
-
-<section class="week load">
-  <div class="week-head"><div><h2>Неделя 2</h2><p>Первое плановое повышение нагрузки</p></div><span class="phase">Нагрузка</span></div>
-  <div class="days">
-    <article class="day"><div class="day-title"><h3>Понедельник</h3><span>Жим тяжёлый</span></div>
-      <details class="session-check"><summary>Подсказка перед приседом</summary><ul><li>Одновременно направить оба колена по линии носков — не раскрывать одну сторону раньше другой.</li></ul></details>
-      <div class="block-title">Основные</div><ol class="plan"><li><b>Жим в касание</b><span class="loadline">60 кг · 3×6</span><span class="mode mode-moderate">Выполнено · без боли</span></li><li><b>Присед (привычное среднее положение грифа)</b><span class="loadline">75 кг · 4×6</span><span class="mode mode-moderate">Выполнено · последние подходы чистые</span></li></ol>
-      <div class="block-title assist">Подсобка</div><ol class="plan" start="3"><li><b>Трицепс на блоке</b><span class="loadline">35 кг · 3×12</span><span class="mode mode-moderate">Выполнено · жжение, не предел</span></li><li><b>Подъёмы гантелей через стороны</b><span class="loadline">по 4 кг · 3×18</span><span class="mode mode-moderate">Выполнено · одинаковая амплитуда</span></li></ol>
-    </article>
-    <article class="day"><div class="day-title"><h3>Среда</h3><span>Объём</span></div>
-      <div class="block-title">Основные</div><ol class="plan"><li><b>Жим с паузой 1 сек</b><span class="loadline">50 кг · 3×8 · пауза 1 сек</span><span class="mode mode-moderate">Выполнено · без боли, 3-й зап. 0–1</span></li><li><b>Подтягивания</b><span class="loadline">+15 кг · 4 / 4 / 3</span><span class="mode mode-moderate">Выполнено · 2-й и 3-й предельные</span></li></ol>
-      <div class="block-title assist">Подсобка</div><ol class="plan" start="3"><li><b>Жим гантелей</b><span class="loadline">по 20 кг · 3×12</span><span class="mode mode-moderate">Выполнено · без симптомов, умеренно</span></li><li><b>Тяга нижнего блока сидя к животу</b><span class="loadline">85 кг · 3×10</span><span class="mode mode-moderate">Выполнено · чистый корпус</span></li><li><b>Молотки</b><span class="loadline">по 12 кг · 3×10</span><span class="mode mode-moderate">Выполнено · строго без кача</span></li></ol>
-    </article>
-    <article class="day"><div class="day-title"><h3>Пятница</h3><span>Тяжёлый присед</span></div>
-      <details class="session-check"><summary>Подсказки: присед и ролик</summary><ul><li>Одновременно направить оба колена по линии носков — не раскрывать одну сторону раньше другой.</li><li>Перед роликом — лёгкая разминка плеч и бицепса.</li></ul></details>
-      <div class="block-title">Основные</div><ol class="plan"><li><b>Присед (привычное среднее положение грифа)</b><span class="loadline">82,5 кг · 4×4</span><span class="mode mode-moderate">Выполнено · 4-й без замедлений</span></li><li><b>Румынская тяга</b><span class="loadline">67,5 кг · 3×7</span><span class="mode mode-moderate">Выполнено · уверенный запас</span></li></ol>
-      <div class="block-title assist">Подсобка</div><ol class="plan" start="3"><li><b>Разгибание ног</b><span class="loadline">15 кг · 3×10</span><span class="mode mode-moderate">Выполнено · жжение в 3-м</span></li><li><b>Ролик для пресса с колен</b><span class="loadline">3×8</span><span class="mode mode-moderate">Выполнено · мышечная усталость плеч</span></li></ol>
-    </article>
-  </div>
-</section>
-
-<div class="bridge-schedule" style="margin:25px 0;background:#fff;border:2px solid #2f66a7;border-radius:19px;overflow:hidden;box-shadow:0 6px 20px rgba(47,102,167,.08);">
-  <div style="background:linear-gradient(90deg,#152a49,#2f66a7);color:#fff;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">
-    <div>
-      <h3 style="margin:0;font-size:22px;line-height:1.2;">Промежуточная неделя-мост (31 августа – 6 сентября)</h3>
-      <p style="margin:4px 0 0;color:#dbe8f8;font-size:13px;">Удаление зуба мудрости во вторник · выполнен понедельник, далее полный покой до 7 сентября</p>
-    </div>
-    <span style="padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.2);font-size:12px;font-weight:850;">Мост (1 тренировка + покой)</span>
-  </div>
+<nav class="week-nav" aria-label="Недели программы">
+  <a href="#week-1" class="done">Н1 · готово</a>
+  <a href="#week-2" class="done">Н2 · готово</a>
+  <a href="#week-bridge" class="done">Мост · покой</a>
+  <a href="#week-3" class="done">Н3 · готово</a>
+  <a href="#week-4" class="current">Н4 · сейчас</a>
+  <a href="#week-5">Н5</a>
+  <a href="#week-6">Н6</a>
+  <a href="#week-7">Н7</a>
+  <a href="#week-8">Н8</a>
+</nav>
+<details class="bridge-schedule" id="week-bridge" style="margin:8px 0 14px;background:#fff;border:1px solid #2f66a7;border-radius:16px;overflow:hidden;">
+  <summary class="bridge-sum">Мост 31 авг – 6 сен · 1 тренировка + покой · готово <small>открыть факт 31 авг</small></summary>
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0;border-bottom:1px solid #d9e0e9;">
     <div style="padding:18px;border-right:1px solid #d9e0e9;">
       <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #d9e0e9;padding-bottom:8px;margin-bottom:10px;">
@@ -236,8 +261,8 @@ ol.plan{margin:0;padding-left:21px}.plan li{padding:5px 0}.plan b{color:#14243d}
       <ul style="margin:0;padding-left:18px;font-size:13px;line-height:1.6;color:#172033;">
         <li><b>Жим в касание:</b> 60 кг · 3×5 <span style="display:block;font-size:11px;color:#657084;">Хороший запас, бессимптомно</span></li>
         <li><b>Присед (среднее положение):</b> 70 кг · 3×5 <span style="display:block;font-size:11px;color:#657084;">Тонусный запас, комфортно</span></li>
-        <li><b>Тяга нижнего блока к животу:</b> 85 кг · 3×10 <span style="display:block;font-size:11px;color:#657084;">Корпус зафиксирован, уверенный запас</span></li>
-        <li><b>Подъёмы через стороны:</b> по 4 кг · 18, 18, 16–17</li>
+        <li><b>Тяга нижнего блока к животу:</b><span class="loadline"><span class="ex-assign">85 кг · 3×10</span><span class="reprange" title="Минимум 8, максимум 12. При 85 кг: 10 → 11 → 12, затем вес">диапазон 8–12</span></span> <span style="display:block;font-size:11px;color:#657084;">Корпус зафиксирован, уверенный запас</span></li>
+        <li><b>Подъёмы через стороны:</b><span class="loadline"><span class="ex-assign">по 4 кг · 18, 18, 16–17</span><span class="reprange" title="Минимум 12, максимум 20. Стоп, если амплитуда падает или плечи поднимаются">диапазон 12–20</span></span> </li>
       </ul>
     </div>
     <div style="padding:18px;background:#fcfdff;">
@@ -254,130 +279,255 @@ ol.plan{margin:0;padding-left:21px}.plan li{padding:5px 0}.plan b{color:#14243d}
     </div>
   </div>
   <div style="padding:12px 18px;background:#f4f7fb;font-size:12px;color:#49566d;">
-    <b>Следующий шаг:</b> При нормальном заживлении и отсутствии медицинских ограничений с понедельника (7 сентября) стартует полноценная 3-дневная <b>Неделя 3 (Пик волны)</b> с жимом 62,5 кг (4×5) и приседом 80 кг (4×6).
+    <b>Факт:</b> мост закрыт. Неделя 3 уже идёт: жим 62,5 · 4×5 и присед 80 · 4×6 в понедельник выполнены.
   </div>
-</div>
-
-<section class="week peak">
-  <div class="week-head"><div><h2>Неделя 3</h2><p>Вершина первой нагрузочной волны</p></div><span class="phase">Тяжёлая</span></div>
+</details>
+<section class="week peak next-week" id="week-3">
+  <div class="week-head"><div><h2>Неделя 3</h2><p>Пн / ср / пт выполнены · дальше неделя 4</p></div><span class="phase">Готово</span></div>
   <div class="days">
-    <article class="day"><div class="day-title"><h3>Понедельник</h3><span>Жим + объём ног</span></div>
+    <article class="day"><div class="day-title"><h3>Понедельник</h3><span>Выполнено 7 сен</span></div>
       <details class="session-check"><summary>Подсказка перед приседом</summary><ul><li>Одновременно направить оба колена по линии носков — не раскрывать одну сторону раньше другой.</li></ul></details>
-      <div class="block-title">Основные</div><ol class="plan"><li><b>Жим в касание</b><span class="loadline">62,5 кг · 4×5</span><span class="mode mode-hard">Без симптомов после недели 2 · без отбива</span></li><li><b>Присед (привычное среднее положение грифа)</b><span class="loadline">80 кг · 4×6</span><span class="mode mode-moderate">Уверенный запас</span></li></ol>
-      <div class="block-title assist">Подсобка</div><ol class="plan" start="3"><li><b>Трицепс на блоке</b><span class="loadline">35 кг · 15 / 15 / 13</span><span class="mode mode-hard">Следующий шаг после 15 / 15 / 12 · без отказа</span></li><li><b>Подъёмы гантелей через стороны</b><span class="loadline">по 4 кг · 18 / 18 / 18</span><span class="mode mode-hard">Одинаковая амплитуда · затем идти к 3×20</span></li></ol>
+      <div class="block-title">Основные</div><ol class="plan"><li><b>Жим в касание</b><span class="loadline"><span class="ex-assign">62,5 кг · 4×5</span></span><span class="mode mode-moderate">Выполнено 4×5 · без отбива · в 4-м последние тяжелее, вес закрыт</span></li><li><b>Присед (привычное среднее положение грифа)</b><span class="loadline"><span class="ex-assign">80 кг · 4×6</span></span><span class="mode mode-moderate">Выполнено · ниже параллели · умеренно тяжело · 2-й с запасом · 4-й тяжеловато</span></li></ol>
+      <div class="block-title assist">Подсобка</div><ol class="plan" start="3"><li><b>Трицепс на блоке</b><span class="loadline"><span class="ex-assign">35 кг · 3×15</span><span class="reprange" title="Минимум 10, максимум 15. Вес — только после чистых подходов на 15 с запасом">диапазон 10–15</span></span><span class="mode mode-moderate">Выполнено · жжение в 3-м, не отказ</span></li><li><b>Подъёмы гантелей через стороны</b><span class="loadline"><span class="ex-assign">по 4 кг · 18 / 17 / 16</span><span class="reprange" title="Минимум 12, максимум 20. Стоп, если амплитуда падает или плечи поднимаются">диапазон 12–20</span></span><span class="mode mode-moderate">Выполнено · до груди · на 3-м чуть трапеция</span></li></ol>
     </article>
-    <article class="day"><div class="day-title"><h3>Среда</h3><span>Объём верха</span></div>
-      <div class="block-title">Основные</div><ol class="plan"><li><b>Жим с паузой 1 сек</b><span class="loadline">52,5 кг · до 4×7</span><span class="mode mode-hard">Без реакции после понедельника; 4-й — только с запасом</span></li><li><b>Подтягивания — тяжёлая поддержка</b><span class="loadline">+22,5 кг · 3×2; запасной вариант +20 кг · 3×2</span><span class="mode mode-hard">Контроль +20×1: чисто → +22,5; тяжело → +20</span></li></ol>
-      <div class="block-title assist">Подсобка</div><ol class="plan" start="3"><li><b>Жим гантелей</b><span class="loadline">по 22 кг · 3×8; запасной вариант по 20 кг · 3×12</span><span class="mode mode-moderate">Основной вариант: запас 2 повтора · без симптомов</span></li><li><b>Тяга нижнего блока сидя к животу</b><span class="loadline">85 кг · 3×11</span><span class="mode mode-hard">После 85 кг · 3×10 с запасом · корпус неподвижен</span></li><li><b>Молотки</b><span class="loadline">по 12 кг · 3×10–15</span><span class="mode mode-moderate">Строго без кача · закончить до предела</span></li></ol>
+    <article class="day"><div class="day-title"><h3>Среда</h3><span>Выполнено 9 сен</span></div>
+      <div class="block-title">Основные</div><ol class="plan"><li><b>Жим с паузой 1 сек</b><span class="loadline"><span class="ex-assign">52,5 кг · 4×7</span></span><span class="mode mode-moderate">Выполнено · 1–2 запас 2 · 3–4 запас 1, не отказ</span></li><li><b>Подтягивания — тяжёлая поддержка</b><span class="loadline"><span class="ex-assign">+22,5 × 1×2 → +20 × 2×2</span></span><span class="mode mode-hard">Выполнено · 22,5 второй предел · 20 оба к пределу на 2</span></li></ol>
+      <div class="block-title assist">Подсобка</div><ol class="plan" start="3"><li><b>Жим гантелей</b><span class="loadline"><span class="ex-assign">по 22 кг · 3×8</span><span class="reprange" title="Минимум 8, максимум 12">диапазон 8–12</span></span><span class="mode mode-moderate">Выполнено · умеренно тяж · 3-й запас 1–2</span></li><li><b>Тяга нижнего блока сидя к животу</b><span class="loadline"><span class="ex-assign">85 кг · 3×11</span><span class="reprange" title="Минимум 8, максимум 12">диапазон 8–12</span></span><span class="mode mode-moderate">Выполнено · 12 не закрыты, вес не повышать</span></li><li><b>Молотки</b><span class="loadline"><span class="ex-assign">по 12 кг · 11 / 11 / 10</span><span class="reprange" title="Стоп до отказа">диапазон 10–15</span></span><span class="mode mode-hard">Выполнено · 2-й околоотказ · 3-й 10 в отказ</span></li></ol>
     </article>
-    <article class="day"><div class="day-title"><h3>Пятница</h3><span>Тройка рабочая</span></div>
+    <article class="day"><div class="day-title"><h3>Пятница</h3><span>Выполнено 11 сен</span></div>
       <details class="session-check"><summary>Подсказки: присед и ролик</summary><ul><li>Одновременно направить оба колена по линии носков — не раскрывать одну сторону раньше другой.</li><li>Перед роликом — лёгкая разминка плеч и бицепса.</li></ul></details>
-      <div class="block-title">Основные</div><ol class="plan"><li><b>Присед (привычное среднее положение грифа)</b><span class="loadline">87,5 кг · 5×3</span><span class="mode mode-hard">Трудно, но с явным запасом</span></li><li><b>Румынская тяга</b><span class="loadline">70 кг · 3×6–8</span><span class="mode mode-hard">Если 67,5 кг · 3×8 не выполнены — повторить 67,5 кг</span></li></ol>
-      <div class="block-title assist">Подсобка</div><ol class="plan" start="3"><li><b>Разгибание ног</b><span class="loadline">15 кг · 3×12–15</span><span class="mode mode-hard">Текущий тренажёр · умеренно тяжело</span></li><li><b>Ролик для пресса с колен</b><span class="loadline">3×8–10</span><span class="mode mode-moderate">Устойчивый корпус · не до предела</span></li></ol>
+      <div class="block-title">Основные</div><ol class="plan"><li><b>Присед (привычное среднее положение грифа)</b><span class="loadline"><span class="ex-assign">87,5 кг · 5×3</span></span><span class="mode mode-moderate">Выполнено · 1–4 запас 1–2 · 5-й на 3-м близко к пределу</span></li><li><b>Румынская тяга</b><span class="loadline"><span class="ex-assign">70 кг · 3×6</span></span><span class="mode mode-hard">Выполнено · вес ощущается тяжёлым, запас есть</span></li></ol>
+      <div class="block-title assist">Подсобка</div><ol class="plan" start="3"><li><b>Разгибание ног</b><span class="loadline"><span class="ex-assign">15 кг · 3×11</span><span class="reprange" title="коридор 8–15">коридор 8–15</span></span><span class="mode mode-moderate">Выполнено · 2–3 жжение</span></li><li><b>Ролик для пресса с колен</b><span class="loadline"><span class="ex-assign">3×9</span><span class="reprange" title="коридор 6–12">коридор 6–12</span></span><span class="mode mode-moderate">Выполнено</span></li></ol>
     </article>
   </div>
 </section>
-
-<section class="week deload">
-  <div class="week-head"><div><h2>Неделя 4</h2><p>Снять усталость, не проверять силу</p></div><span class="phase">Разгрузка</span></div>
-  <div class="days">
-    <article class="day"><div class="day-title"><h3>Понедельник</h3><span>Легко</span></div>
-      <details class="session-check"><summary>Подсказка перед приседом</summary><ul><li>Одновременно направить оба колена по линии носков — не раскрывать одну сторону раньше другой.</li></ul></details>
-      <div class="block-title">Основные</div><ol class="plan"><li><b>Жим в касание</b><span class="loadline">55 кг · 3×5</span></li><li><b>Присед (привычное среднее положение грифа)</b><span class="loadline">65 кг · 3×5</span></li></ol>
-      <div class="block-title assist">Подсобка</div><ol class="plan" start="3"><li><b>Трицепс</b><span class="loadline">2×12 легко</span><span class="mode mode-easy">Легко · большой запас, без утомления</span></li><li><b>Подъёмы гантелей через стороны</b><span class="loadline">2×15 легко</span><span class="mode mode-easy">Легко · большой запас, без утомления</span></li></ol>
-    </article>
-    <article class="day"><div class="day-title"><h3>Среда</h3><span>Легко</span></div>
-      <div class="block-title">Основные</div><ol class="plan"><li><b>Жим с паузой 1 сек</b><span class="loadline">45 кг · 3×6</span></li><li><b>Подтягивания</b><span class="loadline">Свой вес · 2×6</span><span class="mode mode-easy">Легко · большой запас, без утомления</span></li></ol>
-      <div class="block-title assist">Подсобка</div><ol class="plan" start="3"><li><b>Жим гантелей</b><span class="loadline">по 16–18 кг · 2×10</span><span class="mode mode-easy">Легко · большой запас, без утомления</span></li><li><b>Тяга нижнего блока сидя к животу</b><span class="loadline">80 кг · 2×10 легко; если это уже не легко — снизить вес</span><span class="mode mode-easy">Легко · большой запас, без утомления</span></li><li><b>Молотки</b><span class="loadline">по 10 кг · 2×10</span><span class="mode mode-easy">Строго без кача · большой запас</span></li></ol>
-    </article>
-    <article class="day"><div class="day-title"><h3>Пятница</h3><span>Легко</span></div>
-      <details class="session-check"><summary>Подсказки: присед и ролик</summary><ul><li>Одновременно направить оба колена по линии носков — не раскрывать одну сторону раньше другой.</li><li>Перед роликом — лёгкая разминка плеч и бицепса.</li></ul></details>
-      <div class="block-title">Основные</div><ol class="plan"><li><b>Присед (привычное среднее положение грифа)</b><span class="loadline">70 кг · 3×3</span></li><li><b>Румынская тяга</b><span class="loadline">55 кг · 2×6–8</span><span class="mode mode-easy">Легко · большой запас, без утомления</span></li></ol>
-      <div class="block-title assist">Подсобка</div><ol class="plan" start="3"><li><b>Разгибание ног</b><span class="loadline">15 кг · 2×8 легко</span><span class="mode mode-easy">Легко · большой запас, без утомления</span></li><li><b>Ролик для пресса с колен</b><span class="loadline">2×6–8 легко</span><span class="mode mode-easy">Легко · большой запас, без утомления</span></li></ol>
-    </article>
-  </div>
-</section>
-
-<section class="week load">
-  <div class="week-head"><div><h2>Неделя 5</h2><p>Начало второй, более тяжёлой волны</p></div><span class="phase">Нагрузка</span></div>
+<section class="week load" id="week-4">
+  <details open>
+  <summary class="week-head"><div><h2>Неделя 4</h2><p>Вход во вторую волну · вместо разгрузки: покой после зуба уже был 1–6 сентября</p></div><span class="phase">Нагрузка</span></summary>
   <div class="days">
     <article class="day"><div class="day-title"><h3>Понедельник</h3><span>Жим + объём</span></div>
       <details class="session-check"><summary>Подсказка перед приседом</summary><ul><li>Одновременно направить оба колена по линии носков — не раскрывать одну сторону раньше другой.</li></ul></details>
-      <div class="block-title">Основные</div><ol class="plan"><li><b>Жим в касание</b><span class="loadline">67,5 кг · 4×5</span><span class="mode mode-moderate">Уверенно, без предела</span></li><li><b>Присед (привычное среднее положение грифа)</b><span class="loadline">80 кг · 4×6</span><span class="mode mode-moderate">Уверенный запас</span></li></ol>
-      <div class="block-title assist">Подсобка</div><ol class="plan" start="3"><li><b>Трицепс на блоке</b><span class="loadline">3×10–15</span><span class="mode mode-hard">Умеренно тяжело · последние повторы трудные, но чистые</span></li><li><b>Подъёмы гантелей через стороны</b><span class="loadline">3×12–20</span><span class="mode mode-hard">Умеренно тяжело · последние повторы трудные, но чистые</span></li></ol>
+      <div class="block-title">Основные</div><ol class="plan"><li><b>Жим в касание</b><span class="loadline"><span class="ex-assign">65 кг · 4×5</span><span class="ex-alt">если 4-й подход к пределу — оставить 4×4</span></span><span class="mode mode-hard">Шаг +2,5 после 62,5 · не 67,5</span></li><li><b>Присед (привычное среднее положение грифа)</b><span class="loadline"><span class="ex-assign">82,5 кг · 4×5</span></span><span class="mode mode-moderate">Между 80×6 и пятничными тройками</span></li></ol>
+      <div class="block-title assist">Подсобка</div><ol class="plan" start="3"><li><b>Трицепс на блоке</b><span class="loadline"><span class="ex-assign">40 кг · 3×10–12</span><span class="reprange" title="Диапазон упражнения 10–15. На 40 кг сегодня 10–12, не 15. Нет 10 — 35">диапазон 10–15</span><span class="ex-prev">было <b>35 · 3×15</b> · легко–средне + жжение</span><span class="ex-alt">нет чистых 10 — 35 · 3×12–15</span></span><span class="mode mode-moderate">3×15 на 35 кг закрыты с запасом · жжение ≠ отказ</span></li><li><b>Подъёмы гантелей через стороны</b><span class="loadline"><span class="ex-assign">по 4 кг · 3×15–18</span><span class="reprange" title="Стоп, если лезут трапеции">диапазон 12–20</span><span class="ex-prev">было <b>18 / 17 / 16</b> · до груди</span></span><span class="mode mode-moderate">Одинаково до груди · стоп, если лезут трапеции</span></li></ol>
     </article>
-    <article class="day"><div class="day-title"><h3>Среда</h3><span>Объём</span></div>
-      <div class="block-title">Основные</div><ol class="plan"><li><b>Жим с паузой 1 сек</b><span class="loadline">55 кг · 4×7</span><span class="mode mode-hard">Трудно, но с явным запасом</span></li><li><b>Подтягивания</b><span class="loadline">+22,5 кг · 3×3</span><span class="mode mode-moderate">Умеренно · уверенный запас, без натуживания</span></li></ol>
-      <div class="block-title assist">Подсобка</div><ol class="plan" start="3"><li><b>Жим гантелей</b><span class="loadline">по 20 кг · 3×10–12</span><span class="mode mode-moderate">Умеренно · уверенный запас, без натуживания</span></li><li><b>Тяга нижнего блока сидя к животу</b><span class="loadline">80 кг · 3×8–12</span><span class="mode mode-hard">Умеренно тяжело · последние повторы трудные, но чистые</span></li><li><b>Молотки</b><span class="loadline">по 12 кг · 3×10–15</span><span class="mode mode-moderate">Строго без кача · закончить до предела</span></li></ol>
+    <article class="day"><div class="day-title"><h3>Среда</h3><span>Объём верха</span></div>
+      <div class="block-title">Основные</div><ol class="plan"><li><b>Жим с паузой 1 сек</b><span class="loadline"><span class="ex-assign">55 кг · 3×6</span><span class="ex-alt">4-й ×6 только если первые три чистые с запасом</span></span><span class="mode mode-hard">Пауза 1 сек · не 4×7 сразу</span></li><li><b>Подтягивания</b><span class="loadline"><span class="ex-assign">+20 кг · 3×2</span><span class="ex-prev">было <b>+22,5 × 2 предел → +20 · 2×2</b> к пределу</span><span class="ex-alt">3-й только если 2-й с запасом; не +22,5</span></span><span class="mode mode-hard">Н3: 22,5 ×2 предел, 20 ×2 к пределу</span></li></ol>
+      <div class="block-title assist">Подсобка</div><ol class="plan" start="3"><li><b>Жим гантелей</b><span class="loadline"><span class="ex-assign">по 22 кг · 3×8</span><span class="reprange" title="Не уходить в подходы на 6">диапазон 8–12</span><span class="ex-prev">было <b>22 · 3×8</b> · 3-й запас 1–2</span><span class="ex-alt">если 3-й паузы тяжёлый: 20 · 2×8; боль — убрать</span></span><span class="mode mode-moderate">Только если пауза прошла чисто с запасом</span></li><li><b>Тяга нижнего блока сидя к животу</b><span class="loadline"><span class="ex-assign">85 кг · 3×12</span><span class="reprange" title="12 во всех подходах — потом 90 кг">диапазон 8–12</span><span class="ex-prev">было <b>85 · 3×11</b> · умеренно тяж</span></span><span class="mode mode-moderate">Не 90. Сначала чистые 3×12</span></li><li><b>Молотки</b><span class="loadline"><span class="ex-assign">по 12 кг · 3×10</span><span class="reprange" title="Сегодня стоп на 10, не гнать 11-й в отказ. Коридор упражнения 10–15">диапазон 10–15</span><span class="ex-prev">было <b>11 / 11 / 10</b> · 3-й отказ</span></span><span class="mode mode-moderate">Н3 3-й в отказ — стоп до отказа, отдых 1,5–2 мин</span></li></ol>
+    </article>
+    <article class="day"><div class="day-title"><h3>Пятница</h3><span>Силовой низ</span></div>
+      <details class="session-check"><summary>Подсказки: присед и ролик</summary><ul><li>Одновременно направить оба колена по линии носков — не раскрывать одну сторону раньше другой.</li><li>Перед роликом — лёгкая разминка плеч и бицепса.</li></ul></details>
+      <div class="block-title">Основные</div><ol class="plan"><li><b>Присед (привычное среднее положение грифа)</b><span class="loadline"><span class="ex-assign">87,5 кг · 4×4</span><span class="ex-prev">было <b>87,5 · 5×3</b> · 1–4 запас 1–2, 5-й к пределу</span></span><span class="mode mode-hard">Четвёрки, не прыжок на 90</span></li><li><b>Румынская тяга</b><span class="loadline"><span class="ex-assign">70 кг · 3×6–8</span><span class="reprange" title="Вес тяжёлый — сначала повторы до 8, не +2,5">диапазон 6–8</span><span class="ex-prev">было <b>70 · 3×6</b> · тяжело, запас есть</span></span><span class="mode mode-moderate">Не +2,5, пока нет 3×8</span></li></ol>
+      <div class="block-title assist">Подсобка</div><ol class="plan" start="3"><li><b>Разгибание ног</b><span class="loadline"><span class="ex-assign">15 кг · 3×12–15</span><span class="reprange" title="Коридор 8–15. 3×15 с запасом → 25 кг на 8–10">цель 12–15</span><span class="ex-prev">было <b>15 · 3×11</b> · жжение 2–3</span></span><span class="mode mode-hard">Текущий тренажёр · умеренно тяжело</span></li><li><b>Ролик для пресса с колен</b><span class="loadline"><span class="ex-assign">3×8–10</span><span class="reprange" title="Стоп до провисания">диапазон 6–12</span><span class="ex-prev">было <b>3×9</b></span></span><span class="mode mode-moderate">Устойчивый корпус · не до предела</span></li></ol>
+    </article>
+  </div>
+</details>
+</section>
+<section class="week load" id="week-5">
+  <details>
+  <summary class="week-head"><div><h2>Неделя 5</h2><p>Прогноз · если 65 · 4×5 и 87,5 · 4×4 прошли с запасом</p></div><span class="phase">Нагрузка</span></summary>
+  <div class="days">
+    <article class="day"><div class="day-title"><h3>Понедельник</h3><span>Жим + объём</span></div>
+      <details class="session-check"><summary>Подсказка перед приседом</summary><ul><li>Одновременно направить оба колена по линии носков — не раскрывать одну сторону раньше другой.</li></ul></details>
+      <div class="block-title">Основные</div><ol class="plan"><li><b>Жим в касание</b><span class="loadline"><span class="ex-assign">67,5 кг · 4×4</span><span class="ex-alt">если 65 · 4×5 легко — можно 4×5; если 65 · 4×5 в отказ — 65 кг · 4×4, не повторять 4×5</span></span><span class="mode mode-hard">Прогноз · не 4×5 сразу после тяжёлого 62,5</span></li><li><b>Присед (привычное среднее положение грифа)</b><span class="loadline"><span class="ex-assign">82,5 кг · 4×6</span></span><span class="mode mode-moderate">Объём на весе недели 4, не откат на 80</span></li></ol>
+      <div class="block-title assist">Подсобка</div><ol class="plan" start="3"><li><b>Трицепс на блоке</b><span class="loadline"><span class="ex-assign">40 кг · 3×12</span><span class="reprange" title="Нет чистых 10 — 35 кг">диапазон 10–12</span></span><span class="mode mode-moderate">Если 40 · 3×12 на Н4 чисто — держать; если нет 10 — 35</span></li><li><b>Подъёмы гантелей через стороны</b><span class="loadline"><span class="ex-assign">по 4 кг · 3×15–18</span><span class="reprange" title="Стоп, если амплитуда падает">диапазон 12–20</span></span><span class="mode mode-moderate">До груди · одинаковая амплитуда</span></li></ol>
+    </article>
+    <article class="day"><div class="day-title"><h3>Среда</h3><span>Пауза</span></div>
+      <div class="block-title">Основные</div><ol class="plan"><li><b>Жим с паузой 1 сек</b><span class="loadline"><span class="ex-assign">55 кг · 4×6</span><span class="ex-alt">не 4×7: после 3×6 недели 4 сначала +подход, не +повтор</span></span><span class="mode mode-hard">Пауза 1 сек</span></li><li><b>Подтягивания</b><span class="loadline"><span class="ex-assign">+22,5 кг · 3×3</span><span class="ex-alt">если 3×2 недели 4 тяжёлые — остаться на 3×2</span></span><span class="mode mode-moderate">Контроль +20×1</span></li></ol>
+      <div class="block-title assist">Подсобка</div><ol class="plan" start="3"><li><b>Жим гантелей</b><span class="loadline"><span class="ex-assign">по 22 кг · 3×8</span><span class="reprange" title="Минимум 8, максимум 12">диапазон 8–12</span><span class="ex-alt">если пауза тяжёлая — по 20 · 2×8; при боли — убрать</span></span><span class="mode mode-moderate">Только если пауза чистая</span></li><li><b>Тяга нижнего блока сидя к животу</b><span class="loadline"><span class="ex-assign">85 кг · 3×12</span><span class="reprange" title="90 только после чистых 3×12">диапазон 8–12</span><span class="ex-alt">если Н4 85 · 3×12 чисто — 90 · 3×8–10</span></span><span class="mode mode-moderate">Корпус неподвижен</span></li><li><b>Молотки</b><span class="loadline"><span class="ex-assign">по 12 кг · 3×12</span><span class="reprange" title="После 3×15 — 14 кг на 8–10">диапазон 10–15</span></span><span class="mode mode-moderate">Без кача</span></li></ol>
     </article>
     <article class="day"><div class="day-title"><h3>Пятница</h3><span>Тяжёлый низ</span></div>
       <details class="session-check"><summary>Подсказки: присед и ролик</summary><ul><li>Одновременно направить оба колена по линии носков — не раскрывать одну сторону раньше другой.</li><li>Перед роликом — лёгкая разминка плеч и бицепса.</li></ul></details>
-      <div class="block-title">Основные</div><ol class="plan"><li><b>Присед (привычное среднее положение грифа)</b><span class="loadline">87,5 кг · 4×4</span><span class="mode mode-hard">Трудно, но с явным запасом</span></li><li><b>Румынская тяга</b><span class="loadline">70 кг · 3×6–8</span><span class="mode mode-moderate">Умеренно · уверенный запас, без натуживания</span></li></ol>
-      <div class="block-title assist">Подсобка</div><ol class="plan" start="3"><li><b>Разгибание ног</b><span class="loadline">15 кг · 3×15–20</span><span class="mode mode-hard">Текущий тренажёр · умеренно тяжело</span></li><li><b>Ролик для пресса с колен</b><span class="loadline">3×6–12 · оставить небольшой запас</span><span class="mode mode-moderate">Умеренно · остановиться до предела</span></li></ol>
+      <div class="block-title">Основные</div><ol class="plan"><li><b>Присед (привычное среднее положение грифа)</b><span class="loadline"><span class="ex-assign">90 кг · 4×3</span></span><span class="mode mode-hard">После 87,5 · 4×4</span></li><li><b>Румынская тяга</b><span class="loadline"><span class="ex-assign">72,5 кг · 3×6–8</span></span><span class="mode mode-moderate">Если 70 · 3×8 легко</span></li></ol>
+      <div class="block-title assist">Подсобка</div><ol class="plan" start="3"><li><b>Разгибание ног</b><span class="loadline"><span class="ex-assign">25 кг · 3×8–10</span><span class="reprange" title="После 3×15 на 15 кг — не 20 повторов, а вес">диапазон 8–15</span><span class="ex-alt">если 25 нет в шаге — 20 · 3×10</span></span><span class="mode mode-moderate">Текущий тренажёр</span></li><li><b>Ролик для пресса с колен</b><span class="loadline"><span class="ex-assign">3×8–10</span><span class="reprange" title="Закончить до провисания">диапазон 6–12</span></span><span class="mode mode-moderate">Запас 2 повтора</span></li></ol>
     </article>
   </div>
+  <div class="week-note">Прогноз. 67,5 только если 65 · 4×5 были с запасом. Если 65 ушли в отказ — на неделе 5 те же 65, но 4×4: минус повтор, не повтор отказа. Понедельник приседа 82,5 · 4×6 — объём, пятница 90 · 4×3 — сила.</div>
+</details>
 </section>
-
-<section class="week peak">
-  <div class="week-head"><div><h2>Неделя 6</h2><p>Основная силовая работа перед подводкой</p></div><span class="phase">Тяжёлая</span></div>
+<section class="week peak" id="week-6">
+  <details>
+  <summary class="week-head"><div><h2>Неделя 6</h2><p>Прогноз · последняя полная силовая перед подводкой</p></div><span class="phase">Тяжёлая</span></summary>
   <div class="days">
-    <article class="day"><div class="day-title"><h3>Понедельник</h3><span>Сила + объём</span></div>
+    <article class="day"><div class="day-title"><h3>Понедельник</h3><span>Сила</span></div>
       <details class="session-check"><summary>Подсказка перед приседом</summary><ul><li>Одновременно направить оба колена по линии носков — не раскрывать одну сторону раньше другой.</li></ul></details>
-      <div class="block-title">Основные</div><ol class="plan"><li><b>Жим в касание</b><span class="loadline">70 кг · 4×4</span><span class="mode mode-hard">Тяжело, но не предел</span></li><li><b>Присед (привычное среднее положение грифа)</b><span class="loadline">82,5 кг · 4×5</span><span class="mode mode-hard">Тяжело, но не предел</span></li></ol>
-      <div class="block-title assist">Подсобка</div><ol class="plan" start="3"><li><b>Трицепс на блоке</b><span class="loadline">3×10–15</span><span class="mode mode-hard">Умеренно тяжело · последние повторы трудные, но чистые</span></li><li><b>Подъёмы гантелей через стороны</b><span class="loadline">3×12–20</span><span class="mode mode-hard">Умеренно тяжело · последние повторы трудные, но чистые</span></li></ol>
+      <div class="block-title">Основные</div><ol class="plan"><li><b>Жим в касание</b><span class="loadline"><span class="ex-assign">70 кг · 4×4</span><span class="ex-alt">если 67,5 · 4×4 в отказ — 67,5 · 4×3</span></span><span class="mode mode-hard">Тяжело, не отказ</span></li><li><b>Присед (привычное среднее положение грифа)</b><span class="loadline"><span class="ex-assign">85 кг · 4×5</span></span><span class="mode mode-hard">Между 82,5 × 6 и пятничными тройками</span></li></ol>
+      <div class="block-title assist">Подсобка</div><ol class="plan" start="3"><li><b>Трицепс на блоке</b><span class="loadline"><span class="ex-assign">45 кг · 3×10–12</span><span class="reprange" title="Нет чистых 10 — остаться на 40">диапазон 10–12</span><span class="ex-alt">прогноз, если 40 · 3×12 чисто; иначе 40 · 3×10–12</span></span><span class="mode mode-moderate">Плитка +5</span></li><li><b>Подъёмы гантелей через стороны</b><span class="loadline"><span class="ex-assign">по 4 кг · 3×18</span><span class="reprange" title="Если 3×20 чисто — 5 кг на 12–15">диапазон 12–20</span></span><span class="mode mode-moderate">До груди</span></li></ol>
     </article>
-    <article class="day"><div class="day-title"><h3>Среда</h3><span>Умеренно</span></div>
-      <div class="block-title">Основные</div><ol class="plan"><li><b>Жим с паузой 1 сек</b><span class="loadline">57,5 кг · 4×6</span><span class="mode mode-hard">Тяжело, но не предел</span></li><li><b>Подтягивания</b><span class="loadline">+22,5 кг · 3×3</span><span class="mode mode-moderate">Умеренно · уверенный запас, без натуживания</span></li></ol>
-      <div class="block-title assist">Подсобка</div><ol class="plan" start="3"><li><b>Жим гантелей</b><span class="loadline">по 20 кг · 3×10–12</span><span class="mode mode-moderate">Умеренно · уверенный запас, без натуживания</span></li><li><b>Тяга нижнего блока сидя к животу</b><span class="loadline">80 кг · 3×8–12</span><span class="mode mode-hard">Умеренно тяжело · последние повторы трудные, но чистые</span></li><li><b>Молотки</b><span class="loadline">по 12 кг · 3×10–15</span><span class="mode mode-moderate">Строго без кача · закончить до предела</span></li></ol>
+    <article class="day"><div class="day-title"><h3>Среда</h3><span>Пауза</span></div>
+      <div class="block-title">Основные</div><ol class="plan"><li><b>Жим с паузой 1 сек</b><span class="loadline"><span class="ex-assign">57,5 кг · 3×6</span><span class="ex-alt">4-й ×6 только с запасом</span></span><span class="mode mode-hard">Не 4×6 сразу</span></li><li><b>Подтягивания</b><span class="loadline"><span class="ex-assign">+22,5 кг · 3×3</span></span><span class="mode mode-moderate">Если легко — 3×3; если нет — 3×2</span></li></ol>
+      <div class="block-title assist">Подсобка</div><ol class="plan" start="3"><li><b>Жим гантелей</b><span class="loadline"><span class="ex-assign">по 22 кг · 3×8–10</span><span class="reprange" title="Минимум 8, максимум 12">диапазон 8–12</span></span><span class="mode mode-moderate">Если пауза чистая</span></li><li><b>Тяга нижнего блока сидя к животу</b><span class="loadline"><span class="ex-assign">90 кг · 3×10</span><span class="reprange" title="После 3×12 — 95 кг на 8">диапазон 8–12</span><span class="ex-alt">если 90 нет — 85 · 3×12</span></span><span class="mode mode-moderate">Корпус неподвижен</span></li><li><b>Молотки</b><span class="loadline"><span class="ex-assign">по 12 кг · 3×12–15</span><span class="reprange" title="После 3×15 — 14 кг · 3×8–10">диапазон 10–15</span></span><span class="mode mode-moderate">Без кача</span></li></ol>
     </article>
     <article class="day"><div class="day-title"><h3>Пятница</h3><span>Тяжёлые тройки</span></div>
       <details class="session-check"><summary>Подсказки: присед и ролик</summary><ul><li>Одновременно направить оба колена по линии носков — не раскрывать одну сторону раньше другой.</li><li>Перед роликом — лёгкая разминка плеч и бицепса.</li></ul></details>
-      <div class="block-title">Основные</div><ol class="plan"><li><b>Присед (привычное среднее положение грифа)</b><span class="loadline">92,5 кг · 4×3</span><span class="mode mode-hard">Тяжело, но не предел</span></li><li><b>Румынская тяга</b><span class="loadline">72,5 кг · 3×6–8</span><span class="mode mode-moderate">Умеренно · уверенный запас, без натуживания</span></li></ol>
-      <div class="block-title assist">Подсобка</div><ol class="plan" start="3"><li><b>Разгибание ног</b><span class="loadline">15 кг · 3×15–20</span><span class="mode mode-hard">Вес автоматически не повышать</span></li><li><b>Ролик для пресса с колен</b><span class="loadline">3×6–12 · оставить небольшой запас</span><span class="mode mode-moderate">Умеренно · остановиться до предела</span></li></ol>
+      <div class="block-title">Основные</div><ol class="plan"><li><b>Присед (привычное среднее положение грифа)</b><span class="loadline"><span class="ex-assign">92,5 кг · 4×3</span></span><span class="mode mode-hard">Если 90 · 4×3 с запасом</span></li><li><b>Румынская тяга</b><span class="loadline"><span class="ex-assign">75 кг · 3×6</span></span><span class="mode mode-moderate">Не гнать отказ</span></li></ol>
+      <div class="block-title assist">Подсобка</div><ol class="plan" start="3"><li><b>Разгибание ног</b><span class="loadline"><span class="ex-assign">25 кг · 3×10</span><span class="reprange" title="диапазон 8–15">диапазон 8–15</span></span><span class="mode mode-moderate">Текущий тренажёр</span></li><li><b>Ролик для пресса с колен</b><span class="loadline"><span class="ex-assign">3×8–10</span><span class="reprange" title="Закончить до провисания">диапазон 6–12</span></span><span class="mode mode-moderate">Запас</span></li></ol>
     </article>
   </div>
+  <div class="week-note">Прогноз. Это последняя неделя, где и жим 70, и присед 92,5 стоят сериями. Дальше объём снимается, вес на пятнице ещё +2,5…5.</div>
+</details>
 </section>
-
-<section class="week taper">
-  <div class="week-head"><div><h2>Неделя 7</h2><p>Тяжёлые веса при снижении лишнего объёма</p></div><span class="phase">Подводка</span></div>
+<section class="week taper" id="week-7">
+  <details open>
+  <summary class="week-head"><div><h2>Неделя 7</h2><p>Прогноз весов перед тестом · объём снят, штанга тяжёлая</p></div><span class="phase">Подводка</span></summary>
   <div class="days">
-    <article class="day"><div class="day-title"><h3>Понедельник</h3><span>Тройки жима</span></div>
+    <article class="day"><div class="day-title"><h3>Понедельник</h3><span>Последний тяжёлый жим</span></div>
       <details class="session-check"><summary>Подсказка перед приседом</summary><ul><li>Одновременно направить оба колена по линии носков — не раскрывать одну сторону раньше другой.</li></ul></details>
-      <div class="block-title">Основные</div><ol class="plan"><li><b>Жим в касание</b><span class="loadline">72,5 кг · 4×3</span><span class="mode mode-hard">Тяжело, но не предел</span></li><li><b>Присед (привычное среднее положение грифа)</b><span class="loadline">80 кг · 3×4 легко</span></li></ol>
-      <div class="block-title assist">Подсобка</div><ol class="plan" start="3"><li><b>Трицепс на блоке</b><span class="loadline">2×10–12</span><span class="mode mode-easy">Легко–умеренно · заметный запас, не напрягаться</span></li><li><b>Подъёмы гантелей через стороны</b><span class="loadline">2×12–15</span><span class="mode mode-easy">Легко–умеренно · заметный запас, не напрягаться</span></li></ol>
+      <div class="block-title">Основные</div><ol class="plan"><li><b>Жим в касание</b><span class="loadline"><span class="ex-assign">72,5 кг · 3×3</span><span class="ex-alt">4-й ×3 только если три подхода с запасом; если 70 · 4×4 в отказ — 70 · 3×3</span></span><span class="mode mode-hard">Это нижняя граница теста недели 8</span></li><li><b>Присед (привычное среднее положение грифа)</b><span class="loadline"><span class="ex-assign">80 кг · 3×4 легко</span></span><span class="mode mode-easy">Тонус, не работа</span></li></ol>
+      <div class="block-title assist">Подсобка</div><ol class="plan" start="3"><li><b>Трицепс на блоке</b><span class="loadline"><span class="ex-assign">40 кг · 2×10 легко</span><span class="reprange" title="Не новые веса на подводке">диапазон 10–12</span></span><span class="mode mode-easy">Съём</span></li><li><b>Подъёмы гантелей через стороны</b><span class="loadline"><span class="ex-assign">по 4 кг · 2×12</span><span class="reprange" title="Стоп до трапеций">диапазон 12–20</span></span><span class="mode mode-easy">Съём</span></li></ol>
     </article>
-    <article class="day"><div class="day-title"><h3>Среда</h3><span>Объём снижен</span></div>
-      <div class="block-title">Основные</div><ol class="plan"><li><b>Жим с паузой 1 сек</b><span class="loadline">57,5 кг · 3×5 легко</span></li><li><b>Подтягивания</b><span class="loadline">+15 кг · 2×3</span><span class="mode mode-easy">Легко–умеренно · заметный запас, не напрягаться</span></li></ol>
-      <div class="block-title assist">Подсобка</div><ol class="plan" start="3"><li><b>Жим гантелей</b><span class="loadline">по 20 кг · 2×10</span><span class="mode mode-easy">Легко–умеренно · заметный запас, не напрягаться</span></li><li><b>Тяга нижнего блока сидя к животу</b><span class="loadline">80 кг · 2×8–10 · без натуживания</span><span class="mode mode-easy">Легко–умеренно · заметный запас, не напрягаться</span></li><li><b>Молотки</b><span class="loadline">по 12 кг · 2×10–12</span><span class="mode mode-easy">Строго без кача · заметный запас</span></li></ol>
+    <article class="day"><div class="day-title"><h3>Среда</h3><span>Легко</span></div>
+      <div class="block-title">Основные</div><ol class="plan"><li><b>Жим с паузой 1 сек</b><span class="loadline"><span class="ex-assign">55 кг · 3×5 легко</span></span><span class="mode mode-easy">Пауза чистая, не тяжесть</span></li><li><b>Подтягивания</b><span class="loadline"><span class="ex-assign">+15 кг · 2×3</span></span><span class="mode mode-easy">Не +22,5</span></li></ol>
+      <div class="block-title assist">Подсобка</div><ol class="plan" start="3"><li><b>Жим гантелей</b><span class="loadline"><span class="ex-assign">по 20 кг · 2×8 легко</span><span class="reprange" title="диапазон 8–12">диапазон 8–12</span></span><span class="mode mode-easy">Можно убрать</span></li><li><b>Тяга нижнего блока сидя к животу</b><span class="loadline"><span class="ex-assign">85 кг · 2×8 легко</span><span class="reprange" title="диапазон 8–12">диапазон 8–12</span></span><span class="mode mode-easy">Не 90</span></li><li><b>Молотки</b><span class="loadline"><span class="ex-assign">по 12 кг · 2×8</span><span class="reprange" title="диапазон 10–15">диапазон 10–15</span></span><span class="mode mode-easy">Без кача</span></li></ol>
     </article>
-    <article class="day"><div class="day-title"><h3>Пятница</h3><span>Тяжёлые двойки</span></div>
+    <article class="day"><div class="day-title"><h3>Пятница</h3><span>Взгляд на 100 кг</span></div>
       <details class="session-check"><summary>Подсказки: присед и ролик</summary><ul><li>Одновременно направить оба колена по линии носков — не раскрывать одну сторону раньше другой.</li><li>Перед роликом — лёгкая разминка плеч и бицепса.</li></ul></details>
-      <div class="block-title">Основные</div><ol class="plan"><li><b>Присед (привычное среднее положение грифа)</b><span class="loadline">97,5 кг · 3×2 · только полная глубина</span></li><li><b>Румынская тяга</b><span class="loadline">60 кг · 2×6 легко</span><span class="mode mode-easy">Легко–умеренно · заметный запас, не напрягаться</span></li></ol>
-      <div class="block-title assist">Подсобка</div><ol class="plan" start="3"><li><b>Разгибание ног</b><span class="loadline">15 кг · 2×10 легко</span><span class="mode mode-easy">Легко–умеренно · заметный запас, не напрягаться</span></li><li><b>Ролик для пресса с колен</b><span class="loadline">2×6–8 легко</span><span class="mode mode-easy">Легко–умеренно · заметный запас, не напрягаться</span></li></ol>
+      <div class="block-title">Основные</div><ol class="plan"><li><b>Присед (привычное среднее положение грифа)</b><span class="loadline"><span class="ex-assign">97,5 кг · 3×2</span><span class="ex-alt">только полная глубина; если 92,5 · 4×3 в отказ — 95 · 2×2</span></span><span class="mode mode-hard">Не тройки. Двойки с запасом на 100 × 3 через неделю</span></li><li><b>Румынская тяга</b><span class="loadline"><span class="ex-assign">60 кг · 2×6 легко</span></span><span class="mode mode-easy">Съём</span></li></ol>
+      <div class="block-title assist">Подсобка</div><ol class="plan" start="3"><li><b>Разгибание ног</b><span class="loadline"><span class="ex-assign">15 кг · 2×10 легко</span><span class="reprange" title="диапазон 8–15">диапазон 8–15</span></span><span class="mode mode-easy">Съём</span></li><li><b>Ролик для пресса с колен</b><span class="loadline"><span class="ex-assign">2×6–8 легко</span><span class="reprange" title="диапазон 6–12">диапазон 6–12</span></span><span class="mode mode-easy">Съём</span></li></ol>
     </article>
   </div>
+  <div class="week-note">Какие веса могут быть на 7-й, если 4–6 не ломались: <b>жим 72,5 · 3×3</b>, <b>присед 97,5 · 3×2</b>. Это не факт и не обязаловка. Сломался 65 или 90 — на 7-й минус 2,5…5 кг. Неделя 8 после этого: одна тройка 72,5–80 и 95–102,5.</div>
+</details>
 </section>
-
-<section class="week test">
-  <div class="week-head"><div><h2>Неделя 8</h2><p>Одна чистая тройка в каждом основном движении</p></div><span class="phase">Проверка</span></div>
+<section class="week test" id="week-8">
+  <details>
+  <summary class="week-head"><div><h2>Неделя 8</h2><p>Одна чистая тройка в каждом основном движении</p></div><span class="phase">Проверка</span></summary>
   <div class="days">
     <article class="day"><div class="day-title"><h3>Понедельник</h3><span>Тест жима</span></div>
       <details class="session-check"><summary>Подсказка перед приседом</summary><ul><li>Одновременно направить оба колена по линии носков — не раскрывать одну сторону раньше другой.</li></ul></details>
-      <div class="block-title">Разминка</div><ol class="plan"><li><b>Жим в касание</b><span class="loadline">Разминка: гриф×10 → 40×5 → 55×3 → 65×1 → последняя одиночка по выбранному весу</span></li></ol>
-      <div class="block-title">Основная тройка</div><ol class="plan" start="2"><li><b>Жим в касание</b><span class="loadline">72,5 / 75 / 77,5 / 80 кг · 1×3 — выбрать один вес</span><span class="mode mode-hard">Только одна тестовая тройка</span></li><li><b>Присед (привычное среднее положение грифа)</b><span class="loadline">60 кг · 2×3 легко</span></li></ol>
+      <div class="block-title">Разминка</div><ol class="plan"><li><b>Жим в касание</b><span class="loadline"><span class="ex-assign">Разминка: гриф×10 → 40×5 → 55×3 → 65×1 → последняя одиночка по выбранному весу</span></span></li></ol>
+      <div class="block-title">Основная тройка</div><ol class="plan" start="2"><li><b>Жим в касание</b><span class="loadline"><span class="ex-assign">72,5 / 75 / 77,5 / 80 кг · 1×3</span><span class="ex-alt">выбрать один вес</span></span><span class="mode mode-hard">Только одна тестовая тройка</span></li><li><b>Присед (привычное среднее положение грифа)</b><span class="loadline"><span class="ex-assign">60 кг · 2×3 легко</span></span></li></ol>
       <div class="block-title assist">Подсобка</div><ol class="plan" start="4"><li><b>Нет</b></li></ol>
     </article>
     <article class="day"><div class="day-title"><h3>Среда</h3><span>Можно полностью пропустить</span></div>
-      <div class="block-title">Основной вариант</div><ol class="plan"><li><b>Полный отдых</b><span class="loadline">В зал можно не приходить; это не нарушает программу.</span></li></ol>
-      <div class="block-title assist">Только по желанию</div><ol class="plan" start="2"><li><b>Подтягивания</b><span class="loadline">Свой вес · 2×5 очень легко</span><span class="mode mode-veryeasy">Очень легко · восстановительный режим</span></li><li><b>Тяга нижнего блока сидя к животу</b><span class="loadline">80 кг · 2×10 только если очень легко; иначе снизить вес или пропустить</span><span class="mode mode-veryeasy">Очень легко · восстановительный режим</span></li><li><b>Остальное убрать</b></li></ol>
+      <div class="block-title">Основной вариант</div><ol class="plan"><li><b>Полный отдых</b><span class="loadline"><span class="ex-assign">В зал можно не приходить; это не нарушает программу.</span></span></li></ol>
+      <div class="block-title assist">Только по желанию</div><ol class="plan" start="2"><li><b>Подтягивания</b><span class="loadline"><span class="ex-assign">Свой вес · 2×5 очень легко</span></span><span class="mode mode-veryeasy">Очень легко · восстановительный режим</span></li><li><b>Тяга нижнего блока сидя к животу</b><span class="loadline"><span class="ex-assign">80 кг · 2×10</span><span class="reprange" title="Минимум 8, максимум 12. При 85 кг: 10 → 11 → 12, затем вес">диапазон 8–12</span><span class="ex-alt">только если очень легко; иначе снизить вес или пропустить</span></span><span class="mode mode-veryeasy">Очень легко · восстановительный режим</span></li><li><b>Остальное убрать</b></li></ol>
     </article>
     <article class="day"><div class="day-title"><h3>Пятница</h3><span>Тест приседа</span></div>
-      <div class="block-title">Разминка</div><ol class="plan"><li><b>Присед</b><span class="loadline">Разминка: гриф×8 → 40×5 → 60×3 → 75×2 → 85×1 → последняя одиночка по выбранному весу</span></li></ol>
-      <div class="block-title">Основная тройка</div><ol class="plan" start="2"><li><b>Присед (привычное среднее положение грифа)</b><span class="loadline">95 / 97,5 / 100 / 102,5 кг · 1×3 — выбрать один вес</span><span class="mode mode-hard">Только одна тестовая тройка полной глубины</span></li></ol>
+      <div class="block-title">Разминка</div><ol class="plan"><li><b>Присед</b><span class="loadline"><span class="ex-assign">Разминка: гриф×8 → 40×5 → 60×3 → 75×2 → 85×1 → последняя одиночка по выбранному весу</span></span></li></ol>
+      <div class="block-title">Основная тройка</div><ol class="plan" start="2"><li><b>Присед (привычное среднее положение грифа)</b><span class="loadline"><span class="ex-assign">95 / 97,5 / 100 / 102,5 кг · 1×3</span><span class="ex-alt">выбрать один вес</span></span><span class="mode mode-hard">Только одна тестовая тройка полной глубины</span></li></ol>
       <div class="block-title assist">Подсобка</div><ol class="plan" start="3"><li><b>Нет</b></li></ol>
     </article>
   </div>
+</details>
 </section>
+<section class="week tech done" id="week-1">
+  <details>
+  <summary class="week-head"><div><h2>Неделя 1</h2><p>Закрепление привычного положения грифа и спокойный вход в нагрузку</p></div><span class="phase">Техническая</span></summary>
+  <div class="days">
+    <article class="day">
+      <div class="day-title"><h3>Понедельник</h3><span>Присед первым</span></div>
+      <details class="session-check"><summary>Подсказка перед приседом</summary><ul><li>Одновременно направить оба колена по линии носков — не раскрывать одну сторону раньше другой.</li></ul></details>
+      <div class="block-title">Основные</div>
+      <ol class="plan">
+        <li><b>Присед (привычное среднее положение грифа)</b><span class="loadline"><span class="ex-assign">70 кг · 3×5</span></span><span class="mode mode-hard">Ближе к тяжёлому</span></li>
+        <li><b>Жим в касание</b><span class="loadline"><span class="ex-assign">62,5 кг · 4×6</span></span><span class="mode mode-hard">Тяжелее плана</span></li>
+      </ol>
+      <div class="block-title assist">Подсобка</div>
+      <ol class="plan" start="3">
+        <li><b>Трицепс на блоке</b><span class="loadline"><span class="ex-assign">35 кг · 3 подхода: 15 / 15 / 12 повторов</span><span class="reprange" title="Минимум 10, максимум 15. Вес — только после чистых подходов на 15 с запасом">диапазон 10–15</span></span><span class="mode mode-hard">Третий подход близко к пределу</span></li>
+        <li><b>Подъёмы гантелей через стороны</b><span class="loadline"><span class="ex-assign">по 4 кг · 3 подхода: примерно 18 / 18 / 15 повторов</span><span class="reprange" title="Минимум 12, максимум 20. Стоп, если амплитуда падает или плечи поднимаются">диапазон 12–20</span></span><span class="mode mode-hard">Следить за одинаковой амплитудой</span></li>
+      </ol>
+    </article>
+    <article class="day">
+      <div class="day-title"><h3>Среда</h3><span>Верх тела</span></div>
+      <div class="block-title">Основные</div>
+      <ol class="plan">
+        <li><b>Жим с паузой 1 сек</b><span class="loadline"><span class="ex-assign">50 кг · 4×8 · пауза 1 сек</span></span><span class="mode mode-hard">Тяжелее плана</span></li>
+        <li><b>Подтягивания</b><span class="loadline"><span class="ex-assign">+20 кг · 2×3 → +15 кг · 2×3</span></span><span class="mode mode-hard">+20 кг почти предельно</span></li>
+      </ol>
+      <div class="block-title assist">Подсобка</div>
+      <ol class="plan" start="3">
+        <li><b>Жим гантелей</b><span class="loadline"><span class="ex-assign">по 20 кг · 3×12</span><span class="reprange" title="Минимум 8, максимум 12. Тяжёлые подходы на 6 повторов не использовать">диапазон 8–12</span></span><span class="mode mode-moderate">Умеренно · запас сохранялся</span></li>
+        <li><b>Тяга нижнего блока сидя к животу</b><span class="loadline"><span class="ex-assign">80 кг · 2×12 → 85 кг · 1×12</span><span class="reprange" title="Минимум 8, максимум 12. При 85 кг: 10 → 11 → 12, затем вес">диапазон 8–12</span></span><span class="mode mode-hard">85 кг ближе к тяжёлому</span></li>
+        <li><b>Молотки</b><span class="loadline"><span class="ex-assign">по 12 кг · 3×12</span><span class="reprange" title="Минимум 10, максимум 15 при 12 кг. После чистых 3×15 — 14 кг около 8 повторов">диапазон 10–15</span></span><span class="mode mode-hard">2–3-й подходы трудные, сильное закисление</span></li>
+      </ol>
+    </article>
+    <article class="day">
+      <div class="day-title"><h3>Пятница</h3><span>Фактический результат</span></div>
+      <details class="session-check"><summary>Подсказки: присед и ролик</summary><ul><li>Одновременно направить оба колена по линии носков — не раскрывать одну сторону раньше другой.</li><li>Перед роликом — лёгкая разминка плеч и бицепса.</li></ul></details>
+      <div class="block-title">Основные</div>
+      <ol class="plan">
+        <li><b>Присед</b><span class="loadline"><span class="ex-assign">77,5 кг · 4×5</span><span class="ex-alt">Разминка: 20 кг × 8 → 50 кг × 5 → 60 кг × 4 → 67,5 кг × 3</span></span><span class="mode mode-hard">Средне, ближе к тяжёлому</span></li>
+        <li><b>Румынская тяга</b><span class="loadline"><span class="ex-assign">65 кг · 3×8</span></span><span class="mode mode-hard">Умеренно тяжело, но не близко к пределу</span></li>
+      </ol>
+      <div class="block-title assist">Подсобка</div>
+      <ol class="plan" start="3">
+        <li><b>Разгибание ног</b><span class="loadline"><span class="ex-assign">15 кг · 3×9</span><span class="reprange" title="Минимум 8, максимум 15. После чистых 3×15 с запасом можно пробовать 25 кг на 8–10, не гнаться за 20 повторами">диапазон 8–15</span></span><span class="mode mode-hard">Текущий тренажёр · умеренно тяжело</span></li>
+        <li><b>Ролик для пресса с колен</b><span class="loadline"><span class="ex-assign">3×8</span><span class="reprange" title="Минимум 6, максимум 12. Закончить до потери положения корпуса">диапазон 6–12</span></span><span class="mode mode-hard">Умеренно тяжело</span></li>
+      </ol>
+    </article>
+  </div>
+</details>
+</section>
+<section class="week load done" id="week-2">
+  <details>
+  <summary class="week-head"><div><h2>Неделя 2</h2><p>Первое плановое повышение нагрузки</p></div><span class="phase">Нагрузка</span></summary>
+  <div class="days">
+    <article class="day"><div class="day-title"><h3>Понедельник</h3><span>Жим тяжёлый</span></div>
+      <details class="session-check"><summary>Подсказка перед приседом</summary><ul><li>Одновременно направить оба колена по линии носков — не раскрывать одну сторону раньше другой.</li></ul></details>
+      <div class="block-title">Основные</div><ol class="plan"><li><b>Жим в касание</b><span class="loadline"><span class="ex-assign">60 кг · 3×6</span></span><span class="mode mode-moderate">Выполнено · без боли</span></li><li><b>Присед (привычное среднее положение грифа)</b><span class="loadline"><span class="ex-assign">75 кг · 4×6</span></span><span class="mode mode-moderate">Выполнено · последние подходы чистые</span></li></ol>
+      <div class="block-title assist">Подсобка</div><ol class="plan" start="3"><li><b>Трицепс на блоке</b><span class="loadline"><span class="ex-assign">35 кг · 3×12</span><span class="reprange" title="Минимум 10, максимум 15. Вес — только после чистых подходов на 15 с запасом">диапазон 10–15</span></span><span class="mode mode-moderate">Выполнено · жжение, не предел</span></li><li><b>Подъёмы гантелей через стороны</b><span class="loadline"><span class="ex-assign">по 4 кг · 3×18</span><span class="reprange" title="Минимум 12, максимум 20. Стоп, если амплитуда падает или плечи поднимаются">диапазон 12–20</span></span><span class="mode mode-moderate">Выполнено · одинаковая амплитуда</span></li></ol>
+    </article>
+    <article class="day"><div class="day-title"><h3>Среда</h3><span>Объём</span></div>
+      <div class="block-title">Основные</div><ol class="plan"><li><b>Жим с паузой 1 сек</b><span class="loadline"><span class="ex-assign">50 кг · 3×8 · пауза 1 сек</span></span><span class="mode mode-moderate">Выполнено · без боли, 3-й зап. 0–1</span></li><li><b>Подтягивания</b><span class="loadline"><span class="ex-assign">+15 кг · 4 / 4 / 3</span></span><span class="mode mode-moderate">Выполнено · 2-й и 3-й предельные</span></li></ol>
+      <div class="block-title assist">Подсобка</div><ol class="plan" start="3"><li><b>Жим гантелей</b><span class="loadline"><span class="ex-assign">по 20 кг · 3×12</span><span class="reprange" title="Минимум 8, максимум 12. Тяжёлые подходы на 6 повторов не использовать">диапазон 8–12</span></span><span class="mode mode-moderate">Выполнено · без симптомов, умеренно</span></li><li><b>Тяга нижнего блока сидя к животу</b><span class="loadline"><span class="ex-assign">85 кг · 3×10</span><span class="reprange" title="Минимум 8, максимум 12. При 85 кг: 10 → 11 → 12, затем вес">диапазон 8–12</span></span><span class="mode mode-moderate">Выполнено · чистый корпус</span></li><li><b>Молотки</b><span class="loadline"><span class="ex-assign">по 12 кг · 3×10</span><span class="reprange" title="Минимум 10, максимум 15 при 12 кг. После чистых 3×15 — 14 кг около 8 повторов">диапазон 10–15</span></span><span class="mode mode-moderate">Выполнено · строго без кача</span></li></ol>
+    </article>
+    <article class="day"><div class="day-title"><h3>Пятница</h3><span>Тяжёлый присед</span></div>
+      <details class="session-check"><summary>Подсказки: присед и ролик</summary><ul><li>Одновременно направить оба колена по линии носков — не раскрывать одну сторону раньше другой.</li><li>Перед роликом — лёгкая разминка плеч и бицепса.</li></ul></details>
+      <div class="block-title">Основные</div><ol class="plan"><li><b>Присед (привычное среднее положение грифа)</b><span class="loadline"><span class="ex-assign">82,5 кг · 4×4</span></span><span class="mode mode-moderate">Выполнено · 4-й без замедлений</span></li><li><b>Румынская тяга</b><span class="loadline"><span class="ex-assign">67,5 кг · 3×7</span></span><span class="mode mode-moderate">Выполнено · уверенный запас</span></li></ol>
+      <div class="block-title assist">Подсобка</div><ol class="plan" start="3"><li><b>Разгибание ног</b><span class="loadline"><span class="ex-assign">15 кг · 3×10</span><span class="reprange" title="Минимум 8, максимум 15. После чистых 3×15 с запасом можно пробовать 25 кг на 8–10, не гнаться за 20 повторами">диапазон 8–15</span></span><span class="mode mode-moderate">Выполнено · жжение в 3-м</span></li><li><b>Ролик для пресса с колен</b><span class="loadline"><span class="ex-assign">3×8</span><span class="reprange" title="Минимум 6, максимум 12. Закончить до потери положения корпуса">диапазон 6–12</span></span><span class="mode mode-moderate">Выполнено · мышечная усталость плеч</span></li></ol>
+    </article>
+  </div>
+</details>
+</section>
+
+
+
+
+
+
+
+
+
+<div class="quick">
+  <div><b>Как читать</b><span>«62,5 кг · 4×6» = 4 подхода по 6. Зелёный бейдж напротив веса — мин. и макс. повторов подсобки</span></div>
+  <div><b>Отдых</b><span>Основные 3–5 мин; подсобка 1–2 мин</span></div>
+  <div><b>Основные движения</b><span>Без отказа до 8-й недели</span></div>
+  <div><b>Вес тела</b><span>Цель: 81–82 кг к концу цикла</span></div>
+</div>
+
+<details class="program-rules"><summary>Общие правила программы</summary>
+  <div class="rules">
+    <article class="rule"><h3>Два варианта жима</h3><ul><li><b>Понедельник:</b> жим в касание — опустить под контролем, коснуться груди и сразу жать вверх, без отбива.</li><li><b>Среда:</b> жим с неподвижной паузой 1 секунду на груди в каждом повторении.</li><li><b>Тест недели 8:</b> жим в касание, как по понедельникам.</li><li><b>Если среда просто тяжелее обычного, но техника чистая:</b> сделать 3 подхода жима с паузой и разрешается жим гантелей по 20 кг · 2×8 легко.</li><li><b>Если не выдерживаются повторы или пауза, пришлось снизить штангу либо появилась боль:</b> жим гантелей убрать. Тяжёлые подходы гантелей по 6 повторений как «страховку» не использовать.</li></ul></article>
+    <article class="rule"><h3>Положение грифа в приседе</h3><ul><li>Использовать привычное среднее положение: ниже верхушки трапеций, но без принудительного low-bar на задних дельтах.</li><li>До снятия штанги свести и напрячь верх спины, создать устойчивую мышечную полку.</li><li>Выбрать положение на разминке и сохранять его во всех рабочих подходах; не перекатывать гриф ниже.</li><li>Главные критерии: гриф не давит на кость, не съезжает, кисти не держат его вес, сохраняется полная глубина.</li></ul></article>
+    <article class="rule"><h3>Горизонтальная тяга</h3><ul><li>Тяга нижнего блока сидя к животу.</li><li>Фактический последний результат: 85 кг · 3×10 с уверенным запасом. Среда недели 3: 85 кг · 3×12. После чистых 3×12 — повышение веса.</li><li>Та же нейтральная рукоять, корпус неподвижен; после чистых 3×11 выполнить 3×12, и только затем повышать вес.</li><li>Штангу в наклоне в этом цикле не используем, чтобы не перегружать поясницу.</li></ul></article>
+    <article class="rule"><h3>Подъёмы через стороны</h3><ul><li>Текущий вес: гантели по 4 кг.</li><li>Локти слегка согнуты; заранее выбрать одинаковую амплитуду немного ниже или до уровня плеч.</li><li>Закончить подход, когда амплитуда сокращается или начинается пожимание плечами.</li></ul></article>
+    <article class="rule"><h3>Упражнение на корпус</h3><ul><li>Ролик для пресса с колен.</li><li>Ягодицы и пресс напряжены, поясница не провисает.</li><li>Работа: 3×6–12 с ясным запасом; закончить до потери положения корпуса.</li></ul></article>
+    <article class="rule"><h3>Правило всей подсобки</h3><ul><li>Сначала добавлять чистые повторы внутри диапазона.</li><li>Вес повышать только после верхней границы во всех подходах, когда последний подход остаётся уверенным и не предельным.</li><li>Если новый вес ломает технику или опускает ниже диапазона — вернуться к прежнему.</li><li>Цифры на разных блочных тренажёрах напрямую не сравнивать: прогрессию вести отдельно для конкретного тренажёра.</li><li><b>Рабочие диапазоны:</b> трицепс 10–15; боковые подъёмы 12–20; жим гантелей 8–12; тяга нижнего блока 8–12; молотки 10–15 при 12 кг (14 кг — около 8); разгибание ног 8–15; ролик 6–12.</li><li>Бейдж напротив веса и подходов показывает минимум и максимум этого коридора. Назначение дня может быть уже внутри диапазона; выходить за максимум и гнаться за весом нельзя.</li></ul></article>
+    <article class="rule"><h3>Режимы подсобки без подсчётов</h3><ul><li><b>Легко:</b> вес ощущается простым, утомление почти не накапливается.</li><li><b>Умеренно:</b> мышца работает, но все повторы уверенные и без натуживания.</li><li><b>Умеренно тяжело:</b> последние повторы заметно трудные, но техника и амплитуда не меняются.</li><li><b>Предела и отказа в подсобке нет:</b> останавливай подход до раскачки, сокращения амплитуды или вынужденного повторения.</li></ul></article>
+    <article class="rule"><h3>Молотки без гонки за весом</h3><ul><li><b>Строгая техника:</b> корпус неподвижен, подъём чисто силой рук, без кача и инерции.</li><li>12 кг: работать до чистых 3×15; последний подход не должен быть предельным.</li><li>Только затем попробовать 14 кг примерно на 3×8.</li><li>Если 3×8 чисто не получается — остаться на 12 кг. Переходные тяжёлые подходы не нужны.</li></ul></article>
+    <article class="rule"><h3>Почему программа волновая</h3><ul><li>Недели 1–3 — первая восходящая волна.</li><li>Неделя 4 — вход во вторую волну (медицинский покой 1–6 сентября заменил разгрузку).</li><li>Недели 5–7 — вторая, более тяжёлая волна.</li><li>Неделя 8 — снятие объёма и проверка одной чистой тройки.</li></ul></article>
+    <article class="rule"><h3>Ориентир, а не гарантия</h3><ul><li>Жим: наиболее реалистично 77,5 кг × 3; осторожный вариант 75 кг × 3; сильный результат 80 кг × 3.</li><li>Присед при устойчивом привычном положении грифа и полной глубине: ориентир 97,5–100 кг × 3; сильный результат 102,5 кг × 3.</li><li>Конкретный тестовый вес выбирается только по ощущениям, скорости и технике недели 7.</li></ul></article>
+  </div>
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <section>
   <div class="rules">
@@ -394,18 +544,16 @@ ol.plan{margin:0;padding-left:21px}.plan li{padding:5px 0}.plan b{color:#14243d}
     <tbody>
       <tr><td class="wk">1</td><td><span class="cell-main">62,5 · 4×6 выполнено</span></td><td><span class="cell-main">70 · 3×5</span></td><td><span class="cell-main">50 · 4×8 выполнено</span></td><td><span class="cell-main">+20 · 2×3 → +15 · 2×3</span></td><td><span class="cell-main">77,5 · 4×5 выполнено</span></td><td><span class="cell-main">65 · 3×8 выполнено</span></td></tr>
       <tr><td class="wk">2</td><td><span class="cell-main">60 · 3×6 выполнено</span><span class="cell-sub">без боли</span></td><td><span class="cell-main">75 · 4×6 выполнено</span></td><td><span class="cell-main">50 · 3×8 выполнено</span><span class="cell-sub">без боли, зап. 0–1</span></td><td><span class="cell-main">+15 · 4/4/3 выполнено</span></td><td><span class="cell-main">82,5 · 4×4 выполнено</span><span class="cell-sub">хорошая скорость</span></td><td><span class="cell-main">67,5 · 3×7 выполнено</span></td></tr>
-      <tr><td class="wk">3</td><td><span class="cell-main">62,5 · 4×5</span></td><td><span class="cell-main">80 · 4×6</span></td><td><span class="cell-main">52,5 · до 4×7</span></td><td><span class="cell-main">+20–22,5 · 3×2</span><span class="cell-sub">тяжёлая поддержка</span></td><td><span class="cell-main">87,5 · 5×3</span></td><td><span class="cell-main">67,5–70 · 3×6–8</span></td></tr>
-      <tr class="row-deload"><td class="wk">4</td><td><span class="cell-main">55 · 3×5</span><span class="cell-sub">разгрузка</span></td><td><span class="cell-main">65 · 3×5</span></td><td><span class="cell-main">45 · 3×6</span></td><td><span class="cell-main">Свой вес · 2×6</span></td><td><span class="cell-main">70 · 3×3</span></td><td><span class="cell-main">55 · 2×6–8</span></td></tr>
-      <tr><td class="wk">5</td><td><span class="cell-main">67,5 · 4×5</span></td><td><span class="cell-main">80 · 4×6</span></td><td><span class="cell-main">55 · 4×7</span></td><td><span class="cell-main">+22,5 · 3×3</span></td><td><span class="cell-main">87,5 · 4×4</span></td><td><span class="cell-main">70 · 3×6–8</span></td></tr>
-      <tr><td class="wk">6</td><td><span class="cell-main">70 · 4×4</span></td><td><span class="cell-main">82,5 · 4×5</span></td><td><span class="cell-main">57,5 · 4×6</span></td><td><span class="cell-main">+22,5 · 3×3</span></td><td><span class="cell-main">92,5 · 4×3</span></td><td><span class="cell-main">72,5 · 3×6–8</span></td></tr>
-      <tr><td class="wk">7</td><td><span class="cell-main">72,5 · 4×3</span></td><td><span class="cell-main">80 · 3×4</span></td><td><span class="cell-main">57,5 · 3×5</span></td><td><span class="cell-main">+15 · 2×3</span></td><td><span class="cell-main">97,5 · 3×2</span></td><td><span class="cell-main">60 · 2×6</span></td></tr>
+      <tr><td class="wk">3</td><td><span class="cell-main">62,5 · 4×5 выполнено</span><span class="cell-sub">4-й подход к пределу на 4–5</span></td><td><span class="cell-main">80 · 4×6 выполнено</span><span class="cell-sub">ниже параллели</span></td><td><span class="cell-main">52,5 · 4×7 выполнено</span><span class="cell-sub">3–4 запас 1</span></td><td><span class="cell-main">+22,5×2 → +20 · 2×2</span><span class="cell-sub">к пределу</span></td><td><span class="cell-main">87,5 · 5×3 выполнено</span><span class="cell-sub">1–4 запас 1–2</span></td><td><span class="cell-main">70 · 3×6 выполнено</span></td></tr>
+      <tr><td class="wk">4</td><td><span class="cell-main">65 · 4×5</span><span class="cell-sub">вход во 2-ю волну</span></td><td><span class="cell-main">82,5 · 4×5</span></td><td><span class="cell-main">55 · 3×6</span><span class="cell-sub">4-й только с запасом</span></td><td><span class="cell-main">+20 · 3×2</span><span class="cell-sub">3-й с запасом</span></td><td><span class="cell-main">87,5 · 4×4</span></td><td><span class="cell-main">70 · 3×6–8</span></td></tr>
+      <tr><td class="wk">5</td><td><span class="cell-main">67,5 · 4×4</span><span class="cell-sub">прогноз</span></td><td><span class="cell-main">82,5 · 4×6</span></td><td><span class="cell-main">55 · 4×6</span></td><td><span class="cell-main">+22,5 · 3×3</span></td><td><span class="cell-main">90 · 4×3</span></td><td><span class="cell-main">72,5 · 3×6–8</span></td></tr>
+      <tr><td class="wk">6</td><td><span class="cell-main">70 · 4×4</span><span class="cell-sub">прогноз</span></td><td><span class="cell-main">85 · 4×5</span></td><td><span class="cell-main">57,5 · 3×6</span></td><td><span class="cell-main">+22,5 · 3×3</span></td><td><span class="cell-main">92,5 · 4×3</span></td><td><span class="cell-main">75 · 3×6</span></td></tr>
+      <tr><td class="wk">7</td><td><span class="cell-main">72,5 · 3×3</span><span class="cell-sub">прогноз · низ теста</span></td><td><span class="cell-main">80 · 3×4 легко</span></td><td><span class="cell-main">55 · 3×5 легко</span></td><td><span class="cell-main">+15 · 2×3</span></td><td><span class="cell-main">97,5 · 3×2</span><span class="cell-sub">взгляд на 100</span></td><td><span class="cell-main">60 · 2×6 легко</span></td></tr>
       <tr class="row-test"><td class="wk">8</td><td><span class="cell-main">72,5–80 · 1×3</span><span class="cell-sub">один выбранный вес, не все</span></td><td><span class="cell-main">60 · 2×3</span></td><td><span class="cell-main">Нет</span></td><td><span class="cell-main">Свой вес · 2×5</span><span class="cell-sub">по желанию</span></td><td><span class="cell-main">95–102,5 · 1×3</span><span class="cell-sub">один выбранный вес, не все</span></td><td><span class="cell-main">Нет</span></td></tr>
     </tbody>
   </table></div>
 </section>
 
 <div class="footer">Основные движения выполняются без отказа до тестовой недели. Подсобка — с ясным запасом, без предельных повторов и гонки за весом. Карта прогресса дана в конце для быстрого контроля цикла.</div>
-</div>
-<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v3d52b47920f24c319d37e2661827c42b1787588026925" integrity="sha512-d9sL6GJLXn6fInD1+TVXhTcQOsmxeHfmHAvwGDIxp5TO+uo1fiWW7mHomMj4MLRlCsJDTqXzWLHJFFlPCEIj/A==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f"}' crossorigin="anonymous"></script>
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a345ddafae4bf147',t:'MTc4ODI4MjM5MA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</div></body>
 </html>
