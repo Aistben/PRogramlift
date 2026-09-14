@@ -1,0 +1,838 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Цикл A — объёмный, 6 недель (черновик)</title>
+<style>
+:root{
+  --bg:#f2f5f9;--paper:#fff;--ink:#172033;--muted:#657084;--line:#d9e0e9;
+  --navy:#172b4d;--blue:#2f66a7;--blue-soft:#edf5ff;--green:#18715b;--green-soft:#eaf8f2;
+  --amber:#99600a;--amber-soft:#fff6e5;--red:#a43d3d;--red-soft:#fff0f0;--violet:#644fa3;--violet-soft:#f2efff;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.48 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
+.page{max-width:1180px;margin:auto;padding:26px 18px 60px}
+
+.draft{margin:0 0 16px;padding:14px 18px;border-radius:14px;background:repeating-linear-gradient(135deg,#fff6e5 0 14px,#fffdf6 14px 28px);border:2px dashed #d88c16;color:#7a4e06}
+.draft b{display:block;font-size:16px;margin-bottom:3px}
+.draft span{font-size:13px;line-height:1.45}
+
+.hero{background:linear-gradient(145deg,#12243f 0%,#1b3d68 55%,#245a7a 100%);color:#fff;border-radius:20px;padding:22px 24px 18px;box-shadow:0 16px 36px rgba(18,36,63,.22)}
+h1{margin:0;font-size:32px;letter-spacing:-.03em;line-height:1.05;font-weight:800}
+.hero-goal{margin:8px 0 0;max-width:52em;color:#d5e4f5;font-size:15px;line-height:1.45;font-weight:500}
+.hero-quote{margin:14px 0 0;padding:12px 15px;border-radius:12px;background:rgba(255,255,255,.08);border-left:4px solid #6fa8dc;color:#e8f1fb;font-size:14px;font-style:italic;line-height:1.5}
+.hero-aims{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0;padding:0;list-style:none}
+.hero-aims li{padding:8px 12px;border-radius:12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);font-size:14px;line-height:1.3;color:#e8f1fb}
+.hero-aims b{display:block;margin-bottom:2px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#b7c9dd;font-weight:800}
+
+.quick{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin:17px 0}
+.quick>div{background:#fff;border:1px solid var(--line);border-radius:13px;padding:13px 14px}
+.quick b{display:block;color:var(--navy);margin-bottom:2px}
+.quick span{color:var(--muted);font-size:13px}
+
+.nav{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 18px}
+.nav a{padding:7px 12px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--navy);text-decoration:none;font-size:12px;font-weight:800}
+.nav a:hover{background:var(--blue-soft);border-color:#a9cbee}
+
+.sec{margin:26px 0}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;margin:0 0 12px}
+.sec-head h2{margin:0;color:var(--navy);font-size:26px;letter-spacing:-.02em}
+.sec-head p{margin:0;color:var(--muted);font-size:12px;text-align:right;max-width:32em}
+
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:17px 19px;box-shadow:0 5px 18px rgba(30,48,76,.05)}
+.card + .card{margin-top:12px}
+.card h3{margin:0 0 9px;color:var(--navy);font-size:19px}
+.card h4{margin:14px 0 6px;color:var(--navy);font-size:15px}
+.card p{margin:7px 0}
+.card ul{margin:7px 0;padding-left:20px;color:#43506a}
+.card li{margin:5px 0}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+
+.table-wrap{overflow:auto;background:#fff;border:1px solid var(--line);border-radius:15px;box-shadow:0 5px 18px rgba(30,48,76,.05)}
+table{border-collapse:separate;border-spacing:0;width:100%;min-width:620px}
+th{background:var(--navy);color:#fff;text-align:left;padding:11px 12px;font-size:12px;letter-spacing:.02em;font-weight:800}
+td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top;font-size:14px}
+tr:last-child td{border-bottom:0}
+td.num{white-space:nowrap;font-variant-numeric:tabular-nums}
+.hi{background:var(--blue-soft)}
+.hi td{font-weight:800}
+.row-sw td{background:#fff6e5}
+.row-mut td{background:#f4f6f9;color:#5b6678}
+
+.week{margin:16px 0;background:var(--paper);border:1px solid var(--line);border-radius:19px;overflow:hidden;box-shadow:0 6px 20px rgba(30,48,76,.055)}
+.week-head{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:15px 20px;background:var(--navy);color:#fff}
+.week-head h3{margin:0;font-size:22px}
+.week-head p{margin:3px 0 0;color:#dbe8f8;font-size:13px}
+.phase{padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.15);font-size:12px;font-weight:850;white-space:nowrap}
+.week.w1 .week-head{background:linear-gradient(90deg,#235584,#3477b6)}
+.week.w2 .week-head{background:linear-gradient(90deg,#17604e,#22916e)}
+.week.w3 .week-head{background:linear-gradient(90deg,#805006,#b97b17)}
+.week.w4 .week-head{background:linear-gradient(90deg,#514087,#7560b9)}
+.week.w5 .week-head{background:linear-gradient(90deg,#863333,#bd4c4c)}
+.week.w6 .week-head{background:linear-gradient(90deg,#4f5a6c,#727d8d)}
+
+.days{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.day{padding:17px;border-right:1px solid var(--line)}
+.day:last-child{border-right:0}
+.day-title{display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--line);padding-bottom:8px;margin-bottom:10px}
+.day-title h4{margin:0;color:var(--navy);font-size:19px}
+.day-title span{font-size:10px;font-weight:850;text-transform:uppercase;color:var(--muted);letter-spacing:.06em}
+.block-title{font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;color:var(--blue);margin:11px 0 3px}
+.block-title.assist{color:var(--green)}
+ol.plan{margin:0;padding-left:20px}
+.plan li{padding:7px 0;border-bottom:1px solid #eef2f6}
+.plan li:last-child{border-bottom:0}
+.plan b{color:#14243d}
+.loadline{display:flex;align-items:baseline;justify-content:space-between;gap:8px;flex-wrap:wrap;color:#1a2a44;font-size:14px;font-weight:650;margin-top:3px}
+.ex-note{display:block;color:var(--muted);font-size:11px;font-weight:500;margin-top:2px;width:100%}
+.reprange{margin-left:auto;flex:0 0 auto;padding:2px 8px;border-radius:999px;background:#f3faf6;color:#1a6b58;border:1px solid #d5ebe2;font-size:10px;font-weight:850;white-space:nowrap}
+.mode{display:inline-block;margin-top:4px;padding:3px 7px;border-radius:999px;font-size:10px;font-weight:900}
+.mode-easy{background:#edf1f5;color:#526070}
+.mode-moderate{background:var(--blue-soft);color:var(--blue)}
+.mode-hard{background:var(--amber-soft);color:var(--amber)}
+.mode-new{background:var(--violet-soft);color:var(--violet)}
+.week-note{margin:0 17px 17px;padding:11px 14px;border-radius:10px;background:var(--blue-soft);border-left:5px solid var(--blue);font-size:13px}
+.week-note.warn{background:var(--amber-soft);border-color:#d88c16}
+.week-note.new{background:var(--violet-soft);border-color:var(--violet)}
+
+.bars{margin:4px 0}
+.bar-row{display:grid;grid-template-columns:54px minmax(70px,1fr) 132px;align-items:center;gap:9px;margin:7px 0}
+.bar-wk{font-size:11px;font-weight:900;color:#536076}
+.bar-track{height:13px;border-radius:999px;background:#eef1f5;overflow:hidden}
+.bar-fill{height:100%;min-width:3px;border-radius:999px;background:var(--blue)}
+.bar-fill.f0{background:#9fb3c8}
+.bar-fill.peak{background:var(--amber)}
+.bar-val{font-size:11px;color:#425067;white-space:nowrap}
+.bar-val b{color:var(--ink)}
+
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin:9px 0 0}
+.chip{padding:5px 10px;border-radius:999px;font-size:11px;font-weight:800;background:#eef3f8;color:#43536b;border:1px solid #dde5ee}
+.chip.ok{background:var(--green-soft);color:var(--green);border-color:#c9e6da}
+.chip.no{background:var(--red-soft);color:var(--red);border-color:#f0cfcf}
+
+.callout{margin:14px 0;padding:14px 16px;border-radius:13px;background:var(--green-soft);border-left:5px solid var(--green)}
+.callout.warn{background:var(--amber-soft);border-color:#d88c16}
+.callout.danger{background:var(--red-soft);border-color:var(--red)}
+.callout.info{background:var(--blue-soft);border-color:var(--blue)}
+.callout b{color:var(--navy)}
+
+.gripmap{margin:10px 0}
+.grip-row{display:grid;grid-template-columns:190px 1fr 96px;align-items:center;gap:10px;margin:7px 0}
+.grip-name{font-size:13px;font-weight:700;color:#2a3850}
+.grip-name small{display:block;color:var(--muted);font-size:10px;font-weight:500}
+.grip-track{position:relative;height:22px;background:linear-gradient(90deg,#eaf1f8,#f6f9fc);border:1px solid #e2e9f1;border-radius:6px}
+.grip-mark{position:absolute;top:-3px;bottom:-3px;width:5px;border-radius:3px;background:var(--blue)}
+.grip-mark.me{background:var(--red)}
+.grip-mark.pick{background:var(--violet);width:7px}
+.grip-val{font-size:12px;color:#425067;text-align:right;font-variant-numeric:tabular-nums}
+
+.steps{counter-reset:s;margin:10px 0;padding:0;list-style:none}
+.steps li{counter-increment:s;position:relative;padding:9px 0 9px 38px;border-bottom:1px solid #eef2f6}
+.steps li:last-child{border-bottom:0}
+.steps li::before{content:counter(s);position:absolute;left:0;top:8px;width:26px;height:26px;border-radius:50%;background:var(--navy);color:#fff;font-size:13px;font-weight:900;display:flex;align-items:center;justify-content:center}
+
+.footer{margin-top:26px;text-align:center;color:var(--muted);font-size:12px}
+
+@media(max-width:900px){
+ .grid2,.grid3{grid-template-columns:1fr}
+ .quick{grid-template-columns:repeat(2,1fr)}
+ .days{grid-template-columns:1fr}
+ .day{border-right:0;border-bottom:1px solid var(--line)}
+ .day:last-child{border-bottom:0}
+ .sec-head{flex-direction:column;align-items:flex-start}
+ .sec-head p{text-align:left}
+ .grip-row{grid-template-columns:150px 1fr 76px}
+}
+@media(max-width:540px){
+ .page{padding:13px 9px 38px}
+ .hero{padding:20px 17px}
+ h1{font-size:25px}
+ .quick{grid-template-columns:1fr}
+ .bar-row{grid-template-columns:48px minmax(60px,1fr);gap:7px}
+ .bar-val{grid-column:2;white-space:normal;margin-top:-4px}
+ .grip-row{grid-template-columns:1fr 64px}
+ .grip-track{display:none}
+}
+@media print{
+ body{background:#fff;font-size:10.5px}
+ .page{max-width:none;padding:0}
+ .hero,.card,.table-wrap,.week{box-shadow:none}
+ .week{break-inside:avoid;page-break-inside:avoid}
+ .nav,.footer{display:none}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="draft">
+  <b>Черновик. В работу не введён.</b>
+  <span>Цикл A начинается после завершения текущей 8-недельной программы (сейчас неделя 4 из 8) и её тестовой недели. Все веса рассчитаны от текущих максимумов и подлежат проверке на первой тренировке. Действующий план — <b>01_Программа_8_недель.html</b>.</span>
+</div>
+
+<header class="hero" id="top">
+  <h1>Цикл A — объёмный, 6 недель</h1>
+  <p class="hero-goal">Подготовительный цикл. Задача — не показать результат, а нарастить объём работы, выявить отстающую фазу движения и подготовить материал для силового цикла B. Веса на штанге временно падают, работа растёт.</p>
+  <p class="hero-quote">«Жим и присед — непростые движения, никогда не знаешь, когда будет застой или мёртвая точка. На объёмных тренировках хочется стать сильнее, укрепить слабые звенья, и через какое-то время проверить силу. На моём уровне прогресс будет идти от объёма, потому что силовые на разы рано или поздно упрутся в стену. Хочу заранее подготовиться, чтобы эту стену пробить.»</p>
+  <ul class="hero-aims">
+    <li><b>Формат</b>Пн · Ср · Пт, 1:00–1:40</li>
+    <li><b>Жим</b>3 раза в неделю, 3 режима</li>
+    <li><b>Присед</b>2 раза в неделю</li>
+    <li><b>Тоннаж жима</b>4 040 → 6 215 (+54%)</li>
+    <li><b>Интенсивность</b>не выше 75% ни в один день</li>
+  </ul>
+</header>
+
+<div class="quick">
+  <div><b>Длительность</b><span>6 недель + неделя съёма</span></div>
+  <div><b>Шаг штанги</b><span>2,5 кг · прогрессия двойная</span></div>
+  <div><b>Ротация подсобки</b><span>все позиции на неделе 4</span></div>
+  <div><b>Главный результат</b><span>карта слабых мест</span></div>
+</div>
+
+<nav class="nav">
+  <a href="#logic">Логика цикла</a>
+  <a href="#grips">Хваты</a>
+  <a href="#weeks">Недели 1–6</a>
+  <a href="#progress">Прогрессия</a>
+  <a href="#tonnage">Тоннаж</a>
+  <a href="#accessory">Подсобка</a>
+  <a href="#recovery">Восстановление</a>
+  <a href="#map">Карта слабых мест</a>
+  <a href="#rules">Правила</a>
+  <a href="#next">Цикл B</a>
+</nav>
+
+<!-- ЛОГИКА -->
+<section class="sec" id="logic">
+  <div class="sec-head">
+    <h2>Логика цикла</h2>
+    <p>Почему три жимовых дня, почему веса падают и почему подсобка ротируется</p>
+  </div>
+
+  <div class="grid3">
+    <div class="card">
+      <h3>Три жима вместо двух</h3>
+      <p>Жим стоит в понедельник, среду и пятницу в трёх разных режимах. Это работающая часть DUP — смена задачи от сессии к сессии.</p>
+      <p>Третий день <b>лёгкий</b>, а не тяжёлый: 62–65% от максимума, 8 минут времени. Так частота растёт, а стоимость восстановления почти нет.</p>
+      <div class="chips">
+        <span class="chip ok">Шейко: жим 3 дня @60–67%</span>
+        <span class="chip ok">Texas Method: среда — восстановление</span>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Веса вниз, работа вверх</h3>
+      <p>Понедельничный жим падает с 62,5 до 55 кг, присед с 87,5 до 77,5. Это не откат, а смена задачи: цикл A работает объёмом.</p>
+      <p>Интенсивность не превышает 75% ни в один день. В неделе 3 текущего цикла понедельник шёл на 86% с четвёртым подходом на грани — именно такие подходы стоят дорого.</p>
+    </div>
+    <div class="card">
+      <h3>Подсобка ротируется</h3>
+      <p>Все восемь позиций меняются на неделе 4, но разными способами — угол, профиль сопротивления, зона повторов, акцент мышц, антагонист.</p>
+      <p>Причина — аккомодация: стандартное упражнение со стандартной нагрузкой перестаёт давать эффект. Westside ротирует вариации каждые 1–3 недели, Шейко держит около 60% объёма в вариациях.</p>
+    </div>
+  </div>
+
+  <div class="callout info">
+    <b>Что цикл A не делает.</b> Он не растит максимум и не проверяет силу. Проверка — в цикле B. Если на неделе 3 захочется выйти на разовый подход «посмотреть», это будет означать, что цикл выполняется неправильно.
+  </div>
+</section>
+
+<!-- ХВАТЫ -->
+<section class="sec" id="grips">
+  <div class="sec-head">
+    <h2>Карта хватов</h2>
+    <p>Измеряется между указательными пальцами. Биакромиальная ширина ≈ 42 см</p>
+  </div>
+
+  <div class="card">
+    <div class="gripmap">
+      <div class="grip-row">
+        <div class="grip-name">Close grip<small>сверхузкий · 0,90× биакр.</small></div>
+        <div class="grip-track"><span class="grip-mark" style="left:0%"></span></div>
+        <div class="grip-val">38 см</div>
+      </div>
+      <div class="grip-row">
+        <div class="grip-name">Ширина плеч <b>= узкий</b><small>это и есть жим гантелей · 1,05×</small></div>
+        <div class="grip-track"><span class="grip-mark" style="left:14%"></span></div>
+        <div class="grip-val">44 см</div>
+      </div>
+      <div class="grip-row">
+        <div class="grip-name" style="color:var(--violet)"><b>Средний — рабочий выбор</b><small>на ладонь шире плеч · 1,31×</small></div>
+        <div class="grip-track"><span class="grip-mark pick" style="left:40%"></span></div>
+        <div class="grip-val"><b>55 см</b></div>
+      </div>
+      <div class="grip-row">
+        <div class="grip-name" style="color:var(--red)"><b>Твой соревновательный</b><small>мизинец на риске · 1,52×</small></div>
+        <div class="grip-track"><span class="grip-mark me" style="left:61%"></span></div>
+        <div class="grip-val"><b>64 см</b></div>
+      </div>
+      <div class="grip-row">
+        <div class="grip-name">Средний палец на риске<small>широкий · 1,79×</small></div>
+        <div class="grip-track"><span class="grip-mark" style="left:86%"></span></div>
+        <div class="grip-val">75 см</div>
+      </div>
+      <div class="grip-row">
+        <div class="grip-name">Указательный на риске<small>предел по правилам · 1,93×</small></div>
+        <div class="grip-track"><span class="grip-mark" style="left:100%"></span></div>
+        <div class="grip-val">81 см</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <b>Как встать на средний хват.</b> От текущего положения сдвинуть <b>каждую руку внутрь на 4,5 см</b> — примерно ширина трёх пальцев. Если руки оказались ровно по плечам, ушёл слишком далеко: это уже узкий хват.
+    </div>
+
+    <h4>Границы классификации</h4>
+    <p>До 1,2 биакромиальной — узкий, 1,2–1,5 — средний, свыше 1,5 — широкий. Ширина плеч даёт 1,05, то есть формально <b>узкий</b> хват. Твой соревновательный при 1,52 — широкий, но <b>середина доступного диапазона</b>: до предела ещё 17 см запаса.</p>
+  </div>
+</section>
+
+<!-- НЕДЕЛИ -->
+<section class="sec" id="weeks">
+  <div class="sec-head">
+    <h2>Недели 1–6</h2>
+    <p>Основные движения выделены синим, подсобка зелёным. Веса — расчётные, проверяются на первой тренировке</p>
+  </div>
+
+  <!-- НЕДЕЛЯ 1 -->
+  <article class="week w1">
+    <div class="week-head">
+      <div><h3>Неделя 1</h3><p>Вход в цикл · оценка переносимости</p></div>
+      <span class="phase">Адаптация</span>
+    </div>
+    <div class="days">
+      <div class="day">
+        <div class="day-title"><h4>Понедельник</h4><span>Жим + объёмный присед</span></div>
+        <div class="block-title">Основные</div>
+        <ol class="plan">
+          <li><b>Жим в касание</b><span class="loadline">55 кг · 4×8 <span class="reprange">запас 2</span></span><span class="ex-note">Твой хват 64 см. Единственное движение, которое не меняется весь цикл — точка отсчёта</span><span class="mode mode-hard">Контроль прогресса</span></li>
+          <li><b>Присед</b><span class="loadline">75 кг · 4×8 <span class="reprange">запас 1,5</span></span><span class="ex-note">Было 80 · 4×6. Вес ниже, повторов больше</span><span class="mode mode-moderate">Объём</span></li>
+        </ol>
+        <div class="block-title assist">Подсобка</div>
+        <ol class="plan" start="3">
+          <li><b>Трицепс на блоке</b><span class="loadline">40 кг · 3×12 <span class="reprange">запас 3</span></span><span class="ex-note">Держать, не прибавлять — вес стоял три недели, ротация на Н4</span></li>
+          <li><b>Подъёмы через стороны</b><span class="loadline">5 кг · 3×12 <span class="reprange">12–20</span></span><span class="ex-note">Переход с 4 кг. Падение повторов ожидаемо</span></li>
+        </ol>
+      </div>
+      <div class="day">
+        <div class="day-title"><h4>Среда</h4><span>Объём верха</span></div>
+        <div class="block-title">Основное</div>
+        <ol class="plan">
+          <li><b>Жим средним хватом</b><span class="loadline">52,5 кг · 4×8 <span class="reprange">запас 2</span></span><span class="ex-note">55 см между указательными. Новое движение — первый раз это разведка, а не назначение</span><span class="mode mode-new">Новое · носитель прогрессии</span></li>
+        </ol>
+        <div class="block-title assist">Подсобка</div>
+        <ol class="plan" start="2">
+          <li><b>Подтягивания</b><span class="loadline">+5 кг · 3×6 <span class="reprange">запас 2</span></span><span class="ex-note">Уход от работы в предел. Расчёт: эффективный вес 76,5 кг, для 6 повторов с запасом нужно +5,4</span></li>
+          <li><b>Жим гантелей</b><span class="loadline">22 кг · 3×10 <span class="reprange">8–14</span></span><span class="ex-note">Горизонтальная скамья. Вес весь цикл, прогрессия только повторами</span></li>
+          <li><b>Тяга горизонтальная</b><span class="loadline">85 кг · 3×12 <span class="reprange">8–12</span></span><span class="ex-note">Узкая нейтральная рукоять</span></li>
+        </ol>
+      </div>
+      <div class="day">
+        <div class="day-title"><h4>Пятница</h4><span>Присед + задняя цепь</span></div>
+        <div class="block-title">Основное</div>
+        <ol class="plan">
+          <li><b>Присед</b><span class="loadline">77,5 кг · 4×7 <span class="reprange">запас 2</span></span><span class="mode mode-moderate">Интенсивнее понедельника</span></li>
+        </ol>
+        <div class="block-title assist">Подсобка</div>
+        <ol class="plan" start="2">
+          <li><b>Румынская тяга</b><span class="loadline">62,5 кг · 3×10 <span class="reprange">8–12</span></span></li>
+          <li><b>Разгибание ног</b><span class="loadline">15 → 25 кг · 3×12 <span class="reprange">8–15</span></span></li>
+          <li><b>Ролик для пресса</b><span class="loadline">3×10 <span class="reprange">6–12</span></span></li>
+        </ol>
+      </div>
+    </div>
+    <div class="week-note warn"><b>Лёгкого жима в пятницу пока нет.</b> Первая неделя — проверка, как ложится новое распределение. Если после неё нет симптомов в верхе грудных и плечо чистое, со второй недели третий жим вводится.</div>
+  </article>
+
+  <!-- НЕДЕЛЯ 2 -->
+  <article class="week w2">
+    <div class="week-head">
+      <div><h3>Неделя 2</h3><p>Вводится третий жимовой день</p></div>
+      <span class="phase">Накопление</span>
+    </div>
+    <div class="days">
+      <div class="day">
+        <div class="day-title"><h4>Понедельник</h4><span>Жим + присед</span></div>
+        <ol class="plan">
+          <li><b>Жим в касание</b><span class="loadline">55 кг · 4×8</span><span class="ex-note">Тот же вес и повторы — коридор 8–9, повтор добавляем на Н3</span></li>
+          <li><b>Присед</b><span class="loadline">75 кг · 4×8</span></li>
+          <li><b>Трицепс на блоке</b><span class="loadline">40 кг · 3×12</span></li>
+          <li><b>Подъёмы через стороны</b><span class="loadline">5 кг · 3×12–13</span></li>
+        </ol>
+      </div>
+      <div class="day">
+        <div class="day-title"><h4>Среда</h4><span>Объём верха</span></div>
+        <ol class="plan">
+          <li><b>Жим средним хватом</b><span class="loadline">52,5 кг · 4×9</span><span class="ex-note">+1 повтор. Вес тот же — ступенька 2,5 кг стоит два повтора</span></li>
+          <li><b>Подтягивания</b><span class="loadline">+5 кг · 3×6</span></li>
+          <li><b>Жим гантелей</b><span class="loadline">22 кг · 3×10–11</span></li>
+          <li><b>Тяга горизонтальная</b><span class="loadline">85 кг · 3×12</span></li>
+        </ol>
+      </div>
+      <div class="day">
+        <div class="day-title"><h4>Пятница</h4><span>Присед + лёгкий жим</span></div>
+        <ol class="plan">
+          <li><b>Присед</b><span class="loadline">77,5 кг · 4×7</span></li>
+          <li><b>Румынская тяга</b><span class="loadline">62,5 кг · 3×10</span></li>
+          <li><b>Жим с паузой 1 сек</b><span class="loadline">45 кг · 3×5 <span class="reprange">62%</span></span><span class="ex-note">Твой хват. Технический день: пауза, контроль, без гонки за весом. Ставится после приседа</span><span class="mode mode-new">Новое · 3-й жим</span></li>
+          <li><b>Разгибание ног</b><span class="loadline">20 кг · 3×12</span></li>
+          <li><b>Ролик</b><span class="loadline">3×10</span></li>
+        </ol>
+      </div>
+    </div>
+    <div class="week-note new"><b>Пятница стала пятипозиционной.</b> Общее время ~70 минут при лимите 100. Лёгкий жим стоит после приседа: если присед прошёл тяжело, эта позиция снимается без последствий для плана.</div>
+  </article>
+
+  <!-- НЕДЕЛЯ 3 -->
+  <article class="week w3">
+    <div class="week-head">
+      <div><h3>Неделя 3</h3><p>Пик объёма — самая тяжёлая неделя цикла</p></div>
+      <span class="phase">Пик объёма</span>
+    </div>
+    <div class="days">
+      <div class="day">
+        <div class="day-title"><h4>Понедельник</h4><span>Жим + присед</span></div>
+        <ol class="plan">
+          <li><b>Жим в касание</b><span class="loadline">55 кг · 4×9</span><span class="ex-note">Верх коридора. Закрыл чисто — на Н5 идёт 57,5</span></li>
+          <li><b>Присед</b><span class="loadline">77,5 кг · 4×8</span></li>
+          <li><b>Трицепс на блоке</b><span class="loadline">40 кг · 3×12</span><span class="ex-note">Третья неделя на весе — предел, дальше ротация</span></li>
+          <li><b>Подъёмы через стороны</b><span class="loadline">5 кг · 3×13–14</span></li>
+        </ol>
+      </div>
+      <div class="day">
+        <div class="day-title"><h4>Среда</h4><span>Объём верха</span></div>
+        <ol class="plan">
+          <li><b>Жим средним хватом</b><span class="loadline">52,5 кг · 4×10</span><span class="ex-note">Верх коридора. Расчётный максимум 73,5 кг</span></li>
+          <li><b>Подтягивания</b><span class="loadline">+5 кг · 3×6–7</span></li>
+          <li><b>Жим гантелей</b><span class="loadline">22 кг · 3×11–12</span></li>
+          <li><b>Тяга горизонтальная</b><span class="loadline">85 кг · 3×12</span></li>
+        </ol>
+      </div>
+      <div class="day">
+        <div class="day-title"><h4>Пятница</h4><span>Присед + лёгкий жим</span></div>
+        <ol class="plan">
+          <li><b>Присед</b><span class="loadline">77,5 кг · 4×7</span></li>
+          <li><b>Румынская тяга</b><span class="loadline">62,5 кг · 3×10</span></li>
+          <li><b>Жим с паузой 1 сек</b><span class="loadline">45 кг · 3×6</span></li>
+          <li><b>Разгибание ног</b><span class="loadline">25 кг · 3×12</span></li>
+          <li><b>Ролик</b><span class="loadline">3×10</span></li>
+        </ol>
+      </div>
+    </div>
+    <div class="week-note warn"><b>Тоннаж жима 6 210 — максимум цикла.</b> Это самая тяжёлая неделя по ощущениям. Если неделя 5 покажется тяжелее третьей, значит восстановление не справляется — смотри раздел о восстановлении.</div>
+  </article>
+
+  <!-- НЕДЕЛЯ 4 -->
+  <article class="week w4">
+    <div class="week-head">
+      <div><h3>Неделя 4</h3><p>Ротация: меняется вся подсобка, шаг веса в среду</p></div>
+      <span class="phase">Ротация</span>
+    </div>
+    <div class="days">
+      <div class="day">
+        <div class="day-title"><h4>Понедельник</h4><span>Жим + присед</span></div>
+        <ol class="plan">
+          <li><b>Жим в касание</b><span class="loadline">55 кг · 4×9</span><span class="ex-note">Не меняется — это точка отсчёта</span></li>
+          <li><b>Присед</b><span class="loadline">77,5 кг · 4×8</span></li>
+          <li><b>Разгибание из-за головы</b><span class="loadline">3×12 <span class="reprange">вход</span></span><span class="ex-note">Смена угла: длинная головка трицепса в растяжении. Вес — который идёт чисто</span><span class="mode mode-new">Ротация</span></li>
+          <li><b>Кроссовер через сторону</b><span class="loadline">3×12–15</span><span class="ex-note">Блок даёт сопротивление по всей амплитуде, гантель — только вверху</span><span class="mode mode-new">Ротация</span></li>
+        </ol>
+      </div>
+      <div class="day">
+        <div class="day-title"><h4>Среда</h4><span>Объём верха</span></div>
+        <ol class="plan">
+          <li><b>Жим средним хватом</b><span class="loadline">55 кг · 4×8</span><span class="ex-note">+2,5 кг, повторы упали к низу коридора. Так и задумано</span></li>
+          <li><b>Подтягивания</b><span class="loadline">свой вес · 3×8–10</span><span class="ex-note">Смена зоны: с силовой на объёмную. Не откат</span><span class="mode mode-new">Ротация</span></li>
+          <li><b>Жим гантелей</b><span class="loadline">22 кг · 3×12</span></li>
+          <li><b>Тяга широкой рукоятью</b><span class="loadline">72,5 кг · 3×12</span><span class="ex-note">85% от узкой — механика другая. Средний трапециевидный, ромбовидные, задние дельты</span><span class="mode mode-new">Ротация</span></li>
+        </ol>
+      </div>
+      <div class="day">
+        <div class="day-title"><h4>Пятница</h4><span>Паузный присед + лёгкий жим</span></div>
+        <ol class="plan">
+          <li><b>Паузный присед 1 сек</b><span class="loadline">70 кг · 4×6</span><span class="ex-note">Пауза внизу убирает отскок, старт из мёртвого положения. Прицел — выход из ямы</span><span class="mode mode-new">Ротация</span></li>
+          <li><b>Румынская тяга</b><span class="loadline">65 кг · 3×10</span><span class="ex-note">Единственная подсобка, которая растёт по весу</span></li>
+          <li><b>Жим с паузой 1 сек</b><span class="loadline">45 кг · 3×7</span></li>
+          <li><b>Сгибание ног</b><span class="loadline">3×12</span><span class="ex-note">Паузный присед уже грузит квадрицепс. Сгибание балансирует переднюю и заднюю поверхность</span><span class="mode mode-new">Ротация</span></li>
+          <li><b>Ролик</b><span class="loadline">3×10–12</span></li>
+        </ol>
+      </div>
+    </div>
+    <div class="week-note new"><b>Меняется восемь позиций разом.</b> Так проще отследить: недели 1–3 — один набор, недели 4–6 — другой, сравнение по блокам. Первая тренировка на новой вариации — разведка: назначенный вес может не подойти, это нормально.</div>
+  </article>
+
+  <!-- НЕДЕЛЯ 5 -->
+  <article class="week w5">
+    <div class="week-head">
+      <div><h3>Неделя 5</h3><p>Шаг веса в понедельнике и пятнице</p></div>
+      <span class="phase">Освоение</span>
+    </div>
+    <div class="days">
+      <div class="day">
+        <div class="day-title"><h4>Понедельник</h4><span>Жим + присед</span></div>
+        <ol class="plan">
+          <li><b>Жим в касание</b><span class="loadline">57,5 кг · 4×8</span><span class="ex-note">+2,5 кг, повторы к низу коридора</span></li>
+          <li><b>Присед</b><span class="loadline">80 кг · 4×8</span></li>
+          <li><b>Разгибание из-за головы</b><span class="loadline">3×12–13</span></li>
+          <li><b>Кроссовер через сторону</b><span class="loadline">3×13–15</span></li>
+        </ol>
+      </div>
+      <div class="day">
+        <div class="day-title"><h4>Среда</h4><span>Объём верха</span></div>
+        <ol class="plan">
+          <li><b>Жим средним хватом</b><span class="loadline">55 кг · 4×9</span><span class="ex-note">Расчётный максимум 75,2 кг</span></li>
+          <li><b>Подтягивания</b><span class="loadline">свой вес · 3×9–10</span></li>
+          <li><b>Жим гантелей</b><span class="loadline">22 кг · 3×13</span></li>
+          <li><b>Тяга широкой рукоятью</b><span class="loadline">72,5 кг · 3×12</span></li>
+        </ol>
+      </div>
+      <div class="day">
+        <div class="day-title"><h4>Пятница</h4><span>Паузный присед + лёгкий жим</span></div>
+        <ol class="plan">
+          <li><b>Паузный присед 1 сек</b><span class="loadline">72,5 кг · 4×6</span></li>
+          <li><b>Румынская тяга</b><span class="loadline">65 кг · 3×10</span></li>
+          <li><b>Жим с паузой 1 сек</b><span class="loadline">47,5 кг · 3×5 <span class="reprange">65%</span></span></li>
+          <li><b>Сгибание ног</b><span class="loadline">3×12</span></li>
+          <li><b>Ролик</b><span class="loadline">3×10–12</span></li>
+        </ol>
+      </div>
+    </div>
+    <div class="week-note"><b>Контрольная точка.</b> К этой неделе разминочные веса должны ощущаться легче, чем на неделе 1. Если тяжелее — это ранний признак недовосстановления, читай соответствующий раздел.</div>
+  </article>
+
+  <!-- НЕДЕЛЯ 6 -->
+  <article class="week w6">
+    <div class="week-head">
+      <div><h3>Неделя 6</h3><p>Закрытие цикла · снятие показателей</p></div>
+      <span class="phase">Завершение</span>
+    </div>
+    <div class="days">
+      <div class="day">
+        <div class="day-title"><h4>Понедельник</h4><span>Жим + присед</span></div>
+        <ol class="plan">
+          <li><b>Жим в касание</b><span class="loadline">57,5 кг · 4×8</span><span class="ex-note">Закрыть чисто. Это итоговая цифра цикла</span></li>
+          <li><b>Присед</b><span class="loadline">80 кг · 4×8</span></li>
+          <li><b>Разгибание из-за головы</b><span class="loadline">3×13</span></li>
+          <li><b>Кроссовер через сторону</b><span class="loadline">3×15</span></li>
+        </ol>
+      </div>
+      <div class="day">
+        <div class="day-title"><h4>Среда</h4><span>Объём верха</span></div>
+        <ol class="plan">
+          <li><b>Жим средним хватом</b><span class="loadline">55 кг · 4×10</span><span class="ex-note">Расчётный максимум 77,0 кг — выше соревновательного. Это и есть догон</span></li>
+          <li><b>Подтягивания</b><span class="loadline">свой вес · 3×10</span></li>
+          <li><b>Жим гантелей</b><span class="loadline">22 кг · 3×14</span><span class="ex-note">Закрыл — в цикле B идёт 24 кг</span></li>
+          <li><b>Тяга широкой рукоятью</b><span class="loadline">75 кг · 3×12</span></li>
+        </ol>
+      </div>
+      <div class="day">
+        <div class="day-title"><h4>Пятница</h4><span>Паузный присед + лёгкий жим</span></div>
+        <ol class="plan">
+          <li><b>Паузный присед 1 сек</b><span class="loadline">72,5 кг · 4×6</span></li>
+          <li><b>Румынская тяга</b><span class="loadline">67,5 кг · 3×10</span></li>
+          <li><b>Жим с паузой 1 сек</b><span class="loadline">47,5 кг · 3×6</span></li>
+          <li><b>Сгибание ног</b><span class="loadline">3×12</span></li>
+          <li><b>Ролик</b><span class="loadline">3×12</span></li>
+        </ol>
+      </div>
+    </div>
+    <div class="week-note"><b>Неделя 7 — съём.</b> 60–70% весов, 2 подхода вместо 4, подсобка по желанию. Не опция, а часть цикла. После съёма — цикл B.</div>
+  </article>
+</section>
+
+<!-- ПРОГРЕССИЯ -->
+<section class="sec" id="progress">
+  <div class="sec-head">
+    <h2>Прогрессия жима</h2>
+    <p>Шаг штанги 2,5 кг = 4,8%. Еженедельно столько не прибавить, поэтому прогрессия двойная</p>
+  </div>
+
+  <div class="card">
+    <h3>Как работает двойная прогрессия</h3>
+    <p>Держим вес и добавляем повтор. Дошли до верха коридора — плюс 2,5 кг, и повторы падают к низу коридора. Один повтор стоит примерно <b>+2,4%</b> к расчётному максимуму, то есть ступенька в 2,5 кг равна <b>двум повторам</b>.</p>
+    <div class="chips">
+      <span class="chip">Понедельник: коридор 8–9</span>
+      <span class="chip">Среда: коридор 8–10</span>
+      <span class="chip">Пятница: коридор 5–7</span>
+    </div>
+  </div>
+
+  <div class="table-wrap" style="margin-top:12px">
+    <table>
+      <thead><tr><th>Неделя</th><th>Понедельник · касание 64 см</th><th>Среда · средний хват 55 см</th><th>Расч. макс среды</th><th>Пятница · пауза 1 сек</th></tr></thead>
+      <tbody>
+        <tr><td class="wk">1</td><td class="num">55 · 4×8</td><td class="num">52,5 · 4×8</td><td class="num">70,0</td><td class="num">— оценка</td></tr>
+        <tr><td class="wk">2</td><td class="num">55 · 4×8</td><td class="num">52,5 · 4×9</td><td class="num">71,8</td><td class="num">45 · 3×5 <small>(62%)</small></td></tr>
+        <tr><td class="wk">3</td><td class="num">55 · 4×9</td><td class="num">52,5 · 4×10</td><td class="num">73,5</td><td class="num">45 · 3×6</td></tr>
+        <tr class="row-sw"><td class="wk">4</td><td class="num">55 · 4×9</td><td class="num"><b>55 · 4×8</b></td><td class="num">73,3</td><td class="num">45 · 3×7</td></tr>
+        <tr class="row-sw"><td class="wk">5</td><td class="num"><b>57,5 · 4×8</b></td><td class="num">55 · 4×9</td><td class="num">75,2</td><td class="num"><b>47,5 · 3×5</b> <small>(65%)</small></td></tr>
+        <tr class="hi"><td class="wk">6</td><td class="num">57,5 · 4×8</td><td class="num">55 · 4×10</td><td class="num">77,0</td><td class="num">47,5 · 3×6</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout">
+    <b>Почему среда догоняет понедельник.</b> Расчётный максимум среднего хвата растёт с 70,0 до 77,0 кг и к неделе 6 обгоняет соревновательный. Это ожидаемо: новое движение стартует ниже своего потенциала из-за непривычности и догоняет по мере освоения техники. Догон — индикатор, что трицепс подтянулся.
+  </div>
+
+  <div class="callout warn">
+    <b>Правило шага.</b> Добавлять повтор, только если последний подход прошёл с запасом 2 и самочувствие в норме. Вес не прибавлять, пока верх коридора не закрыт чисто во всех четырёх подходах. На одном весе с теми же повторами не стоять больше трёх недель подряд.
+  </div>
+</section>
+
+<!-- ТОННАЖ -->
+<section class="sec" id="tonnage">
+  <div class="sec-head">
+    <h2>Тоннаж жима по неделям</h2>
+    <p>Вся жимовая работа: понедельник + среда + пятница + гантели</p>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <h3>Динамика</h3>
+      <div class="bars">
+        <div class="bar-row"><span class="bar-wk">Н3 факт</span><span class="bar-track"><span class="bar-fill f0" style="width:65%"></span></span><span class="bar-val"><b>4 040</b> · текущий цикл</span></div>
+        <div class="bar-row"><span class="bar-wk">Нед 1</span><span class="bar-track"><span class="bar-fill" style="width:77%"></span></span><span class="bar-val"><b>4 760</b> · +18%</span></div>
+        <div class="bar-row"><span class="bar-wk">Нед 2</span><span class="bar-track"><span class="bar-fill" style="width:91%"></span></span><span class="bar-val"><b>5 645</b> · +40%</span></div>
+        <div class="bar-row"><span class="bar-wk">Нед 3</span><span class="bar-track"><span class="bar-fill peak" style="width:100%"></span></span><span class="bar-val"><b>6 210</b> · пик</span></div>
+        <div class="bar-row"><span class="bar-wk">Нед 4</span><span class="bar-track"><span class="bar-fill" style="width:97%"></span></span><span class="bar-val"><b>6 005</b> · шаг веса</span></div>
+        <div class="bar-row"><span class="bar-wk">Нед 5</span><span class="bar-track"><span class="bar-fill" style="width:94%"></span></span><span class="bar-val"><b>5 852</b> · шаг веса</span></div>
+        <div class="bar-row"><span class="bar-wk">Нед 6</span><span class="bar-track"><span class="bar-fill peak" style="width:100%"></span></span><span class="bar-val"><b>6 215</b> · +54%</span></div>
+      </div>
+      <p class="chart-caption" style="margin-top:12px;padding-top:10px;border-top:1px dashed var(--line);color:var(--muted);font-size:12px">Провалы на неделях 4 и 5 — моменты, когда вес шагнул вверх и повторы упали к низу коридора. При шаге 2,5 кг тоннаж идёт пилой, а не прямой. Средний вес на грифе при этом растёт монотонно.</p>
+    </div>
+
+    <div class="card">
+      <h3>Интенсивность падает</h3>
+      <div class="table-wrap" style="box-shadow:none;border:0">
+        <table style="min-width:0">
+          <thead><tr><th>День</th><th>Текущий цикл</th><th>Цикл A</th></tr></thead>
+          <tbody>
+            <tr><td>Понедельник</td><td class="num">62,5 = <b>86%</b></td><td class="num">55 = <b>75%</b></td></tr>
+            <tr><td>Среда</td><td class="num">52,5 = 72%</td><td class="num">52,5 = 72%</td></tr>
+            <tr><td>Пятница</td><td class="num">—</td><td class="num">45 = <b>62%</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout" style="margin-top:12px">
+        <b>Ключ к безопасности цикла.</b> Объём растёт на 54%, но ни один жимовой день не выходит выше 75%. В текущем цикле понедельник шёл на 86% с четвёртым подходом на грани — именно такие подходы стоят дорого по восстановлению, а не объём на 72%.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ПОДСОБКА -->
+<section class="sec" id="accessory">
+  <div class="sec-head">
+    <h2>Подсобка: ротация на неделе 4</h2>
+    <p>Восемь позиций, восемь разных способов смены</p>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Позиция</th><th>Недели 1–3</th><th>Недели 4–6</th><th>Тип смены</th><th>Зачем</th></tr></thead>
+      <tbody>
+        <tr><td><b>Трицепс</b></td><td class="num">блок 40 · 3×12</td><td class="num">из-за головы 3×12</td><td>угол</td><td>длинная головка в растяжении</td></tr>
+        <tr><td><b>Махи</b></td><td class="num">гантели 5 · 3×12</td><td class="num">кроссовер 3×12–15</td><td>профиль сопротивления</td><td>блок грузит всю амплитуду, гантель только верх</td></tr>
+        <tr><td><b>Подтягивания</b></td><td class="num">+5 кг · 3×6</td><td class="num">свой вес · 3×8–10</td><td>зона повторов</td><td>с силовой зоны на объёмную</td></tr>
+        <tr><td><b>Тяга</b></td><td class="num">узкая нейтр. 85 · 3×12</td><td class="num">широкая 72,5 · 3×12</td><td>акцент мышц</td><td>с широчайших на лопаточные стабилизаторы</td></tr>
+        <tr><td><b>Разгибание ног</b></td><td class="num">разгибание 15→25</td><td class="num">сгибание <b>сидя</b> 3×12</td><td>антагонист</td><td>баланс к паузному приседу · первый заход — подбор веса</td></tr>
+        <tr><td><b>Румынская тяга</b></td><td class="num">62,5 · 3×10</td><td class="num">65 → 67,5 · 3×10</td><td>вес</td><td>единственная, что прогрессирует весом</td></tr>
+        <tr><td><b>Жим гантелей</b></td><td class="num">22 · 3×10</td><td class="num">22 · 3×12–14</td><td>повторы</td><td>ступенька 22→24 стоит 9,1% ≈ 4 повтора</td></tr>
+        <tr><td><b>Ролик</b></td><td class="num">3×10</td><td class="num">3×10–12</td><td>объём</td><td>кор для приседа и румынской</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grid2" style="margin-top:12px">
+    <div class="card">
+      <h3>Что убрано</h3>
+      <ul>
+        <li><b>Молотки.</b> Три недели подряд откатывались из-за закисления (12 кг: 3×12 → 3×10 → 11/11/10 в отказ). Четвёртый заход на тот же вес запрещён. Освободившиеся 5–6 минут идут в отдых между подходами жима. Бицепс работает в подтягиваниях и тяге.</li>
+        <li><b>Подъёмы на носки</b> — по твоему решению.</li>
+        <li><b>Наклонный жим</b> — по твоему решению от 11.09.</li>
+        <li><b>Отдельная работа на ротаторы</b> — покалывание 19.08 было следствием непривычного движения, не структурной проблемой.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Правила подсобки в этом цикле</h3>
+      <ul>
+        <li><b>Запас 3 повтора минимум.</b> Подсобка здесь не носитель прогресса, а поддержка. Отказ запрещён — он ест восстановление, нужное трём жимовым дням.</li>
+        <li><b>Прибавка веса только в румынской тяге.</b> Остальное — повторами или сменой упражнения.</li>
+        <li><b>Подсобка снимается первой при перегрузке.</b></li>
+        <li><b>Не больше трёх недель на одном весе</b> с теми же повторами.</li>
+        <li><b>Не добавлять позиции.</b> Восемь — потолок при трёх жимовых днях.</li>
+      </ul>
+      <div class="callout info" style="margin-bottom:0">
+        <b>Баланс тяги и жима.</b> Тяговый тоннаж 4 935 (тяга 3 060 + румынская 1 875). При трёх жимовых днях тянущей работы должно быть не меньше толкающей — это страховка для плеча.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ВОССТАНОВЛЕНИЕ -->
+<section class="sec" id="recovery">
+  <div class="sec-head">
+    <h2>Контроль восстановления</h2>
+    <p>Объём растёт на 54% — риск есть, и он управляется</p>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <h3>Что писать в журнал</h3>
+      <div class="table-wrap" style="box-shadow:none;border:0">
+        <table style="min-width:0">
+          <thead><tr><th>Маркер</th><th>Порог тревоги</th></tr></thead>
+          <tbody>
+            <tr><td>Запас в последнем подходе</td><td>два раза подряд меньше 1</td></tr>
+            <tr><td>Сон</td><td>меньше 7 часов две ночи подряд</td></tr>
+            <tr><td>Утренняя масса</td><td>падение больше 0,7 кг за неделю</td></tr>
+            <tr><td>Верх грудных</td><td>любое «да»</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout warn" style="margin-bottom:0">
+        <b>Самый ранний признак — разминочный вес.</b> Если 40 кг в разминке вдруг «не летит», это опережает остальные маркеры на несколько дней.
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Порядок снятия нагрузки</h3>
+      <ol class="steps">
+        <li><b>Снять пятничный жим</b> на одну неделю. Самая дешёвая позиция, тоннаж упадёт на 11%.</li>
+        <li><b>Срезать подсобку</b> — трицепс и махи в понедельник, тяга в среду. Основное не трогаем.</li>
+        <li><b>Повторить неделю</b> без прибавки. Не откат, а пауза в прогрессии.</li>
+        <li><b>Досрочный съём.</b> Неделя на 60–70% по 2 подхода, потом возврат к тому же весу. Цикл удлиняется на неделю — это нормально.</li>
+      </ol>
+      <div class="callout danger" style="margin-bottom:0">
+        <b>Не снимать всё сразу.</b> Каждый шаг — неделя наблюдения, потом решение. Не бросать цикл целиком и не возвращаться на старую схему.
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:12px">
+    <h3>Ожидаемая картина по неделям</h3>
+    <div class="table-wrap" style="box-shadow:none;border:0">
+      <table style="min-width:0">
+        <thead><tr><th>Неделя</th><th>Что должно ощущаться</th></tr></thead>
+        <tbody>
+          <tr><td class="wk">1</td><td>Непривычно, объём заметен, но запас во всех подходах есть</td></tr>
+          <tr><td class="wk">2</td><td>Лёгкая общая усталость к пятнице — норма</td></tr>
+          <tr><td class="wk">3</td><td>Пик объёма, самая тяжёлая неделя цикла</td></tr>
+          <tr><td class="wk">4</td><td>Легче третьей: вес шагнул, повторы упали</td></tr>
+          <tr><td class="wk">5–6</td><td>Ровно, разминочные веса летят</td></tr>
+          <tr class="row-mut"><td class="wk">7</td><td>Съём</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout danger" style="margin-bottom:0">
+      <b>Главный сигнал.</b> Если неделя 5 ощущается тяжелее недели 3 — план не выполняется по восстановлению. Переходи к шагу 1 из порядка снятия.
+    </div>
+  </div>
+
+  <div class="callout" style="margin-top:12px">
+    <b>Правило поверх плана.</b> Пропущенный шаг прогрессии цикл не портит, пропущенное восстановление — портит. Сомневаешься, прибавлять или нет — не прибавляй.
+  </div>
+</section>
+
+<!-- КАРТА СЛАБЫХ МЕСТ -->
+<section class="sec" id="map">
+  <div class="sec-head">
+    <h2>Карта слабых мест</h2>
+    <p>Ради этого цикл и делается. Считать по одинаковым повторам и одинаковому запасу</p>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Соотношение</th><th>Норма</th><th>Если ниже — вывод</th><th>Что делать в цикле B</th></tr></thead>
+      <tbody>
+        <tr><td><b>Средний хват 55 см / соревновательный</b></td><td class="num">~96%</td><td>Трицепс лимитирует жим</td><td>close grip, разгибания, жим с бруска</td></tr>
+        <tr><td><b>Пауза 1 сек / касание</b></td><td class="num">~95%</td><td>Слаб срыв с груди</td><td>Spoto press, пауза 2–3 сек, жим с цепями</td></tr>
+        <tr><td><b>Паузный присед / обычный</b></td><td class="num">~85–90%</td><td>Слаб выход из ямы</td><td>присед в яму, присед с паузой 2 сек</td></tr>
+        <tr><td><b>Широкая тяга / узкая</b></td><td class="num">~85%</td><td>Слабы лопаточные стабилизаторы</td><td>face pull, тяга к груди, отведения в наклоне</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout" style="margin-top:12px">
+    <b>Зачем это нужно.</b> К циклу B ты подойдёшь не с «жим не идёт», а с конкретикой: например, «средний хват идёт на 91% вместо 96% — трицепс отстаёт». Тогда следующий цикл строится под конкретную фазу движения, а не наугад. Без записей в журнал цикл даст объём, но не даст информации.
+  </div>
+</section>
+
+<!-- ПРАВИЛА -->
+<section class="sec" id="rules">
+  <div class="sec-head">
+    <h2>Чего не делать</h2>
+    <p>Пять запретов, которые важнее любой цифры в таблице</p>
+  </div>
+
+  <div class="card">
+    <ol class="steps">
+      <li><b>Не менять хват в понедельнике.</b> Соревновательный жим своим хватом — единственное неизменное движение за весь цикл. По нему и только по нему судим, вырос ты или нет. Изменишь — сравнивать будет не с чем.</li>
+      <li><b>Не гнать вес в пятницу.</b> Лёгкий жим технический. Если тянет прибавить больше 2,5 кг за две недели — день выполняется неправильно.</li>
+      <li><b>Не ставить пятничный жим до приседа.</b> Только после, и только если присед прошёл штатно. При плохом самочувствии эта позиция снимается первой.</li>
+      <li><b>Не менять среду на неделе 4.</b> Средний хват не ротируется: нагрузка растёт каждую неделю — то повтором, то весом. Аккомодации не будет.</li>
+      <li><b>Не возвращать молотки.</b> Освободившееся время идёт в отдых между подходами основного жима.</li>
+    </ol>
+  </div>
+
+  <div class="card" style="margin-top:12px">
+    <h3>Критерии, что цикл сработал</h3>
+    <div class="chips">
+      <span class="chip ok">жим в касание 57,5 · 4×8 с запасом</span>
+      <span class="chip ok">средний хват 55 · 4×10 (расч. макс ~77)</span>
+      <span class="chip ok">тоннаж жима ≥ 6 000</span>
+      <span class="chip ok">присед понедельника 80 · 4×8</span>
+      <span class="chip ok">известны все четыре соотношения</span>
+      <span class="chip ok">утренняя масса &gt; 81 кг</span>
+      <span class="chip ok">ни одного эпизода в верхе грудных</span>
+    </div>
+    <p style="margin-top:12px">Главный результат цикла — <b>не цифра на штанге, а карта слабых мест</b>. Цифры вторичны: если они не дотянули, но карта есть, цикл выполнил задачу.</p>
+  </div>
+</section>
+
+<!-- ЦИКЛ B -->
+<section class="sec" id="next">
+  <div class="sec-head">
+    <h2>Что дальше — цикл B</h2>
+    <p>4 недели пятёрок. Строится по итогам карты слабых мест</p>
+  </div>
+
+  <div class="grid3">
+    <div class="card">
+      <h3>Основное</h3>
+      <ul>
+        <li>Жим <b>70–75 · 4×5</b></li>
+        <li>Присед пятницы <b>90–95 · 4×4</b></li>
+        <li>Понедельник остаётся объёмным, но в зоне 5–6 повторов</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Волновая пятница</h3>
+      <p>Приём из Texas Method Advanced: интенсивность идёт волной внутри блока.</p>
+      <p><b>90 → 87,5 → 85 → 92,5</b> — тяжёлая, средняя, лёгкая, новый максимум.</p>
+      <p>Это тот принцип волны с откатом, который ты просил для подсобки.</p>
+    </div>
+    <div class="card">
+      <h3>Спецупражнения</h3>
+      <p>Выбираются под ту фазу, которая отстала по карте слабых мест. Кандидаты:</p>
+      <ul>
+        <li><b>Spoto press</b> — если слаб срыв с груди</li>
+        <li><b>Close grip 38 см</b> — если отстал трицепс</li>
+        <li><b>Присед в яму</b> — если слаб выход</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="footer">
+  Черновик цикла A · составлен 12 сентября 2026 · редакция 6<br>
+  Источники расчётов: файлы 06–12 в репозитории. Действующая программа — 01_Программа_8_недель.html
+</div>
+
+</div>
+</body>
+</html>
