@@ -1,0 +1,774 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Цикл A — объёмный, 8 недель (редакция 5)</title>
+<style>
+:root{
+  --bg:#f2f5f9;--paper:#fff;--ink:#172033;--muted:#657084;--line:#d9e0e9;
+  --navy:#172b4d;--blue:#2f66a7;--blue-soft:#edf5ff;--green:#18715b;--green-soft:#eaf8f2;
+  --amber:#99600a;--amber-soft:#fff6e5;--red:#a43d3d;--red-soft:#fff0f0;--violet:#644fa3;--violet-soft:#f2efff;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.48 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
+.page{max-width:1180px;margin:auto;padding:26px 18px 60px}
+
+.hero{background:linear-gradient(145deg,#12243f 0%,#1b3d68 55%,#245a7a 100%);color:#fff;border-radius:20px;padding:22px 24px 18px;box-shadow:0 16px 36px rgba(18,36,63,.22)}
+h1{margin:0;font-size:32px;letter-spacing:-.03em;line-height:1.05;font-weight:800}
+.hero-goal{margin:8px 0 0;max-width:54em;color:#d5e4f5;font-size:15px;line-height:1.45;font-weight:500}
+.hero-quote{margin:14px 0 0;padding:12px 15px;border-radius:12px;background:rgba(255,255,255,.08);border-left:4px solid #6fa8dc;color:#e8f1fb;font-size:14px;font-style:italic;line-height:1.5}
+.hero-aims{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0;padding:0;list-style:none}
+.hero-aims li{padding:8px 12px;border-radius:12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);font-size:14px;line-height:1.3;color:#e8f1fb}
+.hero-aims b{display:block;margin-bottom:2px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#b7c9dd;font-weight:800}
+
+.quick{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin:17px 0}
+.quick>div{background:#fff;border:1px solid var(--line);border-radius:13px;padding:13px 14px}
+.quick b{display:block;color:var(--navy);margin-bottom:2px;font-size:17px}
+.quick span{color:var(--muted);font-size:13px}
+
+.nav{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 18px}
+.nav a{padding:7px 12px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--navy);text-decoration:none;font-size:12px;font-weight:800}
+.nav a:hover{background:var(--blue-soft);border-color:#a9cbee}
+
+.sec{margin:26px 0}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;margin:0 0 12px}
+.sec-head h2{margin:0;color:var(--navy);font-size:26px;letter-spacing:-.02em}
+.sec-head p{margin:0;color:var(--muted);font-size:12px;text-align:right;max-width:34em}
+
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:17px 19px;box-shadow:0 5px 18px rgba(30,48,76,.05)}
+.card + .card{margin-top:12px}
+.card h3{margin:0 0 9px;color:var(--navy);font-size:19px}
+.card h4{margin:14px 0 6px;color:var(--navy);font-size:15px}
+.card p{margin:7px 0}
+.card ul{margin:7px 0;padding-left:20px;color:#43506a}
+.card li{margin:5px 0}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+
+.table-wrap{overflow:auto;background:#fff;border:1px solid var(--line);border-radius:15px;box-shadow:0 5px 18px rgba(30,48,76,.05)}
+table{border-collapse:separate;border-spacing:0;width:100%;min-width:620px}
+th{background:var(--navy);color:#fff;text-align:left;padding:11px 12px;font-size:12px;letter-spacing:.02em;font-weight:800}
+td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top;font-size:14px}
+tr:last-child td{border-bottom:0}
+td.num{white-space:nowrap;font-variant-numeric:tabular-nums}
+.hi{background:var(--blue-soft)}
+.hi-g{background:var(--green-soft)}
+.hi-a{background:var(--amber-soft)}
+
+.verdict{border-radius:14px;padding:14px 16px;margin:12px 0;border-left:5px solid}
+.v-yes{background:var(--green-soft);border-color:var(--green)}
+.v-no{background:var(--red-soft);border-color:var(--red)}
+.v-maybe{background:var(--amber-soft);border-color:var(--amber)}
+.verdict b{display:block;margin-bottom:4px;font-size:15px}
+.v-yes b{color:var(--green)}
+.v-no b{color:var(--red)}
+.v-maybe b{color:var(--amber)}
+
+.day{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 5px 18px rgba(30,48,76,.05)}
+.day-head{padding:12px 16px;background:var(--navy);color:#fff;display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.day-head h3{margin:0;font-size:18px;color:#fff}
+.day-head span{font-size:12px;color:#b7c9dd;font-weight:700}
+.day ol{margin:0;padding:12px 16px 14px 34px}
+.day li{margin:9px 0;line-height:1.4}
+.day li b{color:var(--navy)}
+.ex-load{display:inline-block;margin-left:6px;padding:2px 8px;border-radius:999px;background:var(--blue-soft);color:var(--blue);font-weight:800;font-size:13px;font-variant-numeric:tabular-nums}
+.ex-note{display:block;color:var(--muted);font-size:12.5px;margin-top:2px}
+.tag-new{display:inline-block;padding:1px 7px;border-radius:999px;background:var(--violet-soft);color:var(--violet);font-size:11px;font-weight:800;margin-left:5px;vertical-align:middle}
+.tag-out{display:inline-block;padding:1px 7px;border-radius:999px;background:var(--red-soft);color:var(--red);font-size:11px;font-weight:800;margin-left:5px;vertical-align:middle}
+
+.bar-row{display:flex;align-items:center;gap:10px;margin:6px 0}
+.bar-wk{width:34px;font-weight:800;color:var(--navy);font-size:13px}
+.bar-track{flex:1;height:20px;background:#eef2f7;border-radius:7px;overflow:hidden}
+.bar-fill{height:100%;background:linear-gradient(90deg,#2f66a7,#4d8fd6);border-radius:7px}
+.bar-fill.b2{background:linear-gradient(90deg,#18715b,#31a184)}
+.bar-val{width:150px;text-align:right;font-size:13px;color:#43506a;font-variant-numeric:tabular-nums}
+.bar-val b{color:var(--navy)}
+
+.src{font-size:12.5px;color:var(--muted);margin-top:8px;padding-top:8px;border-top:1px dashed var(--line)}
+.src a{color:var(--blue)}
+footer{margin-top:30px;padding:16px;border-radius:14px;background:#fff;border:1px solid var(--line);color:var(--muted);font-size:13px;text-align:center}
+@media(max-width:900px){.quick{grid-template-columns:repeat(2,1fr)}.grid2,.grid3{grid-template-columns:1fr}.sec-head{flex-direction:column;align-items:flex-start}.sec-head p{text-align:left}}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="hero">
+  <h1>Цикл A — объёмный, 8 недель</h1>
+  <p class="hero-goal">Редакция 4 от 17 сентября 2026. Изменения против редакции 3: длительность 6 → 8 недель, подтягивания заменены тягой верхнего блока, добавлено сгибание ног сидя, пятничный жим вводится с недели 3, ротация подсобки перенесена на неделю 5.</p>
+  <p class="hero-quote">«На объёмных тренировках хочется стать сильнее, укрепить слабые звенья, и через какое-то время проверить силу. На моём уровне прогресс будет идти от объёма, потому что силовые на разы рано или поздно упрутся в стену.»</p>
+  <ul class="hero-aims">
+    <li><b>Не цель</b>рост максимума</li>
+    <li><b>Цель 1</b>тоннаж жима ≥ 6 500</li>
+    <li><b>Цель 2</b>масса тела 81–82 кг</li>
+    <li><b>Цель 3</b>карта слабых фаз к циклу B</li>
+  </ul>
+</div>
+
+<div class="quick">
+  <div><b>8 + 1</b><span>недель нагрузки плюс съём</span></div>
+  <div><b>3 дня</b><span>81 / 72 / 82 мин</span></div>
+  <div><b>8–10</b><span>повторов в основных</span></div>
+  <div><b>9 позиций</b><span>подсобки, +1 к редакции 3</span></div>
+</div>
+
+<div class="nav">
+  <a href="#dlit">Почему 8 недель</a>
+  <a href="#podt">Подтягивания → тяга блока</a>
+  <a href="#sgib">Сгибание ног</a>
+  <a href="#dop">Добавлять ли ещё</a>
+  <a href="#nedelya">Неделя</a>
+  <a href="#progress">Прогрессия</a>
+  <a href="#tonnazh">Тоннаж</a>
+  <a href="#rotac">Ротация</a>
+  <a href="#kriterii">Критерии</a>
+</div>
+
+<!-- ================= ДЛИТЕЛЬНОСТЬ ================= -->
+<section class="sec" id="dlit">
+  <div class="sec-head">
+    <h2>Вопрос 1. Шесть недель — точно? Можно больше?</h2>
+    <p>Короткий ответ: шести мало. Оптимум для этой задачи — восемь недель нагрузки плюс неделя съёма.</p>
+  </div>
+
+  <div class="verdict v-yes">
+    <b>Решение: 8 недель, разбитых на два блока по 4, плюс съём на 9-й.</b>
+    Шесть недель — нижняя граница работоспособного объёмного блока. Для двух конкретных задач этого цикла её не хватает: набора массы тела и прохождения двух полных ступеней двойной прогрессии.
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <h3>Аргумент 1: масса тела не успевает</h3>
+      <p>Цель из профиля — выйти с 80,55 на <b>81–82 кг</b>, то есть прибавить 1,5–2 кг. Безопасный темп набора, при котором прирост идёт преимущественно за счёт мышц, составляет <b>0,25–0,5 % массы тела в неделю</b> — для тебя это 0,2–0,4 кг.</p>
+      <table style="min-width:auto"><tr><th>Темп</th><th>Недель до +1,5 кг</th></tr>
+      <tr><td>0,2 кг/нед (консервативно)</td><td class="num"><b>7,5</b></td></tr>
+      <tr><td>0,3 кг/нед (умеренно)</td><td class="num"><b>5</b></td></tr>
+      <tr><td>0,4 кг/нед (верх коридора)</td><td class="num"><b>3,75</b></td></tr></table>
+      <p>При шести неделях цель достижима только на верхней границе темпа, а там растёт доля жира. При восьми — попадаешь в цель на спокойном темпе 0,2 кг в неделю.</p>
+      <p class="src">Ориентир темпа: 0,25–0,75 % массы тела в неделю <a href="https://www.bodyspec.com/blog/post/how_long_should_a_bulk_last_a_guide_to_optimizing_your_workout_plan">[BodySpec]</a></p>
+    </div>
+
+    <div class="card">
+      <h3>Аргумент 2: двойная прогрессия требует три недели на ступень</h3>
+      <p>Минимальный шаг штанги — 2,5 кг, это 4,8 % от рабочего веса. Перешагнуть его можно только повторами: 4×8 → 4×9 → 4×10 → плюс 2,5 кг. <b>Одна ступень занимает ровно три недели.</b></p>
+      <table style="min-width:auto"><tr><th>Длительность</th><th>Полных ступеней</th><th>Жим пн</th></tr>
+      <tr><td>6 недель</td><td class="num">2</td><td class="num">55 → 57,5</td></tr>
+      <tr class="hi-g"><td>8 недель</td><td class="num">2,7</td><td class="num"><b>55 → 60</b></td></tr>
+      <tr><td>10 недель</td><td class="num">3,3</td><td class="num">55 → 62,5</td></tr></table>
+      <p>Разница между шестью и восемью неделями — это <b>лишние 2,5 кг</b> на грифе в конце цикла и полностью закрытая третья ступень, а не оборванная на середине.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Что говорят источники о длине объёмного блока</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Источник</th><th>Рекомендация</th><th>Попадает ли 8 недель</th></tr>
+        <tr><td>Reshape, обзор периодизации</td><td>Гипертрофийный блок <b>4–8 недель</b></td><td class="hi-g">да, верхняя граница</td></tr>
+        <tr><td>The Strength Crew</td><td>Накопление <b>4–8 недель</b>; опытным нужны 6–8, чтобы получить полный эффект</td><td class="hi-g">да</td></tr>
+        <tr><td>bigcoachD (r/powerlifting)</td><td><b>6–10 недель</b>, если до соревнований далеко</td><td class="hi-g">да, середина</td></tr>
+        <tr><td>Блоковая периодизация (классика)</td><td>Накопление <b>3–6 недель</b>, дальше аккомодация</td><td class="hi-a">нет, но решается разбиением</td></tr>
+        <tr><td>Weightology, объём и гипертрофия</td><td>Разница между уровнями объёма проявилась <b>через 20 недель</b>, а не через 6</td><td class="hi-g">аргумент за длиннее</td></tr>
+      </table>
+    </div>
+    <p style="margin-top:10px">Единственное возражение против восьми недель — аккомодация, то есть привыкание к однообразному стимулу. Оно снимается конструктивно: цикл делится на <b>два блока по четыре недели</b> с ротацией подсобки на пятой. Внутри каждого блока стимул однородный, между блоками — меняется.</p>
+    <p class="src">Ссылки: <a href="https://www.reshapeapp.ai/blog/periodization-for-strength-and-hypertrophy">Reshape</a> · <a href="https://www.thestrengthcrew.com/blog/rethinkingblocklengthsinpowerlifting">The Strength Crew</a> · <a href="https://weightology.net/the-members-area/evidence-based-guides/set-volume-for-muscle-size-the-ultimate-evidence-based-bible/">Weightology</a></p>
+  </div>
+
+  <div class="card">
+    <h3>Почему не 10 и не 12 недель</h3>
+    <ul>
+      <li><b>Разрыв без тяжёлой работы.</b> Максимум цикла — 60 кг, это 79 % расчётного максимума. Восемь недель плюс съём — это <b>63 дня</b> без работы выше 80 %. Остаточный эффект максимальной силы по Иссурину держится 30 ± 5 дней. Уже при восьми неделях подход-ориентир из раздела 3а становится обязательным, а не опциональным. При двенадцати неделях его пришлось бы ставить каждую неделю, и цикл перестал бы быть объёмным.</li>
+      <li><b>Питание.</b> Восемь недель набора по 0,2 кг в неделю дают ровно целевые +1,6 кг. Двенадцать недель в профиците — это уже +2,4 кг и заметная доля жира без отдельного плана питания, которого сейчас нет.</li>
+      <li><b>Практика.</b> Ни одного законченного объёмного цикла в журнале ещё нет. Первый лучше сделать проверяемым по длине, а не максимальным.</li>
+    </ul>
+    <p><b>Если восемь пройдут хорошо</b> — следующий объёмный блок можно делать на 10 недель. Это решение по факту, а не заранее.</p>
+  </div>
+</section>
+
+<!-- ================= ПОДТЯГИВАНИЯ ================= -->
+<section class="sec" id="podt">
+  <div class="sec-head">
+    <h2>Вопрос 2. Подтягивания — убрать?</h2>
+    <p>Да, убрать из цикла A. Но причина не в том, что есть движение важнее.</p>
+  </div>
+
+  <div class="verdict v-yes">
+    <b>Решение: подтягивания уходят из цикла A, вместо них тяга верхнего блока 3×8–10.</b>
+    Настоящая причина — подтягивания невозможно дозировать в объёмном режиме, а не их низкая ценность.
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <h3>В чём именно проблема</h3>
+      <p>Собственный вес даёт около <b>76,5 кг эффективной нагрузки</b>, и убрать его нельзя. Это примерно 92 % твоего максимума в движении. Чтобы попасть в 8–10 повторов с запасом 2, нужен вес <i>ниже собственного</i> — а его не выставить.</p>
+      <p>Результат виден в журнале: три недели подряд работа на 2 повтора в предел.</p>
+      <table style="min-width:auto"><tr><th>Неделя</th><th>Факт</th></tr>
+      <tr><td>Н2</td><td>+15 · 4 / 4 / 3, два подхода к пределу</td></tr>
+      <tr><td>Н3</td><td>+22,5 · 1×2 предел → +20 · 2×2</td></tr>
+      <tr><td>Н4</td><td>+20 · 3×2, вторые повторы предельные</td></tr></table>
+      <p>Это не тренировка, это еженедельный тест. В цикле, построенном на прибавке «+1 повтор, потом +2,5 кг», такое движение просто не помещается: его шаг равен не 2,5 кг, а всему твоему весу целиком.</p>
+    </div>
+
+    <div class="card">
+      <h3>Почему замена именно тяга верхнего блока</h3>
+      <p>По активации широчайших разницы с подтягиваниями нет. Andersen и соавторы не нашли значимых различий при контроле интенсивности; магистерское исследование WMU по пиковой ЭМГ в концентрической фазе дало тот же результат (p = 0,53).</p>
+      <p><b>Что даёт замена:</b></p>
+      <ul>
+        <li>свободный шаг веса — блок ходит по 5 кг, можно попасть в любой коридор повторов;</li>
+        <li>двойная прогрессия работает так же, как на тяге нижнего блока, где у тебя честный рост 80 → 85 · 3×12;</li>
+        <li>меньше расход хвата, а он в среду и так занят тягой нижнего блока;</li>
+        <li>равномерное сопротивление по всей амплитуде — у подтягиваний оно проваливается внизу.</li>
+      </ul>
+      <p><b>Что теряется:</b> жёсткость корпуса в висе и нервная составляющая. Для объёмного цикла это не приоритет — <b>подтягивания возвращаются в цикл B</b> как силовое движение на 3×4–6, где их режим уместен.</p>
+      <p class="src">Источники: <a href="https://scholarworks.wmich.edu/cgi/viewcontent.cgi?article=5534&context=masters_theses">WMU, ЭМГ подтягивания против тяги блока</a> · <a href="https://bullbarfit.com/blogs/updates/the-grip-paradox-why-pull-ups-and-lat-pulldowns-arent-really-the-same-exercise">обзор различий</a></p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Важно: замена обязана быть вертикальной тягой</h3>
+    <p>Была мысль поставить «что-то более важное для спины». Но в цикле A уже есть перекос, и он в другую сторону:</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Плоскость тяги</th><th>Что стоит</th><th>Тоннаж за неделю</th></tr>
+        <tr><td>Горизонтальная</td><td>тяга нижнего блока 85 · 3×12</td><td class="num">3 060</td></tr>
+        <tr><td>Вертикальная</td><td>подтягивания 3×2–6</td><td class="num hi-a">около 120</td></tr>
+      </table>
+    </div>
+    <p style="margin-top:10px">Разница <b>в 25 раз</b>. Если убрать подтягивания и поставить вместо них ещё одну горизонтальную тягу или становую, вертикальная плоскость исчезнет из цикла полностью. Поэтому замена — только вертикальная тяга.</p>
+    <p><b>Назначение:</b> тяга верхнего блока, нейтральная или прямая рукоять, <b>3×8–10, запас 2</b>. Стартовый вес подбирается на первой тренировке, ориентир 55–60 кг.</p>
+  </div>
+
+  <div class="card">
+    <h3>Попутно: ошибка в файле 06</h3>
+    <p>В <code>06_Почему_подсобка_сокращается.md</code> стоит рекомендация «подтягивания +15–20 кг · 3×6–8». Она противоречит расчёту из <code>05_Среда_обоснование.md</code> и арифметически невыполнима: для 6 чистых повторов с запасом 2 нужно <b>+5,4 кг</b>, а не +15. Строку надо вычистить, чтобы файлы не расходились.</p>
+  </div>
+</section>
+
+<!-- ================= СГИБАНИЕ НОГ ================= -->
+<section class="sec" id="sgib">
+  <div class="sec-head">
+    <h2>Вопрос 3. Сгибания в тренажёре — стоит?</h2>
+    <p>Да. Это самый обоснованный пробел во всей текущей подсобке.</p>
+  </div>
+
+  <div class="verdict v-yes">
+    <b>Решение: сгибание ног сидя вводится — но как добавление, а не замена разгибания.</b>
+    В редакции 3 оно стояло вместо разгибания ног с недели 4. Это ошибка: два упражнения закрывают разные мышцы, и убирать одно ради другого нет причин.
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <h3>Что сейчас не закрыто вообще</h3>
+      <p>Счёт повторов по текущей неделе:</p>
+      <table style="min-width:auto"><tr><th>Движение</th><th>Повторов в неделю</th></tr>
+      <tr><td>Разгибание колена</td><td class="num">76</td></tr>
+      <tr><td>Разгибание бедра</td><td class="num">58</td></tr>
+      <tr class="hi-a"><td><b>Сгибание колена</b></td><td class="num"><b>0</b></td></tr></table>
+      <p>Из четырёх мышц задней поверхности бедра три двусуставные — проходят через бедро и колено, их румынская тяга достаёт. <b>Короткая головка бицепса бедра через бедро не проходит:</b> она сгибает только колено. Без сгибания ног её не грузит ничто — ни присед, ни РДЛ.</p>
+    </div>
+
+    <div class="card">
+      <h3>Почему сидя, а не лёжа</h3>
+      <p>Maeo и соавторы (2021), 12 недель, одна нога сидя, другая лёжа, объём и нагрузка одинаковые:</p>
+      <table style="min-width:auto"><tr><th>Показатель</th><th>Сидя</th><th>Лёжа</th></tr>
+      <tr class="hi-g"><td>Объём задней поверхности</td><td class="num"><b>+14 %</b></td><td class="num">+9 %</td></tr>
+      <tr><td>Длинная головка бицепса бедра</td><td class="num">+14 %</td><td class="num">+7 %</td></tr>
+      <tr><td>Сила</td><td class="num">+31,1 %</td><td class="num">+26,6 %</td></tr></table>
+      <p>Сидя бедро согнуто около 90°, и мышца начинает каждый повтор уже растянутой. Лёжа она стартует короткой. Прирост по короткой головке при этом одинаков — она через бедро не проходит, и положение таза на неё не влияет.</p>
+      <p><b>Если тренажёр сидя занят — лучше перенести на следующий подход, чем делать лёжа.</b></p>
+      <p class="src">Maeo et al. 2021, Med Sci Sports Exerc 53:825–837 · <a href="https://muscleevo.net/seated-vs-lying-leg-curl/">разбор</a></p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Почему разгибание ног при этом остаётся</h3>
+    <p>Burke и соавторы (2025), внутрисубъектное РКИ, 28 тренированных, 8 недель: <b>прямая мышца бедра выросла на 8,9 % от разгибаний против 4,7 % от жима ногами</b>, а латеральная широкая — наоборот, 8,7 % против 2,9 %. Прямая мышца пересекает тазобедренный сустав, и приседы её почти не грузят.</p>
+    <p>То есть разгибание ног — единственный источник нагрузки на прямую мышцу бедра в программе, а сгибание сидя — единственный источник для короткой головки бицепса бедра. Это <b>не конкуренты, а две разные дыры</b>. Замена одного другим просто переставляет дыру с места на место.</p>
+    <p class="src"><a href="https://fitchef.com/studies/leg-press-vs-leg-extension/">Burke et al. 2025</a></p>
+  </div>
+
+  <div class="card">
+    <h3>Как вводить</h3>
+    <ul>
+      <li><b>Первый заход — подбор веса, не 3×12.</b> Рабочий вес неизвестен. На первой тренировке: один подход на 12 повторов с заведомо лёгким весом, оценить посадку, затем 2 рабочих подхода. Полные 3×12 — со следующей недели.</li>
+      <li><b>Посадка.</b> Ось вращения тренажёра на уровне колена, валик над ахиллом, а не на икре, таз прижат. Если таз отрывается при сгибании — вес завышен.</li>
+      <li><b>Запас 3, отказа нет.</b> Судорога в задней поверхности на первых заходах — сигнал снизить вес, а не продавить.</li>
+      <li><b>Крепатура.</b> Незнакомая эксцентрика на растянутой мышце даёт сильную болезненность, а в понедельник стоит присед 4×8. Поэтому вводится на неделе 1, чтобы к пиковым неделям адаптация уже прошла, а не на неделе 5 вместе с ротацией.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= ДОПОЛНИТЕЛЬНЫЕ УПРАЖНЕНИЯ ================= -->
+<section class="sec" id="dop">
+  <div class="sec-head">
+    <h2>Вопрос 4. Стоит ли добавлять ещё упражнения?</h2>
+    <p>Одно — да, уже добавлено. Больше — нет, и вот расчёт по времени.</p>
+  </div>
+
+  <div class="card">
+    <h3>Бюджет времени: сколько реально осталось</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>День</th><th>Позиций</th><th>Оценка времени</th><th>Лимит</th><th>Запас</th></tr>
+        <tr><td>Понедельник</td><td class="num">3</td><td class="num">81 мин</td><td class="num">100</td><td class="num hi-g">19 мин</td></tr>
+        <tr><td>Среда</td><td class="num">5</td><td class="num">72 мин</td><td class="num">100</td><td class="num hi-g">28 мин</td></tr>
+        <tr><td>Пятница</td><td class="num">7</td><td class="num">82 мин</td><td class="num">100</td><td class="num hi-a">18 мин</td></tr>
+      </table>
+    </div>
+    <p style="margin-top:10px">Время посчитано по редакции 5, после переноса тяги верхнего блока в понедельник и трицепса с махами в среду. Перенос выровнял дни: разброс сократился с 24 минут до 10.</p>
+    <p><b>Новых движений больше не добавляем.</b> Оставшийся запас идёт на отдых между подходами основных, а не на десятое упражнение. Дальнейший рост объёма — только подходами в уже стоящих упражнениях.</p>
+    <p>Рекомендация источников — <b>3–5 подсобных упражнений на сессию</b>; больше распыляет объём и не даёт ни одному упражнению дойти до верха коридора. У тебя как раз 4–6.</p>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <h3>Что рассматривалось и отклонено</h3>
+      <div class="verdict v-no" style="margin:8px 0">
+        <b>Брусья или жим узким хватом</b>
+        Предлагались мной в анализе от 17 сентября как компаунд на трицепс. <b>Отзываю.</b> В цикле A уже три жимовых дня плюс средний хват 55 см, который сам по себе смещает нагрузку на трицепс. По счёту подходов трицепс и так набирает 10 в неделю — это середина нормы, дыры там нет.
+      </div>
+      <div class="verdict v-no" style="margin:8px 0">
+        <b>Становая тяга</b>
+        Горизонтальная тяга и РДЛ уже дают 4 935 кг·повт в неделю. Становая добавит осевую нагрузку и заберёт восстановление у пятничного приседа, ради которого цикл и строится.
+      </div>
+      <div class="verdict v-no" style="margin:8px 0">
+        <b>Икры, ротаторы, наклонный жим</b>
+        Отклонены твоими же корректировками 4, 5 и 9. Не возвращаю.
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Молотки: решено — возвращаем</h3>
+      <div class="verdict v-yes" style="margin:8px 0">
+        <b>Постоянная позиция пятницы: 14 кг · 3×6–8, запас 2</b>
+        Причина удаления в редакции 3 («три недели откатывались из-за закисления») оказалась неверной: коридор 10–15 с порогом «чистые 3×15 на 12 кг» был физически недостижим — отказ наступал уже на 10–12 повторах. На 14 кг × 6 такого состояния нет.
+      </div>
+      <p>Главный довод не в бицепсе как таковом, а в счёте подходов. <b>Без молотков прямой работы на бицепс в цикле нет вообще:</b> только косвенная от двух тяг, это 3 засчитываемых подхода в неделю при нижней границе нормы 8. С молотками — 7.</p>
+      <p>Пятница — единственный день без тяг, хват там свободен, стоят они 4 минуты. Ставятся последними: если день затянулся, снимаются первыми вместе с роликом.</p>
+      <p><b>Коридор 6–10, шаг веса 2 кг</b> (14 → 16). Закрыл 3×10 чисто с запасом 2 — переходишь на 16 и падаешь к 3×6.</p>
+    </div>
+  </div>
+
+  <div class="verdict v-yes">
+    <b>Итог по составу: 9 позиций подсобки, новых движений больше не добавляем.</b>
+    Добавлено сгибание ног сидя, возвращены молотки, подтягивания заменены тягой верхнего блока с переносом в понедельник. Дальше объём растёт подходами — расчёт в следующем разделе.
+  </div>
+</section>
+
+<!-- ================= НЕДЕЛЯ ================= -->
+<section class="sec" id="nedelya">
+  <div class="sec-head">
+    <h2>Неделя цикла A</h2>
+    <p>Веса указаны для первой недели. Прогрессия по неделям — в следующем разделе.</p>
+  </div>
+
+  <div class="grid3">
+    <div class="day">
+      <div class="day-head"><h3>Понедельник</h3><span>жим + присед + вертикальная тяга · ~81 мин</span></div>
+      <ol>
+        <li><b>Жим в касание</b>, свой хват 64 см<span class="ex-load">55 кг · 4×8</span><span class="ex-note">Запас 2. Единственное движение, не меняющееся весь цикл — точка отсчёта прогресса.</span></li>
+        <li><b>Присед</b><span class="ex-load">75 кг · 4×8</span><span class="ex-note">Запас 1,5. Ниже параллели, привычное среднее положение грифа.</span></li>
+        <li><b>Тяга верхнего блока</b><span class="tag-new">перенос + замена</span><span class="ex-load">~55–60 кг · 4×8–10</span><span class="ex-note">Вместо подтягиваний и вместо среды. Спина работает свежей, в неделе появляется второй тянущий день. Вес подобрать на первой тренировке, запас 2.</span></li>
+      </ol>
+      <p style="margin:0 12px 13px 16px;font-size:12.5px;color:#657084">Трицепс и махи уехали в среду — иначе день не помещается в лимит.</p>
+    </div>
+
+    <div class="day">
+      <div class="day-head"><h3>Среда</h3><span>объём верха · ~72 мин</span></div>
+      <ol>
+        <li><b>Жим средним хватом</b> 55 см<span class="ex-load">52,5 кг · 4×8</span><span class="ex-note">Носитель прогрессии. Не ротируется — нагрузка растёт каждую неделю.</span></li>
+        <li><b>Тяга нижнего блока</b>, узкая нейтральная<span class="ex-load">85–90 кг · 4×12</span><span class="ex-note">Четвёртый подход добавлен. С недели 5 — широкая рукоять, вес падает примерно до 85 %.</span></li>
+        <li><b>Жим гантелей</b><span class="ex-load">22 кг · 3×10</span><span class="ex-note">Вес заморожен на весь цикл, прогрессия только повторами до 3×14.</span></li>
+        <li><b>Трицепс на блоке</b><span class="tag-new">перенос</span><span class="ex-load">40 кг · 3×12</span><span class="ex-note">Из понедельника. Запас 3. С недели 5 — разгибание из-за головы.</span></li>
+        <li><b>Подъёмы через стороны</b><span class="tag-new">перенос</span><span class="ex-load">5 кг · 4×12</span><span class="ex-note">Из понедельника, четвёртый подход добавлен: было 3 подхода на боковую дельту в неделю. С недели 5 — кроссовер одной рукой.</span></li>
+      </ol>
+    </div>
+
+    <div class="day">
+      <div class="day-head"><h3>Пятница</h3><span>присед + лёгкий жим · ~82 мин</span></div>
+      <ol>
+        <li><b>Присед</b><span class="ex-load">77,5 кг · 4×7</span><span class="ex-note">С недели 5 — паузный присед 70 кг · 4×6.</span></li>
+        <li><b>Румынская тяга</b><span class="ex-load">62,5 кг · 3×10</span><span class="ex-note">Единственная подсобка, прогрессирующая по весу внутри цикла.</span></li>
+        <li><b>Жим с паузой 1 сек</b>, свой хват<span class="ex-load">45 кг · 3×5</span><span class="ex-note">Вводится с недели 3, не со второй. Стоит после приседа, снимается первым.</span></li>
+        <li><b>Разгибание ног</b><span class="ex-load">15 → 25 кг · 3×12</span><span class="ex-note">Остаётся весь цикл. Единственная нагрузка на прямую мышцу бедра.</span></li>
+        <li><b>Сгибание ног сидя</b><span class="tag-new">новое</span><span class="ex-load">подбор · 3×12</span><span class="ex-note">Первый заход — подбор веса. Закрывает короткую головку бицепса бедра.</span></li>
+        <li><b>Ролик для пресса</b><span class="ex-load">3×10</span><span class="ex-note">С недели 5 — 3×10–12.</span></li>
+        <li><b>Молотки</b><span class="tag-new">возвращены</span><span class="ex-load">14 кг · 3×6–8</span><span class="ex-note">Коридор 6–10, запас 2. Единственная прямая работа на бицепс. Снимаются первыми вместе с роликом, если день затянулся.</span></li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="verdict v-yes">
+    <b>Что изменил перенос</b>
+    Спина тренируется два раза в неделю вместо одного: понедельник — вертикальная тяга 4 подхода, среда — горизонтальная 4. Итого 8 подходов против 6, и они разнесены на два дня. Понедельник разгрузился с 88 до 81 минуты, среда выросла с 64 до 72 — дни выровнялись по длине.
+  </div>
+
+  <div class="card" style="margin-top:12px">
+    <h3>Подход-ориентир: удержание тяжёлого навыка</h3>
+    <p>Максимум цикла — 60 кг, это 79 % расчётного максимума. При восьми неделях плюс съёме разрыв без работы выше 80 % составляет <b>63 дня</b>, а остаточный эффект максимальной силы держится 30 ± 5 дней. Поэтому в пятницу, <b>перед</b> жимом с паузой, ставится один подход на 2 повтора:</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Неделя</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th></tr>
+        <tr><td>Вес</td><td class="num">—</td><td class="num">—</td><td class="num hi">62,5</td><td class="num">—</td><td class="num hi">65</td><td class="num">—</td><td class="num hi">67,5</td><td class="num hi">67,5</td></tr>
+        <tr><td>% от 1ПМ</td><td class="num">—</td><td class="num">—</td><td class="num">82 %</td><td class="num">—</td><td class="num">86 %</td><td class="num">—</td><td class="num">89 %</td><td class="num">89 %</td></tr>
+      </table>
+    </div>
+    <p style="margin-top:10px"><b>Правила:</b> никогда не в отказ — вес назначается с запасом минимум 2 чистых повтора; только после разминки, первым жимовым упражнением дня; свой соревновательный хват 64 см, не средний; снимается первым при любом признаке недовосстановления; не ставится на неделе 5, где меняется вся подсобка.</p>
+    <p>Стоимость — около 8 минут и 2 % недельного тоннажа жима. Это удержание навыка, а не развитие силы: прирост придёт в цикле B.</p>
+  </div>
+</section>
+
+<!-- ================= ПРОГРЕССИЯ ================= -->
+<section class="sec" id="progress">
+  <div class="sec-head">
+    <h2>Прогрессия по неделям</h2>
+    <p>Двойная прогрессия: держим вес и добавляем повтор; закрыли верх коридора — плюс 2,5 кг, повторы падают к низу.</p>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <tr>
+        <th>Нед</th><th>Пн: жим 64 см</th><th>Пн: присед</th><th>Ср: жим 55 см</th><th>Пт: присед</th><th>Пт: пауза</th>
+      </tr>
+      <tr><td><b>1</b></td><td class="num">55 · 4×8</td><td class="num">75 · 4×8</td><td class="num">52,5 · 4×8</td><td class="num">77,5 · 4×7</td><td class="num">—</td></tr>
+      <tr><td><b>2</b></td><td class="num">55 · 4×9</td><td class="num">75 · 4×9</td><td class="num">52,5 · 4×9</td><td class="num">80 · 4×7</td><td class="num">—</td></tr>
+      <tr><td><b>3</b></td><td class="num">55 · 4×10</td><td class="num">77,5 · 4×8</td><td class="num">52,5 · 4×10</td><td class="num">82,5 · 4×6</td><td class="num">45 · 3×5</td></tr>
+      <tr class="hi"><td><b>4</b></td><td class="num">57,5 · 4×8</td><td class="num">77,5 · 4×9</td><td class="num">55 · 4×8</td><td class="num">82,5 · 4×7</td><td class="num">45 · 3×6</td></tr>
+      <tr class="hi-g"><td><b>5</b></td><td class="num">57,5 · 4×9</td><td class="num">80 · 4×8</td><td class="num">55 · 4×9</td><td class="num">пауза 70 · 4×6</td><td class="num">45 · 3×7</td></tr>
+      <tr class="hi-g"><td><b>6</b></td><td class="num">57,5 · 4×10</td><td class="num">80 · 4×9</td><td class="num">55 · 4×10</td><td class="num">пауза 72,5 · 4×6</td><td class="num">47,5 · 3×5</td></tr>
+      <tr class="hi-g"><td><b>7</b></td><td class="num">60 · 4×8</td><td class="num">82,5 · 4×8</td><td class="num">57,5 · 4×8</td><td class="num">пауза 72,5 · 4×7</td><td class="num">47,5 · 3×6</td></tr>
+      <tr class="hi-g"><td><b>8</b></td><td class="num"><b>60 · 4×9</b></td><td class="num"><b>82,5 · 4×9</b></td><td class="num"><b>57,5 · 4×9</b></td><td class="num">пауза 75 · 4×6</td><td class="num">47,5 · 3×7</td></tr>
+      <tr style="background:#f7f9fc"><td><b>9</b></td><td colspan="5" style="color:var(--muted)"><b>Съём.</b> 60–70 % весов, 2 подхода, без подхода-ориентира и без подсобки сверх двух позиций в день.</td></tr>
+    </table>
+  </div>
+
+  <div class="grid2" style="margin-top:12px">
+    <div class="card">
+      <h3>Правила шага</h3>
+      <ul>
+        <li>Повтор добавляется, только если последний подход прошёл <b>с запасом 2</b> и самочувствие в норме.</li>
+        <li>Вес не прибавляется, пока верх коридора не закрыт чисто <b>во всех четырёх подходах</b>.</li>
+        <li>Не стоять на одном весе с одинаковыми повторами <b>больше трёх недель</b> подряд.</li>
+        <li>Если неделя не закрылась — повторить её, а не идти дальше. Цикл удлиняется, это нормально.</li>
+      </ul>
+      <p>Коридоры: понедельник и среда 8–10, пятничный присед 6–7, пауза 5–7.</p>
+    </div>
+    <div class="card">
+      <h3>Что растёт под капотом</h3>
+      <p>Расчётный максимум в среду при формально стоящем три недели весе:</p>
+      <div class="table-wrap"><table style="min-width:auto">
+        <tr><th>Нед</th><th>1</th><th>3</th><th>5</th><th>8</th></tr>
+        <tr><td>Вес</td><td class="num">52,5</td><td class="num">52,5</td><td class="num">55</td><td class="num">57,5</td></tr>
+        <tr><td>Расч. 1ПМ</td><td class="num">70,0</td><td class="num">73,5</td><td class="num">75,2</td><td class="num hi-g"><b>79,5</b></td></tr>
+      </table></div>
+      <p style="margin-top:8px">Это и есть смысл двойной прогрессии: ступенька перешагивается повторами, а не ожиданием. Максимальный вес на грифе при этом падает с 62,5 до 55–60 — как и положено объёмному циклу.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ТОННАЖ ================= -->
+<section class="sec" id="tonnazh">
+  <div class="sec-head">
+    <h2>Тоннаж жима по неделям</h2>
+    <p>Сумма трёх жимовых движений плюс гантели. Пила вместо прямой — нормально при шаге 2,5 кг.</p>
+  </div>
+
+  <div class="card">
+    <div class="bar-row"><span class="bar-wk">Н3<br><span style="font-size:10px;font-weight:600;color:#657084">факт</span></span><div class="bar-track"><div class="bar-fill" style="width:61.7%;background:#9aa7b8"></div></div><span class="bar-val"><b>4 040</b> · текущий цикл</span></div>
+    <div class="bar-row"><span class="bar-wk">1</span><div class="bar-track"><div class="bar-fill" style="width:72.7%"></div></div><span class="bar-val"><b>4 760</b> · +18 %</span></div>
+    <div class="bar-row"><span class="bar-wk">2</span><div class="bar-track"><div class="bar-fill" style="width:79.3%"></div></div><span class="bar-val"><b>5 190</b> · +28 %</span></div>
+    <div class="bar-row"><span class="bar-wk">3</span><div class="bar-track"><div class="bar-fill" style="width:96.1%"></div></div><span class="bar-val"><b>6 295</b> · +56 %</span></div>
+    <div class="bar-row"><span class="bar-wk">4</span><div class="bar-track"><div class="bar-fill" style="width:87.5%"></div></div><span class="bar-val"><b>5 730</b> · шаг веса</span></div>
+    <div class="bar-row"><span class="bar-wk">5</span><div class="bar-track"><div class="bar-fill b2" style="width:96.5%"></div></div><span class="bar-val"><b>6 315</b> · блок 2</span></div>
+    <div class="bar-row"><span class="bar-wk">6</span><div class="bar-track"><div class="bar-fill b2" style="width:99.8%"></div></div><span class="bar-val"><b>6 532</b></span></div>
+    <div class="bar-row"><span class="bar-wk">7</span><div class="bar-track"><div class="bar-fill b2" style="width:90.7%"></div></div><span class="bar-val"><b>5 935</b> · шаг веса</span></div>
+    <div class="bar-row"><span class="bar-wk">8</span><div class="bar-track"><div class="bar-fill b2" style="width:100%"></div></div><span class="bar-val"><b>6 547</b> · <b>+62 %</b></span></div>
+    <p style="margin-top:12px">Провалы на неделях 4 и 7 — это моменты, когда вес шагнул вверх и повторы упали к низу коридора. Средний вес на грифе при этом растёт монотонно.</p>
+    <p><b>Против редакции 3:</b> пик там был 6 215 на шестой неделе. Здесь 6 547 на восьмой, и две недели выше 6 300 вместо одной.</p>
+  </div>
+</section>
+
+
+<!-- ================= ОБЪЁМ ПО МЫШЦАМ ================= -->
+<section class="sec" id="obem">
+  <div class="sec-head">
+    <h2>Сколько подходов и почему именно столько</h2>
+    <p>Разбор, на основании которого спина переведена на 4 подхода и перенесена в понедельник.</p>
+  </div>
+
+  <div class="card">
+    <h3>Единица счёта</h3>
+    <p>Считаем <b>рабочие подходы на мышцу в неделю</b> — не упражнения и не тоннаж. Косвенная работа идёт за половину: жим даёт трицепсу 0,5 подхода, тяга бицепсу 0,5. Так считали в мета-анализе Pelland 2025 (67 исследований, 2 058 участников) — этот способ подсчёта предсказывал прирост лучше, чем «только прямые» или «всё за единицу».</p>
+    <p>Ориентир для промежуточного уровня — <b>10–20 подходов на мышцу в неделю</b>. Ниже 10 добавление подходов даёт максимальную отдачу; в диапазоне 19–29 каждый следующий видимый прирост стоит уже около 10 дополнительных подходов. Разворота вниз («мусорный объём») в данных нет — есть удорожание.</p>
+    <div class="src">Источники: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8884877/">систематический обзор, 12–20 подходов</a> · Schoenfeld 2017, доза-эффект · Pelland 2025, Sports Medicine</div>
+  </div>
+
+  <div class="card">
+    <h3>Что было в редакции 4 и что стало</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Мышца</th><th>Было</th><th>Стало</th><th>Норма</th><th>Оценка</th></tr>
+        <tr><td>Грудь</td><td class="num">14</td><td class="num">14</td><td class="num">10–16</td><td>в норме, не трогаем</td></tr>
+        <tr><td>Квадрицепс</td><td class="num">11</td><td class="num">11</td><td class="num">10–16</td><td>в норме</td></tr>
+        <tr><td>Трицепс</td><td class="num">10</td><td class="num">10</td><td class="num">8–14</td><td>в норме, почти весь косвенный</td></tr>
+        <tr class="hi"><td><b>Спина</b></td><td class="num">6</td><td class="num"><b>8</b></td><td class="num">10–16</td><td>главный недобор, закрыт частично</td></tr>
+        <tr><td>Задняя поверхность бедра</td><td class="num">6</td><td class="num">6</td><td class="num">8–12</td><td>сгибание ног новое, объём добавим в цикле B</td></tr>
+        <tr class="hi"><td><b>Бицепс</b></td><td class="num">3</td><td class="num"><b>7</b></td><td class="num">8–12</td><td>закрыт молотками</td></tr>
+        <tr class="hi"><td><b>Боковая дельта</b></td><td class="num">3</td><td class="num"><b>4</b></td><td class="num">10–14</td><td>уменьшен, не закрыт</td></tr>
+        <tr><td>Пресс</td><td class="num">3</td><td class="num">3</td><td class="num">6–10</td><td>сознательно оставлен низким</td></tr>
+      </table>
+    </div>
+    <p style="margin-top:10px">Ключевая цифра здесь не «спина 6», а <b>соотношение грудь : спина = 14 : 6</b>. При трёх жимовых днях это перекос в 2,3 раза — прямое противоречие цели «укрепить слабые звенья»: жимовые мышцы получали верх нормы, тянущие оставались ниже нижней границы.</p>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <h3>Три способа закрыть разрыв</h3>
+      <div class="verdict v-no" style="margin:8px 0">
+        <b>Добавить упражнение</b>
+        Самый сильный вариант, но места нет: новое движение стоит 10–12 минут, а понедельник и пятница уже у лимита.
+      </div>
+      <div class="verdict v-maybe" style="margin:8px 0">
+        <b>Добавить подходы</b>
+        Стоит 3,5 минуты на упражнение, ничего не ломает. Но четвёртый подход в упражнении, которое стоит раз в неделю, — наименее эффективный способ добавить объём.
+      </div>
+      <div class="verdict v-yes" style="margin:8px 0">
+        <b>Поднять частоту — выбрано</b>
+        В редакции 4 спина тренировалась <b>один раз в неделю</b>, вся в среду. Восемь подходов, разнесённые на два дня, работают лучше восьми в один день.
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Как реализован перенос</h3>
+      <p>Тяга верхнего блока уехала в понедельник, трицепс и махи — в среду.</p>
+      <div class="table-wrap"><table style="min-width:auto">
+        <tr><th>День</th><th>Было</th><th>Стало</th></tr>
+        <tr><td>Понедельник</td><td>жим, присед, трицепс, махи<br>88 мин</td><td>жим, присед, <b>верхний блок 4×</b><br>81 мин</td></tr>
+        <tr><td>Среда</td><td>жим, верхний блок, гантели, нижний блок<br>64 мин</td><td>жим, <b>нижний блок 4×</b>, гантели, трицепс, <b>махи 4×</b><br>72 мин</td></tr>
+        <tr><td>Пятница</td><td>6 позиций, 78 мин</td><td>7 позиций с молотками, 82 мин</td></tr>
+      </table></div>
+      <p style="margin-top:9px">Три выигрыша сразу: спина работает <b>дважды в неделю</b> и притом свежей — в понедельник она идёт третьей позицией, а не пятой в конце среды; дни выровнялись по длине; понедельник стал короче, а не длиннее.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Почему не 5 подходов</h3>
+    <p>Пятый подход на тягу дал бы спине 10 подходов в неделю вместо 8 — формально ближе к норме. Отказался по трём причинам:</p>
+    <ul>
+      <li><b>Качество последних подходов.</b> Пятый подход в упражнении выполняется на упавшем усилии, а правило цикла — запас минимум 2, без отказа. Подход с запасом 4 из-за усталости стимулирует слабо.</li>
+      <li><b>Время.</b> Два пятых подхода — это 7 минут, а в пятницу запас всего 18.</li>
+      <li><b>Нет базы для скачка.</b> Спина шла с 6 подходов. Прыжок сразу до 10 — это +67 % за неделю, при том что тяга верхнего блока вообще новое движение с неизвестным рабочим весом.</li>
+    </ul>
+    <p><b>Резерв на цикл B:</b> 8 подходов — не потолок, а следующая ступень. Если к неделе 4 восстановление держится, пятый подход добавляется сначала в понедельник, потом в среду. Это записанный план роста, а не забытая возможность.</p>
+  </div>
+
+  <div class="card">
+    <h3>Чего этот расчёт не учитывает</h3>
+    <p>Нормы по подходам выведены на исследованиях, где подходы выполнялись близко к отказу. В твоём цикле правило другое: <b>запас минимум 3 в подсобке</b>, основные без отказа до тестовой недели. При запасе 3 подход стимулирует меньше, чем в тех исследованиях.</p>
+    <p>Из этого следует неприятное: реальный недобор по спине может быть <b>больше посчитанного, а не меньше</b>. Точного коэффициента пересчёта никто не измерял, поэтому в цифры выше он не заложен — считай таблицу нижней оценкой дефицита.</p>
+    <p>Боковая дельта остаётся недобранной осознанно: 4 подхода против нормы 10. Закрыть её можно только вторым днём махов, а это упражнение не входит в цели цикла — приоритет отдан жиму, приседу и спине.</p>
+  </div>
+</section>
+
+<!-- ================= РОТАЦИЯ ================= -->
+<section class="sec" id="rotac">
+  <div class="sec-head">
+    <h2>Ротация подсобки: неделя 5, и не вся сразу</h2>
+    <p>Изменение против редакции 3, где менялись все восемь позиций одновременно.</p>
+  </div>
+
+  <div class="card">
+    <p>В редакции 3 стоял довод «так проще отследить: недели 1–3 один набор, 4–6 другой». На практике выходит наоборот: если во втором блоке что-то просядет, причину среди восьми одновременных замен не найти. Плюс два новых движения на бедро в один день дают сильную крепатуру перед понедельничным приседом.</p>
+    <p><b>Решение:</b> ротация разносится на две недели, и три позиции не ротируются вообще.</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Позиция</th><th>Блок 1 (нед. 1–4)</th><th>Блок 2 (нед. 5–8)</th><th>Когда меняется</th></tr>
+        <tr><td>Трицепс <span style="color:#657084;font-size:12px">(среда)</span></td><td>блок 40 · 3×12</td><td>из-за головы 3×12</td><td class="num">неделя 5</td></tr>
+        <tr><td>Махи <span style="color:#657084;font-size:12px">(среда)</span></td><td>гантели 5 кг · 4×12</td><td>кроссовер 4×12–15</td><td class="num">неделя 5</td></tr>
+        <tr><td>Тяга нижнего блока <span style="color:#657084;font-size:12px">(среда)</span></td><td>узкая нейтральная 85–90 · 4×12</td><td>широкая 72,5–77,5 · 4×12</td><td class="num">неделя 6</td></tr>
+        <tr><td>Присед пятницы</td><td>обычный 77,5–82,5</td><td>паузный 70–75</td><td class="num">неделя 5</td></tr>
+        <tr class="hi-g"><td><b>Тяга верхнего блока</b> <span style="color:#657084;font-size:12px">(понедельник, 4×8–10)</span></td><td colspan="2">не ротируется — носитель прогрессии в вертикальной тяге</td><td class="num">—</td></tr>
+        <tr class="hi-g"><td><b>Сгибание ног сидя</b></td><td colspan="2">не ротируется — движение новое, ему нужен весь цикл</td><td class="num">—</td></tr>
+        <tr class="hi-g"><td><b>Разгибание ног</b></td><td colspan="2">не ротируется — 15 → 25 кг, коридор ещё не исчерпан</td><td class="num">—</td></tr>
+        <tr><td>Жим гантелей</td><td>22 · 3×10</td><td>22 · 3×12–14</td><td class="num">повторы</td></tr>
+        <tr><td>Румынская тяга</td><td>62,5 · 3×10</td><td>65 · 3×10</td><td class="num">вес, неделя 5</td></tr>
+        <tr><td>Ролик</td><td>3×10</td><td>3×10–12</td><td class="num">повторы</td></tr>
+        <tr class="hi-g"><td><b>Молотки</b></td><td colspan="2">не ротируются — вернулись в цикл, нужен полный срок на коридоре 6–10</td><td class="num">—</td></tr>
+      </table>
+    </div>
+    <p style="margin-top:10px"><b>Правила подсобки на весь цикл:</b> запас минимум 3 повтора, отказа нет нигде; прибавка веса только в румынской тяге и разгибании ног; подсобка снимается первой при перегрузке; коридор повторов у каждого упражнения свой и обязан быть достижимым.</p>
+  </div>
+
+  <div class="verdict v-maybe">
+    <b>Урок из текущего цикла, вшитый в правила</b>
+    Верхняя граница коридора, до которой невозможно дойти, не стимулирует прогресс, а блокирует упражнение. На молотках порог «чистые 3×15 на 12 кг» держал вес на месте четыре недели, потому что отказ наступал уже на 10–12 повторах. Для трицепса тот же коридор 10–15 корректен — там 3×15 закрыты честно. Коридор ставится по факту упражнения, а не шаблоном.
+  </div>
+</section>
+
+<!-- ================= КРИТЕРИИ ================= -->
+<section class="sec" id="kriterii">
+  <div class="sec-head">
+    <h2>Критерии и контроль</h2>
+    <p>Что должно получиться к девятой неделе и чем ловить перебор.</p>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <h3>Цикл сработал, если</h3>
+      <ul>
+        <li>жим в касание <b>60 · 4×9</b> с запасом;</li>
+        <li>жим средним хватом <b>57,5 · 4×9</b>, расчётный максимум около 79 кг;</li>
+        <li>недельный тоннаж жима <b>≥ 6 500</b> против 4 040 сейчас;</li>
+        <li>присед понедельника <b>82,5 · 4×9</b> ниже параллели;</li>
+        <li>известны все четыре соотношения из карты слабых мест;</li>
+        <li>средняя утренняя масса <b>81–82 кг</b>;</li>
+        <li>ни одного эпизода симптомов в верхе грудных.</li>
+      </ul>
+      <p>Дальше — <b>цикл B</b>, полный разбор в последнем разделе: 4 недели пятёрок с входом на 65 кг, тестовая неделя на 80 · 4, подтягивания возвращаются как силовое движение.</p>
+    </div>
+
+    <div class="card">
+      <h3>Карта слабых мест — главный результат</h3>
+      <p>Считать по одинаковым повторам и одинаковому запасу, писать в журнал.</p>
+      <div class="table-wrap"><table style="min-width:auto">
+        <tr><th>Соотношение</th><th>Норма</th><th>Если ниже</th></tr>
+        <tr><td>Средний хват / соревновательный</td><td class="num">~96 %</td><td>трицепс лимитирует</td></tr>
+        <tr><td>Пауза 1 сек / касание</td><td class="num">~95 %</td><td>слаб срыв с груди</td></tr>
+        <tr><td>Паузный присед / обычный</td><td class="num">85–90 %</td><td>слаб выход из ямы</td></tr>
+        <tr><td>Широкая тяга / узкая</td><td class="num">~85 %</td><td>слабы лопаточные стабилизаторы</td></tr>
+      </table></div>
+      <p style="margin-top:8px">К циклу B подходишь не с «жим не идёт», а с конкретикой — какая фаза отстаёт.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Маркеры недовосстановления и порядок снятия нагрузки</h3>
+    <div class="grid2">
+      <div>
+        <h4>Писать после каждой тренировки</h4>
+        <div class="table-wrap"><table style="min-width:auto">
+          <tr><th>Маркер</th><th>Порог тревоги</th></tr>
+          <tr><td>Запас в последнем подходе</td><td>два раза подряд меньше 1</td></tr>
+          <tr><td>Сон</td><td>меньше 7 часов две ночи подряд</td></tr>
+          <tr><td>Утренняя масса</td><td>падение больше 0,7 кг за неделю</td></tr>
+          <tr><td>Верх грудных</td><td>любое «да»</td></tr>
+          <tr><td>Разминочный вес</td><td>ощущается тяжелее обычного</td></tr>
+        </table></div>
+        <p style="margin-top:8px">Последний маркер самый ранний: если 40 кг в разминке вдруг не летят, это опережает остальные признаки на несколько дней.</p>
+      </div>
+      <div>
+        <h4>Порядок снятия — по одному шагу</h4>
+        <ol style="padding-left:20px;color:#43506a">
+          <li><b>Снять пятничный жим</b> на неделю. Самая дешёвая позиция, минус 11 % тоннажа.</li>
+          <li><b>Срезать подсобку</b> — трицепс, махи, тягу — на неделю. Основное не трогаем.</li>
+          <li><b>Повторить неделю</b> без прибавки. Не откат, а пауза в прогрессии.</li>
+          <li><b>Досрочный съём.</b> Цикл удлиняется на неделю, это нормально.</li>
+        </ol>
+        <p>Чего не делать: не снимать всё сразу, не бросать цикл, не возвращаться к старой схеме.</p>
+        <p><b>Дополнительно при восьми неделях:</b> если после недели 4 запас в основных подходах стабильно ниже 1, вставить разгрузочную неделю между блоками. Тогда цикл станет 4 + 1 + 4 + съём.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================= ПЕРЕХОД В ЦИКЛ B ================= -->
+<section class="sec" id="perehod">
+  <div class="sec-head">
+    <h2>Переход в силовой цикл B: как объём превращается в результат</h2>
+    <p>Главный вопрос всей схемы — почему тоннаж вообще должен дать прибавку в максимуме.</p>
+  </div>
+
+  <div class="verdict v-maybe">
+    <b>Проблема, которую надо назвать вслух</b>
+    Объёмный цикл сам по себе силу не показывает. В конце цикла A самый тяжёлый рабочий вес в жиме — <b>60 кг</b>, это 73 % от твоих целевых 82. Если выйти из восьми недель работы по 8–10 повторов и сразу попробовать 80 кг на 4, результат будет хуже ожидаемого, и вывод «объём не работает» окажется ложным. Сила не исчезла — её не во что выразить без промежуточной фазы.
+  </div>
+
+  <div class="card">
+    <h3>Механизм: что именно переносится из A в B</h3>
+    <p>Разделим силу на три составляющие и посмотрим, что с каждой делает объёмный цикл:</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Составляющая</th><th>Что с ней делает цикл A</th><th>Что делает цикл B</th></tr>
+        <tr><td><b>Площадь сечения мышцы</b></td><td class="hi-g">Растёт. Это единственный медленный компонент, ему нужны недели под нагрузкой — 8 недель и +1,5 кг массы тела</td><td>Сохраняется на поддерживающем объёме</td></tr>
+        <tr><td><b>Нервная эффективность</b><br><span style="font-size:12px;color:#657084">рекрутирование, синхронизация, межмышечная координация</span></td><td class="hi-a">Частично теряется — работа идёт на 65–75 % от максимума</td><td class="hi-g">Восстанавливается и растёт за 3–4 недели: это быстрый компонент</td></tr>
+        <tr><td><b>Навык движения под тяжёлым весом</b><br><span style="font-size:12px;color:#657084">траектория, брейсинг, съём со стоек</span></td><td>Удерживается подходом-ориентиром — 62,5 → 67,5 кг</td><td class="hi-g">Отрабатывается на рабочих весах 85–91 %</td></tr>
+      </table>
+    </div>
+    <p style="margin-top:10px">Отсюда вся логика: <b>цикл A строит то, что строится медленно, цикл B включает то, что включается быстро.</b> Обратный порядок не работает — нервную эффективность можно надстроить над большей мышцей, но нельзя нарастить мышцу за три недели пятёрок.</p>
+  </div>
+
+  <div class="card">
+    <h3>Пример на числах: жим лёжа</h3>
+    <p>Разбираю конкретно, потому что абстрактно это звучит как обещание.</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Точка</th><th>Рабочий вес</th><th>Расчётный максимум</th><th>Комментарий</th></tr>
+        <tr><td>Сейчас, неделя 3 текущего цикла</td><td class="num">62,5 · 5×5</td><td class="num">75–76 кг</td><td>исходная точка</td></tr>
+        <tr><td>Конец цикла A, понедельник</td><td class="num hi">60 · 4×9 @ запас 2</td><td class="num hi">82 кг</td><td>вес на грифе <b>ниже</b>, расчётный максимум <b>выше</b> на 6–7 кг</td></tr>
+        <tr><td>Цикл B, неделя 1</td><td class="num">65 · 4×5 @ запас 3</td><td class="num">82 кг</td><td>вход мягкий, максимум тот же — это перенастройка, а не прогресс</td></tr>
+        <tr><td>Цикл B, неделя 4</td><td class="num">72,5 · 4×4 @ запас 2</td><td class="num">87 кг</td><td>работает нервная адаптация</td></tr>
+        <tr class="hi-g"><td><b>Тестовая неделя</b></td><td class="num"><b>80 · 4 повтора</b></td><td class="num"><b>93 кг</b></td><td>это и есть ближайшая цель из профиля</td></tr>
+      </table>
+    </div>
+    <p style="margin-top:10px">Обрати внимание на вторую строку: <b>расчётный максимум вырос при упавшем весе на грифе.</b> Именно это и надо ожидать в конце цикла A — не рекорд, а способность делать 9 повторов там, где раньше делал 5. Прибавка 62,5 → 80 кг на 4 повтора выглядит большой, но она разложена на 12 недель: 8 недель роста мышцы и 4 недели перевода этого роста в силу.</p>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <h3>Конкретный план цикла B</h3>
+      <p>4 недели плюс тестовая. Пишу заранее, чтобы цикл A имел адресата.</p>
+      <div class="table-wrap"><table style="min-width:auto">
+        <tr><th>Нед</th><th>Жим пн</th><th>Присед пт</th><th>Запас</th></tr>
+        <tr><td class="num">1</td><td class="num">65 · 4×5</td><td class="num">87,5 · 4×5</td><td class="num">3</td></tr>
+        <tr><td class="num">2</td><td class="num">67,5 · 4×5</td><td class="num">90 · 4×5</td><td class="num">2–3</td></tr>
+        <tr><td class="num">3</td><td class="num">70 · 4×5</td><td class="num">92,5 · 4×5</td><td class="num">2</td></tr>
+        <tr><td class="num">4</td><td class="num">72,5 · 4×4</td><td class="num">95 · 4×4</td><td class="num">2</td></tr>
+        <tr><td class="num">5</td><td colspan="2">разгрузка, 60 % весов</td><td class="num">—</td></tr>
+        <tr class="hi-g"><td class="num"><b>6</b></td><td class="num"><b>80 · 4</b></td><td class="num"><b>100 · 4</b></td><td class="num">1</td></tr>
+      </table></div>
+      <p style="margin-top:9px">Проценты от расчётного максимума идут 79 → 82 → 85 → 88 → 98 %. Это плавный вход, а не прыжок сразу на тяжёлое.</p>
+    </div>
+
+    <div class="card">
+      <h3>Что меняется в устройстве тренировки</h3>
+      <div class="table-wrap"><table style="min-width:auto">
+        <tr><th>Параметр</th><th>Цикл A</th><th>Цикл B</th></tr>
+        <tr><td>Повторы в основных</td><td class="num">8–10</td><td class="num">4–5</td></tr>
+        <tr><td>Интенсивность</td><td class="num">65–75 %</td><td class="num">80–90 %</td></tr>
+        <tr><td>Отдых между подходами</td><td class="num">2–3 мин</td><td class="num">4–5 мин</td></tr>
+        <tr><td>Подсобка</td><td class="num">9 позиций</td><td class="num">5–6 позиций</td></tr>
+        <tr><td>Подходов на спину</td><td class="num">8</td><td class="num">5–6 поддерживающих</td></tr>
+        <tr><td>Отказ</td><td>нет нигде</td><td>только тестовая неделя</td></tr>
+      </table></div>
+      <p style="margin-top:9px">Подсобка режется вдвое не потому, что стала бесполезной, а потому что на весах 85–90 % отдых съедает время, а восстановление — ресурс. Достаточно <b>поддерживающего объёма</b>: набранная мышца не уходит при половине объёма, если интенсивность высокая.</p>
+      <p><b>Подтягивания возвращаются здесь</b> — 3×4–6 с весом. В силовом цикле их недозируемость перестаёт быть проблемой: там как раз и нужны низкие повторы у предела.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Три способа испортить переход</h3>
+    <ul>
+      <li><b>Проверить максимум сразу после цикла A.</b> Самая частая ошибка. Восемь недель без весов выше 80 % — нервная составляющая не готова, результат будет ниже реальных возможностей, и ты сделаешь неверный вывод обо всём цикле. Первая тяжёлая попытка — только на неделе 6 цикла B.</li>
+      <li><b>Сохранить объём подсобки в цикле B.</b> Девять позиций на весах 85–90 % не восстанавливаются. Подсобка режется до 5–6 позиций <b>сразу с первой недели</b>, а не когда станет тяжело.</li>
+      <li><b>Пропустить неделю съёма между циклами.</b> Девятая неделя — не потерянное время, а условие входа: накопленная усталость маскирует набранную силу, и цикл B начнётся с провала на входных весах.</li>
+    </ul>
+  </div>
+
+  <div class="verdict v-yes">
+    <b>Как понять заранее, что переход сработает</b>
+    Не нужно ждать конца цикла A. Индикатор — <b>подход-ориентир в пятницу</b>: недели 3, 5, 7 и 8 на 62,5 → 65 → 67,5 кг. Если 67,5 на неделе 7 идёт на 2 повтора с запасом легче, чем 62,5 на неделе 3, — нервная составляющая держится, и вход в цикл B на 65 кг будет мягким. Если тяжелее — начинаешь цикл B не с 65, а с 62,5 и добавляешь неделю. Это ранняя диагностика за месяц до перехода, а не постфактум.
+  </div>
+</section>
+
+<footer>
+  Редакция 5 · 18 сентября 2026 · Цикл A, 8 недель нагрузки плюс съём, далее цикл B<br>
+  Открытые решения: стартовый вес тяги верхнего блока (~55–60 кг) и сгибания ног сидя — подбираются на первой тренировке.
+</footer>
+
+</div>
+</body>
+</html>
