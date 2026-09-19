@@ -143,6 +143,35 @@ ol.plan .mode{display:block;width:auto;max-width:100%;box-sizing:border-box;marg
 
 .ex-prev{display:block;grid-column:1 / -1;margin:1px 0 0;font-size:11px;font-weight:650;color:#6a7788;line-height:1.3}
 .ex-prev b{color:#24344a;font-weight:800}
+
+/* ── Компактные карточки упражнений ──
+   Правило для всех будущих программ: внутри карточки дня
+   держим плотную сетку. Название 12,5px, назначение 13px,
+   пояснения 11px. Вертикальные отступы минимальные. */
+.day{padding:12px 12px 13px}
+.day-title{padding-bottom:7px;margin-bottom:9px}
+.day-title h3{font-size:17px}
+.day-title span{font-size:10px;letter-spacing:.04em}
+.block-title{margin:10px 0 6px;font-size:10px;letter-spacing:.06em}
+ol.plan{gap:6px}
+ol.plan li{padding:7px 9px 7px 31px}
+ol.plan li::before{left:8px;top:8px;width:17px;height:17px;font-size:10px}
+ol.plan b{font-size:12.5px;line-height:1.25}
+ol.plan .loadline,.bridge-schedule .loadline{gap:2px 8px;margin-top:4px;font-size:13px;font-weight:700;line-height:1.3}
+ol.plan .reprange,.bridge-schedule .reprange{font-size:9.5px;padding:1px 6px}
+.ex-alt{font-size:11px;line-height:1.35;padding-top:1px}
+.ex-prev{font-size:10.5px;line-height:1.25}
+ol.plan .mode{margin-top:5px;padding:4px 7px;font-size:10.5px;line-height:1.3}
+.ex-note{display:block;color:#657084;font-size:11px;line-height:1.35;margin-top:3px}
+.session-check{margin-bottom:8px}
+.session-check summary{font-size:11.5px}
+.session-check ul{margin:5px 0 0;padding-left:17px;font-size:11px;line-height:1.4}
+.week-note{font-size:11.5px;line-height:1.45}
+@media(max-width:900px){
+  .day{padding:11px}
+  ol.plan b{font-size:13px}
+  ol.plan .loadline{font-size:13.5px}
+}
 </style></head>
 <body>
 <div class="page">
