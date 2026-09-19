@@ -197,25 +197,13 @@ ol.plan li{overflow-wrap:anywhere}
   .day-title span{font-size:9.5px}
 }
 
-/* ── Карта прогресса: выпадающий список под тоннажом ── */
-.map-fold{margin:16px 0 0;border:1px solid var(--line);border-radius:13px;background:#fff;overflow:hidden}
-.map-fold > summary{list-style:none;cursor:pointer;display:flex;align-items:baseline;gap:10px;
-  padding:12px 15px;background:#f4f7fb;border-bottom:1px solid transparent}
-.map-fold > summary::-webkit-details-marker{display:none}
-.map-fold > summary b{color:var(--navy);font-size:14px}
-.map-fold > summary span{color:var(--muted);font-size:11.5px}
-.map-fold > summary::after{content:"развернуть";margin-left:auto;font-size:10.5px;font-weight:850;
-  text-transform:uppercase;letter-spacing:.05em;color:var(--blue)}
-.map-fold[open] > summary::after{content:"свернуть"}
-.map-fold[open] > summary{border-bottom-color:var(--line)}
-.map-fold > summary:hover{background:#eaf1f9}
-.map-fold-body{padding:13px 15px 15px}
-.map-fold-body .table-wrap{box-shadow:none;border-radius:11px}
-.map-fold-body table{font-size:12px;min-width:660px}
-.map-fold-body th{padding:8px 9px;font-size:10.5px}
-.map-fold-body td{padding:7px 9px}
-.map-fold-body .cell-main{font-size:12px}
-.map-fold-body .cell-sub{font-size:10.5px}
+/* ── Карта прогресса по весам внутри аналитики ── */
+.dashboard .table-wrap{box-shadow:none;border-radius:11px;margin-top:2px}
+.dashboard table{font-size:12px;min-width:660px}
+.dashboard th{padding:8px 9px;font-size:10.5px}
+.dashboard td{padding:7px 9px}
+.dashboard .cell-main{font-size:12px}
+.dashboard .cell-sub{font-size:10.5px}
 
 .rules-ref{margin:18px 0 0;padding:13px 16px;border:1px dashed var(--line);border-radius:12px;
   background:#f7f9fc;display:flex;flex-direction:column;gap:4px}
@@ -282,11 +270,8 @@ ol.plan li{overflow-wrap:anywhere}
       </article>
     </div>
 
-  <details class="map-fold">
-      <summary><b>Карта прогресса по весам</b><span>все 8 недель · таблица</span></summary>
-      <div class="map-fold-body">
-  
-  <div class="table-wrap"><table>
+  <div class="section-label"><h3>Карта прогресса по весам</h3><p>Все 8 недель по движениям: факт и план в одной таблице</p></div>
+<div class="table-wrap"><table>
     <thead><tr><th>Неделя</th><th>Пн: жим в касание</th><th>Пн: присед</th><th>Ср: жим с паузой 1 сек</th><th>Ср: подтягивания</th><th>Пт: присед</th><th>Пт: румынская</th></tr></thead>
     <tbody>
       <tr><td class="wk">1</td><td><span class="cell-main">62,5 · 4×6 выполнено</span></td><td><span class="cell-main">70 · 3×5</span></td><td><span class="cell-main">50 · 4×8 выполнено</span></td><td><span class="cell-main">+20 · 2×3 → +15 · 2×3</span></td><td><span class="cell-main">77,5 · 4×5 выполнено</span></td><td><span class="cell-main">65 · 3×8 выполнено</span></td></tr>
@@ -299,8 +284,7 @@ ol.plan li{overflow-wrap:anywhere}
       <tr class="row-test"><td class="wk">8</td><td><span class="cell-main">72,5 · 1×3 → 75 · 1×3</span><span class="cell-sub">вторая попытка при запасе ≥ 2</span></td><td><span class="cell-main">60 · 2×3</span></td><td><span class="cell-main">Нет</span></td><td><span class="cell-main">Свой вес · 2×5</span><span class="cell-sub">по желанию</span></td><td><span class="cell-main">100 · 1×3 → 102,5 · 1×3</span><span class="cell-sub">вторая попытка при запасе ≥ 2</span></td><td><span class="cell-main">65 · 3×10</span><span class="cell-sub">после теста</span></td></tr>
     </tbody>
   </table></div>
-</div>
-    </details>
+
   </div>
 </section>
 </details>
@@ -560,6 +544,6 @@ ol.plan li{overflow-wrap:anywhere}
 </div>
 
 
-<div class="footer">Основные движения выполняются без отказа до тестовой недели. Подсобка — с ясным запасом, без предельных повторов и гонки за весом. Карта прогресса по весам — выпадающий список под графиками тоннажа. Правила программы — в файле 05_Правила_программы.md.</div>
+<div class="footer">Основные движения выполняются без отказа до тестовой недели. Подсобка — с ясным запасом, без предельных повторов и гонки за весом. Карта прогресса по весам — в блоке аналитики под графиками тоннажа. Правила программы — в файле 05_Правила_программы.md.</div>
 </div></body>
 </html>
