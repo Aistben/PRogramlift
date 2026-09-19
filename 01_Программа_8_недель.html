@@ -197,6 +197,26 @@ ol.plan li{overflow-wrap:anywhere}
   .day-title h3{font-size:16px}
   .day-title span{font-size:9.5px}
 }
+
+/* ── Карта прогресса: выпадающий список под тоннажом ── */
+.map-fold{margin:16px 0 0;border:1px solid var(--line);border-radius:13px;background:#fff;overflow:hidden}
+.map-fold > summary{list-style:none;cursor:pointer;display:flex;align-items:baseline;gap:10px;
+  padding:12px 15px;background:#f4f7fb;border-bottom:1px solid transparent}
+.map-fold > summary::-webkit-details-marker{display:none}
+.map-fold > summary b{color:var(--navy);font-size:14px}
+.map-fold > summary span{color:var(--muted);font-size:11.5px}
+.map-fold > summary::after{content:"развернуть";margin-left:auto;font-size:10.5px;font-weight:850;
+  text-transform:uppercase;letter-spacing:.05em;color:var(--blue)}
+.map-fold[open] > summary::after{content:"свернуть"}
+.map-fold[open] > summary{border-bottom-color:var(--line)}
+.map-fold > summary:hover{background:#eaf1f9}
+.map-fold-body{padding:13px 15px 15px}
+.map-fold-body .table-wrap{box-shadow:none;border-radius:11px}
+.map-fold-body table{font-size:12px;min-width:660px}
+.map-fold-body th{padding:8px 9px;font-size:10.5px}
+.map-fold-body td{padding:7px 9px}
+.map-fold-body .cell-main{font-size:12px}
+.map-fold-body .cell-sub{font-size:10.5px}
 </style></head>
 <body>
 <div class="page">
@@ -215,7 +235,7 @@ ol.plan li{overflow-wrap:anywhere}
     <p class="dash-kicker">Тоннаж цикла</p>
     <h2>Как меняется работа за 8 недель</h2>
     <p>Столбик показывает тоннаж рабочих подходов, подпись справа — максимальный рабочий вес недели как абсолютный показатель интенсивности. Факт, условные назначения и дальний план разделены цветом.</p>
-    <span class="asof">Данные обновлены 17 сентября 2026 · Н3 закрыта, понедельник и среда Н4 закрыты</span>
+    <span class="asof">Данные обновлены 19 сентября 2026 · недели 1–4 закрыты полностью</span>
   </div>
   <div class="dash-body">
     <div class="legend" aria-label="Легенда">
@@ -227,7 +247,7 @@ ol.plan li{overflow-wrap:anywhere}
       <span class="legend-item"><i class="legend-swatch test"></i>тест</span>
     </div>
 
-    <div class="section-label"><h3>Полная карта 8 недель</h3><p>Н1 и Н2 — факт; остальное — текущий план. Тоннаж = вес × все рабочие повторы; разминка не входит</p></div>
+    <div class="section-label"><h3>Тоннаж по неделям</h3><p>Н1–Н4 — факт; остальное — план. Тоннаж = вес × все рабочие повторы; разминка не входит</p></div>
     <div class="cycle-grid">
       <article class="chart-card">
         <h4>Жим штанги · обе тренировки недели</h4>
@@ -256,37 +276,24 @@ ol.plan li{overflow-wrap:anywhere}
       </article>
     </div>
 
-    <div class="section-label"><h3>Подтягивания: объём и тяжёлая поддержка</h3><p>Считается только добавленный вес — без массы тела</p></div>
-    <div class="pull-grid">
-      <article class="pull-step actual"><span class="wk-tag">Неделя 1 · факт</span><strong>+20: 2×3 → +15: 2×3</strong><div class="metric"><b>210 кг·повт</b><br>средняя добавка +17,5 кг</div></article>
-      <article class="pull-step actual"><span class="wk-tag">Неделя 2 · факт</span><strong>+15 кг · 4 / 4 / 3</strong><div class="metric"><b>165 кг·повт</b><br>−21% к факту недели 1</div></article>
-      <article class="pull-step actual"><span class="wk-tag">Неделя 3 · факт</span><strong>+22,5 × 2 → +20 · 2×2</strong><div class="metric"><b>125 кг·повт</b><br>оба веса к пределу на 2</div></article>
-      <article class="pull-step actual"><span class="wk-tag">Неделя 4 · факт</span><strong>+20 кг · 3×2</strong><div class="metric"><b>120 кг·повт</b><br>вторые повторы предельные, проще +22,5</div></article>
-      <article class="pull-step conditional"><span class="wk-tag">Неделя 5 · нагрузка</span><strong>+20 кг · 3×3</strong><div class="metric"><b>180 кг·повт</b><br>нет 3-го — 3×2 чище, не +22,5</div></article>
-    </div>
-
-
-    <div class="section-label"><h3>Подсобка: диапазон повторов</h3><p>Минимум — нижняя граница рабочего коридора; максимум — порог перед повышением веса. Сначала повторы, потом вес</p></div>
-    <div class="accessory-grid">
-      <article class="accessory"><b>Трицепс на блоке</b><span class="move">верх тела · понедельник</span><span class="fromto">мин. 10 · макс. 15</span><small>3×15 на 35 кг закрыты с запасом. Дальше плитка вверх · 3×10–12, не ждать пока жжение уйдёт</small></article>
-      <article class="accessory"><b>Боковые подъёмы</b><span class="move">гантели 5 кг · понедельник</span><span class="fromto">мин. 12 · макс. 20</span><small>Пн Н4: 4 кг · 3×20 — коридор исчерпан. С Н5 переход на 5 кг · 3×14–15. Стоп, если амплитуда падает или лезут трапеции</small></article>
-      <article class="accessory"><b>Жим гантелей</b><span class="move">среда · после жима с паузой</span><span class="fromto">мин. 8 · макс. 12</span><small>Тяжёлые подходы на 6 повторов не использовать; при боли — убрать</small></article>
-      <article class="accessory"><b>Тяга нижнего блока</b><span class="move">к животу · нейтральная рукоять</span><span class="fromto">мин. 8 · макс. 12</span><small>85 кг: 10 → 11 → 12, затем вес. Штангу в наклоне не использовать</small></article>
-      <article class="accessory"><b>Молотки</b><span class="move">гантели 14 кг · без кача</span><span class="fromto">мин. 6 · макс. 10</span><small>Коридор пересмотрен 17 сен: на 12 кг отказ наступал уже на 10–12 повторах, порог «3×15» был недостижим. На 14 кг работаем 6–8, переход на 16 кг после чистых 3×8</small></article>
-      <article class="accessory"><b>Разгибание ног</b><span class="move">текущий тренажёр · 15 кг</span><span class="fromto">мин. 8 · макс. 15</span><small>После 3×15 с запасом — 25 кг на 8–10, а не 20 повторов на 15 кг</small></article>
-      <article class="accessory"><b>Ролик для пресса</b><span class="move">с колен · устойчивый корпус</span><span class="fromto">мин. 6 · макс. 12</span><small>Закончить до провисания поясницы и потери положения корпуса</small></article>
-    </div>
-
-    <details class="method">
-      <summary>Методика расчёта и ограничения графика</summary>
-      <ul>
-        <li><b>Тоннаж штанги:</b> рабочий вес × все рабочие повторения. Разминочные подходы исключены.</li>
-        <li><b>Интенсивность:</b> показан максимальный рабочий вес недели и, в аналитике недель 2–3, средний вес рабочего повторения. Проценты от 1ПМ намеренно не используются: надёжного текущего 1ПМ жима нет, а 97,5 кг в приседе выполнялись с небольшой потерей глубины.</li>
-        <li><b>Условные недели:</b> столбики показывают сценарий после прохождения допуска. Если симптомы груди сохраняются или возвращаются, тоннаж жима в этот день равен нулю.</li>
-        <li><b>Подтягивания:</b> считается только добавленный вес. Полный тоннаж с массой тела здесь не смешивается со штангой.</li>
-        <li><b>Гантели:</b> в расчёте учтены обе гантели. Цифры тренажёров и гантелей сравниваются только с тем же упражнением, не со штангой и не между разными тренажёрами.</li>
-        <li><b>Неделя 8:</b> тоннаж мал специально: учитывается одна выбранная тестовая тройка, а не все варианты из диапазона.</li>
-      </ul>
+  <details class="map-fold">
+      <summary><b>Карта прогресса по весам</b><span>все 8 недель · таблица</span></summary>
+      <div class="map-fold-body">
+  
+  <div class="table-wrap"><table>
+    <thead><tr><th>Неделя</th><th>Пн: жим в касание</th><th>Пн: присед</th><th>Ср: жим с паузой 1 сек</th><th>Ср: подтягивания</th><th>Пт: присед</th><th>Пт: румынская</th></tr></thead>
+    <tbody>
+      <tr><td class="wk">1</td><td><span class="cell-main">62,5 · 4×6 выполнено</span></td><td><span class="cell-main">70 · 3×5</span></td><td><span class="cell-main">50 · 4×8 выполнено</span></td><td><span class="cell-main">+20 · 2×3 → +15 · 2×3</span></td><td><span class="cell-main">77,5 · 4×5 выполнено</span></td><td><span class="cell-main">65 · 3×8 выполнено</span></td></tr>
+      <tr><td class="wk">2</td><td><span class="cell-main">60 · 3×6 выполнено</span><span class="cell-sub">без боли</span></td><td><span class="cell-main">75 · 4×6 выполнено</span></td><td><span class="cell-main">50 · 3×8 выполнено</span><span class="cell-sub">без боли, зап. 0–1</span></td><td><span class="cell-main">+15 · 4/4/3 выполнено</span></td><td><span class="cell-main">82,5 · 4×4 выполнено</span><span class="cell-sub">хорошая скорость</span></td><td><span class="cell-main">67,5 · 3×7 выполнено</span></td></tr>
+      <tr><td class="wk">3</td><td><span class="cell-main">62,5 · 4×5 выполнено</span><span class="cell-sub">4-й подход к пределу на 4–5</span></td><td><span class="cell-main">80 · 4×6 выполнено</span><span class="cell-sub">ниже параллели</span></td><td><span class="cell-main">52,5 · 4×7 выполнено</span><span class="cell-sub">3–4 запас 1</span></td><td><span class="cell-main">+22,5×2 → +20 · 2×2</span><span class="cell-sub">к пределу</span></td><td><span class="cell-main">87,5 · 5×3 выполнено</span><span class="cell-sub">1–4 запас 1–2</span></td><td><span class="cell-main">70 · 3×6 выполнено</span></td></tr>
+      <tr><td class="wk">4</td><td><span class="cell-main">65 · 4×5</span><span class="cell-sub">вход во 2-ю волну</span></td><td><span class="cell-main">82,5 · 4×5</span></td><td><span class="cell-main">55 · 3×6</span><span class="cell-sub">4-й только с запасом</span></td><td><span class="cell-main">+20 · 3×2</span><span class="cell-sub">3-й с запасом</span></td><td><span class="cell-main">87,5 · 4×4</span></td><td><span class="cell-main">70 · 3×6–8</span></td></tr>
+      <tr><td class="wk">5</td><td><span class="cell-main">67,5 · 4×4</span><span class="cell-sub">прогноз</span></td><td><span class="cell-main">82,5 · 4×6</span></td><td><span class="cell-main">55 · 4×6</span></td><td><span class="cell-main">+22,5 · 3×3</span></td><td><span class="cell-main">90 · 4×3</span></td><td><span class="cell-main">65 · 3×10</span><span class="cell-sub">коридор 8–12</span></td></tr>
+      <tr><td class="wk">6</td><td><span class="cell-main">70 · 4×4</span><span class="cell-sub">прогноз</span></td><td><span class="cell-main">85 · 4×5</span></td><td><span class="cell-main">57,5 · 3×6</span></td><td><span class="cell-main">+22,5 · 3×3</span></td><td><span class="cell-main">92,5 · 4×3</span></td><td><span class="cell-main">65 · 3×12</span></td></tr>
+      <tr><td class="wk">7</td><td><span class="cell-main">72,5 · 3×3</span><span class="cell-sub">прогноз · низ теста</span></td><td><span class="cell-main">80 · 3×4 легко</span></td><td><span class="cell-main">55 · 3×5 легко</span></td><td><span class="cell-main">+15 · 2×3</span></td><td><span class="cell-main">97,5 · 3×2</span><span class="cell-sub">взгляд на 100</span></td><td><span class="cell-main">65 · 2×8 легко</span><span class="cell-sub">съём</span></td></tr>
+      <tr class="row-test"><td class="wk">8</td><td><span class="cell-main">72,5 · 1×3 → 75 · 1×3</span><span class="cell-sub">вторая попытка при запасе ≥ 2</span></td><td><span class="cell-main">60 · 2×3</span></td><td><span class="cell-main">Нет</span></td><td><span class="cell-main">Свой вес · 2×5</span><span class="cell-sub">по желанию</span></td><td><span class="cell-main">100 · 1×3 → 102,5 · 1×3</span><span class="cell-sub">вторая попытка при запасе ≥ 2</span></td><td><span class="cell-main">65 · 3×10</span><span class="cell-sub">после теста</span></td></tr>
+    </tbody>
+  </table></div>
+</div>
     </details>
   </div>
 </section>
@@ -541,78 +548,26 @@ ol.plan li{overflow-wrap:anywhere}
 </section>
 
 
-
-
-
-
-
-
-
-<div class="quick">
-  <div><b>Как читать</b><span>«62,5 кг · 4×6» = 4 подхода по 6. Зелёный бейдж напротив веса — мин. и макс. повторов подсобки</span></div>
-  <div><b>Отдых</b><span>Основные 3–5 мин; подсобка 1–2 мин</span></div>
-  <div><b>Основные движения</b><span>Без отказа до 8-й недели</span></div>
-  <div><b>Вес тела</b><span>Цель: 81–82 кг к концу цикла</span></div>
-</div>
-
 <details class="program-rules"><summary>Общие правила программы</summary>
   <div class="rules">
+    <article class="rule"><h3>Как читать</h3><ul><li>«62,5 кг · 4×6» = 4 подхода по 6 повторений.</li><li>Зелёный бейдж напротив веса — минимум и максимум повторов для подсобки.</li><li>Отдых: основные 3–5 минут, подсобка 1–2 минуты.</li><li>Вес тела: цель 81–82 кг к концу цикла.</li></ul></article>
     <article class="rule"><h3>Два варианта жима</h3><ul><li><b>Понедельник:</b> жим в касание — опустить под контролем, коснуться груди и сразу жать вверх, без отбива.</li><li><b>Среда:</b> жим с неподвижной паузой 1 секунду на груди в каждом повторении.</li><li><b>Тест недели 8:</b> жим в касание, как по понедельникам.</li><li><b>Если среда просто тяжелее обычного, но техника чистая:</b> сделать 3 подхода жима с паузой и разрешается жим гантелей по 20 кг · 2×8 легко.</li><li><b>Если не выдерживаются повторы или пауза, пришлось снизить штангу либо появилась боль:</b> жим гантелей убрать. Тяжёлые подходы гантелей по 6 повторений как «страховку» не использовать.</li></ul></article>
     <article class="rule"><h3>Положение грифа в приседе</h3><ul><li>Использовать привычное среднее положение: ниже верхушки трапеций, но без принудительного low-bar на задних дельтах.</li><li>До снятия штанги свести и напрячь верх спины, создать устойчивую мышечную полку.</li><li>Выбрать положение на разминке и сохранять его во всех рабочих подходах; не перекатывать гриф ниже.</li><li>Главные критерии: гриф не давит на кость, не съезжает, кисти не держат его вес, сохраняется полная глубина.</li></ul></article>
     <article class="rule"><h3>Горизонтальная тяга</h3><ul><li>Тяга нижнего блока сидя к животу.</li><li>Фактический последний результат: 85 кг · 3×10 с уверенным запасом. Среда недели 3: 85 кг · 3×12. После чистых 3×12 — повышение веса.</li><li>Та же нейтральная рукоять, корпус неподвижен; после чистых 3×11 выполнить 3×12, и только затем повышать вес.</li><li>Штангу в наклоне в этом цикле не используем, чтобы не перегружать поясницу.</li></ul></article>
     <article class="rule"><h3>Подъёмы через стороны</h3><ul><li>Текущий вес: гантели по 4 кг.</li><li>Локти слегка согнуты; заранее выбрать одинаковую амплитуду немного ниже или до уровня плеч.</li><li>Закончить подход, когда амплитуда сокращается или начинается пожимание плечами.</li></ul></article>
     <article class="rule"><h3>Упражнение на корпус</h3><ul><li>Ролик для пресса с колен.</li><li>Ягодицы и пресс напряжены, поясница не провисает.</li><li>Работа: 3×6–12 с ясным запасом; закончить до потери положения корпуса.</li></ul></article>
-    <article class="rule"><h3>Правило всей подсобки</h3><ul><li>Сначала добавлять чистые повторы внутри диапазона.</li><li>Вес повышать только после верхней границы во всех подходах, когда последний подход остаётся уверенным и не предельным.</li><li>Если новый вес ломает технику или опускает ниже диапазона — вернуться к прежнему.</li><li>Цифры на разных блочных тренажёрах напрямую не сравнивать: прогрессию вести отдельно для конкретного тренажёра.</li><li><b>Рабочие диапазоны:</b> трицепс 10–15; боковые подъёмы 12–20; жим гантелей 8–12; тяга нижнего блока 8–12; молотки 10–15 при 12 кг (14 кг — около 8); разгибание ног 8–15; ролик 6–12.</li><li>Бейдж напротив веса и подходов показывает минимум и максимум этого коридора. Назначение дня может быть уже внутри диапазона; выходить за максимум и гнаться за весом нельзя.</li></ul></article>
+    <article class="rule"><h3>Правило всей подсобки</h3><ul><li>Сначала добавлять чистые повторы внутри диапазона.</li><li>Вес повышать только после верхней границы во всех подходах, когда последний подход остаётся уверенным и не предельным.</li><li>Если новый вес ломает технику или опускает ниже диапазона — вернуться к прежнему.</li><li>Цифры на разных блочных тренажёрах напрямую не сравнивать: прогрессию вести отдельно для конкретного тренажёра.</li><li><b>Рабочие диапазоны:</b> трицепс 10–12 на 40 кг; боковые подъёмы 12–20; жим гантелей 8–12; тяга нижнего блока 8–12; молотки 6–10 на 14 кг; румынская тяга 8–12; разгибание ног 8–12; ролик 6–12.</li><li>Бейдж напротив веса и подходов показывает минимум и максимум этого коридора. Назначение дня может быть уже внутри диапазона; выходить за максимум и гнаться за весом нельзя.</li></ul></article>
     <article class="rule"><h3>Режимы подсобки без подсчётов</h3><ul><li><b>Легко:</b> вес ощущается простым, утомление почти не накапливается.</li><li><b>Умеренно:</b> мышца работает, но все повторы уверенные и без натуживания.</li><li><b>Умеренно тяжело:</b> последние повторы заметно трудные, но техника и амплитуда не меняются.</li><li><b>Предела и отказа в подсобке нет:</b> останавливай подход до раскачки, сокращения амплитуды или вынужденного повторения.</li></ul></article>
     <article class="rule"><h3>Молотки: коридор 6–10 на 14 кг</h3><ul><li><b>Строгая техника:</b> корпус неподвижен, подъём чисто силой рук, без кача и инерции.</li><li><b>Коридор пересмотрен 17 сентября.</b> На 12 кг отказ в бицепсе наступал уже на 10–12 повторах — прежний порог «чистые 3×15» был физически недостижим и четыре недели блокировал упражнение.</li><li>На 14 кг подход на 6 повторов тяжёлый механически, но без метаболического отказа. Это рабочий режим.</li><li>Диапазон повторов не ограничивает рост: при работе близко к отказу 6 и 12 повторов дают сопоставимую гипертрофию. Нагрузка определяет силу, не размер.</li><li>Прогрессия: 3×6 → 3×7 → 3×8, затем 16 кг и снова с 6 повторов.</li><li>Жжение локализовано в бицепсе, предплечье не ограничивает — переносить упражнение на другой день не нужно.</li></ul></article>
+    <article class="rule"><h3>Если всё выполнено</h3><ul><li>Основные движения: повторы чистые и не предельные — идти по таблице.</li><li>Подсобка: сначала повышать повторы; вес добавлять только на верхней границе диапазона, когда последний подход остаётся уверенным.</li><li>На 4-й, 7-й и 8-й неделях вес подсобки не повышать.</li></ul></article>
+    <article class="rule"><h3>Если не выполнено</h3><ul><li>Жим: снизить на 2,5 кг и повторить схему.</li><li>Присед: снизить на 5 кг и повторить схему.</li><li>Недосед — не успешное повторение.</li></ul></article>
+    <article class="rule"><h3>Если сон менее 6 часов</h3><ul><li>Если разминка тяжёлая — минус около 5%.</li><li>Убрать последний подход подсобки.</li><li>Не идти в отказ.</li></ul></article>
     <article class="rule"><h3>Почему программа волновая</h3><ul><li>Недели 1–3 — первая восходящая волна.</li><li>Неделя 4 — вход во вторую волну (медицинский покой 1–6 сентября заменил разгрузку).</li><li>Недели 5–7 — вторая, более тяжёлая волна.</li><li>Неделя 8 — снятие объёма и проверка одной чистой тройки.</li></ul></article>
     <article class="rule"><h3>Ориентир, а не гарантия</h3><ul><li>Жим: наиболее реалистично 77,5 кг × 3; осторожный вариант 75 кг × 3; сильный результат 80 кг × 3.</li><li>Присед при устойчивом привычном положении грифа и полной глубине: ориентир 97,5–100 кг × 3; сильный результат 102,5 кг × 3.</li><li>Конкретный тестовый вес выбирается только по ощущениям, скорости и технике недели 7.</li></ul></article>
   </div>
 </details>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<section>
-  <div class="rules">
-    <article class="rule"><h3>Если всё выполнено</h3><ul><li>Основные движения: повторы чистые и не предельные — идти по таблице.</li><li>Подсобка: сначала повышать повторы; вес добавлять только на верхней границе диапазона, когда последний подход остаётся уверенным.</li><li>На 4-й, 7-й и 8-й неделях вес подсобки не повышать.</li></ul></article>
-    <article class="rule"><h3>Если не выполнено</h3><ul><li>Жим: снизить на 2,5 кг и повторить схему.</li><li>Присед: снизить на 5 кг и повторить схему.</li><li>Недосед — не успешное повторение.</li></ul></article>
-    <article class="rule"><h3>Если сон менее 6 часов</h3><ul><li>Если разминка тяжёлая — минус около 5%.</li><li>Убрать последний подход подсобки.</li><li>Не идти в отказ.</li></ul></article>
-  </div>
-</section>
-
-<section class="map">
-  <h2>Карта прогресса на 8 недель</h2>
-  <div class="table-wrap"><table>
-    <thead><tr><th>Неделя</th><th>Пн: жим в касание</th><th>Пн: присед</th><th>Ср: жим с паузой 1 сек</th><th>Ср: подтягивания</th><th>Пт: присед</th><th>Пт: румынская</th></tr></thead>
-    <tbody>
-      <tr><td class="wk">1</td><td><span class="cell-main">62,5 · 4×6 выполнено</span></td><td><span class="cell-main">70 · 3×5</span></td><td><span class="cell-main">50 · 4×8 выполнено</span></td><td><span class="cell-main">+20 · 2×3 → +15 · 2×3</span></td><td><span class="cell-main">77,5 · 4×5 выполнено</span></td><td><span class="cell-main">65 · 3×8 выполнено</span></td></tr>
-      <tr><td class="wk">2</td><td><span class="cell-main">60 · 3×6 выполнено</span><span class="cell-sub">без боли</span></td><td><span class="cell-main">75 · 4×6 выполнено</span></td><td><span class="cell-main">50 · 3×8 выполнено</span><span class="cell-sub">без боли, зап. 0–1</span></td><td><span class="cell-main">+15 · 4/4/3 выполнено</span></td><td><span class="cell-main">82,5 · 4×4 выполнено</span><span class="cell-sub">хорошая скорость</span></td><td><span class="cell-main">67,5 · 3×7 выполнено</span></td></tr>
-      <tr><td class="wk">3</td><td><span class="cell-main">62,5 · 4×5 выполнено</span><span class="cell-sub">4-й подход к пределу на 4–5</span></td><td><span class="cell-main">80 · 4×6 выполнено</span><span class="cell-sub">ниже параллели</span></td><td><span class="cell-main">52,5 · 4×7 выполнено</span><span class="cell-sub">3–4 запас 1</span></td><td><span class="cell-main">+22,5×2 → +20 · 2×2</span><span class="cell-sub">к пределу</span></td><td><span class="cell-main">87,5 · 5×3 выполнено</span><span class="cell-sub">1–4 запас 1–2</span></td><td><span class="cell-main">70 · 3×6 выполнено</span></td></tr>
-      <tr><td class="wk">4</td><td><span class="cell-main">65 · 4×5</span><span class="cell-sub">вход во 2-ю волну</span></td><td><span class="cell-main">82,5 · 4×5</span></td><td><span class="cell-main">55 · 3×6</span><span class="cell-sub">4-й только с запасом</span></td><td><span class="cell-main">+20 · 3×2</span><span class="cell-sub">3-й с запасом</span></td><td><span class="cell-main">87,5 · 4×4</span></td><td><span class="cell-main">70 · 3×6–8</span></td></tr>
-      <tr><td class="wk">5</td><td><span class="cell-main">67,5 · 4×4</span><span class="cell-sub">прогноз</span></td><td><span class="cell-main">82,5 · 4×6</span></td><td><span class="cell-main">55 · 4×6</span></td><td><span class="cell-main">+22,5 · 3×3</span></td><td><span class="cell-main">90 · 4×3</span></td><td><span class="cell-main">65 · 3×10</span><span class="cell-sub">коридор 8–12</span></td></tr>
-      <tr><td class="wk">6</td><td><span class="cell-main">70 · 4×4</span><span class="cell-sub">прогноз</span></td><td><span class="cell-main">85 · 4×5</span></td><td><span class="cell-main">57,5 · 3×6</span></td><td><span class="cell-main">+22,5 · 3×3</span></td><td><span class="cell-main">92,5 · 4×3</span></td><td><span class="cell-main">65 · 3×12</span></td></tr>
-      <tr><td class="wk">7</td><td><span class="cell-main">72,5 · 3×3</span><span class="cell-sub">прогноз · низ теста</span></td><td><span class="cell-main">80 · 3×4 легко</span></td><td><span class="cell-main">55 · 3×5 легко</span></td><td><span class="cell-main">+15 · 2×3</span></td><td><span class="cell-main">97,5 · 3×2</span><span class="cell-sub">взгляд на 100</span></td><td><span class="cell-main">65 · 2×8 легко</span><span class="cell-sub">съём</span></td></tr>
-      <tr class="row-test"><td class="wk">8</td><td><span class="cell-main">72,5 · 1×3 → 75 · 1×3</span><span class="cell-sub">вторая попытка при запасе ≥ 2</span></td><td><span class="cell-main">60 · 2×3</span></td><td><span class="cell-main">Нет</span></td><td><span class="cell-main">Свой вес · 2×5</span><span class="cell-sub">по желанию</span></td><td><span class="cell-main">100 · 1×3 → 102,5 · 1×3</span><span class="cell-sub">вторая попытка при запасе ≥ 2</span></td><td><span class="cell-main">65 · 3×10</span><span class="cell-sub">после теста</span></td></tr>
-    </tbody>
-  </table></div>
-</section>
-
-<div class="footer">Основные движения выполняются без отказа до тестовой недели. Подсобка — с ясным запасом, без предельных повторов и гонки за весом. Карта прогресса дана в конце для быстрого контроля цикла.</div>
+<div class="footer">Основные движения выполняются без отказа до тестовой недели. Подсобка — с ясным запасом, без предельных повторов и гонки за весом. Карта прогресса по весам — выпадающий список под графиками тоннажа.</div>
 </div></body>
 </html>
