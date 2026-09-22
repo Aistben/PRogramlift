@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Цикл «Джаггернаут» — план 8 недель + тест</title>
+<style>
+  :root{
+    --ink:#1c2733; --muted:#5b6b7a; --line:#dfe6ee; --bg:#f2f5f9; --card:#ffffff;
+    --accent:#0f5fa8; --accent-soft:#e8f1fa;
+    --acc:#2563eb; --acc-bg:#e7eefc;
+    --int:#d97706; --int-bg:#fdf1df;
+    --real:#dc2626; --real-bg:#fceaea;
+    --del:#059669; --del-bg:#e5f6ef;
+    --warn-bg:#fff7e0; --warn-line:#e0b900;
+    --note-bg:#eef7f1; --note-line:#3fa66c;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font-family:"Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;
+       font-size:16px;line-height:1.55}
+  .wrap{max-width:1020px;margin:0 auto;padding:0 16px 60px}
+  /* ---------- шапка ---------- */
+  .hero{background:linear-gradient(135deg,#0d1f33 0%,#123f66 60%,#0f5fa8 100%);
+        color:#fff;border-radius:0 0 18px 18px;padding:34px 28px 26px;margin-bottom:18px}
+  .hero h1{margin:0 0 6px;font-size:29px;letter-spacing:.3px}
+  .hero p{margin:4px 0;color:#cfe0f2;font-size:15.5px}
+  .ribbon{display:inline-block;background:var(--warn-bg);color:#6b5200;border:1px solid var(--warn-line);
+          border-radius:8px;padding:7px 14px;font-size:14.5px;font-weight:600;margin-top:14px}
+  /* ---------- навигация ---------- */
+  nav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px}
+  nav a{text-decoration:none;font-size:13.5px;font-weight:600;color:var(--accent);
+        background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 13px}
+  nav a:hover{background:var(--accent-soft)}
+  /* ---------- секции ---------- */
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+          padding:22px 24px;margin-bottom:20px}
+  h2{font-size:20px;margin:0 0 14px;padding-left:12px;border-left:5px solid var(--accent)}
+  h3{font-size:16.5px;margin:20px 0 8px}
+  p{margin:8px 0}
+  ul{margin:8px 0 8px 22px;padding:0}
+  li{margin:4px 0}
+  /* ---------- бейджи фаз ---------- */
+  .b{display:inline-block;border-radius:999px;padding:2px 11px;font-size:12.5px;
+     font-weight:700;white-space:nowrap}
+  .b-acc{background:var(--acc-bg);color:var(--acc)}
+  .b-int{background:var(--int-bg);color:var(--int)}
+  .b-real{background:var(--real-bg);color:var(--real)}
+  .b-del{background:var(--del-bg);color:var(--del)}
+  .b-day{display:inline-block;border-radius:6px;padding:2px 9px;font-size:12.5px;font-weight:800;
+         color:#fff;margin-bottom:6px}
+  .d-mon{background:#2563eb}.d-wed{background:#059669}.d-fri{background:#d97706}
+  /* ---------- таблицы ---------- */
+  table{border-collapse:collapse;width:100%;font-size:14.5px;margin:10px 0}
+  th{background:#24384c;color:#fff;text-align:left;padding:9px 10px;font-size:13.5px;
+     vertical-align:top}
+  td{border:1px solid var(--line);padding:9px 10px;vertical-align:top}
+  tbody tr:nth-child(even){background:#f7fafc}
+  .tbl-compact td,.tbl-compact th{padding:7px 9px}
+  /* ---------- строка упражнения в ячейке ---------- */
+  .ex{margin:3px 0}
+  .ex b{color:#123f66}
+  .ex .w{font-weight:700}
+  .tag{display:inline-block;border-radius:5px;padding:0 7px;font-size:11.5px;font-weight:700;
+       background:#eef2f7;color:#5b6b7a;margin-left:5px;vertical-align:1px}
+  .tag-main{background:var(--real-bg);color:var(--real)}
+  .tag-sup{background:var(--acc-bg);color:var(--acc)}
+  .tag-cut{background:#f3e8ff;color:#7c3aed}
+  /* ---------- плашки ---------- */
+  .note,.warn{border-radius:10px;padding:13px 16px;margin:12px 0;font-size:14.5px}
+  .note{background:var(--note-bg);border:1px solid var(--note-line)}
+  .warn{background:var(--warn-bg);border:1px solid var(--warn-line)}
+  .note b,.warn b{color:#123f66}
+  .weekhead{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 10px}
+  .weekhead .wk{font-size:17px;font-weight:800;color:#123f66}
+  /* ---------- карточки правил ---------- */
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin-top:10px}
+  .card{border:1px solid var(--line);border-radius:11px;padding:13px 15px;background:#fbfdff}
+  .card h4{margin:0 0 6px;font-size:14.5px;color:#123f66}
+  .card p{margin:4px 0;font-size:13.8px;color:#33465a}
+  footer{color:var(--muted);font-size:13px;text-align:center;margin-top:26px}
+  .src{font-size:13.5px;color:#33465a}
+  .src a{color:var(--accent);word-break:break-all}
+  @media print{body{background:#fff}section{border:none;padding:8px 0}nav,.ribbon{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <h1>Цикл «Джаггернаут» — жим и присед</h1>
+  <p>8 рабочих недель (две волны) + тестовая неделя 9 · 3 тренировки в неделю · 60–100 минут</p>
+  <p>Метод: The Juggernaut Method 2.0 (Чад Уэсли Смит), адаптация под сетку Пн / Ср / Пт</p>
+  <div class="ribbon">ЧЕРНОВИК · 22 сентября 2026 · все килограммы предварительные — пересчитываются после теста Н8 текущего цикла (12–16 октября)</div>
+</header>
+
+<nav>
+  <a href="#s1">1. Суть</a>
+  <a href="#s2">2. Стартовые числа (ТМ)</a>
+  <a href="#s3">3. Как работает волна</a>
+  <a href="#s4">4. Скелет недели</a>
+  <a href="#s5">5. Волна 5-ек (Н1–Н4)</a>
+  <a href="#s6">6. Волна 3-ек (Н5–Н8)</a>
+  <a href="#s7">7. Неделя 9 — тест</a>
+  <a href="#s8">8. Запасной путь: 8-ки + 5-ки</a>
+  <a href="#s9">9. Подсобка: коридоры</a>
+  <a href="#s10">10. Правила игры</a>
+  <a href="#s11">11. Контроль восстановления</a>
+  <a href="#s12">12. Что изменилось</a>
+  <a href="#s13">13. Источники</a>
+</nav>
+
+<!-- ============ 1 ============ -->
+<section id="s1">
+  <h2>1. Суть в трёх строках</h2>
+  <table class="tbl-compact">
+    <tr><th style="width:110px">День</th><th>Содержание</th><th style="width:120px">Время</th></tr>
+    <tr><td><span class="b-day d-mon">ПОНЕДЕЛЬНИК</span></td>
+        <td><b>Жим — волна (главный день)</b> · присед — поддержка · махи · верхний блок</td><td>60–70 мин</td></tr>
+    <tr><td><span class="b-day d-wed">СРЕДА</span></td>
+        <td><b>Без жима и приседа:</b> подтягивания с весом · тяга н/б · трицепс · молотки</td><td>55–65 мин</td></tr>
+    <tr><td><span class="b-day d-fri">ПЯТНИЦА</span></td>
+        <td><b>Присед — волна (главный день)</b> · жим-вариант — поддержка · РДЛ · разгибание · сгибание · ролик</td><td>75–90 мин</td></tr>
+  </table>
+  <p>Каждое движение работает <b>один тяжёлый (волновой) день + один поддерживающий</b>. Прогрессию
+  чисел ведёт не ручной расчёт, а система: раз в 4 недели AMRAP-подход пересчитывает рабочий максимум (ТМ).
+  Разгрузка встроена каждые 4 недели.</p>
+  <div class="warn"><b>Ожидай лёгкого старта.</b> Первые 1–2 недели волны будут ощущаться легче текущего
+  цикла — это расчётно: ТМ = 90% от максимума, подъём интенсивности приходит к третьей неделе волны.
+  Не добавляй вес самостоятельно.</div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section id="s2">
+  <h2>2. Стартовые числа: рабочий максимум (ТМ)</h2>
+  <p>Все проценты программы считаются от <b>рабочего максимума (ТМ) = 90% от 1ПМ</b>, а не от полного максимума.
+  Веса округляются к ближайшим 2,5 кг.</p>
+
+  <h3>Текущая сила (на 22.09.2026) → предварительный ТМ</h3>
+  <table class="tbl-compact">
+    <tr><th>Движение</th><th>Факт текущего цикла</th><th>Расчётный 1ПМ</th><th>Предварительный ТМ</th></tr>
+    <tr><td><b>Жим лёжа</b></td><td>67,5 × 4 тяжело (Н5Пн, 21.09)</td><td>≈ 77</td><td><b>70</b></td></tr>
+    <tr><td><b>Присед</b></td><td>87,5 × 4×4 (Н4Пт), план 90 × 4×3 (Н5Пт)</td><td>≈ 103</td><td><b>92,5</b></td></tr>
+  </table>
+
+  <h3>Окончательный пересчёт — по тесту Н8 текущего цикла</h3>
+  <p>Формула: <b>1ПМ ≈ вес × (1 + повторы / 30)</b>, затем <b>ТМ = 90% от 1ПМ</b>, округление к ближайшим 2,5 кг.</p>
+  <table class="tbl-compact">
+    <tr><th>Результат теста Н8</th><th>1ПМ</th><th>ТМ нового цикла</th></tr>
+    <tr><td>Жим 80 × 4</td><td>≈ 90,7</td><td><b>80</b></td></tr>
+    <tr><td>Жим 80 × 6</td><td>≈ 96</td><td><b>85</b></td></tr>
+    <tr><td>Присед 100 × 4</td><td>≈ 113</td><td><b>100</b></td></tr>
+    <tr><td>Присед 100 × 6</td><td>≈ 120</td><td><b>107,5</b></td></tr>
+  </table>
+  <p>Все килограммы в разделах 5–7 пересчитываются от этого ТМ по тем же процентам — структура не меняется, меняются только числа.</p>
+
+  <h3>Выбор пары волн — по итогу теста Н8</h3>
+  <table class="tbl-compact">
+    <tr><th>Итог теста Н8</th><th>Путь</th><th>Волны</th></tr>
+    <tr><td>Жим 80×4+ <b>и</b> присед 100×4+</td><td><b>А — основной</b></td><td>5-ки (Н1–Н4) + 3-ки (Н5–Н8)</td></tr>
+    <tr><td>Любая из целей не закрыта</td><td><b>Б — запасной</b></td><td>8-ки (Н1–Н4) + 5-ки (Н5–Н8)</td></tr>
+  </table>
+  <p>Если результаты разойдутся (жим закрыт, присед нет) — волны назначаются раздельно: жим идёт своим путём,
+  присед своим. В этом ничего страшного нет, у каждого движения свой ТМ.</p>
+  <p>Ориентировочный старт цикла — <b>понедельник 19 октября 2026</b> (после тестовой недели Н8 и выходных).</p>
+</section>
+
+<!-- ============ 3 ============ -->
+<section id="s3">
+  <h2>3. Как работает волна</h2>
+  <p>Волна = 4 недели. Три рабочие недели + обязательная разгрузка. У каждой волны своё имя — по числу повторов:
+  <b>10-ки, 8-ки, 5-ки, 3-ки</b>.</p>
+  <table>
+    <tr><th style="width:150px">Неделя волны</th><th>Что происходит</th></tr>
+    <tr><td><span class="b b-acc">Накопление</span></td>
+        <td>Максимальный объём волны на умеренных процентах: 5–7 подходов. Запас повторов 2–3, отдых короткий.
+        Развивает объём, навык и работоспособность.</td></tr>
+    <tr><td><span class="b b-int">Интенсификация</span></td>
+        <td>Вес растёт (+7,5%), объём падает примерно до 60%. Запас 2.</td></tr>
+    <tr><td><span class="b b-real">Реализация</span></td>
+        <td>Разгонка одноповторками + <b>один подход на максимум повторов (AMRAP)</b> на пиковом весе волны.
+        Правило наше: останавливаться при запасе 1 (потеря скорости или техники — стоп). Результат пересчитывает ТМ.</td></tr>
+    <tr><td><span class="b b-del">Разгрузка</span></td>
+        <td>40 / 50 / 60% — пара лёгких серий. Подсобка минимальная. Обязательна: пропуск разгрузки —
+        главная причина остановки прогресса в этом методе.</td></tr>
+  </table>
+
+  <h3>Проценты всех четырёх волн (от ТМ, по книге)</h3>
+  <table class="tbl-compact">
+    <tr><th>Волна</th><th>Накопление (Н1)</th><th>Интенсификация (Н2)</th><th>Реализация (Н3)</th><th>Разгрузка (Н4)</th></tr>
+    <tr><td><b>10-ки</b></td><td>60% × 5×10</td><td>разгон 55/62,5% → 67,5% × 3×10</td><td>разгон 50/60/70% → <b>75% AMRAP</b></td><td>40/50/60%</td></tr>
+    <tr><td><b>8-ки</b></td><td>65% × 5×8</td><td>разгон 60/67,5% → 72,5% × 3×8</td><td>разгон 50/60/70/75% → <b>80% AMRAP</b></td><td>40/50/60%</td></tr>
+    <tr><td><b>5-ки</b></td><td>70% × 6×5</td><td>разгон 65/72,5% → 77,5% × 4×5</td><td>разгон 50/60/70/75/80% → <b>85% AMRAP</b></td><td>40/50/60%</td></tr>
+    <tr><td><b>3-ки</b></td><td>75% × 7×3</td><td>разгон 70/77,5% → 82,5% × 5×3</td><td>разгон 50/60/70/75/80/85% → <b>90% AMRAP</b></td><td>40/50/60%</td></tr>
+  </table>
+  <p style="font-size:13.5px;color:var(--muted)">Запись «разгон 50/60/70%» — это подводка: 50%×5, 60%×3, 70%×1 и т.д. по возрастающей,
+  затем рабочий AMRAP. Разгонные подходы = разминка к рабочему весу.</p>
+  <p><b>Отдых:</b> накопление — 1,5–2 мин, интенсификация — 2–2,5 мин, разгон перед AMRAP — по необходимости (3–5 мин),
+  подсобка — 1–1,5 мин. Общее правило книги: чем легче волна и неделя, тем короче отдых.</p>
+</section>
+
+<!-- ============ 4 ============ -->
+<section id="s4">
+  <h2>4. Скелет недели</h2>
+  <table>
+    <tr><th style="width:120px">День</th><th>Движение</th><th>Роль</th><th>Формат</th></tr>
+    <tr><td rowspan="4"><span class="b-day d-mon">Пн</span></td>
+        <td><b>Жим лёжа</b></td><td><span class="tag tag-main">ВОЛНА</span></td><td>по фазе волны (разделы 5–6)</td></tr>
+        <tr><td>Присед</td><td><span class="tag tag-sup">ПОДДЕРЖКА</span></td><td>вес Н1 волны × 3×6, CAT</td></tr>
+        <tr><td>Махи гантелями через стороны</td><td>подсобка</td><td>3×12–15</td></tr>
+        <tr><td>Верхний блок</td><td>подсобка</td><td>4×8–10</td></tr>
+    <tr><td rowspan="4"><span class="b-day d-wed">Ср</span></td>
+        <td><b>Подтягивания с весом</b></td><td>главное дня</td><td>+20 × 3×3 → 3×5 → +22,5</td></tr>
+        <tr><td>Тяга н/б (горизонтальный блок)</td><td>подсобка</td><td>3×8–12</td></tr>
+        <tr><td>Трицепс на блоке</td><td>подсобка</td><td>3×10–12</td></tr>
+        <tr><td>Молотки</td><td>подсобка</td><td>3×6–8</td></tr>
+    <tr><td rowspan="6"><span class="b-day d-fri">Пт</span></td>
+        <td><b>Присед</b></td><td><span class="tag tag-main">ВОЛНА</span></td><td>по фазе волны (разделы 5–6)</td></tr>
+        <tr><td>Жим-вариант под мёртвую точку</td><td><span class="tag tag-sup">ПОДДЕРЖКА</span></td><td>вес Н1 волны × 4×6–8, CAT</td></tr>
+        <tr><td>РДЛ (румынская тяга)</td><td>подсобка</td><td>3×8–12</td></tr>
+        <tr><td>Разгибание ног</td><td>подсобка</td><td>3×9–12</td></tr>
+        <tr><td>Сгибание ног сидя</td><td>подсобка</td><td>3×10–12</td></tr>
+        <tr><td>Ролик для пресса с колен</td><td>подсобка</td><td>3×8–10</td></tr>
+  </table>
+  <div class="note"><b>Ротация жима-поддержки в пятницу</b> — блоками по 2 недели, под мёртвую точку «низ + середина»:
+  Н1–Н2 — <b>Spoto-жим</b> (стоп 2–3 см над грудью, без касания и отбива), Н3–Н4 — <b>средний хват</b>,
+  Н5–Н6 — Spoto, Н7–Н8 — средний хват. Паузный жим можно подставить вместо любого блока по желанию.
+  Spoto не вводится, если повторится покалывание в груди.</div>
+  <p><b>CAT (компенсаторное ускорение):</b> все поддерживающие подходы (присед Пн, жим Пт) и разгонные повторы
+  выполняются с максимальным намерением скорости — вес лёгкий, усилие полное.</p>
+</section>
+
+<!-- ============ 5 ============ -->
+<section id="s5">
+  <h2>5. Путь А, волна 5-ек (Н1–Н4)</h2>
+  <p>Числа — от предварительных ТМ: <b>жим 70, присед 92,5</b>. После теста Н8 пересчитать (раздел 2).</p>
+
+  <div class="weekhead"><span class="wk">Неделя 1</span><span class="b b-acc">Накопление</span></div>
+  <table>
+    <tr><th style="width:33%">Понедельник — жим</th><th style="width:30%">Среда — спина и руки</th><th>Пятница — присед</th></tr>
+    <tr>
+      <td>
+        <div class="ex"><b>Жим</b> <span class="tag tag-main">волна</span><br><span class="w">50 × 6×5</span></div>
+        <div class="ex"><b>Присед</b> <span class="tag tag-sup">поддержка</span><br><span class="w">65 × 3×6</span> · CAT</div>
+        <div class="ex"><b>Махи</b> — 5 кг × 3×12–15</div>
+        <div class="ex"><b>Верхний блок</b> — 55–60 × 4×8–10</div>
+      </td>
+      <td>
+        <div class="ex"><b>Подтягивания</b> — +20 × 3×3</div>
+        <div class="ex"><b>Тяга н/б</b> — 90 × 3×8–10</div>
+        <div class="ex"><b>Трицепс на блоке</b> — 40 × 3×10–12</div>
+        <div class="ex"><b>Молотки</b> — 14 × 3×6–8</div>
+      </td>
+      <td>
+        <div class="ex"><b>Присед</b> <span class="tag tag-main">волна</span><br><span class="w">65 × 6×5</span></div>
+        <div class="ex"><b>Жим Spoto</b> <span class="tag tag-sup">поддержка</span><br><span class="w">50 × 4×6–8</span> · CAT</div>
+        <div class="ex"><b>РДЛ</b> — 65 × 3×8–12</div>
+        <div class="ex"><b>Разгибание</b> — 20 × 3×9–12</div>
+        <div class="ex"><b>Сгибание сидя</b> — подбор × 3×10–12</div>
+        <div class="ex"><b>Ролик</b> — 3×8–10</div>
+      </td>
+    </tr>
+  </table>
+
+  <div class="weekhead"><span class="wk">Неделя 2</span><span class="b b-int">Интенсификация</span></div>
+  <table>
+    <tr><th style="width:33%">Понедельник — жим</th><th style="width:30%">Среда — спина и руки</th><th>Пятница — присед</th></tr>
+    <tr>
+      <td>
+        <div class="ex"><b>Жим</b> <span class="tag tag-main">волна</span><br>разгон: 45×2, 50×2<br>рабочие: <span class="w">55 × 4×5</span></div>
+        <div class="ex"><b>Присед</b> — 65 × 3×6 · CAT</div>
+        <div class="ex"><b>Махи</b> — 5 × 3×12–15</div>
+        <div class="ex"><b>Верхний блок</b> — 55–60 × 4×8–10</div>
+      </td>
+      <td>
+        <div class="ex"><b>Подтягивания</b> — +20 × 3×4</div>
+        <div class="ex"><b>Тяга н/б</b> — 90 × 3×9–10</div>
+        <div class="ex"><b>Трицепс</b> — 40 × 3×10–12</div>
+        <div class="ex"><b>Молотки</b> — 14 × 3×7–8</div>
+      </td>
+      <td>
+        <div class="ex"><b>Присед</b> <span class="tag tag-main">волна</span><br>разгон: 60×2, 67,5×2<br>рабочие: <span class="w">72,5 × 4×5</span></div>
+        <div class="ex"><b>Жим Spoto</b> — 50 × 4×6–8 · CAT</div>
+        <div class="ex"><b>РДЛ</b> — 65 × 3×9–12</div>
+        <div class="ex"><b>Разгибание</b> — 20 × 3×10–12</div>
+        <div class="ex"><b>Сгибание сидя</b> — подбор × 3×10–12</div>
+        <div class="ex"><b>Ролик</b> — 3×8–10</div>
+      </td>
+    </tr>
+  </table>
+
+  <div class="weekhead"><span class="wk">Неделя 3</span><span class="b b-real">Реализация · AMRAP</span></div>
+  <table>
+    <tr><th style="width:33%">Понедельник — жим</th><th style="width:30%">Среда — урезанная</th><th>Пятница — присед</th></tr>
+    <tr>
+      <td>
+        <div class="ex"><b>Жим</b> <span class="tag tag-main">волна</span><br>разгон: 35×5, 42,5×3, 50×2, 52,5×1, 55×1<br>
+        главный подход: <span class="w">60 × максимум повторов</span> (запас 1)</div>
+        <div class="ex"><b>Присед</b> — 65 × 2×6 · CAT</div>
+        <div class="ex"><b>Махи</b> — 5 × 2×12</div>
+        <div class="ex"><b>Верхний блок</b> — 3×8–10</div>
+      </td>
+      <td>
+        <div class="ex"><b>Подтягивания</b> — +20 × 2×3</div>
+        <div class="ex"><b>Тяга н/б</b> — 90 × 2×8–10</div>
+        <div class="ex"><b>Молотки</b> — 14 × 2×8</div>
+        <div class="ex"><span class="tag tag-cut">без трицепса</span></div>
+      </td>
+      <td>
+        <div class="ex"><b>Присед</b> <span class="tag tag-main">волна</span><br>разгон: 45×5, 55×3, 65×2, 70×1, 75×1<br>
+        главный подход: <span class="w">77,5 × максимум повторов</span> (запас 1)</div>
+        <div class="ex"><b>Жим средний хват</b> — 50 × 2×6 · CAT</div>
+        <div class="ex"><b>РДЛ</b> — 60 × 2×8 (легче)</div>
+        <div class="ex"><b>Разгибание</b> — 20 × 2×12</div>
+        <div class="ex"><span class="tag tag-cut">без сгибания</span></div>
+        <div class="ex"><b>Ролик</b> — 3×8</div>
+      </td>
+    </tr>
+  </table>
+  <div class="note"><b>После Н3:</b> пересчитать ТМ по AMRAP (раздел 10) → волна 3-ек считается от нового ТМ.
+  Видео AMRAP — сбоку, для контроля мёртвой точки.</div>
+
+  <div class="weekhead"><span class="wk">Неделя 4</span><span class="b b-del">Разгрузка</span></div>
+  <table>
+    <tr><th style="width:33%">Понедельник — жим</th><th style="width:30%">Среда — лёгкая</th><th>Пятница — присед</th></tr>
+    <tr>
+      <td>
+        <div class="ex"><b>Жим</b> — 27,5×5, 35×3, 42,5×2</div>
+        <div class="ex"><b>Присед</b> — 37,5 × 2×5</div>
+        <div class="ex"><b>Махи</b> — 5 × 2×12</div>
+        <div class="ex"><b>Верхний блок</b> — лёгкий × 2×10</div>
+      </td>
+      <td>
+        <div class="ex"><b>Подтягивания</b> — без веса × 2×5</div>
+        <div class="ex"><b>Тяга н/б</b> — 70 × 2×10</div>
+        <div class="ex"><b>Молотки</b> — лёгкий × 2×8</div>
+      </td>
+      <td>
+        <div class="ex"><b>Присед</b> — 37,5×5, 45×3, 55×2</div>
+        <div class="ex"><b>Жим Spoto</b> — 40 × 2×6</div>
+        <div class="ex"><b>Ролик</b> — 2×8</div>
+        <div class="ex"><span class="tag tag-cut">без РДЛ и разгибаний</span></div>
+      </td>
+    </tr>
+  </table>
+</section>
+
+<!-- ============ 6 ============ -->
+<section id="s6">
+  <h2>6. Путь А, волна 3-ек (Н5–Н8)</h2>
+  <p>Числа ниже — <b>если ТМ не изменился</b> после Н3 (для примера). Реальные веса = проценты × твой новый ТМ
+  после пересчёта, округление к 2,5 кг.</p>
+
+  <div class="weekhead"><span class="wk">Неделя 5</span><span class="b b-acc">Накопление</span></div>
+  <table>
+    <tr><th style="width:33%">Понедельник — жим</th><th style="width:30%">Среда — спина и руки</th><th>Пятница — присед</th></tr>
+    <tr>
+      <td>
+        <div class="ex"><b>Жим</b> <span class="tag tag-main">волна</span><br><span class="w">52,5 × 7×3</span></div>
+        <div class="ex"><b>Присед</b> — 70 × 3×6 · CAT</div>
+        <div class="ex"><b>Махи</b> — 5 × 3×12–15</div>
+        <div class="ex"><b>Верхний блок</b> — 55–60 × 4×8–10</div>
+      </td>
+      <td>
+        <div class="ex"><b>Подтягивания</b> — по прогрессии (раздел 9)</div>
+        <div class="ex"><b>Тяга н/б</b> — по прогрессии</div>
+        <div class="ex"><b>Трицепс</b> — 40 × 3×10–12</div>
+        <div class="ex"><b>Молотки</b> — по прогрессии</div>
+      </td>
+      <td>
+        <div class="ex"><b>Присед</b> <span class="tag tag-main">волна</span><br><span class="w">70 × 7×3</span></div>
+        <div class="ex"><b>Жим Spoto</b> — 52,5 × 4×6–8 · CAT</div>
+        <div class="ex"><b>РДЛ</b> — по прогрессии (раздел 9)</div>
+        <div class="ex"><b>Разгибание</b> — по прогрессии</div>
+        <div class="ex"><b>Сгибание сидя</b> — 3×10–12</div>
+        <div class="ex"><b>Ролик</b> — 3×8–10</div>
+      </td>
+    </tr>
+  </table>
+
+  <div class="weekhead"><span class="wk">Неделя 6</span><span class="b b-int">Интенсификация</span></div>
+  <table>
+    <tr><th style="width:33%">Понедельник — жим</th><th style="width:30%">Среда — спина и руки</th><th>Пятница — присед</th></tr>
+    <tr>
+      <td>
+        <div class="ex"><b>Жим</b> <span class="tag tag-main">волна</span><br>разгон: 50×1, 55×1<br>рабочие: <span class="w">57,5 × 5×3</span></div>
+        <div class="ex"><b>Присед</b> — 70 × 3×6 · CAT</div>
+        <div class="ex"><b>Махи</b> — 5 × 3×12–15</div>
+        <div class="ex"><b>Верхний блок</b> — 55–60 × 4×8–10</div>
+      </td>
+      <td>
+        <div class="ex"><b>Подтягивания</b> — по прогрессии</div>
+        <div class="ex"><b>Тяга н/б</b> — по прогрессии</div>
+        <div class="ex"><b>Трицепс</b> — 40 × 3×10–12</div>
+        <div class="ex"><b>Молотки</b> — по прогрессии</div>
+      </td>
+      <td>
+        <div class="ex"><b>Присед</b> <span class="tag tag-main">волна</span><br>разгон: 65×1, 72,5×1<br>рабочие: <span class="w">77,5 × 5×3</span></div>
+        <div class="ex"><b>Жим средний хват</b> — 52,5 × 4×6–8 · CAT</div>
+        <div class="ex"><b>РДЛ</b> — по прогрессии</div>
+        <div class="ex"><b>Разгибание</b> — по прогрессии</div>
+        <div class="ex"><b>Сгибание сидя</b> — 3×10–12</div>
+        <div class="ex"><b>Ролик</b> — 3×8–10</div>
+      </td>
+    </tr>
+  </table>
+
+  <div class="weekhead"><span class="wk">Неделя 7</span><span class="b b-real">Реализация · AMRAP</span></div>
+  <table>
+    <tr><th style="width:33%">Понедельник — жим</th><th style="width:30%">Среда — урезанная</th><th>Пятница — присед</th></tr>
+    <tr>
+      <td>
+        <div class="ex"><b>Жим</b> <span class="tag tag-main">волна</span><br>разгон: 35×5, 42,5×3, 50×2, 52,5×1, 55×1, 60×1<br>
+        главный подход: <span class="w">62,5 × максимум повторов</span> (запас 1)</div>
+        <div class="ex"><b>Присед</b> — 70 × 2×6 · CAT</div>
+        <div class="ex"><b>Махи</b> — 5 × 2×12</div>
+        <div class="ex"><b>Верхний блок</b> — 3×8–10</div>
+      </td>
+      <td>
+        <div class="ex"><b>Подтягивания</b> — 2 подхода</div>
+        <div class="ex"><b>Тяга н/б</b> — 2×8–10</div>
+        <div class="ex"><b>Молотки</b> — 2×8</div>
+        <div class="ex"><span class="tag tag-cut">без трицепса</span></div>
+      </td>
+      <td>
+        <div class="ex"><b>Присед</b> <span class="tag tag-main">волна</span><br>разгон: 45×5, 55×3, 65×2, 70×1, 75×1, 77,5×1<br>
+        главный подход: <span class="w">82,5 × максимум повторов</span> (запас 1)</div>
+        <div class="ex"><b>Жим Spoto</b> — 52,5 × 2×6 · CAT</div>
+        <div class="ex"><b>РДЛ</b> — 60 × 2×8 (легче)</div>
+        <div class="ex"><b>Разгибание</b> — 20 × 2×12</div>
+        <div class="ex"><span class="tag tag-cut">без сгибания</span></div>
+        <div class="ex"><b>Ролик</b> — 3×8</div>
+      </td>
+    </tr>
+  </table>
+
+  <div class="weekhead"><span class="wk">Неделя 8</span><span class="b b-del">Разгрузка</span></div>
+  <table>
+    <tr><th style="width:33%">Понедельник — жим</th><th style="width:30%">Среда — лёгкая</th><th>Пятница — присед</th></tr>
+    <tr>
+      <td>
+        <div class="ex"><b>Жим</b> — 40%×5, 50%×3, 60%×2 (от нового ТМ)</div>
+        <div class="ex"><b>Присед</b> — 40% × 2×5</div>
+        <div class="ex"><b>Махи</b> — 5 × 2×12</div>
+        <div class="ex"><b>Верхний блок</b> — лёгкий × 2×10</div>
+      </td>
+      <td>
+        <div class="ex"><b>Подтягивания</b> — без веса × 2×5</div>
+        <div class="ex"><b>Тяга н/б</b> — 70 × 2×10</div>
+        <div class="ex"><b>Молотки</b> — лёгкий × 2×8</div>
+      </td>
+      <td>
+        <div class="ex"><b>Присед</b> — 40%×5, 50%×3, 60%×2 (от нового ТМ)</div>
+        <div class="ex"><b>Жим-вариант</b> — лёгкий × 2×6</div>
+        <div class="ex"><b>Ролик</b> — 2×8</div>
+        <div class="ex"><span class="tag tag-cut">без РДЛ и разгибаний</span></div>
+      </td>
+    </tr>
+  </table>
+</section>
+
+<!-- ============ 7 ============ -->
+<section id="s7">
+  <h2>7. Неделя 9 — тестовая</h2>
+  <table>
+    <tr><th style="width:120px">День</th><th>Содержание</th></tr>
+    <tr><td><span class="b-day d-mon">Пн</span></td>
+        <td><b>Тест жима:</b> стандартная разминка → <b>цель = результат теста Н8 + 2,5 кг на 4–6 повторов</b>
+        (пример: было 80×5 → цель 82,5×4–6). Полный отдых между подходами.</td></tr>
+    <tr><td><span class="b-day d-wed">Ср</span></td>
+        <td>Лёгкая: подтягивания без веса 2×5, тяга н/б 70×2×10, ролик 2×8.</td></tr>
+    <tr><td><span class="b-day d-fri">Пт</span></td>
+        <td><b>Тест приседа:</b> разминка → цель = результат теста Н8 + 2,5–5 кг на 4–6 повторов.</td></tr>
+  </table>
+  <p><b>После теста:</b> 2–3 дня отдыха, затем Н1 следующего цикла. ТМ следующего цикла = 90% от теста Н9
+  (по той же формуле из раздела 2). Дальнейший путь (повтор Джаггернаута на новых ТМ или смена метода) —
+  решается по итогам.</p>
+</section>
+
+<!-- ============ 8 ============ -->
+<section id="s8">
+  <h2>8. Запасной путь Б: 8-ки + 5-ки</h2>
+  <p>Если тест Н8 не закрыл цели — тот же скелет недели, те же правила, но волны мягче и объёмнее.
+  Структура дней (раздел 4) не меняется вообще.</p>
+  <table class="tbl-compact">
+    <tr><th>Волна</th><th>Накопление (Н1)</th><th>Интенсификация (Н2)</th><th>Реализация (Н3)</th><th>Разгрузка (Н4)</th></tr>
+    <tr><td><b>8-ки</b><br>(Н1–Н4)</td><td>65% × 5×8</td><td>разгон 60/67,5% → 72,5% × 3×8</td><td>разгон 50/60/70/75% → <b>80% AMRAP</b></td><td>40/50/60%</td></tr>
+    <tr><td><b>5-ки</b><br>(Н5–Н8)</td><td>70% × 6×5</td><td>разгон 65/72,5% → 77,5% × 4×5</td><td>разгон 50/60/70/75/80% → <b>85% AMRAP</b></td><td>40/50/60%</td></tr>
+  </table>
+  <p>Пример первой недели при слабом тесте (скажем, ТМ жим 67,5, присед 90): жим 45×5×8 в понедельник,
+  присед 57,5×5×8 в пятницу; поддержки — 45 и 57,5 соответственно. Все остальные веса — по тем же правилам
+  разделов 9–10.</p>
+</section>
+
+<!-- ============ 9 ============ -->
+<section id="s9">
+  <h2>9. Подсобка: коридоры и прогрессия</h2>
+  <p>Правило подсобки: <b>запас 2–3 повтора, без отказа</b>. Прогрессия — только через верх коридора:
+  закрыл верхнее число повторов во всех подходах с запасом 2 → плюс вес. Отдых 1–1,5 минуты.</p>
+  <div class="cards">
+    <div class="card"><h4>Махи через стороны — Пн</h4>
+      <p>5 кг × 3×12–15. Коридор 12–15 — решение пользователя, за 18–20 не гнаться. Следить, чтобы работали
+      дельты, а не трапеции (замечено на Н5Пн).</p></div>
+    <div class="card"><h4>Верхний блок — Пн</h4>
+      <p>Старт 55–60 × 4×8–10. 4×10 с запасом 2 → +2,5 кг.</p></div>
+    <div class="card"><h4>Подтягивания с весом — Ср</h4>
+      <p>+20 × 3×3 (факт Н4–Н5). Двойная прогрессия: добрать 3×5 → вес +22,5 × 3×3. Запас 2.
+      При реакции локтей — без веса, 3×8–10.</p></div>
+    <div class="card"><h4>Тяга н/б — Ср</h4>
+      <p>90 × 3×8–10 (история: 85×3×12 → 90). Коридор 8–12: закрыл 3×12 → +2,5 кг.</p></div>
+    <div class="card"><h4>Трицепс на блоке — Ср</h4>
+      <p>40 × 3×10–12 (решение от 21.09 — вес сохраняется; факт Н5 12/11/11). Запасной шаг при развале
+      третьего подхода: 3×10–11, вес не трогать.</p></div>
+    <div class="card"><h4>Молотки — Ср</h4>
+      <p>14 × 3×6–8. Закрыл 3×8 → следующая гантель. Профилактика локтей — не выбрасывать.</p></div>
+    <div class="card"><h4>РДЛ — Пт</h4>
+      <p>65 × 3×8–12 (текущее назначение; история до 70×3×8). Коридор 8–12: закрыл 3×10–12 → +2,5 кг
+      не чаще раза в 2–3 недели.</p></div>
+    <div class="card"><h4>Разгибание ног — Пт</h4>
+      <p>20 × 3×9–12 (факт Н5 3×9–10). Коридор 8–12: закрыл 3×12 → 22,5 × 3×8.</p></div>
+    <div class="card"><h4>Сгибание сидя — Пт</h4>
+      <p>Подбор: 1 лёгкий + 2 рабочих подхода × 10–12. Первое на выбывание при нехватке времени.</p></div>
+    <div class="card"><h4>Ролик для пресса — Пт</h4>
+      <p>3×8–10, коридор 6–12, закончить до провисания. Вес не прогрессируется.</p></div>
+    <div class="card"><h4>Жим-вариант Пт — поддержка</h4>
+      <p>Вес = Н1 волны (5-ки: 50; 3-ки: 52,5), 4×6–8, каждый повтор с максимальным ускорением.
+      Ротация блоками: Spoto → средний хват → Spoto → средний хват.</p></div>
+    <div class="card"><h4>Присед Пн — поддержка</h4>
+      <p>Вес = Н1 волны (5-ки: 65; 3-ки: 70), 3×6, CAT. Легче текущего объёмного понедельника — так задумано:
+      объём приседа теперь живёт в пятничной волне.</p></div>
+  </div>
+</section>
+
+<!-- ============ 10 ============ -->
+<section id="s10">
+  <h2>10. Правила игры</h2>
+  <div class="cards">
+    <div class="card"><h4>AMRAP — только Н3 и Н7</h4>
+      <p>Один подход на максимум повторов при запасе 1: потеря скорости или техники — стоп.
+      Остальные недели — без подходов до отказа.</p></div>
+    <div class="card"><h4>Пересчёт ТМ после каждой реализации</h4>
+      <p>1ПМ ≈ вес × (1 + повторы/30), ТМ = 90% от результата, округление к 2,5 кг.
+      Потолок роста за волну: жим +5, присед +7,5. Меньше целевых повторов — ТМ на месте;
+      на 2 и больше меньше — ТМ −2,5.</p></div>
+    <div class="card"><h4>Пример пересчёта</h4>
+      <p>Жим 60×12 → 1ПМ ≈ 84 → ТМ 75 (было 70, +5 — в пределах потолка).
+      Присед 77,5×10 → 1ПМ ≈ 103 → ТМ 92,5 (без изменений).</p></div>
+    <div class="card"><h4>Поддержки не трогаем руками</h4>
+      <p>Присед Пн и жим Пт привязаны к весу Н1 волны и растут только вместе с ТМ.
+      Руками вес не поднимать, каким бы лёгким ни казался.</p></div>
+    <div class="card"><h4>Если день не влезает в 60–100 минут</h4>
+      <p>Порядок выбывания: сгибание сидя → разгибание → по одному подходу с блока/махов.
+      Волна и поддержки неприкосновенны. В среду — снимаешь трицепс, не подтягивания.</p></div>
+    <div class="card"><h4>Пропуск тренировки</h4>
+      <p>Пропустил день — просто продолжаешь календарь дальше, ничего не навёрстываешь двойным объёмом.
+      Пропустил целую неделю — повторяешь её заново.</p></div>
+  </div>
+</section>
+
+<!-- ============ 11 ============ -->
+<section id="s11">
+  <h2>11. Контроль восстановления</h2>
+  <ul>
+    <li><b>Запас последнего подхода волны:</b> Н1–Н2 — 2–3, Н3/Н7 — 1. Запас меньше 2 на накоплении —
+    не добавлять ничего самостоятельно, отметить в отчёте.</li>
+    <li><b>Сон:</b> две ночи подряд меньше 7 часов — подсобка следующего дня урезается вдвое.</li>
+    <li><b>Масса:</b> цель +0,2 кг/неделю (к 81,5–82 кг к концу цикла). Падение 0,7 кг за неделю —
+    добавить еду, тренировки не резать.</li>
+    <li><b>Разминочный вес ощущается тяжёлым</b> — маркер недовосстановления: подсобка дня режется,
+    волна выполняется по плану.</li>
+    <li><b>Локти и грудь:</b> молотки и ролик — обязательны. Покалывание в груди (Н5Пн) — на контроле;
+    при повторении Spoto заменяется паузой или средним хватом.</li>
+    <li><b>Видео:</b> AMRAP Н3 и Н7 — съёмка сбоку для диагностики мёртвой точки (файл
+    <i>06_Мертвые_точки_жима.md</i>).</li>
+  </ul>
+</section>
+
+<!-- ============ 12 ============ -->
+<section id="s12">
+  <h2>12. Что изменилось против текущего цикла</h2>
+  <table class="tbl-compact">
+    <tr><th>Было (текущий цикл)</th><th>Станет (Джаггернаут)</th></tr>
+    <tr><td>Жим: тяжёлый Пн + пауза Ср</td><td>Жим: волна Пн + вариант-поддержка Пт (Spoto / средний хват)</td></tr>
+    <tr><td>Присед: объёмный Пн (82,5–90 × 4×6…) + тяжёлый Пт</td><td>Присед: поддержка Пн + волна Пт — объём переезжает в пятницу</td></tr>
+    <tr><td>Среда: пауза, подтягивания, жим гантелей, тяга н/б, молотки</td><td>Среда: подтягивания, тяга н/б, трицепс (переехал из Пн), молотки. <b>Жим гантелей убран</b> (решение 22.09), жима нет вообще</td></tr>
+    <tr><td>Трицепс — понедельник</td><td>Трицепс — среда (между двумя жимовыми днями)</td></tr>
+    <tr><td>Прогрессия весов ручная, числа фиксированы заранее</td><td>Автопрогрессия: ТМ пересчитывается по AMRAP каждые 4 недели</td></tr>
+    <tr><td>Разгрузки внутри цикла нет</td><td>Разгрузка каждые 4 недели встроена</td></tr>
+    <tr><td>CAT и видео — обсуждались, решений не было</td><td>CAT — на всех поддержках, видео — на реализациях</td></tr>
+  </table>
+</section>
+
+<!-- ============ 13 ============ -->
+<section id="s13">
+  <h2>13. Источники</h2>
+  <ul class="src">
+    <li>Chad Wesley Smith. <a href="https://archive.org/download/workout-books/Fitness%20Programs/Juggernaut%20Training%20Systems/The%20Juggernaut%20Method_2-0.pdf">The Juggernaut Method 2.0</a> (PDF) — волны, фазы, проценты, отдых.</li>
+    <li><a href="https://liftvault.com/programs/strength/juggernaut-method-base-template-spreadsheet/">Lift Vault — обзор и таблицы</a> — структура 16 недель, разгрузка 40/50/60%.</li>
+    <li><a href="https://www.liftosaur.com/programs/juggernaut-method">Liftosaur — гид и трекер</a> — подбор подсобки по слабым точкам, модификация «жим 60–65% подсобкой в другой день».</li>
+    <li><a href="https://www.boostcamp.app/users/hdyhbJ-juggernaut-20-with-accessories">Boostcamp — вариант с подсобкой</a> — формат 3×12 @7–8 (запас 2–3).</li>
+    <li><a href="https://pubmed.ncbi.nlm.nih.gov/35044672/">Мета-анализ периодизации (PubMed 35044672)</a> — периодизация лучше отсутствия; тренированным — волновая модель.</li>
+    <li>Файл <i>06_Мертвые_точки_жима.md</i> — мёртвая точка жима (низ + середина) и выбор вариантов поддержки.</li>
+  </ul>
+</section>
+
+<footer>
+  Черновик плана следующего цикла · составлен 22 сентября 2026 · килограммы предварительные до теста Н8 ·
+  метод: The Juggernaut Method 2.0 (Chad Wesley Smith), адаптация под 3 дня ·
+  статус старого плана (07_Цикл_A_ПЛАН) — под заменой данным документом после подтверждения
+</footer>
+
+</div>
+</body>
+</html>
