@@ -1,0 +1,1041 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Цикл 2 — объёмный · программа 8 недель</title>
+<style>
+:root{
+  --bg:#f2f5f9;--paper:#fff;--ink:#172033;--muted:#657084;--line:#d9e0e9;
+  --navy:#172b4d;--blue:#2f66a7;--blue-soft:#edf5ff;--green:#18715b;--green-soft:#eaf8f2;
+  --amber:#99600a;--amber-soft:#fff6e5;--red:#a43d3d;--red-soft:#fff0f0;--violet:#644fa3;--violet-soft:#f2efff;
+}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.48 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
+.page{max-width:1180px;margin:auto;padding:26px 18px 60px}
+.hero{background:linear-gradient(145deg,#12243f 0%,#1b3d68 55%,#245a7a 100%);color:#fff;border-radius:20px;padding:22px 24px 18px;box-shadow:0 16px 36px rgba(18,36,63,.22)}
+h1{margin:0;font-size:32px;letter-spacing:-.03em;line-height:1.05;font-weight:800}
+.hero-goal{margin:8px 0 0;max-width:46em;color:#d5e4f5;font-size:15px;line-height:1.45;font-weight:500}
+.hero-aims{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 0;padding:0;list-style:none}
+.hero-aims li{padding:8px 12px;border-radius:12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);font-size:14px;line-height:1.3;color:#e8f1fb}
+.hero-aims b{display:block;margin-bottom:2px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#b7c9dd;font-weight:800}
+.hero .dash-wrap{margin:16px 0 0;border:1px solid rgba(255,255,255,.2);border-radius:14px;background:rgba(7,16,32,.22)}
+.hero .dash-wrap > summary{background:rgba(255,255,255,.1);color:#fff}
+.hero .dash-wrap[open] > summary{border-bottom:1px solid rgba(255,255,255,.12);color:#fff}
+.hero .dash-wrap .dashboard{background:#fff;color:#172033}
+.quick{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin:17px 0}.quick>div{background:#fff;border:1px solid var(--line);border-radius:13px;padding:13px 14px}.quick b{display:block;color:var(--navy);margin-bottom:2px}.quick span{color:var(--muted);font-size:13px}
+.session-check{margin:0 0 11px;border:1px solid #d3dfed;border-radius:11px;background:#f7faff;overflow:hidden}.session-check summary{cursor:pointer;padding:9px 11px;color:var(--navy);font-size:12px;font-weight:900;list-style-position:inside}.session-check[open] summary{border-bottom:1px solid #dbe5f0;background:#edf5ff}.session-check ul{margin:0;padding:10px 15px 11px 30px;color:var(--muted);font-size:11px}.session-check li{margin:4px 0}
+.week{margin:25px 0;background:var(--paper);border:1px solid var(--line);border-radius:19px;overflow:hidden;box-shadow:0 6px 20px rgba(30,48,76,.055);break-inside:avoid}
+.week-head{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:17px 20px;background:var(--navy);color:white}.week-head h2{margin:0;font-size:24px}.week-head p{margin:3px 0 0;color:#dbe8f8;font-size:13px}.phase{padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.15);font-size:12px;font-weight:850;white-space:nowrap}
+.week.tech .week-head{background:linear-gradient(90deg,#235584,#3477b6)}.week.load .week-head{background:linear-gradient(90deg,#17604e,#22916e)}.week.peak .week-head{background:linear-gradient(90deg,#805006,#b97b17)}.week.deload .week-head{background:linear-gradient(90deg,#4f5a6c,#727d8d)}.week.taper .week-head{background:linear-gradient(90deg,#514087,#7560b9)}.week.test .week-head{background:linear-gradient(90deg,#863333,#bd4c4c)}
+.days{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0}.day{padding:18px;border-right:1px solid var(--line)}.day:last-child{border-right:0}.day-title{display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--line);padding-bottom:9px;margin-bottom:11px}.day-title h3{margin:0;color:var(--navy);font-size:20px}.day-title span{font-size:11px;font-weight:850;text-transform:uppercase;color:var(--muted);letter-spacing:.06em}
+.block-title{font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;color:var(--blue);margin:12px 0 4px}.block-title.assist{color:var(--green)}
+ol.plan{margin:0;padding-left:21px}.plan li{padding:5px 0}.plan b{color:#14243d}.loadline{display:flex;align-items:baseline;justify-content:space-between;gap:8px;flex-wrap:wrap;color:var(--muted);font-size:13px;margin-top:1px}.rir{display:inline-block;margin-left:4px;padding:1px 6px;border-radius:999px;background:var(--green-soft);color:var(--green);font-size:10px;font-weight:850;vertical-align:1px}
+.reprange{display:inline-block;margin-left:7px;padding:2px 8px;border-radius:999px;background:#e8f6ef;color:#14624f;border:1px solid #c9e6da;font-size:10px;font-weight:850;vertical-align:2px;white-space:nowrap;letter-spacing:.01em}.reprange b{color:inherit;font-weight:900}
+.mode{display:inline-block;margin-top:4px;padding:3px 7px;border-radius:999px;font-size:10px;font-weight:900;letter-spacing:.015em}.mode-easy{background:#edf1f5;color:#526070}.mode-moderate{background:var(--blue-soft);color:var(--blue)}.mode-hard{background:var(--amber-soft);color:var(--amber)}.mode-veryeasy{background:var(--green-soft);color:var(--green)}.purpose{display:block;margin-top:3px;color:var(--muted);font-size:11px}
+.week-note{margin:0 18px 18px;padding:12px 14px;border-radius:10px;background:var(--blue-soft);border-left:5px solid var(--blue)}.week-note.warn{background:var(--amber-soft);border-color:#d88c16}.week-note.danger{background:var(--red-soft);border-color:var(--red)}
+
+.map{margin-top:28px}.map h2{font-size:27px;color:var(--navy);margin:0 0 12px}.table-wrap{overflow:auto;background:#fff;border:1px solid var(--line);border-radius:15px;box-shadow:0 5px 18px rgba(30,48,76,.05)}table{border-collapse:separate;border-spacing:0;width:100%;min-width:900px}th{background:var(--navy);color:#fff;text-align:left;padding:12px;font-size:12px;letter-spacing:.02em}td{padding:12px;border-bottom:1px solid var(--line);vertical-align:top}tr:last-child td{border-bottom:0}.wk{font-weight:900;color:var(--navy)}.cell-main{font-weight:850;white-space:nowrap}.cell-sub{display:block;color:var(--muted);font-size:12px}.row-deload td{background:#f1f3f6}.row-test td{background:var(--red-soft)}
+.footer{margin-top:18px;text-align:center;color:var(--muted);font-size:12px}
+
+/* Аналитическая панель */
+.dashboard{margin:18px 0 24px;background:linear-gradient(180deg,#fff,#fbfcfe);border:1px solid var(--line);border-radius:20px;box-shadow:0 10px 28px rgba(30,48,76,.08);overflow:hidden}
+.dash-hero{padding:21px 23px;background:linear-gradient(120deg,#edf5ff,#f7fbff 55%,#eef8f4);border-bottom:1px solid var(--line)}
+.dash-kicker{margin:0 0 5px;color:var(--blue);font-size:11px;font-weight:900;letter-spacing:.1em;text-transform:uppercase}.dash-hero h2{margin:0;color:var(--navy);font-size:28px;line-height:1.15}.dash-hero p{margin:7px 0 0;color:var(--muted);max-width:920px}.asof{display:inline-block;margin-top:11px;padding:5px 9px;border-radius:999px;background:#fff;border:1px solid #cad7e7;color:#42526b;font-size:11px;font-weight:850}
+.dash-body{padding:20px 22px 23px}.legend{display:flex;flex-wrap:wrap;gap:8px 15px;margin-bottom:16px;color:var(--muted);font-size:11px}.legend-item{display:inline-flex;align-items:center;gap:6px}.legend-swatch{width:18px;height:8px;border-radius:999px;background:var(--blue)}.legend-swatch.mixed{background:repeating-linear-gradient(135deg,#2f66a7 0 5px,#d8e8fa 5px 10px)}.legend-swatch.conditional{background:repeating-linear-gradient(135deg,#1f8b69 0 5px,#d7f0e7 5px 10px)}.legend-swatch.future{background:var(--violet)}.legend-swatch.deload{background:#7c8796}.legend-swatch.test{background:var(--red)}
+.section-label{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;margin:20px 0 10px}.section-label h3{margin:0;color:var(--navy);font-size:21px}.section-label p{margin:0;color:var(--muted);font-size:12px;text-align:right}
+.cycle-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.chart-card{border:1px solid var(--line);background:#fff;border-radius:15px;padding:15px}.chart-card h4{margin:0;color:var(--navy);font-size:17px}.chart-sub{margin:3px 0 13px;color:var(--muted);font-size:11px}.cycle-row{display:grid;grid-template-columns:34px minmax(90px,1fr) 155px;align-items:center;gap:8px;margin:8px 0}.cycle-wk{font-size:11px;font-weight:900;color:#536076}.cycle-track{height:12px;border-radius:999px;background:#eef1f5;overflow:hidden}.cycle-fill{height:100%;min-width:3px;border-radius:999px;background:var(--blue)}.cycle-fill.mixed{background:repeating-linear-gradient(135deg,#2f66a7 0 7px,#bcd7f3 7px 14px)}.cycle-fill.conditional{background:repeating-linear-gradient(135deg,#1f8b69 0 7px,#bfe5d9 7px 14px)}.cycle-fill.future{background:var(--violet)}.cycle-fill.deload{background:#7c8796}.cycle-fill.test{background:var(--red)}.cycle-val{font-size:11px;color:#425067;white-space:nowrap}.cycle-val b{color:var(--ink)}
+.chart-caption{margin:12px 0 0;padding-top:10px;border-top:1px dashed var(--line);color:var(--muted);font-size:11px}.chart-caption b{color:var(--ink)}
+.pull-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.pull-step{position:relative;border:1px solid var(--line);border-radius:13px;padding:12px;background:#fff;min-height:129px}.pull-step.actual{border-top:4px solid var(--blue)}.pull-step.conditional{border-top:4px solid var(--green)}.pull-step.deload{border-top:4px solid #7c8796}.pull-step .wk-tag{font-size:10px;font-weight:900;text-transform:uppercase;color:var(--muted);letter-spacing:.07em}.pull-step strong{display:block;margin:4px 0;color:var(--navy);font-size:16px}.pull-step small{display:block;color:var(--muted);line-height:1.35}.pull-step .metric{margin-top:8px;padding-top:7px;border-top:1px dashed var(--line);font-size:11px;color:#445168}.pull-step .metric b{color:var(--ink)}
+.insight-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.insight{border-radius:13px;padding:13px 14px;background:var(--blue-soft);border:1px solid #d5e7fb}.insight:nth-child(2){background:var(--green-soft);border-color:#d5eee5}.insight:nth-child(3){background:var(--violet-soft);border-color:#e2dcfa}.insight:nth-child(4){background:var(--amber-soft);border-color:#f1dfb7}.insight b{display:block;color:var(--navy);margin-bottom:4px}.insight span{color:#526074;font-size:12px}
+.accessory-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px}.accessory{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px}.accessory b{display:block;color:var(--navy);font-size:12px}.accessory .move{display:block;color:var(--muted);font-size:10px;margin:2px 0 7px}.accessory .fromto{font-size:12px;font-weight:850;color:#33445d}.accessory small{display:block;margin-top:4px;color:var(--muted);font-size:10px;line-height:1.3}
+.gate{margin:18px 0 12px;padding:13px 15px;border-radius:12px;background:var(--red-soft);border-left:5px solid var(--red);color:#633333}.gate b{color:#8d3131}.forward-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}.forward-week{border:1px solid var(--line);background:#fff;border-radius:15px;overflow:hidden}.forward-head{padding:12px 14px;background:var(--navy);color:#fff}.forward-week:nth-child(2) .forward-head{background:var(--green)}.forward-week:nth-child(3) .forward-head{background:#616d7d}.forward-head b{display:block;font-size:17px}.forward-head span{font-size:11px;color:#dce7f5}.forward-content{padding:13px}.forward-content ul{margin:0;padding-left:18px}.forward-content li{margin:6px 0;color:#4d5a6e;font-size:12px}.forward-content li b{color:var(--ink)}.decision{margin-top:10px;padding:9px 10px;border-radius:9px;background:#f4f6f9;color:#4e5d72;font-size:11px}.decision b{color:var(--navy)}
+.method{margin-top:15px;border:1px solid var(--line);border-radius:12px;background:#f8fafc;padding:0 13px}.method summary{cursor:pointer;padding:11px 0;font-weight:850;color:var(--navy)}.method ul{margin:0 0 12px;padding-left:18px;color:var(--muted);font-size:11px}.method li{margin:5px 0}
+.dashboard .risk-note{margin:10px 0 0;color:var(--muted);font-size:11px}
+
+@media(max-width:900px){.cycle-grid{grid-template-columns:1fr}.pull-grid{grid-template-columns:repeat(2,1fr)}.insight-grid{grid-template-columns:repeat(2,1fr)}.accessory-grid{grid-template-columns:repeat(2,1fr)}.forward-grid{grid-template-columns:1fr}.section-label{align-items:flex-start;flex-direction:column}.section-label p{text-align:left}.quick{grid-template-columns:repeat(2,1fr)}.days{grid-template-columns:1fr}.day{border-right:0;border-bottom:1px solid var(--line)}.day:last-child{border-bottom:0}}
+@media(max-width:540px){.dash-hero{padding:17px}.dash-hero h2{font-size:23px}.dash-body{padding:15px}.pull-grid,.insight-grid,.accessory-grid{grid-template-columns:1fr}.cycle-row{grid-template-columns:31px minmax(75px,1fr);gap:7px}.cycle-val{grid-column:2;white-space:normal;margin-top:-4px}.page{padding:13px 9px 38px}.hero{padding:23px 19px}.hero h1{font-size:27px}.quick{grid-template-columns:1fr}.week-head{align-items:flex-start}.week-head h2{font-size:21px}}
+@media print{body{background:#fff;font-size:10.5px}.page{max-width:none;padding:0}.hero{box-shadow:none;border-radius:0;padding:16px}.quick{margin:10px 0}.week{box-shadow:none;break-inside:avoid;page-break-inside:avoid;margin:12px 0}.week-head{padding:9px 12px}.day{padding:10px}.map{page-break-before:always}.table-wrap{box-shadow:none;overflow:visible}table{min-width:0}.footer{display:none}}
+
+.now-banner{margin:16px 0 12px;padding:16px 18px;border-radius:16px;background:linear-gradient(90deg,#fff6e5,#fffdf6);border:1px solid #f1dfb7;border-left:6px solid #d88c16}
+.now-banner b{display:block;color:#805006;font-size:17px;margin-bottom:4px}
+.now-banner p{margin:0;color:#6a5420;font-size:14px;line-height:1.45}
+.now-banner a{color:#2f66a7;font-weight:800}
+.week-nav{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 12px}
+.week-nav a{padding:7px 12px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--navy);text-decoration:none;font-size:12px;font-weight:800}
+.week-nav a.done{color:#657084;background:#f4f6f9}
+.week-nav a.current{background:#2f66a7;color:#fff;border-color:#2f66a7}
+.week-nav a.next{background:#fff6e5;border-color:#e7c27a;color:#805006}
+.week,.bridge-schedule,#now,#analytics,.hero{scroll-margin-top:12px}.bridge-schedule>summary.bridge-sum{cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;background:linear-gradient(90deg,#152a49,#2f66a7);color:#fff;padding:12px 18px;font-size:14px;font-weight:800;list-style:none}.bridge-schedule>summary.bridge-sum::-webkit-details-marker{display:none}.bridge-schedule>summary.bridge-sum small{font-size:12px;font-weight:650;color:#dbe8f8}
+.loadline{display:flex;align-items:baseline;justify-content:space-between;gap:8px;flex-wrap:wrap;color:#1a2a44;font-size:14px;font-weight:650;margin-top:3px}
+.loadline .reprange{margin-left:auto;flex:0 0 auto;vertical-align:baseline}
+.plan li{padding:8px 0;border-bottom:1px solid #eef2f6}
+.plan li:last-child{border-bottom:0}
+.reprange{margin-left:6px;background:#f3faf6;color:#1a6b58;border-color:#d5ebe2}
+.week > details{margin:0}
+.week > details > summary.week-head{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.week > details > summary.week-head::-webkit-details-marker{display:none}
+html{scroll-behavior:smooth}
+.week > details > summary.week-head:hover{filter:brightness(1.08)}
+.week > details > summary.week-head::after{content:"открыть";font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;opacity:.75;white-space:nowrap}
+.week > details[open] > summary.week-head::after{content:"свернуть"}
+.week.done .week-head{filter:saturate(.75)}
+.week.next-week{box-shadow:0 8px 24px rgba(128,80,6,.12);border-color:#e7c27a}
+.dash-wrap{margin:18px 0 24px;border:1px solid var(--line);border-radius:16px;background:#fff;overflow:hidden}
+.dash-wrap > summary{cursor:pointer;padding:13px 16px;font-weight:900;color:var(--navy);background:#f7faff}
+.dash-wrap[open] > summary{border-bottom:1px solid var(--line)}
+.dash-wrap .dashboard{margin:0;border:0;border-radius:0;box-shadow:none}
+@media(max-width:540px){.week-nav a{font-size:11px;padding:6px 9px}.now-banner{padding:13px 14px}}
+
+
+/* Карточки упражнений */
+.days{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding:14px;background:#eef3f8}
+.day{padding:14px 14px 16px;border:1px solid var(--line);border-radius:16px;background:#fff}
+.day:last-child{border-right:1px solid var(--line)}
+.block-title{margin:14px 0 8px}
+ol.plan{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;counter-reset:ex}
+ol.plan[start="2"]{counter-reset:ex 1}
+ol.plan[start="3"]{counter-reset:ex 2}
+ol.plan[start="4"]{counter-reset:ex 3}
+ol.plan li{position:relative;margin:0;padding:10px 12px 10px 38px;border:1px solid #e4ebf3;border-radius:12px;background:#fff;counter-increment:ex}
+ol.plan li:last-child{border:1px solid #e4ebf3}
+ol.plan li::before{content:counter(ex);position:absolute;left:10px;top:11px;width:20px;height:20px;border-radius:999px;background:#eef3f8;color:var(--navy);font-size:11px;font-weight:900;display:flex;align-items:center;justify-content:center}
+.block-title.assist + ol.plan li{background:#f6fbf8;border-color:#d5ebe3}
+.block-title.assist + ol.plan li::before{background:#e8f6ef;color:#14624f}
+ol.plan b{display:block;color:var(--navy);font-size:13.5px;line-height:1.3;font-weight:800}
+ol.plan .loadline,.bridge-schedule .loadline{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:start;gap:4px 10px;margin-top:6px;color:#14243d;font-size:14px;font-weight:750;line-height:1.35}
+.ex-assign{min-width:0;grid-column:1;grid-row:1}
+ol.plan .reprange,.bridge-schedule .reprange{grid-column:2;grid-row:1;margin:0;white-space:nowrap}
+.ex-alt{grid-column:1 / -1;color:#657084;font-size:12px;font-weight:600;line-height:1.4;padding-top:2px}
+ol.plan .mode{display:block;width:auto;max-width:100%;box-sizing:border-box;margin-top:7px;padding:5px 8px;border-radius:8px;white-space:normal;line-height:1.35;letter-spacing:0;font-size:11px}
+.cell-main{white-space:normal;line-height:1.35}
+@media(max-width:900px){.days{grid-template-columns:1fr;padding:12px}.day,.day:last-child{border-right:1px solid var(--line)}}
+@media(max-width:540px){
+  ol.plan .loadline,.bridge-schedule .loadline{grid-template-columns:1fr}
+  ol.plan .reprange,.bridge-schedule .reprange{grid-column:1;grid-row:2;justify-self:start;margin-top:4px}
+}
+
+
+.audit{margin:0 0 16px;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 8px 22px rgba(30,48,76,.07)}
+.audit-head{padding:15px 20px 12px;background:linear-gradient(120deg,#fff6e5,#fffdf8);border-bottom:1px solid #f1dfb7}
+.audit-head .kicker{margin:0 0 4px;color:#99600a;font-size:11px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+.audit-head h2{margin:0;font-size:22px;line-height:1.2;color:#6a4308}
+.audit-head p{margin:6px 0 0;color:#6a5420;font-size:13px;line-height:1.4}
+.audit-body{padding:4px 0 8px}
+.audit-sec{padding:12px 20px;border-bottom:1px solid var(--line)}
+.audit-sec:last-child{border-bottom:0}
+.audit-sec h3{margin:0 0 8px;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--navy)}
+.audit-sec ol,.audit-sec ul{margin:0;padding-left:18px;color:#2a3548;font-size:13.5px;line-height:1.45}
+.audit-sec li{margin:5px 0}
+.audit-sec b{color:var(--ink)}
+.tonnage{width:100%;border-collapse:collapse;font-size:12.5px}
+.tonnage th,.tonnage td{padding:5px 8px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+.tonnage th:first-child,.tonnage td:first-child,.tonnage th:last-child,.tonnage td:last-child{text-align:left}
+.tonnage th{color:var(--muted);font-weight:800;font-size:11px;text-transform:uppercase;letter-spacing:.03em}
+.tonnage .fact td{background:#eaf8f2}
+.tonnage .mix td{background:#fff6e5}
+.tonnage .plan td{background:#f7f5ff}
+.tonnage .test td{background:#fff0f0}
+.unknowns{background:#fff7f7}
+.unknowns h3{color:var(--red)}
+@media(max-width:700px){.tonnage{font-size:11px}.tonnage th,.tonnage td{padding:4px 5px}}
+
+
+.ex-prev{display:block;grid-column:1 / -1;margin:1px 0 0;font-size:11px;font-weight:650;color:#6a7788;line-height:1.3}
+.ex-prev b{color:#24344a;font-weight:800}
+
+/* ── Компактные карточки упражнений ──
+   Правило для всех будущих программ: внутри карточки дня
+   держим плотную сетку. Название 12,5px, назначение 13px,
+   пояснения 11px. Вертикальные отступы минимальные. */
+.day{padding:12px 12px 13px}
+.day-title{padding-bottom:7px;margin-bottom:9px}
+.day-title h3{font-size:17px}
+.day-title span{font-size:10px;letter-spacing:.04em}
+.block-title{margin:10px 0 6px;font-size:10px;letter-spacing:.06em}
+ol.plan{gap:6px}
+ol.plan li{padding:7px 9px 7px 31px}
+ol.plan li::before{left:8px;top:8px;width:17px;height:17px;font-size:10px}
+ol.plan b{font-size:12.5px;line-height:1.25}
+ol.plan .loadline,.bridge-schedule .loadline{gap:2px 8px;margin-top:4px;font-size:13px;font-weight:700;line-height:1.3}
+ol.plan .reprange,.bridge-schedule .reprange{font-size:9.5px;padding:1px 6px}
+.ex-alt{font-size:11px;line-height:1.35;padding-top:1px}
+.ex-prev{font-size:10.5px;line-height:1.25}
+ol.plan .mode{margin-top:5px;padding:4px 7px;font-size:10.5px;line-height:1.3}
+.ex-note{display:block;color:#657084;font-size:11px;line-height:1.35;margin-top:3px}
+.session-check{margin-bottom:8px}
+.session-check summary{font-size:11.5px}
+.session-check ul{margin:5px 0 0;padding-left:17px;font-size:11px;line-height:1.4}
+.week-note{font-size:11.5px;line-height:1.45}
+@media(max-width:900px){
+  .day{padding:11px}
+  ol.plan b{font-size:13px}
+  ol.plan .loadline{font-size:13.5px}
+}
+
+/* ── Статусы недель ── */
+.phase-done{background:rgba(255,255,255,.28)!important;color:#fff}
+.phase-now{background:#ffd764!important;color:#4a3403!important;box-shadow:0 0 0 2px rgba(255,215,100,.35)}
+.week.done .week-head{filter:saturate(.35) brightness(.86)}
+.week.done > details > summary.week-head h2{opacity:.9}
+.week.next-week .week-head{box-shadow:inset 0 0 0 2px #ffd764}
+
+/* ── Защита от переполнения ── */
+.week-head{gap:10px;padding:14px 17px}
+.week-head h2{font-size:21px;line-height:1.15}
+.week-head p{font-size:12px;line-height:1.3}
+.week-head > div{min-width:0}
+.phase{font-size:11px;padding:5px 9px}
+.day-title{gap:8px}
+.day-title h3{white-space:nowrap}
+.day-title span{text-align:right;min-width:0;overflow-wrap:anywhere}
+.d-done{color:#2b8f6b!important;letter-spacing:.02em}
+ol.plan li{overflow-wrap:anywhere}
+.ex-assign,.ex-alt,.ex-prev,.ex-note,ol.plan .mode,ol.plan b{overflow-wrap:anywhere;hyphens:auto}
+.week-note{overflow-wrap:anywhere}
+@media(max-width:1100px){
+  .day-title h3{font-size:16px}
+  .day-title span{font-size:9.5px}
+}
+
+/* ── Карта прогресса по весам внутри аналитики ── */
+.dashboard .table-wrap{box-shadow:none;border-radius:11px;margin-top:2px}
+.dashboard table{font-size:12px;min-width:660px}
+.dashboard th{padding:8px 9px;font-size:10.5px}
+.dashboard td{padding:7px 9px}
+.dashboard .cell-main{font-size:12px}
+.dashboard .cell-sub{font-size:10.5px}
+
+.rules-ref{margin:18px 0 0;padding:13px 16px;border:1px dashed var(--line);border-radius:12px;
+  background:#f7f9fc;display:flex;flex-direction:column;gap:4px}
+.rules-ref b{color:var(--navy);font-size:13.5px}
+.rules-ref span{color:var(--muted);font-size:12px;line-height:1.5}
+.rules-ref code{font-size:11.5px;background:#fff;border:1px solid var(--line);
+  border-radius:5px;padding:1px 5px;color:var(--navy)}
+
+/* ── Было → сейчас: главная пара каждого упражнения ── */
+.pp{display:flex;align-items:stretch;gap:6px;margin-top:6px;flex-wrap:wrap}
+.pp-was,.pp-now{display:inline-flex;align-items:baseline;gap:7px;border-radius:9px;padding:4px 10px;font-variant-numeric:tabular-nums;line-height:1.3}
+.pp-was{background:#f1f3f6;border:1px solid #e2e7ee;color:#5b6675;font-size:11px;font-weight:650}
+.pp-now{background:var(--blue-soft);border:1.5px solid #9cc4ec;color:#1d4f8f;font-size:13.5px;font-weight:850}
+.pp-was i,.pp-now i{font-style:normal;font-size:8.5px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;opacity:.7;white-space:nowrap}
+.pp-arrow{align-self:center;color:#9aa6b6;font-size:14px;font-weight:900;line-height:1}
+.block-title.assist + ol.plan .pp-now{background:var(--green-soft);border-color:#9bd8c3;color:#14624f}
+@media(max-width:540px){.pp{flex-direction:column;gap:4px}.pp-arrow{display:none}.pp-was,.pp-now{width:100%;box-sizing:border-box}}
+</style></head>
+<body>
+<div class="page">
+
+<header class="hero">
+  <h1>Цикл 2 — объёмный</h1>
+  <p class="hero-goal">Восемь недель объёма после теста текущего цикла: двойная прогрессия от 75 % протестированного максимума, два жимовых дня, темповый присед как средство на жёсткость корпуса. Старт — после теста недели 8, ориентир понедельник 19 октября.</p>
+  <ul class="hero-aims">
+    <li><b>Жим к неделе 8</b>старт + 5 кг · 4×9</li>
+    <li><b>Средний хват к неделе 8</b>старт + 2,5 кг · 4×9</li>
+    <li><b>Присед к неделе 8</b>старт + 7,5 кг · 4×8–9</li>
+    <li><b>Масса тела</b>81–82 кг · карта слабых мест заполнена</li>
+    <li><b>Не цель</b>рост максимума — он придёт в цикле 3</li>
+  </ul>
+  <details class="dash-wrap" id="analytics">
+<summary>Аналитика цикла · лестница прогрессии, старты и карта недель</summary>
+<section class="dashboard" id="dashboard">
+  <div class="dash-hero">
+    <p class="dash-kicker">Тоннаж цикла</p>
+    <h2>Лестница двойной прогрессии</h2>
+    <p>Столбик — тоннаж недели в процентах к неделе 1 при идеальном закрытии ступеней: сначала растут повторы, затем +2,5 кг и откат к нижней границе коридора. Отсюда пилообразная форма — падение после шага веса это норма, а не откат. Абсолютные значения появятся после теста недели 8 текущего цикла и будут пересчитываться по факту.</p>
+    <span class="asof">Собрано 25 сентября 2026 · старт после теста Н8 текущего цикла · ориентир 19 октября</span>
+  </div>
+  <div class="dash-body">
+    <div class="legend" aria-label="Легенда">
+      <span class="legend-item"><i class="legend-swatch future"></i>план</span>
+      <span class="legend-item"><i class="legend-swatch mixed"></i>неделя с даблом</span>
+      <span class="legend-item"><i class="legend-swatch test"></i>контрольная</span>
+      <span class="legend-item"><i class="legend-swatch deload"></i>съём</span>
+    </div>
+
+    <div class="section-label"><h3>Тоннаж по неделям</h3><p>Коридор главных 4×8–10 (темповый 4×6–7): повтор, повтор, затем +2,5 кг. Проценты — к тоннажу недели 1</p></div>
+    <div class="cycle-grid">
+      <article class="chart-card">
+        <h4>Жим в касание · понедельник</h4>
+        <p class="chart-sub">Идеальная лестница коридора 8–10. Штрих — недели с даблом (дабл в тоннаж не входит, масса навыка).</p>
+        <div class="cycle-row"><span class="cycle-wk">Н1</span><div class="cycle-track"><div class="cycle-fill future" style="width:77%"></div></div><span class="cycle-val"><b>100</b> · 4×8 · старт</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н2</span><div class="cycle-track"><div class="cycle-fill future" style="width:86%"></div></div><span class="cycle-val"><b>112</b> · 4×9</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н3</span><div class="cycle-track"><div class="cycle-fill mixed" style="width:96%"></div></div><span class="cycle-val"><b>125</b> · 4×10 · дабл 82 %</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н4</span><div class="cycle-track"><div class="cycle-fill future" style="width:80%"></div></div><span class="cycle-val"><b>104</b> · +2,5 · 4×8</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н5</span><div class="cycle-track"><div class="cycle-fill future" style="width:90%"></div></div><span class="cycle-val"><b>117</b> · 4×9</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н6</span><div class="cycle-track"><div class="cycle-fill mixed" style="width:100%"></div></div><span class="cycle-val"><b>130</b> · 4×10 · дабл 86 %</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н7</span><div class="cycle-track"><div class="cycle-fill mixed" style="width:83%"></div></div><span class="cycle-val"><b>108</b> · +2,5 · 4×8 · дабл 89 %</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н8</span><div class="cycle-track"><div class="cycle-fill test" style="width:94%"></div></div><span class="cycle-val"><b>122</b> · контроль: старт+5 · 4×9</span></div>
+      </article>
+
+      <article class="chart-card">
+        <h4>Присед · понедельник</h4>
+        <p class="chart-sub">Та же лестница. Пятничный темповый присед идёт отдельным коридором 6–7 и в эту диаграмму не входит.</p>
+        <div class="cycle-row"><span class="cycle-wk">Н1</span><div class="cycle-track"><div class="cycle-fill future" style="width:77%"></div></div><span class="cycle-val"><b>100</b> · 4×8 · старт</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н2</span><div class="cycle-track"><div class="cycle-fill future" style="width:86%"></div></div><span class="cycle-val"><b>112</b> · 4×9</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н3</span><div class="cycle-track"><div class="cycle-fill future" style="width:96%"></div></div><span class="cycle-val"><b>125</b> · 4×10</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н4</span><div class="cycle-track"><div class="cycle-fill future" style="width:80%"></div></div><span class="cycle-val"><b>104</b> · +2,5 · 4×8</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н5</span><div class="cycle-track"><div class="cycle-fill future" style="width:90%"></div></div><span class="cycle-val"><b>117</b> · 4×9</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н6</span><div class="cycle-track"><div class="cycle-fill future" style="width:100%"></div></div><span class="cycle-val"><b>130</b> · 4×10</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н7</span><div class="cycle-track"><div class="cycle-fill future" style="width:83%"></div></div><span class="cycle-val"><b>108</b> · +2,5 · 4×8</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н8</span><div class="cycle-track"><div class="cycle-fill test" style="width:94%"></div></div><span class="cycle-val"><b>122</b> · контроль: старт+7,5 · 4×8–9</span></div>
+      </article>
+
+      <article class="chart-card">
+        <h4>Конструктор стартов</h4>
+        <p class="chart-sub">Все веса считаются от теста недели 8 текущего цикла и округляются вниз до 2,5 кг.</p>
+        <ul style="margin:0;padding-left:17px;font-size:12px;color:#43506a;line-height:1.55">
+          <li><b>Жим Пн</b> — 75 % теста · 4×8–10</li>
+          <li><b>Присед Пн</b> — 75 % теста · 4×8–10</li>
+          <li><b>Темповый присед Пт</b> — 67,5 % теста · 4×6–7</li>
+          <li><b>Жим средним хватом Пт</b> — вес Пн − 5 кг · 4×8–10 (ввод с недели 3)</li>
+          <li><b>Даблы Н3/Н6/Н7</b> — 82 / 86 / 89 % от расчётного 1ПМ</li>
+          <li>Расчётный 1ПМ = min(тройка × 1,1; одиночка + 2,5–5)</li>
+        </ul>
+        <p class="chart-caption"><b>Пример:</b> тест жим 80 / присед 105 → жим Пн <b>60</b>, присед Пн <b>77,5</b>, темповый <b>70</b>, средний хват <b>55</b>, даблы <b>65 / 67,5 / 70</b>.</p>
+      </article>
+
+      <article class="chart-card">
+        <h4>События и рубежи</h4>
+        <p class="chart-sub">Недели с событиями; остальные — обычные ступени прогрессии.</p>
+        <ul style="margin:0;padding-left:17px;font-size:12px;color:#43506a;line-height:1.55">
+          <li><b>Н3</b> — дабл № 1 (82 %) и ввод жима средним хватом в пятницу</li>
+          <li><b>Н4</b> — рубеж: запас в главных стабильно меньше 1 → вставная разгрузка, цикл становится 4 + 1 + 4</li>
+          <li><b>Н6</b> — дабл № 2 (86 %)</li>
+          <li><b>Н7</b> — дабл № 3 (89 %), последний</li>
+          <li><b>Н8</b> — контрольная неделя по критериям, без дабла</li>
+          <li><b>Н9</b> — съём, затем цикл 3: четыре недели пятёрок, разгрузка, тест</li>
+        </ul>
+      </article>
+    </div>
+
+  <div class="section-label"><h3>Карта недель</h3><p>Состав каждой недели: главные движения и события. Даты — ориентир, сдвигается при вставной разгрузке</p></div>
+<div class="table-wrap"><table>
+    <thead><tr><th>Неделя</th><th>Даты</th><th>Пн: жим 64 см</th><th>Пн: дабл</th><th>Пн: присед</th><th>Ср: блок верх</th><th>Пт: темповый</th><th>Пт: жим 55 см</th></tr></thead>
+    <tbody>
+      <tr><td class="wk">1</td><td>19–23 окт</td><td><span class="cell-main">старт 75 % · 4×8</span><span class="cell-sub">вниз до 2,5</span></td><td><span class="cell-main">—</span></td><td><span class="cell-main">старт 75 % · 4×8</span></td><td><span class="cell-main">90 · 4×8–10</span><span class="cell-sub">широкая рукоять</span></td><td><span class="cell-main">старт 67,5 % · 4×6</span></td><td><span class="cell-main">—</span></td></tr>
+      <tr><td class="wk">2</td><td>26–30 окт</td><td><span class="cell-main">по правилу · 4×8–10</span></td><td><span class="cell-main">—</span></td><td><span class="cell-main">по правилу · 4×8–10</span></td><td><span class="cell-main">по правилу</span></td><td><span class="cell-main">по правилу · 4×6–7</span></td><td><span class="cell-main">—</span></td></tr>
+      <tr><td class="wk">3</td><td>2–6 ноя</td><td><span class="cell-main">по правилу · 4×8–10</span></td><td><span class="cell-main">82 % · 1×2</span><span class="cell-sub">первым жимовым</span></td><td><span class="cell-main">по правилу · 4×8–10</span></td><td><span class="cell-main">по правилу</span></td><td><span class="cell-main">по правилу · 4×6–7</span></td><td><span class="cell-main">старт: Пн − 5 · 4×8</span><span class="cell-sub">ввод</span></td></tr>
+      <tr><td class="wk">4</td><td>9–13 ноя</td><td><span class="cell-main">по правилу · 4×8–10</span></td><td><span class="cell-main">—</span></td><td><span class="cell-main">по правилу · 4×8–10</span></td><td><span class="cell-main">по правилу</span></td><td><span class="cell-main">по правилу · 4×6–7</span></td><td><span class="cell-main">по правилу · 4×8–10</span></td></tr>
+      <tr><td class="wk">5</td><td>16–20 ноя</td><td><span class="cell-main">по правилу · 4×8–10</span><span class="cell-sub">блок 2</span></td><td><span class="cell-main">—</span></td><td><span class="cell-main">по правилу · 4×8–10</span></td><td><span class="cell-main">по правилу</span></td><td><span class="cell-main">по правилу · 4×6–7</span></td><td><span class="cell-main">по правилу · 4×8–10</span></td></tr>
+      <tr><td class="wk">6</td><td>23–27 ноя</td><td><span class="cell-main">по правилу · 4×8–10</span></td><td><span class="cell-main">86 % · 1×2</span></td><td><span class="cell-main">по правилу · 4×8–10</span></td><td><span class="cell-main">по правилу</span></td><td><span class="cell-main">по правилу · 4×6–7</span></td><td><span class="cell-main">по правилу · 4×8–10</span></td></tr>
+      <tr><td class="wk">7</td><td>30 ноя – 4 дек</td><td><span class="cell-main">по правилу · 4×8–10</span></td><td><span class="cell-main">89 % · 1×2</span><span class="cell-sub">последний</span></td><td><span class="cell-main">по правилу · 4×8–10</span></td><td><span class="cell-main">по правилу</span></td><td><span class="cell-main">по правилу · 4×6–7</span></td><td><span class="cell-main">по правилу · 4×8–10</span></td></tr>
+      <tr class="row-test"><td class="wk">8</td><td>7–11 дек</td><td><span class="cell-main">старт + 5 · 4×9</span><span class="cell-sub">контроль</span></td><td><span class="cell-main">нет</span></td><td><span class="cell-main">старт + 7,5 · 4×8–9</span><span class="cell-sub">контроль</span></td><td><span class="cell-main">без повышения</span></td><td><span class="cell-main">по правилу</span></td><td><span class="cell-main">старт + 2,5 · 4×9</span><span class="cell-sub">контроль</span></td></tr>
+      <tr class="row-deload"><td class="wk">9</td><td>14–18 дек</td><td><span class="cell-main">съём</span><span class="cell-sub">60–70 % · по 2 подхода</span></td><td><span class="cell-main">—</span></td><td><span class="cell-main">съём</span></td><td><span class="cell-main">легко</span></td><td><span class="cell-main">съём</span></td><td><span class="cell-main">легко</span></td></tr>
+    </tbody>
+  </table></div>
+
+  </div>
+</section>
+</details>
+</header>
+
+<nav class="week-nav" aria-label="Недели цикла">
+  <a href="#week-1">Н1</a>
+  <a href="#week-2">Н2</a>
+  <a href="#week-3">Н3</a>
+  <a href="#week-4">Н4</a>
+  <a href="#week-5">Н5</a>
+  <a href="#week-6">Н6</a>
+  <a href="#week-7">Н7</a>
+  <a href="#week-8">Н8</a>
+  <a href="#week-9">Н9 · съём</a>
+</nav>
+
+<section class="week load" id="week-1">
+  <details>
+  <summary class="week-head"><div><h2>Неделя 1</h2><p>Старт после теста · блок 1</p></div><span class="phase">Старт</span></summary>
+  <div class="days">
+    <article class="day"><div class="day-title"><h3>Понедельник</h3><span>Жим</span></div>
+      <details class="session-check"><summary>Как считается шаг прогрессии</summary><ul>
+        <li>Повтор добавляется, только когда все подходы прошли с запасом 2.</li>
+        <li>Вес растёт только после чистого верха коридора во всех подходах: +2,5 и откат к нижней границе.</li>
+        <li>Неделя не закрылась — повторить её, а не идти дальше. Стоять на одном месте дольше трёх недель — сигнал разбираться.</li>
+      </ul></details>
+      <div class="block-title">Основные</div>
+      <ol class="plan">
+        <li><b>Жим в касание · свой хват 64 см</b>
+          <div class="pp"><span class="pp-was"><i>было</i>тест Н8 цикла 1: лестница 3–2–1</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>старт 75 % теста · 4×8</span></div>
+          <span class="ex-alt">вес округляется вниз до 2,5; единственное движение, не меняющееся весь цикл, — точка отсчёта прогресса</span>
+          <span class="mode mode-hard">Отдых 3–4 мин</span></li>
+        <li><b>Присед · привычное среднее положение грифа</b>
+          <div class="pp"><span class="pp-was"><i>было</i>тест Н8 цикла 1: лестница 3–2–1</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>старт 75 % теста · 4×8</span></div>
+          <span class="ex-alt">ниже параллели; шаг тот же: повтор, повтор, затем +2,5</span>
+          <span class="mode mode-hard">Отдых 3–4 мин</span></li>
+      </ol>
+      <div class="block-title assist">Подсобка</div>
+      <ol class="plan" start="3">
+        <li><b>Подъёмы гантелей через стороны</b>
+          <div class="pp"><span class="pp-was"><i>было</i>по 5 кг · 3×12–15 (конец цикла 1)</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по 5 кг · 3×12–15</span></div>
+          <span class="ex-alt">без трапеций: чистый повтор важнее числа; снимаются первыми при нехватке времени</span>
+          <span class="mode mode-moderate">Отдых 1–1,5 мин</span></li>
+      </ol>
+    </article>
+    <article class="day"><div class="day-title"><h3>Среда</h3><span>Верх</span></div>
+      <div class="block-title">Основные</div>
+      <ol class="plan">
+        <li><b>Тяга верхнего блока · широкая рукоять</b>
+          <div class="pp"><span class="pp-was"><i>было</i>95 · 3×8–10, прежняя рукоять (цикл 1)</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>90 · 4×8–10</span></div>
+          <span class="ex-alt">рукоять и ширина хвата одни и те же весь цикл — база сопоставимости; нейтральная — только при боли плеч или локтей; вес подобрать с запасом 2</span>
+          <span class="mode mode-moderate">Отдых 1,5–2 мин</span></li>
+      </ol>
+      <div class="block-title assist">Подсобка</div>
+      <ol class="plan" start="2">
+        <li><b>Тяга нижнего блока · узкая нейтральная</b>
+          <div class="pp"><span class="pp-was"><i>было</i>90 · 3×10 (цикл 1)</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>90 · 4×10</span></div>
+          <span class="ex-alt">коридор 10–12; после чистых 4×12 — 95 с откатом к 10; рукоять фиксирована</span>
+          <span class="mode mode-moderate">Отдых 1,5–2 мин</span></li>
+        <li><b>Трицепс на блоке</b>
+          <div class="pp"><span class="pp-was"><i>было</i>40 · 3×10–12 (цикл 1)</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>40 · 3×12</span></div>
+          <span class="ex-alt">коридор 12–15; после чистых 3×15 — плитка 45</span>
+          <span class="mode mode-moderate">Отдых 1–1,5 мин</span></li>
+        <li><b>Молотки</b>
+          <div class="pp"><span class="pp-was"><i>было</i>по 14 · 3×8 (цикл 1)</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по 14 · 3×6–10</span></div>
+          <span class="ex-alt">чистые 3×8 — порог перехода на 16 кг</span>
+          <span class="mode mode-moderate">Отдых 1–1,5 мин</span></li>
+      </ol>
+    </article>
+    <article class="day"><div class="day-title"><h3>Пятница</h3><span>Присед</span></div>
+      <details class="session-check"><summary>Темповый присед — техника</summary><ul>
+        <li>3 секунды опускания: считать про себя «раз-два-три», без остановки внизу.</li>
+        <li>Грудь поднята, подъём — одновременным движением таза и плеч; таз не уходит вверх первым.</li>
+        <li>Средство против потери жёсткости корпуса к концу подхода — вывод диагностики завала от 25 сентября.</li>
+      </ul></details>
+      <div class="block-title">Основные</div>
+      <ol class="plan">
+        <li><b>Темповый присед · 3 с опускания</b>
+          <div class="pp"><span class="pp-was"><i>было</i>— · новое режимное средство</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>старт 67,5 % теста · 4×6</span></div>
+          <span class="ex-alt">коридор 6–7; после 4×7 с запасом 2 — +2,5 и откат к 6</span>
+          <span class="mode mode-hard">Отдых 3–4 мин</span></li>
+        <li><b>Румынская тяга</b>
+          <div class="pp"><span class="pp-was"><i>было</i>65 · 3×12 (цикл 1)</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>65 · 3×10</span></div>
+          <span class="ex-alt">коридор 8–12; после 3×12 — 67,5 с откатом к 10; без лямок</span>
+          <span class="mode mode-moderate">Отдых 1,5–2 мин</span></li>
+      </ol>
+      <div class="block-title assist">Подсобка</div>
+      <ol class="plan" start="3">
+        <li><b>Разгибание ног</b>
+          <div class="pp"><span class="pp-was"><i>было</i>20 · 3×11–12 (цикл 1)</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>20 · 3×9–12</span></div>
+          <span class="ex-alt">после чистых 3×12 — 25 с откатом к 9</span>
+          <span class="mode mode-moderate">Отдых 1–1,5 мин</span></li>
+        <li><b>Сгибание ног сидя</b>
+          <div class="pp"><span class="pp-was"><i>было</i>— · новое упражнение</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>подбор · 3×12</span></div>
+          <span class="ex-alt">первый заход — найти вес с запасом 2 и зафиксировать его</span>
+          <span class="mode mode-moderate">Отдых 1–1,5 мин</span></li>
+        <li><b>Ролик для пресса с колен</b>
+          <div class="pp"><span class="pp-was"><i>было</i>3×10–12 (цикл 1)</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>3×10</span></div>
+          <span class="ex-alt">закончить до провисания корпуса</span>
+          <span class="mode mode-moderate">Отдых 1 мин</span></li>
+      </ol>
+    </article>
+  </div>
+  <div class="week-note">Неделя входа. Старты: главные — 75 % теста Н8 (вниз до 2,5), темповый присед — 67,5 %, верхний блок — широкая рукоять. Пятничного жима пока нет, он вводится с недели 3. Старт не раньше чем через 2–3 дня полного отдыха после теста. Ощущения первой недели — не показатель, оценивать по второй и третьей.</div>
+</details>
+</section>
+
+<section class="week load" id="week-2">
+  <details>
+  <summary class="week-head"><div><h2>Неделя 2</h2><p>Блок 1 · закрепление старта</p></div><span class="phase">Блок 1</span></summary>
+  <div class="days">
+    <article class="day"><div class="day-title"><h3>Понедельник</h3><span>Жим</span></div>
+      <div class="block-title">Основные</div>
+      <ol class="plan">
+        <li><b>Жим в касание · свой хват 64 см</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 1</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>вес Н1 или +1 повтор · 4×8–10</span></div>
+          <span class="ex-alt">+1 повтор при запасе 2 во всех подходах; чистые 4×10 — шаг +2,5 и откат к 8</span>
+          <span class="mode mode-hard">Отдых 3–4 мин</span></li>
+        <li><b>Присед · привычное среднее положение грифа</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 1</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>вес Н1 или +1 повтор · 4×8–10</span></div>
+          <span class="ex-alt">шаг тот же: повтор, повтор, +2,5</span>
+          <span class="mode mode-hard">Отдых 3–4 мин</span></li>
+      </ol>
+      <div class="block-title assist">Подсобка</div>
+      <ol class="plan" start="3">
+        <li><b>Подъёмы гантелей через стороны</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 1</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по 5 кг · 3×12–15</span></div>
+          <span class="ex-alt">шаг по правилу: сначала повторы, затем вес</span>
+          <span class="mode mode-moderate">Отдых 1–1,5 мин</span></li>
+      </ol>
+    </article>
+    <article class="day"><div class="day-title"><h3>Среда</h3><span>Верх</span></div>
+      <div class="block-title">Основные</div>
+      <ol class="plan">
+        <li><b>Тяга верхнего блока · широкая рукоять</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 1</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>вес Н1 · 4×8–12</span></div>
+          <span class="ex-alt">шаг по правилу</span>
+          <span class="mode mode-moderate">Отдых 1,5–2 мин</span></li>
+      </ol>
+      <div class="block-title assist">Подсобка</div>
+      <ol class="plan" start="2">
+        <li><b>Тяга нижнего блока · узкая нейтральная</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 1</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>вес Н1 · 4×10–12</span></div>
+          <span class="ex-alt">шаг по правилу</span>
+          <span class="mode mode-moderate">Отдых 1,5–2 мин</span></li>
+        <li><b>Трицепс на блоке</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 1</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>40 · 3×12–15</span></div>
+          <span class="ex-alt">после чистых 3×15 — 45</span>
+          <span class="mode mode-moderate">Отдых 1–1,5 мин</span></li>
+        <li><b>Молотки</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 1</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по 14 · 3×6–10</span></div>
+          <span class="ex-alt">чистые 3×8 — порог на 16 кг</span>
+          <span class="mode mode-moderate">Отдых 1–1,5 мин</span></li>
+      </ol>
+    </article>
+    <article class="day"><div class="day-title"><h3>Пятница</h3><span>Присед</span></div>
+      <div class="block-title">Основные</div>
+      <ol class="plan">
+        <li><b>Темповый присед · 3 с опускания</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 1</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>вес Н1 или +1 повтор · 4×6–7</span></div>
+          <span class="ex-alt">+1 повтор при запасе 2; 4×7 — шаг +2,5 и откат к 6</span>
+          <span class="mode mode-hard">Отдых 3–4 мин</span></li>
+        <li><b>Румынская тяга</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 1</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>65 · 3×8–12</span></div>
+          <span class="ex-alt">после 3×12 — 67,5 с откатом к 10</span>
+          <span class="mode mode-moderate">Отдых 1,5–2 мин</span></li>
+      </ol>
+      <div class="block-title assist">Подсобка</div>
+      <ol class="plan" start="3">
+        <li><b>Разгибание ног</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 1</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>20 · 3×9–12</span></div>
+          <span class="mode mode-moderate">Отдых 1–1,5 мин</span></li>
+        <li><b>Сгибание ног сидя</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 1</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>вес Н1 · 3×10–12</span></div>
+          <span class="mode mode-moderate">Отдых 1–1,5 мин</span></li>
+        <li><b>Ролик для пресса с колен</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 1</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>3×6–12</span></div>
+          <span class="mode mode-moderate">Отдых 1 мин</span></li>
+      </ol>
+    </article>
+  </div>
+  <div class="week-note">Неделя закрепления: тот же состав, шаги только по факту недели 1. Лёгкая общая усталость к пятнице — норма. Разминочный вес, который «не летит», — самый ранний признак недовосстановления.</div>
+</details>
+</section>
+
+<section class="week load" id="week-3">
+  <details>
+  <summary class="week-head"><div><h2>Неделя 3</h2><p>Блок 1 · дабл № 1 и ввод среднего хвата</p></div><span class="phase">Дабл</span></summary>
+  <div class="days">
+    <article class="day"><div class="day-title"><h3>Понедельник</h3><span>Жим</span></div>
+      <details class="session-check"><summary>Дабл — правила подхода-ориентира</summary><ul>
+        <li>Только после разминки, первым жимовым упражнением дня, свой хват 64 см.</li>
+        <li>Запас минимум 2 чистных повтора — это удержание тяжёлого навыка, а не работа в отказ.</li>
+        <li>Снимается первым при любом признаке недовосстановления.</li>
+        <li>Легко, с запасом 3 и больше, на всех трёх даблах — схема меняется на 85 / 88 / 92 %.</li>
+      </ul></details>
+      <div class="block-title">Основные</div>
+      <ol class="plan">
+        <li><b>Дабл · подход-ориентир</b>
+          <div class="pp"><span class="pp-was"><i>было</i>дабла не было</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>82 % от 1ПМ · 1×2</span></div>
+          <span class="ex-alt">вес вниз до 2,5; 1ПМ — из теста Н8 цикла 1: min(тройка × 1,1; одиночка + 2,5–5)</span>
+          <span class="mode mode-hard">Отдых 3–4 мин, затем разминка жима</span></li>
+        <li><b>Жим в касание · свой хват 64 см</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 2</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 4×8–10</span></div>
+          <span class="ex-alt">+1 повтор при запасе 2; чистые 4×10 — шаг +2,5 и откат к 8</span>
+          <span class="mode mode-hard">Отдых 3–4 мин</span></li>
+        <li><b>Присед · привычное среднее положение грифа</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 2</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 4×8–10</span></div>
+          <span class="ex-alt">шаг тот же</span>
+          <span class="mode mode-hard">Отдых 3–4 мин</span></li>
+      </ol>
+      <div class="block-title assist">Подсобка</div>
+      <ol class="plan" start="4">
+        <li><b>Подъёмы гантелей через стороны</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 2</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 3×12–15</span></div>
+          <span class="mode mode-moderate">Отдых 1–1,5 мин</span></li>
+      </ol>
+    </article>
+    <article class="day"><div class="day-title"><h3>Среда</h3><span>Верх</span></div>
+      <div class="block-title">Основные</div>
+      <ol class="plan">
+        <li><b>Тяга верхнего блока · широкая рукоять</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 2</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 4×8–12</span></div>
+          <span class="mode mode-moderate">Отдых 1,5–2 мин</span></li>
+      </ol>
+      <div class="block-title assist">Подсобка</div>
+      <ol class="plan" start="2">
+        <li><b>Тяга нижнего блока · узкая нейтральная</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 2</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 4×10–12</span></div>
+          <span class="mode mode-moderate">Отдых 1,5–2 мин</span></li>
+        <li><b>Трицепс на блоке</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 2</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 3×12–15</span></div>
+          <span class="mode mode-moderate">Отдых 1–1,5 мин</span></li>
+        <li><b>Молотки</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 2</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 3×6–10</span></div>
+          <span class="mode mode-moderate">Отдых 1–1,5 мин</span></li>
+      </ol>
+    </article>
+    <article class="day"><div class="day-title"><h3>Пятница</h3><span>Присед</span></div>
+      <details class="session-check"><summary>Средний хват — как ставить</summary><ul>
+        <li>55 см между указательными пальцами; гриф касается той же точки груди.</li>
+        <li>Ставится после темпового приседа и только если присед прошёл штатно.</li>
+        <li>Снимается первым при утомлении или покалывании в груди.</li>
+      </ul></details>
+      <div class="block-title">Основные</div>
+      <ol class="plan">
+        <li><b>Темповый присед · 3 с опускания</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 2</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 4×6–7</span></div>
+          <span class="ex-alt">+1 повтор при запасе 2; 4×7 — шаг +2,5 и откат к 6</span>
+          <span class="mode mode-hard">Отдых 3–4 мин</span></li>
+        <li><b>Жим средним хватом · 55 см</b>
+          <div class="pp"><span class="pp-was"><i>было</i>— · новый хват</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>старт: вес Пн − 5 · 4×8</span></div>
+          <span class="ex-alt">коридор 8–10; старт на один шаг грифа легче понедельника — первая неделя на сопоставимость хвата</span>
+          <span class="mode mode-hard">Отдых 3–4 мин</span></li>
+      </ol>
+      <div class="block-title assist">Подсобка</div>
+      <ol class="plan" start="3">
+        <li><b>Румынская тяга</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 2</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 3×8–12</span></div>
+          <span class="mode mode-moderate">Отдых 1,5–2 мин</span></li>
+        <li><b>Разгибание ног</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 2</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 3×9–12</span></div>
+          <span class="mode mode-moderate">Отдых 1–1,5 мин</span></li>
+        <li><b>Сгибание ног сидя</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 2</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 3×10–12</span></div>
+          <span class="mode mode-moderate">Отдых 1–1,5 мин</span></li>
+        <li><b>Ролик для пресса с колен</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 2</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>3×6–12</span></div>
+          <span class="mode mode-moderate">Отдых 1 мин</span></li>
+      </ol>
+    </article>
+  </div>
+  <div class="week-note">Первая неделя полного объёма: добавляются дабл в понедельник и второй жимовый день в пятницу. Жимовой тоннаж недели заметно растёт — это самый тяжёлый подъём за цикл, считать его нормой. Средний хват — носитель карты слабых мест: соотношение «средний / соревновательный» меряется по одинаковым повторам и запасу.</div>
+</details>
+</section>
+
+<section class="week load" id="week-4">
+  <details>
+  <summary class="week-head"><div><h2>Неделя 4</h2><p>Блок 1 · рубеж запаса</p></div><span class="phase">Рубеж</span></summary>
+  <div class="days">
+    <article class="day"><div class="day-title"><h3>Понедельник</h3><span>Жим</span></div>
+      <div class="block-title">Основные</div>
+      <ol class="plan">
+        <li><b>Жим в касание · свой хват 64 см</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 3</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 4×8–10</span></div>
+          <span class="ex-alt">+1 повтор при запасе 2; чистые 4×10 — шаг +2,5 и откат к 8</span>
+          <span class="mode mode-hard">Отдых 3–4 мин</span></li>
+        <li><b>Присед · привычное среднее положение грифа</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 3</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 4×8–10</span></div>
+          <span class="ex-alt">шаг тот же</span>
+          <span class="mode mode-hard">Отдых 3–4 мин</span></li>
+      </ol>
+      <div class="block-title assist">Подсобка</div>
+      <ol class="plan" start="3">
+        <li><b>Подъёмы гантелей через стороны</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 3</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 3×12–15</span></div>
+          <span class="mode mode-moderate">Отдых 1–1,5 мин</span></li>
+      </ol>
+    </article>
+    <article class="day"><div class="day-title"><h3>Среда</h3><span>Верх</span></div>
+      <div class="block-title">Основные</div>
+      <ol class="plan">
+        <li><b>Тяга верхнего блока · широкая рукоять</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 3</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 4×8–12</span></div>
+          <span class="mode mode-moderate">Отдых 1,5–2 мин</span></li>
+      </ol>
+      <div class="block-title assist">Подсобка</div>
+      <ol class="plan" start="2">
+        <li><b>Тяга нижнего блока · узкая нейтральная</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 3</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 4×10–12</span></div>
+          <span class="mode mode-moderate">Отдых 1,5–2 мин</span></li>
+        <li><b>Трицепс на блоке</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 3</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 3×12–15</span></div>
+          <span class="mode mode-moderate">Отдых 1–1,5 мин</span></li>
+        <li><b>Молотки</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 3</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 3×6–10</span></div>
+          <span class="mode mode-moderate">Отдых 1–1,5 мин</span></li>
+      </ol>
+    </article>
+    <article class="day"><div class="day-title"><h3>Пятница</h3><span>Присед</span></div>
+      <div class="block-title">Основные</div>
+      <ol class="plan">
+        <li><b>Темповый присед · 3 с опускания</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 3</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 4×6–7</span></div>
+          <span class="ex-alt">+1 повтор при запасе 2; 4×7 — шаг +2,5 и откат к 6</span>
+          <span class="mode mode-hard">Отдых 3–4 мин</span></li>
+        <li><b>Жим средним хватом · 55 см</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 3</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 4×8–10</span></div>
+          <span class="ex-alt">после приседа; снимается первым при утомлении</span>
+          <span class="mode mode-hard">Отдых 3–4 мин</span></li>
+      </ol>
+      <div class="block-title assist">Подсобка</div>
+      <ol class="plan" start="3">
+        <li><b>Румынская тяга</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 3</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 3×8–12</span></div>
+          <span class="mode mode-moderate">Отдых 1,5–2 мин</span></li>
+        <li><b>Разгибание ног</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 3</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 3×9–12</span></div>
+          <span class="mode mode-moderate">Отдых 1–1,5 мин</span></li>
+        <li><b>Сгибание ног сидя</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 3</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 3×10–12</span></div>
+          <span class="mode mode-moderate">Отдых 1–1,5 мин</span></li>
+        <li><b>Ролик для пресса с колен</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 3</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>3×6–12</span></div>
+          <span class="mode mode-moderate">Отдых 1 мин</span></li>
+      </ol>
+    </article>
+  </div>
+  <div class="week-note warn">Рубеж блока 1. Если после этой недели запас в основных подходах стабильно меньше 1 — между блоками вставляется разгрузочная неделя, цикл становится 4 + 1 + 4, все даты сдвигаются на неделю. Вставная разгрузка — не отставание, а условие прохождения второго блока.</div>
+</details>
+</section>
+
+<section class="week peak" id="week-5">
+  <details>
+  <summary class="week-head"><div><h2>Неделя 5</h2><p>Блок 2</p></div><span class="phase">Блок 2</span></summary>
+  <div class="days">
+    <article class="day"><div class="day-title"><h3>Понедельник</h3><span>Жим</span></div>
+      <div class="block-title">Основные</div>
+      <ol class="plan">
+        <li><b>Жим в касание · свой хват 64 см</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 4</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 4×8–10</span></div>
+          <span class="ex-alt">+1 повтор при запасе 2; чистые 4×10 — шаг +2,5 и откат к 8</span>
+          <span class="mode mode-hard">Отдых 3–4 мин</span></li>
+        <li><b>Присед · привычное среднее положение грифа</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 4</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 4×8–10</span></div>
+          <span class="ex-alt">шаг тот же</span>
+          <span class="mode mode-hard">Отдых 3–4 мин</span></li>
+      </ol>
+      <div class="block-title assist">Подсобка</div>
+      <ol class="plan" start="3">
+        <li><b>Подъёмы гантелей через стороны</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 4</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 3×12–15</span></div>
+          <span class="mode mode-moderate">Отдых 1–1,5 мин</span></li>
+      </ol>
+    </article>
+    <article class="day"><div class="day-title"><h3>Среда</h3><span>Верх</span></div>
+      <div class="block-title">Основные</div>
+      <ol class="plan">
+        <li><b>Тяга верхнего блока · широкая рукоять</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 4</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 4×8–12</span></div>
+          <span class="mode mode-moderate">Отдых 1,5–2 мин</span></li>
+      </ol>
+      <div class="block-title assist">Подсобка</div>
+      <ol class="plan" start="2">
+        <li><b>Тяга нижнего блока · узкая нейтральная</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 4</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 4×10–12</span></div>
+          <span class="mode mode-moderate">Отдых 1,5–2 мин</span></li>
+        <li><b>Трицепс на блоке</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 4</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 3×12–15</span></div>
+          <span class="mode mode-moderate">Отдых 1–1,5 мин</span></li>
+        <li><b>Молотки</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 4</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 3×6–10</span></div>
+          <span class="mode mode-moderate">Отдых 1–1,5 мин</span></li>
+      </ol>
+    </article>
+    <article class="day"><div class="day-title"><h3>Пятница</h3><span>Присед</span></div>
+      <div class="block-title">Основные</div>
+      <ol class="plan">
+        <li><b>Темповый присед · 3 с опускания</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 4</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 4×6–7</span></div>
+          <span class="ex-alt">+1 повтор при запасе 2; 4×7 — шаг +2,5 и откат к 6</span>
+          <span class="mode mode-hard">Отдых 3–4 мин</span></li>
+        <li><b>Жим средним хватом · 55 см</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 4</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 4×8–10</span></div>
+          <span class="mode mode-hard">Отдых 3–4 мин</span></li>
+      </ol>
+      <div class="block-title assist">Подсобка</div>
+      <ol class="plan" start="3">
+        <li><b>Румынская тяга</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 4</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 3×8–12</span></div>
+          <span class="mode mode-moderate">Отдых 1,5–2 мин</span></li>
+        <li><b>Разгибание ног</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 4</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 3×9–12</span></div>
+          <span class="mode mode-moderate">Отдых 1–1,5 мин</span></li>
+        <li><b>Сгибание ног сидя</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 4</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 3×10–12</span></div>
+          <span class="mode mode-moderate">Отдых 1–1,5 мин</span></li>
+        <li><b>Ролик для пресса с колен</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 4</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>3×6–12</span></div>
+          <span class="mode mode-moderate">Отдых 1 мин</span></li>
+      </ol>
+    </article>
+  </div>
+  <div class="week-note">Начало блока 2. Состав недели не меняется — стимул растёт весами и повторами, а не новыми упражнениями. Ориентир самочувствия: эта неделя должна ощущаться легче недели 3; если тяжелее — работать по маркерам восстановления из Правил цикла.</div>
+</details>
+</section>
+
+<section class="week peak" id="week-6">
+  <details>
+  <summary class="week-head"><div><h2>Неделя 6</h2><p>Блок 2 · дабл № 2</p></div><span class="phase">Дабл</span></summary>
+  <div class="days">
+    <article class="day"><div class="day-title"><h3>Понедельник</h3><span>Жим</span></div>
+      <div class="block-title">Основные</div>
+      <ol class="plan">
+        <li><b>Дабл · подход-ориентир</b>
+          <div class="pp"><span class="pp-was"><i>было</i>82 % · факт Н3</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>86 % от 1ПМ · 1×2</span></div>
+          <span class="ex-alt">те же правила: первым жимовым, запас минимум 2</span>
+          <span class="mode mode-hard">Отдых 3–4 мин</span></li>
+        <li><b>Жим в касание · свой хват 64 см</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 5</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 4×8–10</span></div>
+          <span class="ex-alt">+1 повтор при запасе 2; чистые 4×10 — шаг +2,5 и откат к 8</span>
+          <span class="mode mode-hard">Отдых 3–4 мин</span></li>
+        <li><b>Присед · привычное среднее положение грифа</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 5</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 4×8–10</span></div>
+          <span class="mode mode-hard">Отдых 3–4 мин</span></li>
+      </ol>
+      <div class="block-title assist">Подсобка</div>
+      <ol class="plan" start="4">
+        <li><b>Подъёмы гантелей через стороны</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 5</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 3×12–15</span></div>
+          <span class="mode mode-moderate">Отдых 1–1,5 мин</span></li>
+      </ol>
+    </article>
+    <article class="day"><div class="day-title"><h3>Среда</h3><span>Верх</span></div>
+      <div class="block-title">Основные</div>
+      <ol class="plan">
+        <li><b>Тяга верхнего блока · широкая рукоять</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 5</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 4×8–12</span></div>
+          <span class="mode mode-moderate">Отдых 1,5–2 мин</span></li>
+      </ol>
+      <div class="block-title assist">Подсобка</div>
+      <ol class="plan" start="2">
+        <li><b>Тяга нижнего блока · узкая нейтральная</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 5</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 4×10–12</span></div>
+          <span class="mode mode-moderate">Отдых 1,5–2 мин</span></li>
+        <li><b>Трицепс на блоке</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 5</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 3×12–15</span></div>
+          <span class="mode mode-moderate">Отдых 1–1,5 мин</span></li>
+        <li><b>Молотки</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 5</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 3×6–10</span></div>
+          <span class="mode mode-moderate">Отдых 1–1,5 мин</span></li>
+      </ol>
+    </article>
+    <article class="day"><div class="day-title"><h3>Пятница</h3><span>Присед</span></div>
+      <div class="block-title">Основные</div>
+      <ol class="plan">
+        <li><b>Темповый присед · 3 с опускания</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 5</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 4×6–7</span></div>
+          <span class="mode mode-hard">Отдых 3–4 мин</span></li>
+        <li><b>Жим средним хватом · 55 см</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 5</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 4×8–10</span></div>
+          <span class="mode mode-hard">Отдых 3–4 мин</span></li>
+      </ol>
+      <div class="block-title assist">Подсобка</div>
+      <ol class="plan" start="3">
+        <li><b>Румынская тяга</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 5</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 3×8–12</span></div>
+          <span class="mode mode-moderate">Отдых 1,5–2 мин</span></li>
+        <li><b>Разгибание ног</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 5</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 3×9–12</span></div>
+          <span class="mode mode-moderate">Отдых 1–1,5 мин</span></li>
+        <li><b>Сгибание ног сидя</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 5</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 3×10–12</span></div>
+          <span class="mode mode-moderate">Отдых 1–1,5 мин</span></li>
+        <li><b>Ролик для пресса с колен</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 5</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>3×6–12</span></div>
+          <span class="mode mode-moderate">Отдых 1 мин</span></li>
+      </ol>
+    </article>
+  </div>
+  <div class="week-note">Дабл № 2 — 86 % от расчётного максимума. Остальное — обычная ступень прогрессии.</div>
+</details>
+</section>
+
+<section class="week peak" id="week-7">
+  <details>
+  <summary class="week-head"><div><h2>Неделя 7</h2><p>Блок 2 · дабл № 3, последний</p></div><span class="phase">Дабл</span></summary>
+  <div class="days">
+    <article class="day"><div class="day-title"><h3>Понедельник</h3><span>Жим</span></div>
+      <div class="block-title">Основные</div>
+      <ol class="plan">
+        <li><b>Дабл · подход-ориентир</b>
+          <div class="pp"><span class="pp-was"><i>было</i>86 % · факт Н6</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>89 % от 1ПМ · 1×2</span></div>
+          <span class="ex-alt">последний дабл цикла; дальше до конца — только работа по коридорам</span>
+          <span class="mode mode-hard">Отдых 3–4 мин</span></li>
+        <li><b>Жим в касание · свой хват 64 см</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 6</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 4×8–10</span></div>
+          <span class="ex-alt">+1 повтор при запасе 2; чистые 4×10 — шаг +2,5 и откат к 8</span>
+          <span class="mode mode-hard">Отдых 3–4 мин</span></li>
+        <li><b>Присед · привычное среднее положение грифа</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 6</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 4×8–10</span></div>
+          <span class="mode mode-hard">Отдых 3–4 мин</span></li>
+      </ol>
+      <div class="block-title assist">Подсобка</div>
+      <ol class="plan" start="4">
+        <li><b>Подъёмы гантелей через стороны</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 6</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 3×12–15</span></div>
+          <span class="mode mode-moderate">Отдых 1–1,5 мин</span></li>
+      </ol>
+    </article>
+    <article class="day"><div class="day-title"><h3>Среда</h3><span>Верх</span></div>
+      <div class="block-title">Основные</div>
+      <ol class="plan">
+        <li><b>Тяга верхнего блока · широкая рукоять</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 6</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 4×8–12</span></div>
+          <span class="mode mode-moderate">Отдых 1,5–2 мин</span></li>
+      </ol>
+      <div class="block-title assist">Подсобка</div>
+      <ol class="plan" start="2">
+        <li><b>Тяга нижнего блока · узкая нейтральная</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 6</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 4×10–12</span></div>
+          <span class="mode mode-moderate">Отдых 1,5–2 мин</span></li>
+        <li><b>Трицепс на блоке</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 6</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 3×12–15</span></div>
+          <span class="mode mode-moderate">Отдых 1–1,5 мин</span></li>
+        <li><b>Молотки</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 6</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 3×6–10</span></div>
+          <span class="mode mode-moderate">Отдых 1–1,5 мин</span></li>
+      </ol>
+    </article>
+    <article class="day"><div class="day-title"><h3>Пятница</h3><span>Присед</span></div>
+      <div class="block-title">Основные</div>
+      <ol class="plan">
+        <li><b>Темповый присед · 3 с опускания</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 6</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 4×6–7</span></div>
+          <span class="mode mode-hard">Отдых 3–4 мин</span></li>
+        <li><b>Жим средним хватом · 55 см</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 6</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 4×8–10</span></div>
+          <span class="mode mode-hard">Отдых 3–4 мин</span></li>
+      </ol>
+      <div class="block-title assist">Подсобка</div>
+      <ol class="plan" start="3">
+        <li><b>Румынская тяга</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 6</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 3×8–12</span></div>
+          <span class="mode mode-moderate">Отдых 1,5–2 мин</span></li>
+        <li><b>Разгибание ног</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 6</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 3×9–12</span></div>
+          <span class="mode mode-moderate">Отдых 1–1,5 мин</span></li>
+        <li><b>Сгибание ног сидя</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 6</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>по правилу · 3×10–12</span></div>
+          <span class="mode mode-moderate">Отдых 1–1,5 мин</span></li>
+        <li><b>Ролик для пресса с колен</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 6</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>3×6–12</span></div>
+          <span class="mode mode-moderate">Отдых 1 мин</span></li>
+      </ol>
+    </article>
+  </div>
+  <div class="week-note">Дабл № 3 — 89 %, самый тяжёлый из трёх. Последняя полная ступень перед контрольной неделей: если чувствуете запас меньше обычного — не форсировать повторы, контрольная неделя важнее.</div>
+</details>
+</section>
+
+<section class="week test" id="week-8">
+  <details>
+  <summary class="week-head"><div><h2>Неделя 8</h2><p>Контрольная · критерии цикла</p></div><span class="phase">Контроль</span></summary>
+  <div class="days">
+    <article class="day"><div class="day-title"><h3>Понедельник</h3><span>Жим</span></div>
+      <details class="session-check" open><summary>Критерии недели</summary><ul>
+        <li>Жим в касание: старт + 5 кг на 4×9.</li>
+        <li>Присед понедельника: старт + 7,5 кг на 4×8–9.</li>
+        <li>Жим средним хватом: старт + 2,5 кг на 4×9.</li>
+        <li>Масса тела: средняя утренняя 81–82 кг.</li>
+        <li>Недельный тоннаж жима — примерно в 1,6 раза к неделе 1.</li>
+      </ul></details>
+      <div class="block-title">Основные</div>
+      <ol class="plan">
+        <li><b>Жим в касание · свой хват 64 см</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 7</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>старт + 5 · 4×9</span></div>
+          <span class="ex-alt">если неделя 7 не дошла до старт + 5 — контроль на фактическом весе, план фиксирует отставание, а не отменяет его</span>
+          <span class="mode mode-hard">Отдых 3–4 мин</span></li>
+        <li><b>Присед · привычное среднее положение грифа</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 7</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>старт + 7,5 · 4×8–9</span></div>
+          <span class="ex-alt">контрольная работа, не максимум: отказ не допускается</span>
+          <span class="mode mode-hard">Отдых 3–4 мин</span></li>
+      </ol>
+      <div class="block-title assist">Подсобка</div>
+      <ol class="plan" start="3">
+        <li><b>Подъёмы гантелей через стороны</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 7</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>вес Н7 · 3×12–15</span></div>
+          <span class="ex-alt">без повышения веса</span>
+          <span class="mode mode-moderate">Отдых 1–1,5 мин</span></li>
+      </ol>
+    </article>
+    <article class="day"><div class="day-title"><h3>Среда</h3><span>Верх</span></div>
+      <div class="block-title">Основные</div>
+      <ol class="plan">
+        <li><b>Тяга верхнего блока · широкая рукоять</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 7</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>вес Н7 · 4×8–12</span></div>
+          <span class="ex-alt">без повышения веса</span>
+          <span class="mode mode-moderate">Отдых 1,5–2 мин</span></li>
+      </ol>
+      <div class="block-title assist">Подсобка</div>
+      <ol class="plan" start="2">
+        <li><b>Тяга нижнего блока · узкая нейтральная</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 7</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>вес Н7 · 4×10–12</span></div>
+          <span class="mode mode-moderate">Отдых 1,5–2 мин</span></li>
+        <li><b>Трицепс на блоке</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 7</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>вес Н7 · 3×12–15</span></div>
+          <span class="mode mode-moderate">Отдых 1–1,5 мин</span></li>
+        <li><b>Молотки</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 7</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>вес Н7 · 3×6–10</span></div>
+          <span class="mode mode-moderate">Отдых 1–1,5 мин</span></li>
+      </ol>
+    </article>
+    <article class="day"><div class="day-title"><h3>Пятница</h3><span>Присед</span></div>
+      <div class="block-title">Основные</div>
+      <ol class="plan">
+        <li><b>Темповый присед · 3 с опускания</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 7</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>вес Н7 · 4×6–7</span></div>
+          <span class="ex-alt">без повышения веса</span>
+          <span class="mode mode-hard">Отдых 3–4 мин</span></li>
+        <li><b>Жим средним хватом · 55 см</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 7</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>старт + 2,5 · 4×9</span></div>
+          <span class="ex-alt">контроль соотношения «средний хват / соревновательный» — по одинаковым повторам и запасу с понедельником</span>
+          <span class="mode mode-hard">Отдых 3–4 мин</span></li>
+      </ol>
+      <div class="block-title assist">Подсобка</div>
+      <ol class="plan" start="3">
+        <li><b>Румынская тяга</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 7</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>вес Н7 · 3×8–12</span></div>
+          <span class="mode mode-moderate">Отдых 1,5–2 мин</span></li>
+        <li><b>Разгибание ног</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 7</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>вес Н7 · 3×9–12</span></div>
+          <span class="mode mode-moderate">Отдых 1–1,5 мин</span></li>
+        <li><b>Сгибание ног сидя</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 7</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>вес Н7 · 3×10–12</span></div>
+          <span class="mode mode-moderate">Отдых 1–1,5 мин</span></li>
+        <li><b>Ролик для пресса с колен</b>
+          <div class="pp"><span class="pp-was"><i>было</i>факт недели 7</span><span class="pp-arrow">→</span><span class="pp-now"><i>сейчас</i>3×6–12</span></div>
+          <span class="mode mode-moderate">Отдых 1 мин</span></li>
+      </ol>
+    </article>
+  </div>
+  <div class="week-note">Контрольная неделя без дабла и без повышения весов в подсобке. Критерии — ориентир, а не гарантия: что не закрыто, то фиксируется и переносится в план цикла 3. После недели 8 — обязательный съём на неделе 9.</div>
+</details>
+</section>
+
+<details class="bridge-schedule" id="week-9" style="margin:8px 0 14px;background:#fff;border:1px solid #7c8796;border-radius:16px;overflow:hidden;">
+  <summary class="bridge-sum">Неделя 9 · съём · 14–18 декабря <small>открыть состав</small></summary>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0;border-bottom:1px solid #d9e0e9;">
+    <div style="padding:18px;border-right:1px solid #d9e0e9;">
+      <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #d9e0e9;padding-bottom:8px;margin-bottom:10px;">
+        <strong style="color:#172b4d;font-size:18px;">Понедельник</strong>
+        <span style="font-size:11px;font-weight:850;color:#657084;text-transform:uppercase;">съём</span>
+      </div>
+      <ul style="margin:0;padding-left:18px;color:#43506a;font-size:13px;line-height:1.5">
+        <li>Жим в касание — 60–70 % от рабочего · 2×5, легко</li>
+        <li>Присед — 60–70 % · 2×5</li>
+        <li>Махи — 2×12</li>
+      </ul>
+    </div>
+    <div style="padding:18px;border-right:1px solid #d9e0e9;">
+      <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #d9e0e9;padding-bottom:8px;margin-bottom:10px;">
+        <strong style="color:#172b4d;font-size:18px;">Среда</strong>
+        <span style="font-size:11px;font-weight:850;color:#657084;text-transform:uppercase;">съём</span>
+      </div>
+      <ul style="margin:0;padding-left:18px;color:#43506a;font-size:13px;line-height:1.5">
+        <li>Верхний блок — 60–70 % · 2×10</li>
+        <li>Нижний блок — 60–70 % · 2×10</li>
+        <li>Ещё максимум одна позиция на выбор</li>
+      </ul>
+    </div>
+    <div style="padding:18px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #d9e0e9;padding-bottom:8px;margin-bottom:10px;">
+        <strong style="color:#172b4d;font-size:18px;">Пятница</strong>
+        <span style="font-size:11px;font-weight:850;color:#657084;text-transform:uppercase;">съём</span>
+      </div>
+      <ul style="margin:0;padding-left:18px;color:#43506a;font-size:13px;line-height:1.5">
+        <li>Темповый присед — 60–70 % · 2×5</li>
+        <li>Румынская тяга — 60–70 % · 2×8</li>
+        <li>Ещё максимум одна позиция на выбор</li>
+      </ul>
+    </div>
+  </div>
+  <div style="padding:14px 18px;background:#f7f9fc;color:#4e5d72;font-size:13px;line-height:1.5">Отдых между подходами — до 1 минуты, дабла и предельных попыток нет. Съём — условие входа в цикл 3: накопленная усталость маскирует набранную силу. Цикл 3 — четыре недели пятёрок от весов старт + 10, разгрузка, тест старт + 25 на 4 повтора.</div>
+</details>
+
+<div class="rules-ref">
+  <b>Правила цикла — в отдельном файле</b>
+  <span>Двойная прогрессия, даблы, стоп-правила, отдых, маркеры восстановления и критерии — в файле <code>Правила_цикла.md</code> рядом с программой. Общие правила техники и подсобки, переходящие из цикла в цикл, — в <code>05_Правила_программы.md</code> в корне репозитория.</span>
+</div>
+
+<div class="footer">Основные движения — без отказа до контрольной недели 8. Подсобка — с ясным запасом, без предельных повторов. Лестница прогрессии и карта недель — в блоке аналитики над неделями.</div>
+</div></body>
+</html>
