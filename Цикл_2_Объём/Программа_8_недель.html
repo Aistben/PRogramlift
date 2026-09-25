@@ -235,6 +235,9 @@ ol.plan li{overflow-wrap:anywhere}
 .cycle-row{grid-template-columns:34px minmax(70px,1fr) minmax(150px,215px)}
 .cycle-grid .cycle-val{white-space:normal;line-height:1.3;justify-self:end;text-align:right}
 .cycle-grid .cycle-val b{white-space:nowrap}
+
+/* ── Одна неделя на экране: остальные полностью скрыты ── */
+[hidden]{display:none!important}
 </style></head>
 <body>
 <div class="page">
@@ -1058,27 +1061,31 @@ ol.plan li{overflow-wrap:anywhere}
   var weeks = [].slice.call(document.querySelectorAll('.week'));
   var bridge = document.getElementById('week-9');
   var navs = [].slice.call(document.querySelectorAll('.week-nav a'));
-  function closeAll(except){
-    weeks.forEach(function(w){ var d = w.querySelector('details'); if(d && d !== except) d.open = false; });
-    if(bridge && bridge !== except) bridge.open = false;
-  }
   function markNav(id){
     navs.forEach(function(a){ a.classList.toggle('current', a.getAttribute('href') === '#' + id); });
+  }
+  function showOnly(id){
+    weeks.forEach(function(w){
+      w.hidden = (w.id !== id);
+      var d = w.querySelector('details');
+      if(d && w.id !== id) d.open = false;
+    });
+    if(bridge){ bridge.hidden = (id !== 'week-9'); if(id !== 'week-9') bridge.open = false; }
   }
   function openWeek(id){
     var el = document.getElementById(id);
     if(!el) return;
     var d = el.classList.contains('week') ? el.querySelector('details') : el;
-    closeAll(d); d.open = true; markNav(id);
+    showOnly(id); d.open = true; markNav(id);
   }
   navs.forEach(function(a){
     a.addEventListener('click', function(){ openWeek(a.getAttribute('href').slice(1)); });
   });
   weeks.forEach(function(w){
     var d = w.querySelector('details');
-    d.addEventListener('toggle', function(){ if(d.open){ closeAll(d); markNav(w.id); } });
+    d.addEventListener('toggle', function(){ if(d.open){ markNav(w.id); } });
   });
-  if(bridge) bridge.addEventListener('toggle', function(){ if(bridge.open){ closeAll(bridge); markNav('week-9'); } });
+  if(bridge) bridge.addEventListener('toggle', function(){ if(bridge.open){ markNav('week-9'); } });
   var cur = document.querySelector('.week.next-week') || document.querySelector('.week');
   if(cur) openWeek(cur.id);
 })();
