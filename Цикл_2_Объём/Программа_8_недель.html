@@ -221,6 +221,20 @@ ol.plan li{overflow-wrap:anywhere}
 .pp-arrow{align-self:center;color:#9aa6b6;font-size:14px;font-weight:900;line-height:1}
 .block-title.assist + ol.plan .pp-now{background:var(--green-soft);border-color:#9bd8c3;color:#14624f}
 @media(max-width:540px){.pp{flex-direction:column;gap:4px}.pp-arrow{display:none}.pp-was,.pp-now{width:100%;box-sizing:border-box}}
+
+/* ── Крупные плашки-якоря по неделям ── */
+.week-nav{gap:8px;margin:14px 0 16px}
+.week-nav a{display:flex;flex-direction:column;align-items:center;gap:1px;min-width:78px;padding:10px 15px;border-radius:14px;background:#fff;border:1.5px solid var(--line);color:var(--navy);text-decoration:none;font-size:17px;font-weight:900;line-height:1.15}
+.week-nav a small{font-size:9.5px;font-weight:750;color:var(--muted);letter-spacing:.02em;white-space:nowrap}
+.week-nav a:hover{border-color:#a9cbee;background:var(--blue-soft)}
+.week-nav a.current{background:#2f66a7;color:#fff;border-color:#2f66a7;box-shadow:0 4px 12px rgba(47,102,167,.3)}
+.week-nav a.current small{color:#cfe2f7}
+@media(max-width:540px){.week-nav a{min-width:62px;padding:8px 10px;font-size:15px}.week-nav a small{font-size:8.5px}}
+
+/* ── Детализация тоннажа: подписи с переносом ── */
+.cycle-row{grid-template-columns:34px minmax(70px,1fr) minmax(150px,215px)}
+.cycle-grid .cycle-val{white-space:normal;line-height:1.3;justify-self:end;text-align:right}
+.cycle-grid .cycle-val b{white-space:nowrap}
 </style></head>
 <body>
 <div class="page">
@@ -241,8 +255,8 @@ ol.plan li{overflow-wrap:anywhere}
   <div class="dash-hero">
     <p class="dash-kicker">Тоннаж цикла</p>
     <h2>Лестница двойной прогрессии</h2>
-    <p>Столбик — тоннаж недели в процентах к неделе 1 при идеальном закрытии ступеней: сначала растут повторы, затем +2,5 кг и откат к нижней границе коридора. Отсюда пилообразная форма — падение после шага веса это норма, а не откат. Абсолютные значения появятся после теста недели 8 текущего цикла и будут пересчитываться по факту.</p>
-    <span class="asof">Собрано 25 сентября 2026 · старт после теста Н8 текущего цикла · ориентир 19 октября</span>
+    <p>Тоннаж — это вес, умноженный на все рабочие повторы: например, 60 кг × 4 подхода × 8 повторов = 1 920 кг за тренировку. Разминка и дабл в тоннаж не входят. Ниже всё расписано в килограммах на примере теста жим 80 / присед 105 (старт: жим Пн 60, присед Пн 77,5, темповый 70, средний хват 55); твои числа подставятся после теста. Диаграмма пилообразная, и это норма: повторы растут — тоннаж растёт; шаг +2,5 кг сбрасывает повторы к низу коридора — тоннаж временно падает.</p>
+    <span class="asof">Собрано 25 сентября 2026 · активна неделя 1 · старт ~19 октября, после теста Н8 текущего цикла</span>
   </div>
   <div class="dash-body">
     <div class="legend" aria-label="Легенда">
@@ -252,32 +266,34 @@ ol.plan li{overflow-wrap:anywhere}
       <span class="legend-item"><i class="legend-swatch deload"></i>съём</span>
     </div>
 
-    <div class="section-label"><h3>Тоннаж по неделям</h3><p>Коридор главных 4×8–10 (темповый 4×6–7): повтор, повтор, затем +2,5 кг. Проценты — к тоннажу недели 1</p></div>
+    <div class="section-label"><h3>Тоннаж по неделям</h3><p>Килограммы за всю неделю, пример при тесте жим 80 / присед 105. Коридор главных 4×8–10, темповый 4×6–7</p></div>
     <div class="cycle-grid">
       <article class="chart-card">
-        <h4>Жим в касание · понедельник</h4>
-        <p class="chart-sub">Идеальная лестница коридора 8–10. Штрих — недели с даблом (дабл в тоннаж не входит, масса навыка).</p>
-        <div class="cycle-row"><span class="cycle-wk">Н1</span><div class="cycle-track"><div class="cycle-fill future" style="width:77%"></div></div><span class="cycle-val"><b>100</b> · 4×8 · старт</span></div>
-        <div class="cycle-row"><span class="cycle-wk">Н2</span><div class="cycle-track"><div class="cycle-fill future" style="width:86%"></div></div><span class="cycle-val"><b>112</b> · 4×9</span></div>
-        <div class="cycle-row"><span class="cycle-wk">Н3</span><div class="cycle-track"><div class="cycle-fill mixed" style="width:96%"></div></div><span class="cycle-val"><b>125</b> · 4×10 · дабл 82 %</span></div>
-        <div class="cycle-row"><span class="cycle-wk">Н4</span><div class="cycle-track"><div class="cycle-fill future" style="width:80%"></div></div><span class="cycle-val"><b>104</b> · +2,5 · 4×8</span></div>
-        <div class="cycle-row"><span class="cycle-wk">Н5</span><div class="cycle-track"><div class="cycle-fill future" style="width:90%"></div></div><span class="cycle-val"><b>117</b> · 4×9</span></div>
-        <div class="cycle-row"><span class="cycle-wk">Н6</span><div class="cycle-track"><div class="cycle-fill mixed" style="width:100%"></div></div><span class="cycle-val"><b>130</b> · 4×10 · дабл 86 %</span></div>
-        <div class="cycle-row"><span class="cycle-wk">Н7</span><div class="cycle-track"><div class="cycle-fill mixed" style="width:83%"></div></div><span class="cycle-val"><b>108</b> · +2,5 · 4×8 · дабл 89 %</span></div>
-        <div class="cycle-row"><span class="cycle-wk">Н8</span><div class="cycle-track"><div class="cycle-fill test" style="width:94%"></div></div><span class="cycle-val"><b>122</b> · контроль: старт+5 · 4×9</span></div>
+        <h4>Жим · обе тренировки недели</h4>
+        <p class="chart-sub">Тоннаж за неделю, кг: сумма понедельника и пятницы. Пример при тесте жим 80 → старт Пн 60, средний хват Пт 55 (ввод с Н3). Даблы 65 / 67,5 / 70 · 1×2 — вне тоннажа.</p>
+        <div class="cycle-row"><span class="cycle-wk">Н1</span><div class="cycle-track"><div class="cycle-fill future" style="width:43%"></div></div><span class="cycle-val"><b>1 920 кг</b> · один жимовый день</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н2</span><div class="cycle-track"><div class="cycle-fill future" style="width:49%"></div></div><span class="cycle-val"><b>2 160 кг</b> · один жимовый день</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н3</span><div class="cycle-track"><div class="cycle-fill mixed" style="width:93%"></div></div><span class="cycle-val"><b>4 160 кг</b> · ввод Пт + дабл 82 %</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н4</span><div class="cycle-track"><div class="cycle-fill future" style="width:89%"></div></div><span class="cycle-val"><b>3 980 кг</b> · шаг +2,5 на Пн</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н5</span><div class="cycle-track"><div class="cycle-fill future" style="width:100%"></div></div><span class="cycle-val"><b>4 450 кг</b> · верх коридора</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н6</span><div class="cycle-track"><div class="cycle-fill mixed" style="width:97%"></div></div><span class="cycle-val"><b>4 340 кг</b> · шаг +2,5 · дабл 86 %</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н7</span><div class="cycle-track"><div class="cycle-fill mixed" style="width:93%"></div></div><span class="cycle-val"><b>4 150 кг</b> · шаг +2,5 · дабл 89 %</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н8</span><div class="cycle-track"><div class="cycle-fill test" style="width:99%"></div></div><span class="cycle-val"><b>4 410 кг</b> · контроль · ×2,3 к Н1</span></div>
+        <p class="chart-caption"><b>По дням (вес · подходы×повторы = кг):</b> Н1 Пн 60·4×8 = 1 920. Н2 Пн 60·4×9 = 2 160. Н3 Пн 60·4×10 = 2 400 + Пт 55·4×8 = 1 760. Н4 Пн 62,5·4×8 = 2 000 + Пт 55·4×9 = 1 980. Н5 Пн 62,5·4×9 = 2 250 + Пт 55·4×10 = 2 200. Н6 Пн 62,5·4×10 = 2 500 + Пт 57,5·4×8 = 1 840. Н7 Пн 65·4×8 = 2 080 + Пт 57,5·4×9 = 2 070. Н8 контроль: Пн 65·4×9 (старт+5) = 2 340 + Пт 57,5·4×9 (старт+2,5) = 2 070. Итог Н8 к Н1 — ×2,3, критерий ×1,6 перекрывается с запасом.</p>
       </article>
 
       <article class="chart-card">
-        <h4>Присед · понедельник</h4>
-        <p class="chart-sub">Та же лестница. Пятничный темповый присед идёт отдельным коридором 6–7 и в эту диаграмму не входит.</p>
-        <div class="cycle-row"><span class="cycle-wk">Н1</span><div class="cycle-track"><div class="cycle-fill future" style="width:77%"></div></div><span class="cycle-val"><b>100</b> · 4×8 · старт</span></div>
-        <div class="cycle-row"><span class="cycle-wk">Н2</span><div class="cycle-track"><div class="cycle-fill future" style="width:86%"></div></div><span class="cycle-val"><b>112</b> · 4×9</span></div>
-        <div class="cycle-row"><span class="cycle-wk">Н3</span><div class="cycle-track"><div class="cycle-fill future" style="width:96%"></div></div><span class="cycle-val"><b>125</b> · 4×10</span></div>
-        <div class="cycle-row"><span class="cycle-wk">Н4</span><div class="cycle-track"><div class="cycle-fill future" style="width:80%"></div></div><span class="cycle-val"><b>104</b> · +2,5 · 4×8</span></div>
-        <div class="cycle-row"><span class="cycle-wk">Н5</span><div class="cycle-track"><div class="cycle-fill future" style="width:90%"></div></div><span class="cycle-val"><b>117</b> · 4×9</span></div>
-        <div class="cycle-row"><span class="cycle-wk">Н6</span><div class="cycle-track"><div class="cycle-fill future" style="width:100%"></div></div><span class="cycle-val"><b>130</b> · 4×10</span></div>
-        <div class="cycle-row"><span class="cycle-wk">Н7</span><div class="cycle-track"><div class="cycle-fill future" style="width:83%"></div></div><span class="cycle-val"><b>108</b> · +2,5 · 4×8</span></div>
-        <div class="cycle-row"><span class="cycle-wk">Н8</span><div class="cycle-track"><div class="cycle-fill test" style="width:94%"></div></div><span class="cycle-val"><b>122</b> · контроль: старт+7,5 · 4×8–9</span></div>
+        <h4>Присед · понедельник + темповый в пятницу</h4>
+        <p class="chart-sub">Тоннаж за неделю, кг: сумма обычного приседа Пн и темпового Пт. Пример при тесте присед 105 → старт Пн 77,5, темповый 70.</p>
+        <div class="cycle-row"><span class="cycle-wk">Н1</span><div class="cycle-track"><div class="cycle-fill future" style="width:80%"></div></div><span class="cycle-val"><b>4 160 кг</b> · старт</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н2</span><div class="cycle-track"><div class="cycle-fill future" style="width:91%"></div></div><span class="cycle-val"><b>4 750 кг</b> · повторы растут</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н3</span><div class="cycle-track"><div class="cycle-fill future" style="width:93%"></div></div><span class="cycle-val"><b>4 840 кг</b> · верх коридора</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н4</span><div class="cycle-track"><div class="cycle-fill future" style="width:88%"></div></div><span class="cycle-val"><b>4 590 кг</b> · шаг +2,5 на Пн</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н5</span><div class="cycle-track"><div class="cycle-fill future" style="width:89%"></div></div><span class="cycle-val"><b>4 680 кг</b></span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н6</span><div class="cycle-track"><div class="cycle-fill future" style="width:91%"></div></div><span class="cycle-val"><b>4 740 кг</b> · шаг +5 суммарно</span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н7</span><div class="cycle-track"><div class="cycle-fill future" style="width:92%"></div></div><span class="cycle-val"><b>4 830 кг</b></span></div>
+        <div class="cycle-row"><span class="cycle-wk">Н8</span><div class="cycle-track"><div class="cycle-fill test" style="width:100%"></div></div><span class="cycle-val"><b>5 230 кг</b> · контроль старт+7,5</span></div>
+        <p class="chart-caption"><b>По дням (вес · подходы×повторы = кг):</b> Н1 Пн 77,5·4×8 = 2 480 + темп 70·4×6 = 1 680. Н2 Пн 77,5·4×9 = 2 790 + темп 70·4×7 = 1 960. Н3 Пн 77,5·4×10 = 3 100 + темп 72,5·4×6 = 1 740. Н4 Пн 80·4×8 = 2 560 + темп 72,5·4×7 = 2 030. Н5 Пн 80·4×9 = 2 880 + темп 75·4×6 = 1 800. Н6 Пн 82,5·4×8 = 2 640 + темп 75·4×7 = 2 100. Н7 Пн 82,5·4×9 = 2 970 + темп 77,5·4×6 = 1 860. Н8 контроль: Пн 85·4×9 (старт+7,5) = 3 060 + темп 77,5·4×7 = 2 170. В примере присед берёт три шага веса, жим — два: у приседа стартовый запас больше.</p>
       </article>
 
       <article class="chart-card">
@@ -330,20 +346,20 @@ ol.plan li{overflow-wrap:anywhere}
 </header>
 
 <nav class="week-nav" aria-label="Недели цикла">
-  <a href="#week-1">Н1</a>
-  <a href="#week-2">Н2</a>
-  <a href="#week-3">Н3</a>
-  <a href="#week-4">Н4</a>
-  <a href="#week-5">Н5</a>
-  <a href="#week-6">Н6</a>
-  <a href="#week-7">Н7</a>
-  <a href="#week-8">Н8</a>
-  <a href="#week-9">Н9 · съём</a>
+  <a href="#week-1" class="current">Н1<small>19–23 окт</small></a>
+  <a href="#week-2">Н2<small>26–30 окт</small></a>
+  <a href="#week-3">Н3<small>2–6 ноя</small></a>
+  <a href="#week-4">Н4<small>9–13 ноя</small></a>
+  <a href="#week-5">Н5<small>16–20 ноя</small></a>
+  <a href="#week-6">Н6<small>23–27 ноя</small></a>
+  <a href="#week-7">Н7<small>30 ноя–4 дек</small></a>
+  <a href="#week-8">Н8<small>7–11 дек</small></a>
+  <a href="#week-9">Н9<small>съём · 14–18 дек</small></a>
 </nav>
 
-<section class="week load" id="week-1">
-  <details>
-  <summary class="week-head"><div><h2>Неделя 1</h2><p>Старт после теста · блок 1</p></div><span class="phase">Старт</span></summary>
+<section class="week load next-week" id="week-1">
+  <details open>
+  <summary class="week-head"><div><h2>Неделя 1</h2><p>Старт после теста · блок 1</p></div><span class="phase phase-now">Сейчас</span></summary>
   <div class="days">
     <article class="day"><div class="day-title"><h3>Понедельник</h3><span>Жим</span></div>
       <details class="session-check"><summary>Как считается шаг прогрессии</summary><ul>
@@ -1037,5 +1053,35 @@ ol.plan li{overflow-wrap:anywhere}
 </div>
 
 <div class="footer">Основные движения — без отказа до контрольной недели 8. Подсобка — с ясным запасом, без предельных повторов. Лестница прогрессии и карта недель — в блоке аналитики над неделями.</div>
-</div></body>
+</div><script>
+(function(){
+  var weeks = [].slice.call(document.querySelectorAll('.week'));
+  var bridge = document.getElementById('week-9');
+  var navs = [].slice.call(document.querySelectorAll('.week-nav a'));
+  function closeAll(except){
+    weeks.forEach(function(w){ var d = w.querySelector('details'); if(d && d !== except) d.open = false; });
+    if(bridge && bridge !== except) bridge.open = false;
+  }
+  function markNav(id){
+    navs.forEach(function(a){ a.classList.toggle('current', a.getAttribute('href') === '#' + id); });
+  }
+  function openWeek(id){
+    var el = document.getElementById(id);
+    if(!el) return;
+    var d = el.classList.contains('week') ? el.querySelector('details') : el;
+    closeAll(d); d.open = true; markNav(id);
+  }
+  navs.forEach(function(a){
+    a.addEventListener('click', function(){ openWeek(a.getAttribute('href').slice(1)); });
+  });
+  weeks.forEach(function(w){
+    var d = w.querySelector('details');
+    d.addEventListener('toggle', function(){ if(d.open){ closeAll(d); markNav(w.id); } });
+  });
+  if(bridge) bridge.addEventListener('toggle', function(){ if(bridge.open){ closeAll(bridge); markNav('week-9'); } });
+  var cur = document.querySelector('.week.next-week') || document.querySelector('.week');
+  if(cur) openWeek(cur.id);
+})();
+</script>
+</body>
 </html>
