@@ -11,7 +11,7 @@
   --amber:#99600a;--amber-soft:#fff6e5;--red:#a43d3d;--red-soft:#fff0f0;--violet:#644fa3;--violet-soft:#f2efff;
 }
 *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.48 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
-.page{max-width:1180px;margin:auto;padding:26px 18px 60px}
+.page{max-width:1440px;margin:auto;padding:26px 18px 60px}
 .hero{background:linear-gradient(145deg,#12243f 0%,#1b3d68 55%,#245a7a 100%);color:#fff;border-radius:20px;padding:22px 24px 18px;box-shadow:0 16px 36px rgba(18,36,63,.22)}
 h1{margin:0;font-size:32px;letter-spacing:-.03em;line-height:1.05;font-weight:800}
 .hero-goal{margin:8px 0 0;max-width:46em;color:#d5e4f5;font-size:15px;line-height:1.45;font-weight:500}
@@ -108,6 +108,7 @@ ol.plan .reprange,.bridge-schedule .reprange{grid-column:2;grid-row:1;margin:0;w
 .ex-alt{grid-column:1 / -1;color:#657084;font-size:12px;font-weight:600;line-height:1.4;padding-top:2px}
 ol.plan .mode{display:block;width:auto;max-width:100%;box-sizing:border-box;margin-top:7px;padding:5px 8px;border-radius:8px;white-space:normal;line-height:1.35;letter-spacing:0;font-size:11px}
 .cell-main{white-space:normal;line-height:1.35}
+@media(max-width:1280px) and (min-width:901px){.days{grid-template-columns:repeat(2,minmax(0,1fr))}.days .day:last-child{grid-column:1/-1}}
 @media(max-width:900px){.days{grid-template-columns:1fr;padding:12px}.day,.day:last-child{border-right:1px solid var(--line)}}
 @media(max-width:540px){
   ol.plan .loadline,.bridge-schedule .loadline{grid-template-columns:1fr}
@@ -249,12 +250,12 @@ body:has(.week:target) .bridge-schedule{display:none}
 body:has(#week-9:target) .week{display:none}
 /* суперсеты: упражнение своей строкой, вес и диапазон напротив */
 .ss{display:flex;flex-direction:column;gap:5px;margin:7px 0 2px;padding:7px 9px;background:#eef4fb;border:1px solid #d3e0ef;border-radius:8px}
-.ss-row{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
-.ss-name{font-size:12.5px;font-weight:700;color:var(--ink);min-width:0;overflow-wrap:break-word}
+.ss-row{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:12px;row-gap:3px;align-items:baseline}
+.ss-name{font-size:12.5px;font-weight:700;color:var(--ink);min-width:0;overflow-wrap:break-word;word-wrap:break-word}
 .ss-assign{font-size:13px;font-weight:750;white-space:nowrap;color:#1d4d8f;font-variant-numeric:tabular-nums}
 /* читаемость: текст не наезжает и не вылезает */
-li>b,.ex-alt,.ex-note,.week-note,td,th,.pp-was,.pp-now{overflow-wrap:break-word;min-width:0}
-@media(max-width:560px){.ss-row{flex-direction:column;align-items:flex-start;gap:2px}.ss-assign{white-space:normal}}
+li>b,.ex-alt,.ex-note,.week-note,td,th,.pp-was,.pp-now{overflow-wrap:break-word;word-wrap:break-word;min-width:0}
+@media(max-width:560px){.ss-row{grid-template-columns:1fr}.ss-assign{white-space:normal}}
 </style></head>
 <body>
 <div class="page">
